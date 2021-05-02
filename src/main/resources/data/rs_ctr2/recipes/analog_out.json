@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" # ",
+		"#Q#",
+		" # "
+	],
+	"key": {
+		"#": { "item": "rs_ctr2:logic_out" },
+		"Q": { "item": "minecraft:quartz" }
+	},
+	"result": {
+		"item": "rs_ctr2:analog_out",
+		"count": 4
+	}
+}

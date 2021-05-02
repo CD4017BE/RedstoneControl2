@@ -1,0 +1,21 @@
+{
+  "itemGroup.rs_ctr2": "Redstone Control 2",
+  "item.rs_ctr2.wire": "Data Cable",
+  "item.rs_ctr2.wire.tip": "Connects one gate's data output\nwith another gate's data input.\nCan't split or merge signals!",
+  "block.rs_ctr2.assembler": "Microblock Workbench",
+  "block.rs_ctr2.assembler.tip": "Cuts blocks into 1/4 grid Bits\nand disassembles or replicates\nMicroblock Structures.",
+  "item.rs_ctr2.microblock": "%s Bit",
+  "item.rs_ctr2.microblock.tip": "4x4x4 sub piece of a block,\ncrafted in §6Microblock Workbench§7.",
+  "item.rs_ctr2.logic_in": "Logic reader",
+  "item.rs_ctr2.logic_in.tip": "All bits of its data output are set to the logical value (ON/OFF) of the received redstone signal.",
+  "item.rs_ctr2.analog_in": "Analog reader",
+  "item.rs_ctr2.analog_in.tip": "Its data output represents the nummerical value of the received redstone signal.",
+  "item.rs_ctr2.logic_out": "Logic emitter",
+  "item.rs_ctr2.logic_out.tip": "Emits a redstone signal of 15 if its data input is non-zero.",
+  "item.rs_ctr2.analog_out": "Analog emitter",
+  "item.rs_ctr2.analog_out.tip": "Emits a redstone signal equal to the nummerical value of its data input.\nSignals outside 0..15 are possible!",
+  "block.rs_ctr2.grid": "Microblock Structure",
+  "gui.rs_ctr2.destroy": "§cdisassemble\n§7cut blocks",
+  "gui.rs_ctr2.replicate": "§areplicate",
+  "gui.rs_ctr2.assembler": "Microblock Assembly"
+}

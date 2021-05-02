@@ -1,0 +1,27 @@
+{
+	"type": "minecraft:block",
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "rs_ctr2:grid"
+				}
+			],
+			"functions": [
+				{
+					"function": "minecraft:copy_nbt",
+					"source": "block_entity",
+					"ops": [
+						{
+							"source": "",
+							"target": "BlockEntityTag",
+							"op": "replace"
+						}
+					]
+				}
+			]
+		}
+	]
+}
