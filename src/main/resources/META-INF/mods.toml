@@ -1,0 +1,37 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="MIT License"
+issueTrackerURL="https://github.com/CD4017BE/RedstoneControl2/issues"
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]]
+modId="rs_ctr2"
+version="${file.jarVersion}"
+displayName="Redstone Control"
+# A URL to query for updates for this mod. See the JSON update specification <here>
+# updateJSONURL="http://myurl.me/" #optional
+# A URL for the "homepage" for this mod, displayed in the mod UI
+# displayURL="http://example.com/" #optional
+logoFile=""
+credits="" #optional
+authors="CD4017BE"
+description='''
+'''
+
+[[dependencies.rs_ctr2]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.rs_ctr2]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5]"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.rs_ctr2]]
+    modId="cd4017be_lib"
+    mandatory=true
+    versionRange="[7,)"
+    ordering="NONE"
+    side="BOTH"
