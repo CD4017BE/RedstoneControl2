@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"#-#",
+		"R--",
+		"#-#"
+	],
+	"key": {
+		"#": { "item": "rs_ctr2:microblock" },
+		"-": { "item": "rs_ctr2:wire" },
+		"R": { "item": "minecraft:redstone" }
+	},
+	"result": {
+		"item": "rs_ctr2:splitter",
+		"count": 4
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"parent": "rs_ctr2:progression/microblocks",
+	"display": {
+		"icon": {
+			"item": "rs_ctr2:grid",
+			"nbt": "{BlockEntityTag:{parts:[{id: \"rs_ctr2:microblock\", s:1, m:1395835530495852545L}], hash: 817073886}}"
+		},
+		"title": { "translate": "advancements.rs_ctr2.replicate" },
+		"description": { "translate": "advancements.rs_ctr2.replicate.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"structure": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [{
+					"item": "rs_ctr2:grid",
+					"count": { "min": 16 }
+				}]
+			}
+		}
+	}
+}

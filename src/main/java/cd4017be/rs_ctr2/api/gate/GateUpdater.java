@@ -9,7 +9,10 @@ import net.minecraftforge.event.TickEvent.ServerTickEvent;
 
 public final class GateUpdater implements Consumer<ServerTickEvent> {
 
+	/** The active GateUpdater instance */
 	public static GateUpdater GATE_UPDATER;
+	/** gate ticks counted since game application started */
+	public static int TICK;
 
 	/** looping array used as queue */
 	private IGate[] updateQueue;
@@ -41,6 +44,7 @@ public final class GateUpdater implements Consumer<ServerTickEvent> {
 		}
 		evaluating = false;
 		start = e; end = j;
+		TICK++;
 		profiler.popPush("latch out gates");
 		for (int i = e; i != j; i = i + 1 & m) {
 			start = start + 1 & mask;

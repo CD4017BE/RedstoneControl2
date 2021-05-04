@@ -16,12 +16,13 @@ import cd4017be.rs_ctr2.api.grid.GridPart;
 import cd4017be.rs_ctr2.api.grid.IGridItem;
 import cd4017be.rs_ctr2.container.ContainerAssembler;
 import cd4017be.lib.block.BlockTE;
-import cd4017be.lib.block.BlockTE.ITEDropItems;
+import cd4017be.lib.block.BlockTE.ITEBreak;
 import cd4017be.lib.container.IUnnamedContainerProvider;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.tileentity.BaseTileEntity;
 import cd4017be.lib.tileentity.BaseTileEntity.ITickableServerOnly;
 import cd4017be.lib.util.ItemFluidUtil;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
@@ -34,7 +35,7 @@ import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.items.IItemHandler;
 
 public class Assembler extends BaseTileEntity
-implements ITickableServerOnly, IItemHandler, IUnnamedContainerProvider, ITEDropItems {
+implements ITickableServerOnly, IItemHandler, IUnnamedContainerProvider, ITEBreak {
 
 	final ArrayList<ItemStack> disassembly = new ArrayList<>();
 	final ItemStack[] inventory = new ItemStack[23];
@@ -333,7 +334,7 @@ implements ITickableServerOnly, IItemHandler, IUnnamedContainerProvider, ITEDrop
 	}
 
 	@Override
-	public void spawnExtraDrops(ItemStack tool) {
+	public void onBreak(BlockState newState, boolean moving) {
 		cancelAssemble();
 		for (ItemStack stack : inventory)
 			ItemFluidUtil.dropStack(stack, level, worldPosition);

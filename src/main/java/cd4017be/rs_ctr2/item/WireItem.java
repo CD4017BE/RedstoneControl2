@@ -6,6 +6,11 @@ import cd4017be.rs_ctr2.api.grid.GridPart;
 import cd4017be.rs_ctr2.api.grid.IGridHost;
 import cd4017be.rs_ctr2.api.grid.IGridItem;
 import cd4017be.rs_ctr2.part.JumperWire;
+
+import static cd4017be.math.Linalg.*;
+import static cd4017be.math.MCConv.blockRelVecF;
+import static net.minecraft.util.Direction.getNearest;
+
 import cd4017be.lib.item.DocumentedItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -34,8 +39,15 @@ public class WireItem extends DocumentedItem implements IGridItem {
 		if (pos < 0) return ActionResultType.PASS;
 		if (player.level.isClientSide) return ActionResultType.CONSUME;
 		//position
-		Direction d = Direction.orderedByNearest(player)[5];
-		JumperWire part = new JumperWire(pos, hit.getDirection().getOpposite(), d, ISignalReceiver.TYPE_ID);
+		Direction d0 = hit.getDirection(), d;
+		if (player.isShiftKeyDown()) {
+			float[] vec = sca(3, blockRelVecF(hit.getLocation(), hit.getBlockPos()), 4F);
+			sub(3, vec, (pos & 3) + .5F, (pos >> 2 & 3) + .5F, (pos >> 4 & 3) + .5F);
+			vec[d0.getAxis().ordinal()] = 0;
+			if (lenSq(3, vec) < .0625F) d = d0;
+			else d = getNearest(vec[0], vec[1], vec[2]);
+		} else d = Direction.orderedByNearest(player)[5];
+		JumperWire part = new JumperWire(pos, d0.getOpposite(), d, ISignalReceiver.TYPE_ID);
 		//merge with existing wires:
 		Port p0 = grid.findPort(null, part.ports[0]);
 		Port p1 = grid.findPort(null, part.ports[1]);

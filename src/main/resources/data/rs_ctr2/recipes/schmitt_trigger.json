@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "compound_gate",
+	"pattern": [
+		"C",
+		"L",
+		"C"
+	],
+	"key": {
+		"C": { "item": "rs_ctr2:comparator" },
+		"L": { "item": "rs_ctr2:sr_latch" }
+	},
+	"result": {
+		"item": "rs_ctr2:schmitt_trigger",
+		"count": 1
+	}
+}

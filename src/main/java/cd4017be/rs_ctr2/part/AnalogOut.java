@@ -26,7 +26,7 @@ public class AnalogOut extends OrientedPart implements ISignalReceiver {
 	public void set(int pos, Orientation orient) {
 		super.set(pos, orient);
 		setBounds(pos, pos);
-		setPort(0, pos, Direction.NORTH, ISignalReceiver.TYPE_ID);
+		setPort(0, pos, Direction.SOUTH, ISignalReceiver.TYPE_ID);
 	}
 
 	@Override
@@ -46,18 +46,18 @@ public class AnalogOut extends OrientedPart implements ISignalReceiver {
 	public void updateInput(int value) {
 		if (value != state && host != null) {
 			state = value;
-			host.updateNeighbor(orient.b);
+			host.updateNeighbor(orient.b.getOpposite());
 		}
 	}
 
 	@Override
 	public int analogOutput(Direction side) {
-		return side == orient.b.getOpposite() ? state : 0;
+		return side == orient.b ? state : 0;
 	}
 
 	@Override
 	public boolean connectRedstone(Direction side) {
-		return side == orient.b.getOpposite();
+		return side == orient.b;
 	}
 
 }

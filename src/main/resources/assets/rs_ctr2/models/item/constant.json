@@ -1,0 +1,8 @@
+{
+	"parent": "rs_ctr2:item/gate",
+	"textures": {
+		"portB": "rs_ctr2:part/data_out",
+		"portF": "rs_ctr2:part/const_b",
+		"main": "rs_ctr2:part/const_s"
+	}
+}

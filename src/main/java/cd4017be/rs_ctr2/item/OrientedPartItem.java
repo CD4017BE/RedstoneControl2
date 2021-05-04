@@ -7,6 +7,7 @@ import static net.minecraft.util.Direction.getNearest;
 
 import java.util.function.Supplier;
 
+import cd4017be.rs_ctr2.Main;
 import cd4017be.rs_ctr2.api.grid.IGridHost;
 import cd4017be.rs_ctr2.api.grid.IGridItem;
 import cd4017be.rs_ctr2.part.OrientedPart;
@@ -30,6 +31,7 @@ public class OrientedPartItem extends DocumentedItem implements IGridItem {
 
 	public OrientedPartItem(Properties p, Supplier<OrientedPart> factory) {
 		super(p);
+		tab(Main.CREATIVE_TAB);
 		this.factory = factory;
 	}
 
@@ -56,7 +58,7 @@ public class OrientedPartItem extends DocumentedItem implements IGridItem {
 	}
 
 	protected void position(OrientedPart part, int pos, BlockRayTraceResult hit, PlayerEntity player) {
-		Direction d = hit.getDirection().getOpposite(), d1;
+		Direction d = hit.getDirection(), d1;
 		Orientation o;
 		if (player.isShiftKeyDown()) {
 			float[] vec = sca(3, blockRelVecF(hit.getLocation(), hit.getBlockPos()), 4F);
@@ -64,8 +66,8 @@ public class OrientedPartItem extends DocumentedItem implements IGridItem {
 			vec[d.getAxis().ordinal()] = 0;
 			d1 = getNearest(vec[0], vec[1], vec[2]);
 		} else {
-			d1 = d;
-			d = Direction.orderedByNearest(player)[5];
+			d1 = d.getOpposite();
+			d = Direction.orderedByNearest(player)[0];
 		}
 		o = Orientation.byBackUp(d, d1);
 		if (o == null) o = Orientation.byBack(d);

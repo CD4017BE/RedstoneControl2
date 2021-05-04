@@ -133,6 +133,8 @@ public class MicroBlockItem extends DocumentedItem implements IGridItem, IModelD
 	@OnlyIn(Dist.CLIENT)
 	public ModelDataMap getModelData(ItemStack stack, ClientWorld world, LivingEntity entity) {
 		BlockState state = Block.stateById(stack.getOrCreateTag().getInt("state"));
+		if (state.getBlock() == Blocks.AIR) //so the item is not invisible in recipes
+			state = Blocks.STONE.defaultBlockState();
 		ModelDataMap data = TileEntityModel.MODEL_DATA_BUILDER.build();
 		ArrayList<BakedQuad> quads = JitBakedModel.make(data).inner();
 		float[] ofs = {.25F, .25F, .25F}, size = {.5F, .5F, .5F};

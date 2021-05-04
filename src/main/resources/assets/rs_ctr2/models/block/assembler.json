@@ -1,12 +1,12 @@
 {
 	"parent": "block/cube",
 	"textures": {
-		"down":  "rs_ctr2:block/grid",
-		"up":    "rs_ctr2:block/grid",
-		"north": "rs_ctr2:block/grid",
-		"south": "rs_ctr2:block/grid",
-		"west":  "rs_ctr2:block/grid",
-		"east":  "rs_ctr2:block/grid",
-		"particle": "rs_ctr2:block/grid"
+		"down":  "minecraft:block/smooth_stone",
+		"up":    "rs_ctr2:block/assembler_t",
+		"north": "rs_ctr2:block/assembler_s",
+		"south": "rs_ctr2:block/assembler_s",
+		"west":  "rs_ctr2:block/assembler_s",
+		"east":  "rs_ctr2:block/assembler_s",
+		"particle": "rs_ctr2:block/assembler_s"
 	}
 }

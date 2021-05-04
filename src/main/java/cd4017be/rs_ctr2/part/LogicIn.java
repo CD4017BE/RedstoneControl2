@@ -16,7 +16,7 @@ public class LogicIn extends AnalogIn {
 	public boolean evaluate() {
 		active = false;
 		if (host == null) return false;
-		Direction dir = orient.b;
+		Direction dir = orient.b.getOpposite();
 		int old = state;
 		return (state =
 			host.world().hasSignal(host.pos().relative(dir), dir) ? -1 : 0

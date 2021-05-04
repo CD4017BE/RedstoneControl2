@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "compound_gate",
+	"pattern": [
+		"N",
+		"N",
+		"A"
+	],
+	"key": {
+		"N": { "item": "rs_ctr2:nor_gate" },
+		"A": { "item": "rs_ctr2:and_gate" }
+	},
+	"result": {
+		"item": "rs_ctr2:xor_gate",
+		"count": 2
+	}
+}

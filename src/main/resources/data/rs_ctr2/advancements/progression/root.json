@@ -1,0 +1,20 @@
+{
+	"display": {
+		"background": "rs_ctr2:textures/gui/advancements/background.png",
+		"icon": { "item": "rs_ctr2:wire" },
+		"title": { "translate": "advancements.rs_ctr2.root" },
+		"description": { "translate": "advancements.rs_ctr2.root.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": false,
+		"hidden": false
+	},
+	"criteria": {
+		"use_redstone": {
+			"trigger": "minecraft:placed_block",
+			"conditions": {
+				"item": { "tag": "rs_ctr2:redstone_logic_blocks" }
+			}
+		}
+	}
+}

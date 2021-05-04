@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "unary_gates",
+	"pattern": [
+		"# #",
+		"-R-",
+		"# #"
+	],
+	"key": {
+		"#": { "item": "rs_ctr2:microblock" },
+		"-": { "item": "rs_ctr2:wire" },
+		"R": { "item": "minecraft:redstone_torch" }
+	},
+	"result": {
+		"item": "rs_ctr2:not_gate",
+		"count": 4
+	}
+}

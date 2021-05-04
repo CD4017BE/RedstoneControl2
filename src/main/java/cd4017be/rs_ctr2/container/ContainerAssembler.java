@@ -36,7 +36,7 @@ public class ContainerAssembler extends AdvancedContainer {
 	}
 
 	public ContainerAssembler(int id, PlayerInventory inv, Assembler tile, Object... toSync) {
-		super(Content.C_ASSEMBLER, id, inv, StateSyncAdv.of(
+		super(Content.aSSEMBLER, id, inv, StateSyncAdv.of(
 			tile == null, array(2, 21), 0, toSync
 		), 0);
 		this.tile = tile;
@@ -61,14 +61,13 @@ public class ContainerAssembler extends AdvancedContainer {
 			sync.setShort(i, tile.count(i));
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	private static final ResourceLocation TEX = Main.rl("textures/gui/assembler.png");
 
 	@OnlyIn(Dist.CLIENT)
 	public ModularGui<ContainerAssembler> setupGui(PlayerInventory inv, ITextComponent name) {
 		ModularGui<ContainerAssembler> gui
 		= new ModularGui<ContainerAssembler>(this, inv, name);
-		GuiFrame frame = new GuiFrame(gui, 176, 168, 16)
+		GuiFrame frame = new GuiFrame(gui, 176, 168, 3)
 		.title("gui.rs_ctr2.assembler", 0.5F).background(TEX, 0, 0);
 		
 		new Progressbar(
@@ -85,6 +84,7 @@ public class ContainerAssembler extends AdvancedContainer {
 		return gui.setComps(frame, false);
 	}
 
+	@OnlyIn(Dist.CLIENT)
 	private static class ItemCounts extends GuiCompBase<GuiCompGroup> {
 
 		final ByteBuffer buf;

@@ -1,0 +1,8 @@
+{
+	"values": [
+		"rs_ctr2:logic_in",
+		"rs_ctr2:logic_out",
+		"rs_ctr2:analog_in",
+		"rs_ctr2:analog_out"
+	]
+}
