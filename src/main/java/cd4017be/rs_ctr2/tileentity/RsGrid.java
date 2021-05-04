@@ -45,7 +45,7 @@ implements IGridHost, ITEInteract, ITEShape, ITERedstone, ITEBlockUpdate, ITEPic
 	private final VoxelShape4x4x4 bounds = new VoxelShape4x4x4();
 	private final ExtGridPorts extPorts = new ExtGridPorts(this);
 	private final ArrayList<GridPart> parts = new ArrayList<>();
-	private long opaque;
+	private long opaque, inner;
 
 	public RsGrid(TileEntityType<?> type) {
 		super(type);
@@ -73,14 +73,15 @@ implements IGridHost, ITEInteract, ITEShape, ITERedstone, ITEBlockUpdate, ITEPic
 
 	@Override
 	public void updateBounds() {
-		long b = 0, o = 0;
+		long i = 0, o = 0;
 		for (GridPart part : parts) {
-			b |= part.bounds;
-			if (part.isOpaque())
-				o |= part.bounds;
+			byte l = part.getLayer();
+			if (l >= 0) o |= part.bounds;
+			if (l <= 0) i |= part.bounds;
 		}
-		bounds.grid = b;
+		inner = i;
 		opaque = o;
+		bounds.grid = i | o;
 	}
 
 	@Override
@@ -117,9 +118,11 @@ implements IGridHost, ITEInteract, ITEShape, ITERedstone, ITEBlockUpdate, ITEPic
 	@Override
 	public boolean addPart(GridPart part) {
 		if (part.host == this) return true;
-		if ((bounds.grid & part.bounds) != 0) return false;
+		byte l = part.getLayer();
+		if (((l >= 0 ? opaque : inner) & part.bounds) != 0) return false;
 		bounds.grid |= part.bounds;
-		if (part.isOpaque()) opaque |= part.bounds;
+		if (l >= 0) opaque |= part.bounds;
+		if (l <= 0) inner |= part.bounds;
 		parts.add(part);
 		part.setHost(this);
 		connectPart(part);

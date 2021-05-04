@@ -3,6 +3,8 @@ package cd4017be.rs_ctr2.api.grid;
 import static cd4017be.math.Linalg.*;
 import static cd4017be.math.MCConv.blockRelVecF;
 import static cd4017be.math.MCConv.dirVecF;
+import static cd4017be.rs_ctr2.api.grid.GridPart.L_INNER;
+import static cd4017be.rs_ctr2.api.grid.GridPart.L_OUTER;
 
 import java.util.function.Predicate;
 
@@ -38,18 +40,22 @@ public interface IGridHost extends IGridPortHolder {
 		if (p != null) p.setHandler(handler);
 	}
 
-	default GridPart getPart(int pos) {
-		if (pos < 0) return null;
+	default GridPart getPart(int pos, byte layer) {
 		long m = 1L << pos;
-		return findPart(p -> (p.bounds & m) != 0);
+		return findPart(p ->
+			(p.bounds & m) != 0 && (layer == 0 || layer + p.getLayer() != 0)
+		);
 	}
 
 	default ActionResultType onInteract(
 		PlayerEntity player, Hand hand, BlockRayTraceResult hit
 	) {
-		int pos = target(hit, false);
-		GridPart part = getPart(pos);
-		if (part != null) {
+		partInteract: {
+			int pos = target(hit, false);
+			if (pos < 0) break partInteract;
+			GridPart part = getPart(pos, L_OUTER);
+			if (part == null) part = getPart(pos, L_INNER);
+			if (part == null) break partInteract;
 			ActionResultType res = part.onInteract(player, hand, hit, pos);
 			if (res.consumesAction()) return res;
 		}

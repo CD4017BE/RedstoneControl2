@@ -1,5 +1,6 @@
 package cd4017be.rs_ctr2.item;
 
+import static cd4017be.rs_ctr2.api.grid.GridPart.L_OUTER;
 import static net.minecraft.util.math.vector.Vector3d.upFromBottomCenterOf;
 
 import java.util.ArrayList;
@@ -68,7 +69,9 @@ public class MicroBlockItem extends DocumentedItem implements IGridItem, IModelD
 		Hand hand, BlockRayTraceResult hit
 	) {
 		if (hand == null) return ActionResultType.PASS;
-		int pos = IGridHost.target(hit, true);
+		int pos = IGridHost.target(hit, false);
+		if (pos < 0 || grid.getPart(pos, L_OUTER) != null)
+			pos = IGridHost.target(hit, true);
 		if (pos < 0) return ActionResultType.PASS;
 		if (player.level.isClientSide) return ActionResultType.CONSUME;
 		

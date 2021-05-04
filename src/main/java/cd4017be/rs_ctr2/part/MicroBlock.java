@@ -84,8 +84,8 @@ public class MicroBlock extends GridPart {
 	}
 
 	@Override
-	public boolean isOpaque() {
-		return true;
+	public byte getLayer() {
+		return L_OUTER;
 	}
 
 	@Override
@@ -109,7 +109,7 @@ public class MicroBlock extends GridPart {
 	}
 
 	public boolean addVoxel(int pos) {
-		if (host.getPart(pos) != null) return false;
+		if (host.getPart(pos, L_OUTER) != null) return false;
 		setBounds(bounds | 1L << pos);
 		return true;
 	}

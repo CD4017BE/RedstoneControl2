@@ -57,8 +57,11 @@ public abstract class GridPart implements IPortHolder, INBTSynchronized {
 		host.onPartChange();
 	}
 
-	public boolean isOpaque() {
-		return true;
+	/**@return the layer occupied by the part:
+	 * {@link #L_OUTER} parts can overlap with {@link #L_INNER} parts.
+	 * {@link #L_OUTER} and {@link #L_FULL} are considered opaque. */
+	public byte getLayer() {
+		return L_FULL;
 	}
 
 	@Override
@@ -154,6 +157,9 @@ public abstract class GridPart implements IPortHolder, INBTSynchronized {
 	}
 
 	public static BlockState GRID_HOST_BLOCK;
+
+	/** layers */
+	public static final byte L_OUTER = 1, L_INNER = -1, L_FULL = 0;
 
 	public static final long[] FACES = {
 		0x000f_000f_000f_000fL,

@@ -49,8 +49,8 @@ public class JumperWire extends GridPart implements IWire {
 	}
 
 	@Override
-	public boolean isOpaque() {
-		return false;
+	public byte getLayer() {
+		return L_INNER;
 	}
 
 	@Override
@@ -229,22 +229,28 @@ public class JumperWire extends GridPart implements IWire {
 		int port, long b, long visible
 	) {
 		int p0 = IGridHost.posOfport(port);
-		if ((b >>> p0 & 1) == 0) p0 = -1;
 		int p1 = IGridHost.posOfport(port - 0x111);
+		boolean visible0 = p0 < 0 || (visible >>> p0 & 1) != 0;
+		boolean visible1 = p1 < 0 || (visible >>> p1 & 1) != 0;
+		if ((b >>> p0 & 1) == 0) p0 = -1;
 		if ((b >>> p1 & 1) == 0) p1 = -1;
-		if (p0 < 0 ^ p1 >= 0) return;
-		if (p0 < 0) p0 = p1;
+		if (p0 < 0 ^ p1 >= 0 || !(visible0 | visible1)) return;
+		if (p0 >= 0) {
+			boolean v = visible0;
+			visible0 = visible1;
+			visible1 = v;
+		} else p0 = p1;
 		int ax = Integer.numberOfTrailingZeros(0x111 & ~port) >> 2;
-		if ((visible >>> p0 & 1) == 0 || ax >= 3) return;
+		if (ax >= 3) return;
 		float[] vec = dadd(3, vec(p0 & 3, p0 >> 2 & 3, p0 >> 4 & 3), .25F);
 		float[] size = {.5F, .5F, .5F};
-		if (p1 < 0) vec[ax] -= .25F;
-		size[ax] = .75F;
+		if (p1 < 0) vec[ax] -= .2505F;
+		size[ax] = .751F;
 		sca(3, vec, .25F);
 		sca(3, size, .25F);
 		int d = p1 >>> 31 | (ax == 0 ? 4 : ax - 1 << 1);
 		for (int i = 0; i < 6; i++)
-			if (i != d && faces[i] != null)
+			if (i != d && faces[i] != null && (i == (d ^ 1) ? visible0 : visible1))
 				quads.add(faces[i].makeRect(vec, size));
 	}
 
