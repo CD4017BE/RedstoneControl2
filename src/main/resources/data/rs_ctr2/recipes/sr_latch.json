@@ -6,7 +6,7 @@
 		"-N"
 	],
 	"key": {
-		"-": { "item": "rs_ctr2:wire" },
+		"-": { "item": "rs_ctr2:data_cable" },
 		"N": { "item": "rs_ctr2:nor_gate" }
 	},
 	"result": {

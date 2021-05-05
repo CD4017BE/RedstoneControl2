@@ -2,8 +2,8 @@ package cd4017be.rs_ctr2.api.gate;
 
 import java.util.function.Consumer;
 
-import net.minecraft.profiler.EmptyProfiler;
 import net.minecraft.profiler.IProfiler;
+import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.event.TickEvent.Phase;
 import net.minecraftforge.event.TickEvent.ServerTickEvent;
 
@@ -18,9 +18,10 @@ public final class GateUpdater implements Consumer<ServerTickEvent> {
 	private IGate[] updateQueue;
 	private int start, end, mask;
 	private boolean evaluating;
-	public IProfiler profiler = EmptyProfiler.INSTANCE;
+	public final MinecraftServer server;
 
-	public GateUpdater(int initialsize) {
+	public GateUpdater(MinecraftServer server, int initialsize) {
+		this.server = server;
 		initialsize = Integer.highestOneBit(initialsize - 1) << 1;
 		updateQueue = new IGate[initialsize];
 		mask = initialsize - 1;
@@ -30,6 +31,7 @@ public final class GateUpdater implements Consumer<ServerTickEvent> {
 	@Override
 	public void accept(ServerTickEvent event) {
 		if (event.phase != Phase.END || start == end) return;
+		IProfiler profiler = server.getProfiler();
 		profiler.push("evaluate gates");
 		evaluating = true;
 		IGate[] queue = updateQueue;

@@ -1,12 +1,9 @@
 {
 	"parent": "block/block",
-	"textures": {
-		"particle": "minecraft:block/redstone_block"
-	},
 	"loader": "cd4017be_lib:rcp",
 	"code": [
-		"Loc Q = [6,6,4, 10,10,12]#, T = [4,4, 12,12]#;",
-		"for(F:['-vu', '+vu', 'u+v', 'u-v'])",
+		"Loc Q = [6,6,4, 10,10,12]#, T = [4,6, 12,10]#;",
+		"for(F:['-vu', '+vu', 'v+u', 'v-u'])",
 		"	ARG.rect(Q, T, F);",
 		"ARG.rect(Q, [6,6, 10,10]#, 'uv+');",
 		"ARG.rect(Q, [6,6, 10,10]#, 'uv-');"

@@ -11,7 +11,7 @@
 		"I": { "item": "minecraft:iron_nugget" }
 	},
 	"result": {
-		"item": "rs_ctr2:wire",
+		"item": "rs_ctr2:data_cable",
 		"count": 16
 	}
 }

@@ -12,6 +12,7 @@ import cd4017be.rs_ctr2.api.grid.*;
 import cd4017be.rs_ctr2.render.MicroBlockFace;
 import cd4017be.lib.render.model.JitBakedModel;
 import cd4017be.lib.util.ItemFluidUtil;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,13 +26,13 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class JumperWire extends GridPart implements IWire {
+public class Cable extends GridPart implements IWire {
 
-	public JumperWire() {
+	public Cable() {
 		super(2);
 	}
 
-	public JumperWire(int pos, Direction d1, Direction d2, int type) {
+	public Cable(int pos, Direction d1, Direction d2, int type) {
 		this();
 		this.bounds = 1L << pos;
 		this.ports[0] = port(pos, d1, type);
@@ -40,7 +41,7 @@ public class JumperWire extends GridPart implements IWire {
 
 	@Override
 	public Item item() {
-		return Content.wire;
+		return ITEMS[ports[0] >> 12 & 3];
 	}
 
 	@Override
@@ -66,12 +67,13 @@ public class JumperWire extends GridPart implements IWire {
 	}
 
 	public void merge(GridPart other) {
-		if (!(other instanceof JumperWire)) return;
+		if (!(other instanceof Cable)) return;
 		short[] tp = this.ports, op = other.ports;
 		if      (tp[0] == op[1]) tp[0] = op[0];
 		else if (tp[1] == op[0]) tp[1] = op[1];
 		else if (tp[0] == op[0]) tp[0] = op[1];
 		else if (tp[1] == op[1]) tp[1] = op[0];
+		else return;
 		bounds |= other.bounds;
 		other.host.removePart(other);
 	}
@@ -102,7 +104,7 @@ public class JumperWire extends GridPart implements IWire {
 		long f0 = path(b, ports[0]);
 		long f1 = path(b, ports[1]);
 		if (f0 != 0) {
-			JumperWire part = new JumperWire();
+			Cable part = new Cable();
 			if (f1 == f0) {//still in one piece
 				f1 = 0;
 				part.ports[1] = ports[1];
@@ -113,7 +115,7 @@ public class JumperWire extends GridPart implements IWire {
 			host.addPart(part);
 		}
 		if (f1 != 0) {
-			JumperWire part = new JumperWire();
+			Cable part = new Cable();
 			part.ports[0] = portNear(f1, pos, ports[0] >> 12);
 			part.ports[1] = ports[1];
 			part.bounds = f1;
@@ -192,7 +194,7 @@ public class JumperWire extends GridPart implements IWire {
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void fillModel(JitBakedModel model, long opaque) {
-		MicroBlockFace[] faces = MicroBlockFace.facesOf(Blocks.REDSTONE_BLOCK.defaultBlockState());
+		MicroBlockFace[] faces = MicroBlockFace.facesOf(TEXTURES[ports[0] >> 12 & 3]);
 		List<BakedQuad> quads = model.inner();
 		long b = bounds, visible = ~opaque;
 		drawPort(quads, faces, ports[0], b, visible);
@@ -253,5 +255,19 @@ public class JumperWire extends GridPart implements IWire {
 			if (i != d && faces[i] != null && (i == (d ^ 1) ? visible0 : visible1))
 				quads.add(faces[i].makeRect(vec, size));
 	}
+
+	private static final Item[] ITEMS = {
+		Content.data_cable,
+		Content.power_cable,
+		Content.item_cable,
+		Content.fluid_cable,
+	};
+
+	private static final BlockState[] TEXTURES = {
+		Blocks.REDSTONE_BLOCK.defaultBlockState(),
+		Blocks.GOLD_BLOCK.defaultBlockState(),
+		Blocks.IRON_BLOCK.defaultBlockState(),
+		Blocks.LAPIS_BLOCK.defaultBlockState(),
+	};
 
 }

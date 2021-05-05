@@ -8,7 +8,7 @@ import cd4017be.lib.container.IUnnamedContainerProvider;
 import cd4017be.lib.network.IPlayerPacketReceiver;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.util.Orientation;
-import cd4017be.rs_ctr2.api.gate.ISignalReceiver;
+import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 import cd4017be.rs_ctr2.container.ContainerConstant;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

@@ -39,8 +39,7 @@ public class Main {
 	@SubscribeEvent
 	public void onServerStart(FMLServerAboutToStartEvent event) {
 		if (GATE_UPDATER != null) return;
-		EVENT_BUS.addListener(GATE_UPDATER = new GateUpdater(16));
-		GATE_UPDATER.profiler = event.getServer().getProfiler();
+		EVENT_BUS.addListener(GATE_UPDATER = new GateUpdater(event.getServer(), 16));
 		LOG.info("gate updater started");
 	}
 

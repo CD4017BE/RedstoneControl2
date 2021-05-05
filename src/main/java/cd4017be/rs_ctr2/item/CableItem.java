@@ -1,11 +1,10 @@
 package cd4017be.rs_ctr2.item;
 
 import cd4017be.rs_ctr2.api.gate.IPortHolder.Port;
-import cd4017be.rs_ctr2.api.gate.ISignalReceiver;
 import cd4017be.rs_ctr2.api.grid.GridPart;
 import cd4017be.rs_ctr2.api.grid.IGridHost;
 import cd4017be.rs_ctr2.api.grid.IGridItem;
-import cd4017be.rs_ctr2.part.JumperWire;
+import cd4017be.rs_ctr2.part.Cable;
 
 import static cd4017be.math.Linalg.*;
 import static cd4017be.math.MCConv.blockRelVecF;
@@ -24,10 +23,13 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
 
-public class WireItem extends DocumentedItem implements IGridItem {
+public class CableItem extends DocumentedItem implements IGridItem {
 
-	public WireItem(Properties p) {
+	final int type;
+
+	public CableItem(Properties p, int type) {
 		super(p);
+		this.type = type;
 	}
 
 	@Override
@@ -47,7 +49,7 @@ public class WireItem extends DocumentedItem implements IGridItem {
 			if (lenSq(3, vec) < .0625F) d = d0;
 			else d = getNearest(vec[0], vec[1], vec[2]);
 		} else d = Direction.orderedByNearest(player)[5];
-		JumperWire part = new JumperWire(pos, d0.getOpposite(), d, ISignalReceiver.TYPE_ID);
+		Cable part = new Cable(pos, d0.getOpposite(), d, type);
 		//merge with existing wires:
 		Port p0 = grid.findPort(null, part.ports[0]);
 		Port p1 = grid.findPort(null, part.ports[1]);
@@ -60,7 +62,9 @@ public class WireItem extends DocumentedItem implements IGridItem {
 
 	@Override
 	public GridPart createPart() {
-		return new JumperWire();
+		Cable c = new Cable();
+		c.ports[0] = c.ports[1] = (short)(type << 12);
+		return c;
 	}
 
 	public ActionResultType useOn(ItemUseContext context) {

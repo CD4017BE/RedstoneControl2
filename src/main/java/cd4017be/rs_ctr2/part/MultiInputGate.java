@@ -1,7 +1,7 @@
 package cd4017be.rs_ctr2.part;
 
 import cd4017be.lib.network.Sync;
-import cd4017be.rs_ctr2.api.gate.ISignalReceiver;
+import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 
 
 public abstract class MultiInputGate extends SignalGate {

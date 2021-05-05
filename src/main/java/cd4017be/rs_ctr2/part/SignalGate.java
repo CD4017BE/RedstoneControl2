@@ -3,7 +3,7 @@ package cd4017be.rs_ctr2.part;
 import static cd4017be.rs_ctr2.api.gate.GateUpdater.GATE_UPDATER;
 
 import cd4017be.rs_ctr2.api.gate.IGate;
-import cd4017be.rs_ctr2.api.gate.ISignalReceiver;
+import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 import cd4017be.rs_ctr2.api.grid.IGridHost;
 import cd4017be.lib.network.Sync;
 

@@ -8,7 +8,7 @@
 	],
 	"key": {
 		"#": { "item": "rs_ctr2:microblock" },
-		"-": { "item": "rs_ctr2:wire" },
+		"-": { "item": "rs_ctr2:data_cable" },
 		"C": { "item": "minecraft:clock" }
 	},
 	"result": {

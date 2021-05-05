@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"PGP",
+		"GIG",
+		"PGP"
+	],
+	"key": {
+		"P": { "item": "minecraft:paper" },
+		"G": { "item": "minecraft:gold_nugget" },
+		"I": { "item": "minecraft:iron_ingot" }
+	},
+	"result": {
+		"item": "rs_ctr2:power_cable",
+		"count": 16
+	}
+}

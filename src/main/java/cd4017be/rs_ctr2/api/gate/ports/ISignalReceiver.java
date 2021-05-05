@@ -1,4 +1,4 @@
-package cd4017be.rs_ctr2.api.gate;
+package cd4017be.rs_ctr2.api.gate.ports;
 
 @FunctionalInterface
 public interface ISignalReceiver {

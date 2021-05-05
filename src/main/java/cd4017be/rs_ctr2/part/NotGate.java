@@ -5,7 +5,7 @@ import static cd4017be.rs_ctr2.Content.not_gate;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.util.Orientation;
 import cd4017be.rs_ctr2.api.gate.GateUpdater;
-import cd4017be.rs_ctr2.api.gate.ISignalReceiver;
+import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 

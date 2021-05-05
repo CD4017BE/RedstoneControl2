@@ -1,7 +1,7 @@
 {
   "itemGroup.rs_ctr2": "Redstone Control 2",
-  "item.rs_ctr2.wire": "Data Cable",
-  "item.rs_ctr2.wire.tip": "Connects one gate's data output\nwith another gate's data input.\nCan't split or merge signals!",
+  "item.rs_ctr2.data_cable": "Data Cable",
+  "item.rs_ctr2.data_cable.tip": "Connects one gate's data output\nwith another gate's data input.\nCan't split or merge signals!",
   "block.rs_ctr2.assembler": "Microblock Workbench",
   "block.rs_ctr2.assembler.tip": "Cuts blocks into 1/4 grid Bits\nand disassembles or replicates\nMicroblock Structures.",
   "item.rs_ctr2.microblock": "%s Bit",
@@ -39,5 +39,8 @@
   "item.rs_ctr2.nor_gate": "NOR-Gate",
   "item.rs_ctr2.delay": "Delay Line",
   "item.rs_ctr2.comparator": "Comparator",
-  "item.rs_ctr2.sr_latch": "SR-Latch"
+  "item.rs_ctr2.sr_latch": "SR-Latch",
+  "item.rs_ctr2.item_cable": "Item Cable",
+  "item.rs_ctr2.fluid_cable": "Fluid Cable",
+  "item.rs_ctr2.power_cable": "Power Cable"
 }

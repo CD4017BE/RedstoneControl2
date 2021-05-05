@@ -2,9 +2,9 @@ package cd4017be.rs_ctr2.part;
 
 import static cd4017be.rs_ctr2.Content.analog_out;
 
-import cd4017be.rs_ctr2.api.gate.ISignalReceiver;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 

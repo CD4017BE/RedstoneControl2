@@ -4,6 +4,7 @@ import static cd4017be.rs_ctr2.Main.CREATIVE_TAB;
 import static cd4017be.rs_ctr2.Main.rl;
 import static cd4017be.lib.block.BlockTE.flags;
 
+import cd4017be.rs_ctr2.api.gate.ports.*;
 import cd4017be.rs_ctr2.api.grid.GridPart;
 import cd4017be.rs_ctr2.container.ContainerAssembler;
 import cd4017be.rs_ctr2.container.ContainerConstant;
@@ -50,7 +51,8 @@ public class Content {
 	public static final TEModeledItem grid = null;
 	public static final DocumentedBlockItem assembler = null;
 	public static final MicroBlockItem microblock = null;
-	public static final WireItem wire = null;
+	public static final CableItem
+	data_cable = null, power_cable = null, item_cable = null, fluid_cable = null;
 	public static final OrientedPartItem
 	analog_in = null, logic_in = null, analog_out = null, logic_out = null,
 	splitter = null, not_gate = null, clock = null, constant = null,
@@ -82,7 +84,10 @@ public class Content {
 			new TEModeledItem(GRID, p),
 			new DocumentedBlockItem(ASSEMBLER, p),
 			new MicroBlockItem(p).setRegistryName(rl("microblock")),
-			new WireItem(rs).tab(CREATIVE_TAB).setRegistryName(rl("wire")),
+			new CableItem(rs, ISignalReceiver.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("data_cable")),
+			new CableItem(rs, IEnergyAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("power_cable")),
+			new CableItem(rs, IInventoryAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("item_cable")),
+			new CableItem(rs, IFluidAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("fluid_cable")),
 			new OrientedPartItem(rs, AnalogIn::new).setRegistryName(rl("analog_in")),
 			new OrientedPartItem(rs, LogicIn::new).setRegistryName(rl("logic_in")),
 			new OrientedPartItem(rs, AnalogOut::new).setRegistryName(rl("analog_out")),
