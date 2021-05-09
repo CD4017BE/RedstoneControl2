@@ -38,9 +38,9 @@ public class SRLatch extends SignalGate {
 
 	@Override
 	public ISignalReceiver getHandler(int port) {
-		return port == 2 ? v -> {
+		return port == 2 ? (v, r) -> {
 			if (inR != (inR = v)) update();
-		} : port == 3 ? v -> {
+		} : port == 3 ? (v, r) -> {
 			if (inS != (inS = v)) update();
 		} : null;
 	}

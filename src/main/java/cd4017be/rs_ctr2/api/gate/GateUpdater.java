@@ -30,7 +30,9 @@ public final class GateUpdater implements Consumer<ServerTickEvent> {
 
 	@Override
 	public void accept(ServerTickEvent event) {
-		if (event.phase != Phase.END || start == end) return;
+		if (event.phase != Phase.END) return;
+		TICK++;
+		if (start == end) return;
 		IProfiler profiler = server.getProfiler();
 		profiler.push("evaluate gates");
 		evaluating = true;
@@ -46,7 +48,6 @@ public final class GateUpdater implements Consumer<ServerTickEvent> {
 		}
 		evaluating = false;
 		start = e; end = j;
-		TICK++;
 		profiler.popPush("latch out gates");
 		for (int i = e; i != j; i = i + 1 & m) {
 			start = start + 1 & mask;
@@ -78,5 +79,8 @@ public final class GateUpdater implements Consumer<ServerTickEvent> {
 	public int count() {
 		return end - start & mask;
 	}
+
+	/** recursion depth limits */
+	public static int REC_DATA = 4, REC_POWER = 2, REC_ITEM = 8, REC_FLUID = 8;
 
 }

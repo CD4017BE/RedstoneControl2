@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "splitters",
+	"pattern": [
+		"#-#",
+		"---",
+		"#-#"
+	],
+	"key": {
+		"#": { "item": "rs_ctr2:microblock" },
+		"-": { "item": "rs_ctr2:item_cable" }
+	},
+	"result": {
+		"item": "rs_ctr2:item_splitter",
+		"count": 4
+	}
+}

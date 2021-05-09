@@ -53,7 +53,7 @@ public class Clock extends SignalGate implements ISignalReceiver {
 	}
 
 	@Override
-	public void updateInput(int value) {
+	public void updateInput(int value, int rec) {
 		dt = value;
 		if (value > 0) update();
 	}

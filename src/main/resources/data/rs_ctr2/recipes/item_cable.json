@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "cable",
+	"pattern": [
+		"I#I",
+		"# #",
+		"I#I"
+	],
+	"key": {
+		"#": { "item": "rs_ctr2:microblock" },
+		"I": { "item": "minecraft:iron_nugget" }
+	},
+	"result": {
+		"item": "rs_ctr2:item_cable",
+		"count": 16
+	}
+}

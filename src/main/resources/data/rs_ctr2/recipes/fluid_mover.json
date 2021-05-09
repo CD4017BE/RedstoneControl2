@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "resource_transfer",
+	"pattern": [
+		"Cdp",
+		"-P-",
+		"###"
+	],
+	"key": {
+		"-": { "item": "rs_ctr2:fluid_cable" },
+		"p": { "item": "rs_ctr2:power_cable" },
+		"d": { "item": "rs_ctr2:data_cable" },
+		"C": { "item": "rs_ctr2:comparator" },
+		"#": { "item": "rs_ctr2:microblock" },
+		"P": { "item": "minecraft:piston" }
+	},
+	"result": {
+		"item": "rs_ctr2:fluid_mover",
+		"count": 1
+	}
+}

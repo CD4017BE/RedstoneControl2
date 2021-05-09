@@ -1,0 +1,12 @@
+{
+	"parent": "block/cube",
+	"textures": {
+		"particle": "rs_ctr2:part/battery_s",
+		"north": "rs_ctr2:part/battery_s",
+		"south": "rs_ctr2:part/battery_s",
+		"west": "rs_ctr2:part/battery_s",
+		"east": "rs_ctr2:part/battery_s",
+		"down": "rs_ctr2:part/battery_b",
+		"up": "rs_ctr2:part/battery_t"
+	}
+}

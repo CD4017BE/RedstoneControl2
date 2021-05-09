@@ -4,7 +4,6 @@ import static cd4017be.rs_ctr2.Content.not_gate;
 
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.util.Orientation;
-import cd4017be.rs_ctr2.api.gate.GateUpdater;
 import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
@@ -51,11 +50,9 @@ public class NotGate extends OrientedPart implements ISignalReceiver {
 	}
 
 	@Override
-	public void updateInput(int value) {
-		if (value == state || lastTick == GateUpdater.TICK) return;
-		state = value;
-		lastTick = GateUpdater.TICK; //prevent infinite recursion
-		out.updateInput(~value);
+	public void updateInput(int value, int rec) {
+		if (--rec < 0 || value == state) return;
+		out.updateInput(~(state = value), rec);
 	}
 
 }

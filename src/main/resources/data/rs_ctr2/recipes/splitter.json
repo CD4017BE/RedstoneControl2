@@ -1,14 +1,14 @@
 {
 	"type": "minecraft:crafting_shaped",
+	"group": "splitters",
 	"pattern": [
 		"#-#",
-		"R--",
+		"---",
 		"#-#"
 	],
 	"key": {
 		"#": { "item": "rs_ctr2:microblock" },
-		"-": { "item": "rs_ctr2:data_cable" },
-		"R": { "item": "minecraft:redstone" }
+		"-": { "item": "rs_ctr2:data_cable" }
 	},
 	"result": {
 		"item": "rs_ctr2:splitter",

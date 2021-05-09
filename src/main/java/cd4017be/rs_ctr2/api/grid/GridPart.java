@@ -24,7 +24,7 @@ public abstract class GridPart implements IPortHolder, INBTSynchronized {
 	/** filled & 1 << (x + 4*y + 16*z) */
 	public long bounds;
 	/** x & 0x000f | y & 0x00f0 | z & 0x0f00 | type & 0xf000 */
-	public final short[] ports;
+	public short[] ports;
 
 	public GridPart(int ports) {
 		this.ports = new short[ports];
@@ -108,8 +108,13 @@ public abstract class GridPart implements IPortHolder, INBTSynchronized {
 	 * @param world
 	 * @param pos changed block's postion
 	 * @param dir side of this grid */
-	public void onBlockChange(World world, BlockPos pos, Direction dir) {
-	}
+	public void onBlockChange(World world, BlockPos pos, Direction dir) {}
+
+	/**when an adjacent TileEntity changes
+	 * @param world
+	 * @param pos changed TE's postion
+	 * @param dir side of this grid */
+	public void onTEChange(World world, BlockPos pos, Direction dir) {}
 
 	/**@param pos x & 0x03 | y & 0x0c | z & 0x30
 	 * @param dir side of the cell
@@ -136,6 +141,25 @@ public abstract class GridPart implements IPortHolder, INBTSynchronized {
 		for (;i > 0; i--) b |= b << 16;
 		for (;i < 0; i++) b |= b >>> 16;
 		return b;
+	}
+
+	/**@param b bounds to fill
+	 * @param f initial fill
+	 * @return connected region containing f */
+	public static long floodFill(long b, long f) {
+		f &= b;
+		while(f != (f |= outline(f) & b));
+		return f;
+	}
+
+	public static long outline(long b) {
+		return
+		  b << 1 & 0xeeee_eeee_eeee_eeeeL
+		| b >> 1 & 0x7777_7777_7777_7777L
+		| b << 4 & 0xfff0_fff0_fff0_fff0L
+		| b >> 4 & 0x0fff_0fff_0fff_0fffL
+		| b <<16 & 0xffff_ffff_ffff_0000L
+		| b >>16 & 0x0000_ffff_ffff_ffffL;
 	}
 
 	/**@param dir BTNSWE index

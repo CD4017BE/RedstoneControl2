@@ -1,0 +1,10 @@
+{
+	"parent": "rs_ctr2:part/gate2x2",
+	"textures": {
+		"main": "rs_ctr2:part/fluid_mover",
+		"portsU": "rs_ctr2:part/data_in2",
+		"portsD": "rs_ctr2:part/blank2",
+		"portsF": "rs_ctr2:part/fluid_data",
+		"portsB": "rs_ctr2:part/fluid_power"
+	}
+}

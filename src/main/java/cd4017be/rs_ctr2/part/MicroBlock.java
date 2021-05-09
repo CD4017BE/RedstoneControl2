@@ -1,7 +1,5 @@
 package cd4017be.rs_ctr2.part;
 
-import java.util.*;
-
 import cd4017be.rs_ctr2.Content;
 import cd4017be.rs_ctr2.api.grid.GridPart;
 import cd4017be.rs_ctr2.api.grid.IGridHost;
@@ -12,7 +10,6 @@ import cd4017be.lib.render.model.JitBakedModel;
 import cd4017be.lib.util.ItemFluidUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -127,22 +124,7 @@ public class MicroBlock extends GridPart {
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void fillModel(JitBakedModel model, long opaque) {
-		long b = bounds; opaque |= b;
-		MicroBlockFace[] faces = MicroBlockFace.facesOf(block);
-		List<BakedQuad> quads = model.inner();
-		for (int i = 0; i < 6; i++) {
-			MicroBlockFace face = faces[i];
-			if (face == null) continue;
-			int s = step(i);
-			long f = (i & 1) != 0 ? b & ~(opaque >>> s) : b >>> s & ~opaque;
-			long m = FACES[i & 6];
-			for (int j = 1; j < 4; j++, f >>>= s)
-				face.addFaces(quads, f & m, j - (i & 1));
-			if ((f = b & FACES[i]) != 0) {
-				if ((i & 1) != 0) f >>>= s * 3;
-				face.addFaces(model.quads[i], f, (i & 1) * 3);
-			}
-		}
+		MicroBlockFace.drawVoxels(model, block, bounds, opaque);
 	}
 
 }

@@ -55,7 +55,7 @@ public abstract class OrientedPart extends GridPart {
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void fillModel(JitBakedModel model, long opaque) {
-		GridModels.putCube(this, model, opaque, pos, orient.o);
+		GridModels.putCube(item(), model, bounds, opaque, pos, orient.o);
 	}
 
 }

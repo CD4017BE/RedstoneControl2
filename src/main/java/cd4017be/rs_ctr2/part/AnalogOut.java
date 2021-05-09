@@ -43,7 +43,7 @@ public class AnalogOut extends OrientedPart implements ISignalReceiver {
 	}
 
 	@Override
-	public void updateInput(int value) {
+	public void updateInput(int value, int rec) {
 		if (value != state && host != null) {
 			state = value;
 			host.updateNeighbor(orient.b.getOpposite());

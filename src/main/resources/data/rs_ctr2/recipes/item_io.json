@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "logic_io",
+	"pattern": [
+		"#|#",
+		"-- ",
+		"#|#"
+	],
+	"key": {
+		"#": { "item": "rs_ctr2:microblock" },
+		"-": { "item": "rs_ctr2:item_cable" },
+		"|": { "item": "rs_ctr2:data_cable" }
+	},
+	"result": {
+		"item": "rs_ctr2:item_io",
+		"count": 4
+	}
+}

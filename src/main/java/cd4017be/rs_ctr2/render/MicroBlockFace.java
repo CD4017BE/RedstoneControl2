@@ -4,17 +4,21 @@ import static cd4017be.lib.render.model.WrappedBlockModel.MODELS;
 import static cd4017be.math.Linalg.*;
 import static cd4017be.math.MCConv.intBitsToVec;
 import static cd4017be.math.MCConv.vecToIntBits;
+import static cd4017be.rs_ctr2.api.grid.GridPart.FACES;
+import static cd4017be.rs_ctr2.api.grid.GridPart.step;
 import static java.lang.Float.floatToRawIntBits;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import cd4017be.lib.render.model.JitBakedModel;
 import cd4017be.lib.render.model.TileEntityModel;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.data.EmptyModelData;
@@ -40,6 +44,25 @@ public class MicroBlockFace {
 		solveGauss(mat, 3, 5);
 		this.u = col(3, new float[3], mat, 3);
 		this.v = col(3, new float[3], mat, 4);
+	}
+
+	public static void drawVoxels(JitBakedModel model, Object key, long b, long opaque) {
+		MicroBlockFace[] faces = facesOf(key);
+		opaque |= b;
+		List<BakedQuad> quads = model.inner();
+		for (int i = 0; i < 6; i++) {
+			MicroBlockFace face = faces[i];
+			if (face == null) continue;
+			int s = step(i);
+			long f = (i & 1) != 0 ? b & ~(opaque >>> s) : b >>> s & ~opaque;
+			long m = FACES[i & 6];
+			for (int j = 1; j < 4; j++, f >>>= s)
+				face.addFaces(quads, f & m, j - (i & 1));
+			if ((f = b & FACES[i]) != 0) {
+				if ((i & 1) != 0) f >>>= s * 3;
+				face.addFaces(model.quads[i], f, (i & 1) * 3);
+			}
+		}
 	}
 
 	public List<BakedQuad> addFaces(List<BakedQuad> quads, long mask, float layer) {
@@ -93,18 +116,22 @@ public class MicroBlockFace {
 		return new float[] {pos & 3, pos >> 2 & 3, pos >> 4 & 3};
 	}
 
-	private static final HashMap<BlockState, MicroBlockFace[]> MODEL_CACHE = new HashMap<>();
+	private static final HashMap<Object, MicroBlockFace[]> MODEL_CACHE = new HashMap<>();
 	static {
 		TileEntityModel.registerCacheInvalidate(MODEL_CACHE::clear);
 	}
 
-	public static MicroBlockFace[] facesOf(BlockState block) {
-		return MODEL_CACHE.computeIfAbsent(block, MicroBlockFace::create);
+	/**@param key must be a BlockState or ResourceLocation
+	 * @return faces for the given model */
+	public static MicroBlockFace[] facesOf(Object key) {
+		return MODEL_CACHE.computeIfAbsent(key, MicroBlockFace::create);
 	}
 
-	private static MicroBlockFace[] create(BlockState block) {
+	private static MicroBlockFace[] create(Object key) {
 		Random rand = new Random();
-		IBakedModel model = MODELS.getBlockModel(block);
+		BlockState block = key instanceof BlockState ? (BlockState)key : null;
+		IBakedModel model = block != null ? MODELS.getBlockModel(block)
+			: MODELS.getModelManager().getModel((ResourceLocation)key);
 		MicroBlockFace[] faces = new MicroBlockFace[6];
 		for (Direction d : Direction.values()) {
 			rand.setSeed(42L);

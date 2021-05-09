@@ -8,6 +8,6 @@ public interface IGate {
 	boolean evaluate();
 
 	/**notify other devices of changed outputs. */
-	void latchOut();
+	default void latchOut() {}
 
 }

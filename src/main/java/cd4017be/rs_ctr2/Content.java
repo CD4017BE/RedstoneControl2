@@ -10,6 +10,7 @@ import cd4017be.rs_ctr2.container.ContainerAssembler;
 import cd4017be.rs_ctr2.container.ContainerConstant;
 import cd4017be.rs_ctr2.item.*;
 import cd4017be.rs_ctr2.part.*;
+import cd4017be.rs_ctr2.render.GridModels;
 import cd4017be.rs_ctr2.tileentity.*;
 import cd4017be.lib.block.BlockTE;
 import cd4017be.lib.item.DocumentedBlockItem;
@@ -21,8 +22,11 @@ import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.*;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -55,10 +59,13 @@ public class Content {
 	data_cable = null, power_cable = null, item_cable = null, fluid_cable = null;
 	public static final OrientedPartItem
 	analog_in = null, logic_in = null, analog_out = null, logic_out = null,
+	comp_in = null, power_io = null, item_io = null, fluid_io = null,
 	splitter = null, not_gate = null, clock = null, constant = null,
 	or_gate = null, and_gate = null, nor_gate = null, nand_gate = null,
 	xor_gate = null, schmitt_trigger = null, delay = null, comparator = null,
-	sr_latch = null;
+	sr_latch = null, transformer = null, item_mover = null, fluid_mover = null,
+	power_splitter = null, item_splitter = null, fluid_splitter = null;
+	public static final BatteryItem battery = null;
 
 	// containers:
 	public static final ContainerType<ContainerAssembler> aSSEMBLER = null;
@@ -92,6 +99,9 @@ public class Content {
 			new OrientedPartItem(rs, LogicIn::new).setRegistryName(rl("logic_in")),
 			new OrientedPartItem(rs, AnalogOut::new).setRegistryName(rl("analog_out")),
 			new OrientedPartItem(rs, LogicOut::new).setRegistryName(rl("logic_out")),
+			new OrientedPartItem(rs, PowerIO::new).setRegistryName(rl("power_io")),
+			new OrientedPartItem(rs, ItemIO::new).setRegistryName(rl("item_io")),
+			new OrientedPartItem(rs, FluidIO::new).setRegistryName(rl("fluid_io")),
 			new OrientedPartItem(rs, Splitter::new).setRegistryName(rl("splitter")),
 			new OrientedPartItem(rs, NotGate::new).setRegistryName(rl("not_gate")),
 			new OrientedPartItem(rs, Clock::new).setRegistryName(rl("clock")),
@@ -104,7 +114,14 @@ public class Content {
 			new OrientedPartItem(rs, SchmittTrigger::new).setRegistryName(rl("schmitt_trigger")),
 			new OrientedPartItem(rs, Delay::new).setRegistryName(rl("delay")),
 			new OrientedPartItem(rs, Comparator::new).setRegistryName(rl("comparator")),
-			new OrientedPartItem(rs, SRLatch::new).setRegistryName(rl("sr_latch"))
+			new OrientedPartItem(rs, SRLatch::new).setRegistryName(rl("sr_latch")),
+			new OrientedPartItem(rs, Transformer::new).setRegistryName(rl("transformer")),
+			new OrientedPartItem(rs, ItemMover::new).setRegistryName(rl("item_mover")),
+			new OrientedPartItem(rs, FluidMover::new).setRegistryName(rl("fluid_mover")),
+			new OrientedPartItem(rs, SplitterP::new).setRegistryName(rl("power_splitter")),
+			new OrientedPartItem(rs, SplitterI::new).setRegistryName(rl("item_splitter")),
+			new OrientedPartItem(rs, SplitterF::new).setRegistryName(rl("fluid_splitter")),
+			new BatteryItem(rs).tab(CREATIVE_TAB).setRegistryName(rl("battery"))
 		);
 	}
 
@@ -130,6 +147,16 @@ public class Content {
 	public static void setupClient(FMLClientSetupEvent ev) {
 		ScreenManager.register(aSSEMBLER, ContainerAssembler::setupGui);
 		ScreenManager.register(cONSTANT, ContainerConstant::setupGui);
+	}
+
+	@SubscribeEvent
+	@OnlyIn(Dist.CLIENT)
+	public static void registerModel(ModelRegistryEvent ev) {
+		for (ResourceLocation loc : GridModels.PORTS)
+			ModelLoader.addSpecialModel(loc);
+		for (ResourceLocation loc : Cable.MODELS)
+			ModelLoader.addSpecialModel(loc);
+		ModelLoader.addSpecialModel(Battery.MODEL);
 	}
 
 }

@@ -1,0 +1,15 @@
+{
+	"parent": "rs_ctr2:part/grid_part",
+	"textures": {
+		"particle": "#main"
+	},
+	"loader": "cd4017be_lib:rcp",
+	"code": [
+		"Loc Q = [0,0,0, 4,8,8]#, T = [0,0, 16,16]#;",
+		"for(F:['-vU', '+vU']) ARG.rect(Q, T, F);",
+		"ARG.rect(Q, T, 'v+U', 'portsU');",
+		"ARG.rect(Q, T, 'v-U', 'portsD');",
+		"ARG.rect(Q, T, 'vU+', 'portsB');",
+		"ARG.rect(Q, T, 'vU-', 'portsF');"
+	]
+}

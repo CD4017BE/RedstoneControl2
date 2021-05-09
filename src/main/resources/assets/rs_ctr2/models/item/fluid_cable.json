@@ -1,4 +1,4 @@
 {
 	"parent": "rs_ctr2:item/cable",
-	"textures": { "particle": "minecraft:block/lapis_block" }
+	"textures": { "particle": "rs_ctr2:part/fluid_cable" }
 }

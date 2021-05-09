@@ -1,6 +1,7 @@
 package cd4017be.rs_ctr2.tileentity;
 
 import static cd4017be.lib.network.Sync.SAVE;
+import static cd4017be.rs_ctr2.api.gate.GateUpdater.TICK;
 import static java.lang.Math.max;
 
 import java.util.ArrayList;
@@ -40,12 +41,13 @@ import net.minecraftforge.common.util.Constants.NBT;
 
 
 public class RsGrid extends BaseTileEntity
-implements IGridHost, ITEInteract, ITEShape, ITERedstone, ITEBlockUpdate, ITEPickItem {
+implements IGridHost, ITEInteract, ITEShape, ITERedstone, ITEBlockUpdate, ITENeighborChange, ITEPickItem {
 
 	private final VoxelShape4x4x4 bounds = new VoxelShape4x4x4();
 	private final ExtGridPorts extPorts = new ExtGridPorts(this);
 	private final ArrayList<GridPart> parts = new ArrayList<>();
 	private long opaque, inner;
+	private int tLoad;
 
 	public RsGrid(TileEntityType<?> type) {
 		super(type);
@@ -193,6 +195,7 @@ implements IGridHost, ITEInteract, ITEShape, ITERedstone, ITEBlockUpdate, ITEPic
 				extPorts.deserializeNBT((LongArrayNBT)nbt.get("extIO"));
 			//state loaded from item after placement:
 			if (!unloaded) onLoad();
+			else tLoad = TICK;
 		}
 	}
 
@@ -273,8 +276,18 @@ implements IGridHost, ITEInteract, ITEShape, ITERedstone, ITEBlockUpdate, ITEPic
 	}
 
 	@Override
+	public void onNeighborTEChange(BlockPos from) {
+		Direction dir = Utils.getSide(from, worldPosition);
+		if (dir == null) return;
+		long b = GridPart.FACES[dir.ordinal()];
+		for (GridPart part : parts)
+			if ((part.bounds & b) != 0)
+				part.onTEChange(level, from, dir);
+	}
+
+	@Override
 	public void updateNeighbor(Direction d) {
-		if (unloaded) return;
+		if (unloaded || TICK == tLoad) return;
 		BlockPos pos1 = worldPosition.relative(d);
 		getBlockState(pos1, true).neighborChanged(
 			level, pos1, getBlockState().getBlock(), worldPosition, false

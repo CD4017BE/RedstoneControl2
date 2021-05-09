@@ -12,16 +12,12 @@ import cd4017be.rs_ctr2.api.grid.*;
 import cd4017be.rs_ctr2.render.MicroBlockFace;
 import cd4017be.lib.render.model.JitBakedModel;
 import cd4017be.lib.util.ItemFluidUtil;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -144,16 +140,7 @@ public class Cable extends GridPart implements IWire {
 		int p = posOfport(port);
 		if ((p < 0 || (b >> p & 1) == 0) && (p = posOfport(port - 0x111)) < 0)
 			return 0L;
-		long f = 1L << p & b;
-		while(f != (f |= (
-			  f << 1 & 0xeeee_eeee_eeee_eeeeL
-			| f >> 1 & 0x7777_7777_7777_7777L
-			| f << 4 & 0xfff0_fff0_fff0_fff0L
-			| f >> 4 & 0x0fff_0fff_0fff_0fffL
-			| f <<16 & 0xffff_ffff_ffff_0000L
-			| f >>16 & 0x0000_ffff_ffff_ffffL
-		) & b));
-		return f;
+		return floodFill(b, 1L << p);
 	}
 
 	@Override
@@ -194,7 +181,7 @@ public class Cable extends GridPart implements IWire {
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void fillModel(JitBakedModel model, long opaque) {
-		MicroBlockFace[] faces = MicroBlockFace.facesOf(TEXTURES[ports[0] >> 12 & 3]);
+		MicroBlockFace[] faces = MicroBlockFace.facesOf(MODELS[ports[0] >> 12 & 3]);
 		List<BakedQuad> quads = model.inner();
 		long b = bounds, visible = ~opaque;
 		drawPort(quads, faces, ports[0], b, visible);
@@ -263,11 +250,11 @@ public class Cable extends GridPart implements IWire {
 		Content.fluid_cable,
 	};
 
-	private static final BlockState[] TEXTURES = {
-		Blocks.REDSTONE_BLOCK.defaultBlockState(),
-		Blocks.GOLD_BLOCK.defaultBlockState(),
-		Blocks.IRON_BLOCK.defaultBlockState(),
-		Blocks.LAPIS_BLOCK.defaultBlockState(),
+	public static final ResourceLocation[] MODELS = {
+		Main.rl("part/data_cable"),
+		Main.rl("part/power_cable"),
+		Main.rl("part/item_cable"),
+		Main.rl("part/fluid_cable")
 	};
 
 }

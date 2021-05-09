@@ -1,5 +1,7 @@
 package cd4017be.rs_ctr2.api.gate.ports;
 
+import static cd4017be.rs_ctr2.api.gate.GateUpdater.REC_ITEM;
+
 import java.util.function.*;
 
 import net.minecraft.item.ItemStack;
@@ -14,73 +16,65 @@ public interface IInventoryAccess extends UnaryOperator<ItemStack> {
 
 	/**@param inspector function called for each item
 	 * alongside its stack limit (don't modify given stack) */
-	void getContent(ObjIntConsumer<ItemStack> inspector);
+	default void getContent(ObjIntConsumer<ItemStack> inspector) {
+		getContent(inspector, REC_ITEM);
+	}
+
+	/**@param inspector function called for each item
+	 * alongside its stack limit (don't modify given stack)
+	 * @param rec */
+	void getContent(ObjIntConsumer<ItemStack> inspector, int rec);
 
 	/**Attempt to transfer items to another inventory
 	 * @param amount maximum amount to transfer
 	 * @param filter to restrict, what items to transfer
 	 * @param target destination inventory, see {@link #apply(ItemStack)}
-	 * @return remaining amount <b>not</b> transfered */
-	int transfer(int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target);
+	 * @return amount actually transfered */
+	default int transfer(int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target) {
+		return transfer(amount, filter, target, REC_ITEM);
+	}
+
+	/**Attempt to transfer items to another inventory
+	 * @param amount maximum amount to transfer
+	 * @param filter to restrict, what items to transfer
+	 * @param target destination inventory, see {@link #apply(ItemStack)}
+	 * @param rec
+	 * @return amount actually transfered */
+	int transfer(int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target, int rec);
 
 	/**Attempt to insert the given stack.
 	 * @param stack item to insert (don't modify)
 	 * @return remainder that could not be inserted */
 	@Override
-	ItemStack apply(ItemStack stack);
+	default ItemStack apply(ItemStack stack) {
+		return insert(stack, REC_ITEM);
+	}
+
+	/**Attempt to insert the given stack.
+	 * @param stack item to insert (don't modify)
+	 * @param rec
+	 * @return remainder that could not be inserted */
+	ItemStack insert(ItemStack stack, int rec);
 
 	/** does nothing */
 	IInventoryAccess NOP = new IInventoryAccess() {
 		@Override
-		public void getContent(ObjIntConsumer<ItemStack> inspector) {}
+		public void getContent(ObjIntConsumer<ItemStack> inspector, int rec) {}
 		@Override
-		public int transfer(int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target) {return 0;}
+		public int transfer(int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target, int rec) {return 0;}
 		@Override
-		public ItemStack apply(ItemStack stack) {return stack;}
+		public ItemStack insert(ItemStack stack, int rec) {return stack;}
 	};
 
 	/** port type id */
 	int TYPE_ID = 2;
 
-	static Predicate<ItemStack> filter(ItemStack stack) {
-		return s -> ItemHandlerHelper.canItemStacksStack(s, stack);
+	static IInventoryAccess of(Object handler) {
+		return handler instanceof IInventoryAccess ? (IInventoryAccess)handler : NOP;
 	}
 
-	class ItemHandlerAccess implements IInventoryAccess {
-
-		public final IItemHandler inv;
-
-		public ItemHandlerAccess(IItemHandler inv) {
-			this.inv = inv;
-		}
-
-		@Override
-		public void getContent(ObjIntConsumer<ItemStack> inspector) {
-			for (int l = inv.getSlots(), i = 0; i < l; i++)
-				inspector.accept(inv.getStackInSlot(i), inv.getSlotLimit(i));
-		}
-
-		@Override
-		public ItemStack apply(ItemStack stack) {
-			return ItemHandlerHelper.insertItemStacked(inv, stack, false);
-		}
-
-		@Override
-		public int transfer(
-			int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target
-		) {
-			for (int l = inv.getSlots(), i = 0; i < l && amount > 0; i++) {
-				ItemStack stack = inv.extractItem(i, amount, true);
-				int n = stack.getCount();
-				if (n <= 0 || !filter.test(stack)) continue;
-				n -= target.apply(stack).getCount();
-				if (n <= 0) continue;
-				inv.extractItem(l, n, false);
-				amount -= n;
-			}
-			return amount;
-		}
-
+	static Predicate<ItemStack> filter(ItemStack stack) {
+		return s -> ItemHandlerHelper.canItemStacksStack(s, stack);
 	}
 
 }

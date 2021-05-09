@@ -49,7 +49,7 @@ public class Link {
 
 			@Override
 			public String getModId() {
-				return "indlog2";
+				return "rs_ctr2";
 			}
 
 			@Override

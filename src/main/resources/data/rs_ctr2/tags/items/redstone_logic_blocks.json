@@ -3,7 +3,6 @@
 		"minecraft:redstone",
 		"minecraft:redstone_torch",
 		"minecraft:repeater",
-		"minecraft:comparator",
-		"rs_ctr2:wire"
+		"minecraft:comparator"
 	]
 }

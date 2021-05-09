@@ -1,5 +1,5 @@
 {
-	"parent": "rs_ctr2:item/grid_part",
+	"parent": "rs_ctr2:part/grid_part",
 	"textures": {
 		"particle": "#main"
 	},

@@ -49,12 +49,12 @@ public class Splitter extends OrientedPart implements ISignalReceiver {
 	}
 
 	@Override
-	public void updateInput(int value) {
-		if (value == state) return;
+	public void updateInput(int value, int rec) {
+		if (--rec < 0 || value == state) return;
 		state = value;
-		for (ISignalReceiver rec : out)
-			if (rec != null)
-				rec.updateInput(value);
+		for (ISignalReceiver sr : out)
+			if (sr != null)
+				sr.updateInput(value, rec);
 	}
 
 	@Override

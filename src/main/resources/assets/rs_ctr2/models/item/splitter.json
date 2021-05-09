@@ -1,8 +1,9 @@
 {
-	"parent": "rs_ctr2:item/gate",
+	"parent": "rs_ctr2:part/gate",
 	"textures": {
 		"portF": "rs_ctr2:part/data_in",
 		"portB": "rs_ctr2:part/data_out",
+		"portS": "rs_ctr2:part/data_out",
 		"main": "rs_ctr2:part/data_out"
 	}
 }

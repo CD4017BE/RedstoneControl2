@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "logic_io",
+	"pattern": [
+		"## ",
+		"--G",
+		"## "
+	],
+	"key": {
+		"#": { "item": "rs_ctr2:microblock" },
+		"-": { "item": "rs_ctr2:power_cable" },
+		"G": { "item": "minecraft:gold_nugget" }
+	},
+	"result": {
+		"item": "rs_ctr2:power_io",
+		"count": 4
+	}
+}

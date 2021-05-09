@@ -39,7 +39,7 @@ public class Delay extends SignalGate implements ISignalReceiver {
 	}
 
 	@Override
-	public void updateInput(int value) {
+	public void updateInput(int value, int rec) {
 		if (value == in) return;
 		in = value;
 		update();

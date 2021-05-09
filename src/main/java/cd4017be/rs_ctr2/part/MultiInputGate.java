@@ -18,7 +18,7 @@ public abstract class MultiInputGate extends SignalGate {
 	public ISignalReceiver getHandler(int port) {
 		if (port == 0 || port > in.length) return null;
 		int i = port - 1;
-		return v -> {
+		return (v, r) -> {
 			if (v == in[i]) return;
 			in[i] = v;
 			update();

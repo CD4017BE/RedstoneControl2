@@ -1,5 +1,6 @@
 {
   "itemGroup.rs_ctr2": "Redstone Control 2",
+  "msg.rs_ctr2.battery": "%s / %s RF in %s Cells",
   "item.rs_ctr2.data_cable": "Data Cable",
   "item.rs_ctr2.data_cable.tip": "Connects one gate's data output\nwith another gate's data input.\nCan't split or merge signals!",
   "block.rs_ctr2.assembler": "Microblock Workbench",
@@ -26,7 +27,7 @@
   "advancements.rs_ctr2.replicate.desc": "Build a Microblock Structure and replicate it 16 times using the Microblock Workbench.",
   "advancements.rs_ctr2.io": "Redstone I/O",
   "advancements.rs_ctr2.io.desc": "Communicate with the outside world via readers and emitters.",
-  "item.rs_ctr2.splitter": "Splitter",
+  "item.rs_ctr2.splitter": "Data Splitter",
   "item.rs_ctr2.constant": "Constant",
   "item.rs_ctr2.clock": "Clock",
   "item.rs_ctr2.not_gate": "NOT-Gate",
@@ -42,5 +43,15 @@
   "item.rs_ctr2.sr_latch": "SR-Latch",
   "item.rs_ctr2.item_cable": "Item Cable",
   "item.rs_ctr2.fluid_cable": "Fluid Cable",
-  "item.rs_ctr2.power_cable": "Power Cable"
+  "item.rs_ctr2.power_cable": "Power Cable",
+  "item.rs_ctr2.fluid_io": "Fluid Port",
+  "item.rs_ctr2.power_io": "Power Port",
+  "item.rs_ctr2.item_io": "Item Port",
+  "item.rs_ctr2.transformer": "Transformer",
+  "item.rs_ctr2.battery": "Battery Cell",
+  "item.rs_ctr2.item_splitter": "Item access Splitter",
+  "item.rs_ctr2.fluid_splitter": "Fluid access Splitter",
+  "item.rs_ctr2.fluid_mover": "Fluid Pump",
+  "item.rs_ctr2.item_mover": "Item Translocator",
+  "item.rs_ctr2.power_splitter": "Power Splitter"
 }

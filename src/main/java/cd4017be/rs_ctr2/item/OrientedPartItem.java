@@ -66,7 +66,7 @@ public class OrientedPartItem extends DocumentedItem implements IGridItem {
 			vec[d.getAxis().ordinal()] = 0;
 			d1 = getNearest(vec[0], vec[1], vec[2]);
 		} else {
-			d1 = d.getOpposite();
+			d1 = d;
 			d = Direction.orderedByNearest(player)[0];
 		}
 		o = Orientation.byBackUp(d, d1);

@@ -21,6 +21,7 @@ public class Main {
 
 	public static final String ID = "rs_ctr2";
 	public static final Logger LOG = LogManager.getLogger(ID);
+	public static final ConfigServer SERVER_CFG = new ConfigServer();
 	public static final ItemGroup CREATIVE_TAB = new ItemGroup(ID) {
 		@Override
 		public ItemStack makeIcon() {
@@ -34,6 +35,7 @@ public class Main {
 
 	public Main() {
 		MinecraftForge.EVENT_BUS.register(this);
+		SERVER_CFG.register("RedstoneControl2");
 	}
 
 	@SubscribeEvent

@@ -1,0 +1,9 @@
+{
+	"parent": "rs_ctr2:part/gate",
+	"textures": {
+		"portF": "rs_ctr2:part/power_io",
+		"portB": "rs_ctr2:part/power_p",
+		"portS": "rs_ctr2:part/power_acc",
+		"main": "rs_ctr2:part/power_acc"
+	}
+}
