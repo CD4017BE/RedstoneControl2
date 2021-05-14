@@ -1,0 +1,22 @@
+{
+	"parent": "rs_ctr2:progression/microblocks",
+	"display": {
+		"icon": { "item": "rs_ctr2:power_io" },
+		"title": { "translate": "advancements.rs_ctr2.energy" },
+		"description": { "translate": "advancements.rs_ctr2.energy.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"logic": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{ "item": "rs_ctr2:power_io" }
+				]
+			}
+		}
+	}
+}

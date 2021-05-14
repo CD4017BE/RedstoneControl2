@@ -1,0 +1,24 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:logic_in",
+		"rs_ctr2:logic_out",
+		"rs_ctr2:splitter",
+		"rs_ctr2:constant",
+		"rs_ctr2:clock",
+		"rs_ctr2:delay",
+		"rs_ctr2:not_gate",
+		"rs_ctr2:or_gate",
+		"rs_ctr2:nor_gate",
+		"rs_ctr2:and_gate",
+		"rs_ctr2:nand_gate"
+	]},
+	"criteria": {
+		"has_cable": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:data_cable" }
+			]}
+		}
+	}
+}

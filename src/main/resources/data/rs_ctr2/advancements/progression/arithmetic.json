@@ -1,0 +1,57 @@
+{
+	"parent": "rs_ctr2:progression/logic",
+	"display": {
+		"icon": { "item": "rs_ctr2:division_gate" },
+		"title": { "translate": "advancements.rs_ctr2.arithmetic" },
+		"description": { "translate": "advancements.rs_ctr2.arithmetic.desc" },
+		"frame": "goal",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"neg": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{ "item": "rs_ctr2:neg_gate" }
+				]
+			}
+		},
+		"add": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{ "item": "rs_ctr2:sum_gate" }
+				]
+			}
+		},
+		"shift": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{ "item": "rs_ctr2:bit_shift" }
+				]
+			}
+		},
+		"mul": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{ "item": "rs_ctr2:product_gate" }
+				]
+			}
+		},
+		"div": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{ "item": "rs_ctr2:division_gate" }
+				]
+			}
+		}
+	},
+	"rewards": {
+		"experience": 50
+	}
+}

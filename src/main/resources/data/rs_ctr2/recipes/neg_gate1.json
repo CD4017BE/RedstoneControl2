@@ -2,16 +2,14 @@
 	"type": "minecraft:crafting_shaped",
 	"group": "arithmetic",
 	"pattern": [
-		"INN",
-		"IA "
+		"IX"
 	],
 	"key": {
 		"I": { "item": "rs_ctr2:not_gate" },
-		"N": { "item": "rs_ctr2:nor_gate" },
-		"A": { "item": "rs_ctr2:and_gate" }
+		"X": { "item": "rs_ctr2:xor_gate" }
 	},
 	"result": {
 		"item": "rs_ctr2:neg_gate",
-		"count": 2
+		"count": 1
 	}
 }

@@ -15,6 +15,19 @@
 			"conditions": {
 				"item": { "tag": "rs_ctr2:redstone_logic_blocks" }
 			}
+		},
+		"has_cable": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "tag": "rs_ctr2:cable" }
+			]}
 		}
-	}
+	},
+	"requirements": [[
+		"use_redstone",
+		"has_cable"
+	]],
+	"rewards": { "recipes": [
+		"rs_ctr2:assembler"
+	]}
 }

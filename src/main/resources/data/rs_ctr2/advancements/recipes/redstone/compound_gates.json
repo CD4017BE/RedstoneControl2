@@ -1,0 +1,43 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:xor_gate0",
+		"rs_ctr2:xor_gate1",
+		"rs_ctr2:sr_latch",
+		"rs_ctr2:data_mux",
+		"rs_ctr2:sum_gate",
+		"rs_ctr2:neg_gate"
+	]},
+	"criteria": {
+		"has_or": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:or_gate" }
+			]}
+		},
+		"has_nor": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:nor_gate" }
+			]}
+		},
+		"has_and": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:and_gate" }
+			]}
+		},
+		"has_nand": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:nand_gate" }
+			]}
+		}
+	},
+	"requirements": [[
+		"has_or",
+		"has_nor",
+		"has_and",
+		"has_nand"
+	]]
+}

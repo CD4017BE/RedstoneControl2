@@ -1,0 +1,26 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:comp_in",
+		"rs_ctr2:analog_in",
+		"rs_ctr2:analog_out",
+		"rs_ctr2:comp_in",
+		"rs_ctr2:comparator",
+		"rs_ctr2:or_buffer",
+		"rs_ctr2:bit_shift"
+	]},
+	"criteria": {
+		"has_cable": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:data_cable" }
+			]}
+		},
+		"has_quartz": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "minecraft:quartz" }
+			]}
+		}
+	}
+}

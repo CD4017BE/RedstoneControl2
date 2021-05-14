@@ -1,0 +1,16 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:item_io",
+		"rs_ctr2:item_splitter",
+		"rs_ctr2:item_mover"
+	]},
+	"criteria": {
+		"has_cable": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:item_cable" }
+			]}
+		}
+	}
+}

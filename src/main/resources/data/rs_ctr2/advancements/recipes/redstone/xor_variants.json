@@ -1,0 +1,15 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:sum_gate1",
+		"rs_ctr2:neg_gate1"
+	]},
+	"criteria": {
+		"has_xor": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:xor_gate" }
+			]}
+		}
+	}
+}

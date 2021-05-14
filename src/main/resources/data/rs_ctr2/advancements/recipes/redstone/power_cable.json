@@ -1,0 +1,14 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:power_cable"
+	]},
+	"criteria": {
+		"has_gold": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "minecraft:gold_ingot" }
+			]}
+		}
+	}
+}

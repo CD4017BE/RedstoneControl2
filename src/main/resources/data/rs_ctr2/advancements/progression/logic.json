@@ -1,0 +1,50 @@
+{
+	"parent": "rs_ctr2:progression/io",
+	"display": {
+		"icon": { "item": "rs_ctr2:xor_gate" },
+		"title": { "translate": "advancements.rs_ctr2.logic" },
+		"description": { "translate": "advancements.rs_ctr2.logic.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"not": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:not_gate" }
+			]}
+		},
+		"or": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:or_gate" }
+			]}
+		},
+		"nor": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:nor_gate" }
+			]}
+		},
+		"and": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:and_gate" }
+			]}
+		},
+		"nand": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:nand_gate" }
+			]}
+		},
+		"xor": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:xor_gate" }
+			]}
+		}
+	}
+}

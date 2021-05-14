@@ -2,15 +2,13 @@
 	"type": "minecraft:crafting_shaped",
 	"group": "arithmetic",
 	"pattern": [
-		"NN ",
-		"ANN",
-		"IAO"
+		"XX ",
+		"NXO"
 	],
 	"key": {
-		"I": { "item": "rs_ctr2:not_gate" },
+		"N": { "item": "rs_ctr2:neg_gate" },
 		"O": { "item": "rs_ctr2:or_gate" },
-		"N": { "item": "rs_ctr2:nor_gate" },
-		"A": { "item": "rs_ctr2:and_gate" }
+		"X": { "item": "rs_ctr2:xor_gate" }
 	},
 	"result": {
 		"item": "rs_ctr2:sum_gate",

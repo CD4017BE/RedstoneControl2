@@ -1,0 +1,16 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:fluid_io",
+		"rs_ctr2:fluid_splitter",
+		"rs_ctr2:fluid_mover"
+	]},
+	"criteria": {
+		"has_cable": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:fluid_cable" }
+			]}
+		}
+	}
+}
