@@ -1,8 +1,7 @@
 package cd4017be.rs_ctr2;
 
-import static cd4017be.rs_ctr2.Main.CREATIVE_TAB;
-import static cd4017be.rs_ctr2.Main.rl;
 import static cd4017be.lib.block.BlockTE.flags;
+import static cd4017be.rs_ctr2.Main.*;
 
 import cd4017be.rs_ctr2.api.gate.ports.*;
 import cd4017be.rs_ctr2.api.grid.GridPart;
@@ -65,7 +64,7 @@ public class Content {
 	xor_gate = null, schmitt_trigger = null, delay = null, comparator = null,
 	sr_latch = null, data_mux = null, clamp_gate = null, or_buffer = null,
 	bit_shift = null, sum_gate = null, product_gate = null, division_gate = null,
-	transformer = null, item_mover = null, fluid_mover = null,
+	neg_gate = null, transformer = null, item_mover = null, fluid_mover = null,
 	power_splitter = null, item_splitter = null, fluid_splitter = null;
 	public static final BatteryItem battery = null;
 
@@ -99,6 +98,7 @@ public class Content {
 			new CableItem(rs, IFluidAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("fluid_cable")),
 			new OrientedPartItem(rs, AnalogIn::new).setRegistryName(rl("analog_in")),
 			new OrientedPartItem(rs, LogicIn::new).setRegistryName(rl("logic_in")),
+			new OrientedPartItem(rs, ComparatorIn::new).setRegistryName(rl("comp_in")),
 			new OrientedPartItem(rs, AnalogOut::new).setRegistryName(rl("analog_out")),
 			new OrientedPartItem(rs, LogicOut::new).setRegistryName(rl("logic_out")),
 			new OrientedPartItem(rs, PowerIO::new).setRegistryName(rl("power_io")),
@@ -124,13 +124,14 @@ public class Content {
 			new OrientedPartItem(rs, SumGate::new).setRegistryName(rl("sum_gate")),
 			new OrientedPartItem(rs, MultiplyGate::new).setRegistryName(rl("product_gate")),
 			new OrientedPartItem(rs, DivisionGate::new).setRegistryName(rl("division_gate")),
+			new OrientedPartItem(rs, Negate::new).setRegistryName(rl("neg_gate")),
 			new OrientedPartItem(rs, Transformer::new).setRegistryName(rl("transformer")),
-			new OrientedPartItem(rs, ItemMover::new).setRegistryName(rl("item_mover")),
-			new OrientedPartItem(rs, FluidMover::new).setRegistryName(rl("fluid_mover")),
+			new OrientedPartItem(rs, ItemMover::new).tooltipArgs(SERVER_CFG.move_item).setRegistryName(rl("item_mover")),
+			new OrientedPartItem(rs, FluidMover::new).tooltipArgs(SERVER_CFG.move_fluid).setRegistryName(rl("fluid_mover")),
 			new OrientedPartItem(rs, SplitterP::new).setRegistryName(rl("power_splitter")),
 			new OrientedPartItem(rs, SplitterI::new).setRegistryName(rl("item_splitter")),
 			new OrientedPartItem(rs, SplitterF::new).setRegistryName(rl("fluid_splitter")),
-			new BatteryItem(rs).tab(CREATIVE_TAB).setRegistryName(rl("battery"))
+			new BatteryItem(p).tooltipArgs(SERVER_CFG.battery_cap).setRegistryName(rl("battery"))
 		);
 	}
 

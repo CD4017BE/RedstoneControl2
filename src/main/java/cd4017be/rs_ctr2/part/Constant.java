@@ -36,7 +36,7 @@ implements IUnnamedContainerProvider, IPlayerPacketReceiver {
 	public void set(int pos, Orientation orient) {
 		super.set(pos, orient);
 		setBounds(pos, pos);
-		setPort(0, pos, Direction.SOUTH, ISignalReceiver.TYPE_ID);
+		setPort(0, pos, Direction.NORTH, ISignalReceiver.TYPE_ID);
 	}
 
 	@Override

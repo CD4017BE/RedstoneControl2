@@ -28,11 +28,12 @@ public class NotGate extends OrientedPart implements ISignalReceiver {
 
 	@Override
 	public Object getHandler(int port) {
-		return this;
+		return port == 0 ? this : null;
 	}
 
 	@Override
 	public void setHandler(int port, Object handler) {
+		if (port == 0) return;
 		if (handler instanceof ISignalReceiver)
 			(out = (ISignalReceiver)handler).updateInput(state);
 		else out = ISignalReceiver.NOP;
