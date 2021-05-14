@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "compound_gate",
+	"pattern": [
+		"NN ",
+		"ANN",
+		"IAO"
+	],
+	"key": {
+		"I": { "item": "rs_ctr2:not_gate" },
+		"O": { "item": "rs_ctr2:or_gate" },
+		"N": { "item": "rs_ctr2:nor_gate" },
+		"A": { "item": "rs_ctr2:and_gate" }
+	},
+	"result": {
+		"item": "rs_ctr2:sum_gate",
+		"count": 1
+	}
+}

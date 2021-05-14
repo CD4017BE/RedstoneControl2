@@ -13,7 +13,6 @@ public class NotGate extends OrientedPart implements ISignalReceiver {
 
 	ISignalReceiver out = ISignalReceiver.NOP;
 	@Sync public int state;
-	int lastTick;
 
 	public NotGate() {
 		super(2);
@@ -35,7 +34,7 @@ public class NotGate extends OrientedPart implements ISignalReceiver {
 	@Override
 	public void setHandler(int port, Object handler) {
 		if (handler instanceof ISignalReceiver)
-			(out = (ISignalReceiver)handler).updateInput(~state);
+			(out = (ISignalReceiver)handler).updateInput(state);
 		else out = ISignalReceiver.NOP;
 	}
 
@@ -51,8 +50,8 @@ public class NotGate extends OrientedPart implements ISignalReceiver {
 
 	@Override
 	public void updateInput(int value, int rec) {
-		if (--rec < 0 || value == state) return;
-		out.updateInput(~(state = value), rec);
+		if (--rec < 0 || state == (state = ~value)) return;
+		out.updateInput(state, rec);
 	}
 
 }

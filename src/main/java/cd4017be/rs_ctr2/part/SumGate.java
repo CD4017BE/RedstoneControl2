@@ -1,16 +1,16 @@
 package cd4017be.rs_ctr2.part;
 
+import static cd4017be.rs_ctr2.Content.sum_gate;
 import cd4017be.lib.util.Orientation;
-import cd4017be.rs_ctr2.Content;
 import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
 
-public class Comparator extends MultiInputGate {
+public class SumGate extends MultiInputGate {
 
-	public Comparator() {
-		super(2);
+	public SumGate() {
+		super(3);
 	}
 
 	@Override
@@ -18,19 +18,20 @@ public class Comparator extends MultiInputGate {
 		super.set(pos, orient);
 		setBounds(pos, pos);
 		setPort(0, pos, Direction.NORTH, ISignalReceiver.TYPE_ID);
-		setPort(1, pos, Direction.EAST, ISignalReceiver.TYPE_ID);
+		setPort(1, pos, Direction.SOUTH, ISignalReceiver.TYPE_ID);
 		setPort(2, pos, Direction.WEST, ISignalReceiver.TYPE_ID);
+		setPort(3, pos, Direction.EAST, ISignalReceiver.TYPE_ID);
 	}
 
 	@Override
 	public boolean evaluate() {
 		active = false;
-		return host != null && state != (state = in[1] > in[0] ? -1 : 0);
+		return host != null && state != (state = in[0] + in[1] - in[2]);
 	}
 
 	@Override
 	public Item item() {
-		return Content.comparator;
+		return sum_gate;
 	}
 
 }

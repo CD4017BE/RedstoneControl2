@@ -11,7 +11,7 @@ public final class GateUpdater implements Consumer<ServerTickEvent> {
 
 	/** The active GateUpdater instance */
 	public static GateUpdater GATE_UPDATER;
-	/** gate ticks counted since game application started */
+	/** ticks counted since last server start */
 	public static int TICK;
 
 	/** looping array used as queue */

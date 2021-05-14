@@ -37,7 +37,7 @@ public class Splitter extends OrientedPart implements ISignalReceiver {
 
 	@Override
 	public void setHandler(int port, Object handler) {
-		port--;
+		if (--port < 0) return;
 		if (handler instanceof ISignalReceiver)
 			(out[port] = (ISignalReceiver)handler).updateInput(state);
 		else out[port] = null;

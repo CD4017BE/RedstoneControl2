@@ -6,7 +6,7 @@
 	"loader": "cd4017be_lib:rcp",
 	"code": [
 		"Loc Q = [0,0,0, 4,4,4]#, T = [0,0, 16,16]#;",
-		"for(F:['v-u', 'v+u']) ARG.rect(Q, T, F);",
+		"for(F:['V-u', 'V+u']) ARG.rect(Q, T, F);",
 		"for(F:['-Vu', '+vu']) ARG.rect(Q, T, F, 'portS');",
 		"ARG.rect(Q, T, 'Uv+', 'portB');",
 		"ARG.rect(Q, T, 'Uv-', 'portF');"

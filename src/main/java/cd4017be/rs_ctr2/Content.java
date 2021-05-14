@@ -63,7 +63,9 @@ public class Content {
 	splitter = null, not_gate = null, clock = null, constant = null,
 	or_gate = null, and_gate = null, nor_gate = null, nand_gate = null,
 	xor_gate = null, schmitt_trigger = null, delay = null, comparator = null,
-	sr_latch = null, transformer = null, item_mover = null, fluid_mover = null,
+	sr_latch = null, data_mux = null, clamp_gate = null, or_buffer = null,
+	bit_shift = null, sum_gate = null, product_gate = null, division_gate = null,
+	transformer = null, item_mover = null, fluid_mover = null,
 	power_splitter = null, item_splitter = null, fluid_splitter = null;
 	public static final BatteryItem battery = null;
 
@@ -115,6 +117,13 @@ public class Content {
 			new OrientedPartItem(rs, Delay::new).setRegistryName(rl("delay")),
 			new OrientedPartItem(rs, Comparator::new).setRegistryName(rl("comparator")),
 			new OrientedPartItem(rs, SRLatch::new).setRegistryName(rl("sr_latch")),
+			new OrientedPartItem(rs, DataMux::new).setRegistryName(rl("data_mux")),
+			new OrientedPartItem(rs, ClampGate::new).setRegistryName(rl("clamp_gate")),
+			new OrientedPartItem(rs, OrBuffer::new).setRegistryName(rl("or_buffer")),
+			new OrientedPartItem(rs, BitShift::new).setRegistryName(rl("bit_shift")),
+			new OrientedPartItem(rs, SumGate::new).setRegistryName(rl("sum_gate")),
+			new OrientedPartItem(rs, MultiplyGate::new).setRegistryName(rl("product_gate")),
+			new OrientedPartItem(rs, DivisionGate::new).setRegistryName(rl("division_gate")),
 			new OrientedPartItem(rs, Transformer::new).setRegistryName(rl("transformer")),
 			new OrientedPartItem(rs, ItemMover::new).setRegistryName(rl("item_mover")),
 			new OrientedPartItem(rs, FluidMover::new).setRegistryName(rl("fluid_mover")),

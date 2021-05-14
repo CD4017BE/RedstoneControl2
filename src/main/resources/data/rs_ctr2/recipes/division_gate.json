@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "compound_gate",
+	"pattern": [
+		"OB ",
+		"SMM",
+		"-C "
+	],
+	"key": {
+		"-": { "item": "rs_ctr2:data_cable" },
+		"B": { "item": "rs_ctr2:bit_shift" },
+		"S": { "item": "rs_ctr2:sum_gate" },
+		"M": { "item": "rs_ctr2:data_mux" },
+		"O": { "item": "rs_ctr2:or_gate" },
+		"C": { "item": "rs_ctr2:comparator" }
+	},
+	"result": {
+		"item": "rs_ctr2:division_gate",
+		"count": 1
+	}
+}

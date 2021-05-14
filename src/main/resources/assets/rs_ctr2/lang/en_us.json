@@ -53,5 +53,12 @@
   "item.rs_ctr2.fluid_splitter": "Fluid access Splitter",
   "item.rs_ctr2.fluid_mover": "Fluid Pump",
   "item.rs_ctr2.item_mover": "Item Translocator",
-  "item.rs_ctr2.power_splitter": "Power Splitter"
+  "item.rs_ctr2.power_splitter": "Power Splitter",
+  "item.rs_ctr2.division_gate": "Division Gate",
+  "item.rs_ctr2.clamp_gate": "Range Limiter",
+  "item.rs_ctr2.data_mux": "Data Multiplexer",
+  "item.rs_ctr2.sum_gate": "Add/Subtract Gate",
+  "item.rs_ctr2.product_gate": "Multiply Gate",
+  "item.rs_ctr2.or_buffer": "OR-Buffer Gate",
+  "item.rs_ctr2.bit_shift": "Bit Shifter"
 }

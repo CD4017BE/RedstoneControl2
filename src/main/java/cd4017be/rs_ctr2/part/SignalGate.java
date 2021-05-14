@@ -27,6 +27,7 @@ public abstract class SignalGate extends OrientedPart implements IGate {
 
 	@Override
 	public void setHandler(int port, Object handler) {
+		if (port != 0) return;
 		if (handler instanceof ISignalReceiver)
 			(output = (ISignalReceiver)handler).updateInput(state);
 		else output = ISignalReceiver.NOP;

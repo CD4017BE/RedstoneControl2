@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "compound_gate",
+	"pattern": [
+		"CM",
+		"CM"
+	],
+	"key": {
+		"C": { "item": "rs_ctr2:comparator" },
+		"M": { "item": "rs_ctr2:data_mux" }
+	},
+	"result": {
+		"item": "rs_ctr2:clamp_gate",
+		"count": 1
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"#-#",
+		"RQ-",
+		"# #"
+	],
+	"key": {
+		"#": { "item": "rs_ctr2:microblock" },
+		"-": { "item": "rs_ctr2:data_cable" },
+		"Q": { "item": "minecraft:quartz" },
+		"R": { "item": "minecraft:redstone" }
+	},
+	"result": {
+		"item": "rs_ctr2:bit_shift",
+		"count": 4
+	}
+}
