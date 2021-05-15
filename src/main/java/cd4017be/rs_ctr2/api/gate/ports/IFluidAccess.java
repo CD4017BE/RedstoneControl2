@@ -1,9 +1,8 @@
 package cd4017be.rs_ctr2.api.gate.ports;
 
-import static cd4017be.rs_ctr2.api.gate.GateUpdater.REC_FLUID;
-
 import java.util.function.*;
 
+import cd4017be.rs_ctr2.api.gate.Link;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 
@@ -16,7 +15,7 @@ public interface IFluidAccess extends ToIntFunction<FluidStack> {
 	/**@param inspector function called for each fluid tank
 	 * together with its capacity (don't modify given stack) */
 	default void getContent(ObjIntConsumer<FluidStack> inspector) {
-		getContent(inspector, REC_FLUID);
+		getContent(inspector, Link.REC_FLUID);
 	}
 
 	/**@param inspector function called for each fluid tank
@@ -30,7 +29,7 @@ public interface IFluidAccess extends ToIntFunction<FluidStack> {
 	 * @param target destination inventory, see {@link #applyAsInt(FluidStack)}
 	 * @return amount actually transfered */
 	default int transfer(int amount, Predicate<FluidStack> filter, ToIntFunction<FluidStack> target) {
-		return transfer(amount, filter, target, REC_FLUID);
+		return transfer(amount, filter, target, Link.REC_FLUID);
 	}
 
 	/**Attempt to transfer fluids to another inventory
@@ -46,7 +45,7 @@ public interface IFluidAccess extends ToIntFunction<FluidStack> {
 	 * @return amount actually filled */
 	@Override
 	default int applyAsInt(FluidStack stack) {
-		return insert(stack, REC_FLUID);
+		return insert(stack, Link.REC_FLUID);
 	}
 
 	/**Attempt to insert the given stack.

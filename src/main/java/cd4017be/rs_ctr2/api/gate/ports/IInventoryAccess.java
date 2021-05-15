@@ -1,9 +1,8 @@
 package cd4017be.rs_ctr2.api.gate.ports;
 
-import static cd4017be.rs_ctr2.api.gate.GateUpdater.REC_ITEM;
-
 import java.util.function.*;
 
+import cd4017be.rs_ctr2.api.gate.Link;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
@@ -17,7 +16,7 @@ public interface IInventoryAccess extends UnaryOperator<ItemStack> {
 	/**@param inspector function called for each item
 	 * alongside its stack limit (don't modify given stack) */
 	default void getContent(ObjIntConsumer<ItemStack> inspector) {
-		getContent(inspector, REC_ITEM);
+		getContent(inspector, Link.REC_ITEM);
 	}
 
 	/**@param inspector function called for each item
@@ -31,7 +30,7 @@ public interface IInventoryAccess extends UnaryOperator<ItemStack> {
 	 * @param target destination inventory, see {@link #apply(ItemStack)}
 	 * @return amount actually transfered */
 	default int transfer(int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target) {
-		return transfer(amount, filter, target, REC_ITEM);
+		return transfer(amount, filter, target, Link.REC_ITEM);
 	}
 
 	/**Attempt to transfer items to another inventory
@@ -47,7 +46,7 @@ public interface IInventoryAccess extends UnaryOperator<ItemStack> {
 	 * @return remainder that could not be inserted */
 	@Override
 	default ItemStack apply(ItemStack stack) {
-		return insert(stack, REC_ITEM);
+		return insert(stack, Link.REC_ITEM);
 	}
 
 	/**Attempt to insert the given stack.

@@ -1,13 +1,13 @@
 package cd4017be.rs_ctr2.api.gate.ports;
 
-import static cd4017be.rs_ctr2.api.gate.GateUpdater.REC_DATA;
+import cd4017be.rs_ctr2.api.gate.Link;
 
 @FunctionalInterface
 public interface ISignalReceiver {
 
 	/**@param value updated signal state */
 	default void updateInput(int value) {
-		updateInput(value, REC_DATA);
+		updateInput(value, Link.REC_DATA);
 	}
 
 	/**@param value updated signal state

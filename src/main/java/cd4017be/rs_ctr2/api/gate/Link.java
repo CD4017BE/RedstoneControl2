@@ -7,6 +7,11 @@ import net.minecraft.world.storage.SaveFormat.LevelSave;
 import net.minecraftforge.fml.WorldPersistenceHooks;
 import net.minecraftforge.fml.WorldPersistenceHooks.WorldPersistenceHook;
 
+/**Utility for connecting ports from {@link IPortHolder}s via unique Link-IDs.
+ * @see #load(IPortHolder, int, int)
+ * @see #unload(IPortHolder, int, int)
+ * @see #newId()
+ * @author CD4017BE */
 public class Link {
 
 	private IPortHolder provider, master;
@@ -41,7 +46,6 @@ public class Link {
 		return false;
 	}
 
-
 	private static final Int2ObjectOpenHashMap<Link> LINKS = new Int2ObjectOpenHashMap<>();
 	private static int NEXT_ID;
 	static {
@@ -69,20 +73,32 @@ public class Link {
 			}
 		});
 	}
+	/** recursion depth limits */
+	public static int REC_FLUID = 8, REC_ITEM = 8, REC_POWER = 2, REC_DATA = 4;
 
-	public static void clear() {
+	/**Clear all links for server shutdown. */
+	static void clear() {
 		LINKS.clear();
 		NEXT_ID = 0;
 	}
 
+	/**@return a new unique Link-ID */
 	public static int newId() {
 		return NEXT_ID++;
 	}
 
+	/**Register a given port. Once both ports of a link are loaded, they connect.
+	 * @param obj
+	 * @param port
+	 * @param linkId */
 	public static void load(IPortHolder obj, int port, int linkId) {
 		LINKS.computeIfAbsent(linkId, Link::new).load(obj, port);
 	}
 
+	/**Unregister a given port (will be disconnected).
+	 * @param obj
+	 * @param port
+	 * @param linkId */
 	public static void unload(IPortHolder obj, int port, int linkId) {
 		Link l = LINKS.get(linkId);
 		if (l != null && l.unload(obj, port))

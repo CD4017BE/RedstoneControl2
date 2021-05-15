@@ -1,6 +1,7 @@
 package cd4017be.rs_ctr2.api.gate;
 
-
+/**To implement by objects that want to run two stage updates via {@link GateUpdater}.
+ * @author CD4017BE */
 public interface IGate {
 
 	/**evaluate the gate's new state, but don't update outputs yet.

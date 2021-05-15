@@ -1,7 +1,6 @@
 package cd4017be.rs_ctr2.api.gate.ports;
 
-import static cd4017be.rs_ctr2.api.gate.GateUpdater.REC_POWER;
-
+import cd4017be.rs_ctr2.api.gate.Link;
 import net.minecraftforge.energy.IEnergyStorage;
 
 /**Grid port handler for energy transfer.
@@ -19,7 +18,7 @@ public interface IEnergyAccess {
 	 * @param test whether this is a test and no power is actually transfered
 	 * @return amount actually transferred */
 	default int transferEnergy(int amount, boolean test) {
-		return transferEnergy(amount, test, REC_POWER);
+		return transferEnergy(amount, test, Link.REC_POWER);
 	}
 
 	/** does nothing */

@@ -18,6 +18,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+/**Parent class for all microblock devices.
+ * @author CD4017BE */
 public abstract class GridPart implements IPortHolder, INBTSynchronized {
 
 	public IGridHost host;
