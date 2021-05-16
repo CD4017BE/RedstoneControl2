@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "buffers",
+	"pattern": [
+		"LRL",
+		"QQQ",
+		"---"
+	],
+	"key": {
+		"-": { "item": "rs_ctr2:power_cable" },
+		"L": { "item": "minecraft:lapis_lazuli" },
+		"R": { "item": "minecraft:redstone" },
+		"Q": { "item": "minecraft:quartz" }
+	},
+	"result": {
+		"item": "rs_ctr2:solarcell",
+		"count": 4
+	}
+}

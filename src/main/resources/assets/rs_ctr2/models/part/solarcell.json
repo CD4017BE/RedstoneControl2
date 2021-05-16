@@ -1,0 +1,12 @@
+{
+	"parent": "block/cube",
+	"textures": {
+		"particle": "rs_ctr2:part/solar_s",
+		"north": "rs_ctr2:part/solar_s",
+		"south": "rs_ctr2:part/solar_s",
+		"west": "rs_ctr2:part/solar_s",
+		"east": "rs_ctr2:part/solar_s",
+		"down": "rs_ctr2:part/solar_b",
+		"up": "rs_ctr2:part/solar_t"
+	}
+}

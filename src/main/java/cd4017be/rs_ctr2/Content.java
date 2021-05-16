@@ -66,7 +66,8 @@ public class Content {
 	bit_shift = null, sum_gate = null, product_gate = null, division_gate = null,
 	neg_gate = null, transformer = null, item_mover = null, fluid_mover = null,
 	power_splitter = null, item_splitter = null, fluid_splitter = null;
-	public static final BatteryItem battery = null;
+	public static final MultiblockItem<Battery> battery = null;
+	public static final MultiblockItem<SolarCell> solarcell = null;
 
 	// containers:
 	public static final ContainerType<ContainerAssembler> aSSEMBLER = null;
@@ -131,7 +132,8 @@ public class Content {
 			new OrientedPartItem(rs, SplitterP::new).setRegistryName(rl("power_splitter")),
 			new OrientedPartItem(rs, SplitterI::new).setRegistryName(rl("item_splitter")),
 			new OrientedPartItem(rs, SplitterF::new).setRegistryName(rl("fluid_splitter")),
-			new BatteryItem(p).tooltipArgs(SERVER_CFG.battery_cap).setRegistryName(rl("battery"))
+			new MultiblockItem<>(p, Battery::new).tooltipArgs(SERVER_CFG.battery_cap).setRegistryName(rl("battery")),
+			new MultiblockItem<>(p, SolarCell::new).tooltipArgs(SERVER_CFG.solar_power, SERVER_CFG.daytime).setRegistryName(rl("solarcell"))
 		);
 	}
 
@@ -167,6 +169,7 @@ public class Content {
 		for (ResourceLocation loc : Cable.MODELS)
 			ModelLoader.addSpecialModel(loc);
 		ModelLoader.addSpecialModel(Battery.MODEL);
+		ModelLoader.addSpecialModel(SolarCell.MODEL);
 	}
 
 }

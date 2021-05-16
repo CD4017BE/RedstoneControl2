@@ -108,5 +108,8 @@
   "item.rs_ctr2.neg_gate": "Negation Gate",
   "item.rs_ctr2.battery.ext": "Capacity: %d RF/cell",
   "item.rs_ctr2.item_mover.ext": "Energy consumption: %d RF/Stack (64 items)",
-  "item.rs_ctr2.fluid_mover.ext": "Energy consumption: %d RF/Bucket (1024mB)"
+  "item.rs_ctr2.fluid_mover.ext": "Energy consumption: %d RF/Bucket (1024mB)",
+  "item.rs_ctr2.solarcell.ext": "Peak power: %d RF / Cell every 8 ticks\nIntegrated sun time: %.2f",
+  "item.rs_ctr2.solarcell": "Solar Cell",
+  "item.rs_ctr2.solarcell.tip": "Harvests energy from sunlight.\nMust be placed in top layer, adjacent cells combine.\n§e⏺§7 use power cable for power output."
 }

@@ -4,7 +4,8 @@
 		"rs_ctr2:power_io",
 		"rs_ctr2:power_splitter",
 		"rs_ctr2:transformer",
-		"rs_ctr2:battery"
+		"rs_ctr2:battery",
+		"rs_ctr2:solarcell"
 	]},
 	"criteria": {
 		"has_cable": {

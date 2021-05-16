@@ -10,13 +10,20 @@
 		"hidden": false
 	},
 	"criteria": {
-		"logic": {
+		"io": {
 			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{ "item": "rs_ctr2:power_io" }
-				]
-			}
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:power_io" }
+			]}
+		},
+		"solar": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:solarcell" }
+			]}
 		}
-	}
+	},
+	"requirements": [[
+		"io", "solar"
+	]]
 }

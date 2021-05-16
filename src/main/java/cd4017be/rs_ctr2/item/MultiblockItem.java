@@ -1,9 +1,10 @@
 package cd4017be.rs_ctr2.item;
 
-import cd4017be.rs_ctr2.api.grid.GridPart;
 import cd4017be.rs_ctr2.api.grid.IGridHost;
 import cd4017be.rs_ctr2.api.grid.IGridItem;
-import cd4017be.rs_ctr2.part.Battery;
+import cd4017be.rs_ctr2.part.MultiBlock;
+
+import java.util.function.IntFunction;
 import cd4017be.lib.item.DocumentedItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,16 +14,21 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
+/**
+ * @author CD4017BE */
+public class MultiblockItem<T extends MultiBlock<T>> extends DocumentedItem
+implements IGridItem {
 
-public class BatteryItem extends DocumentedItem implements IGridItem {
+	private final IntFunction<T> factory;
 
-	public BatteryItem(Properties p) {
+	public MultiblockItem(Properties p, IntFunction<T> factory) {
 		super(p);
+		this.factory = factory;
 	}
 
 	@Override
-	public GridPart createPart() {
-		return new Battery();
+	public T createPart() {
+		return factory.apply(-1);
 	}
 
 	@Override
@@ -35,14 +41,10 @@ public class BatteryItem extends DocumentedItem implements IGridItem {
 		if (pos < 0) return ActionResultType.PASS;
 		if (player.level.isClientSide) return ActionResultType.CONSUME;
 		
-		int pos1 = IGridHost.target(hit, false);
-		Battery part = pos1 < 0 ? null : (Battery)grid.findPart(
-			p -> p instanceof Battery && (p.bounds >> pos1 & 1) != 0
-		);
-		if (!(
-			part != null ? part.addVoxel(pos)
-			: grid.addPart(new Battery(pos))
-		)) return ActionResultType.FAIL;
+		T part = factory.apply(pos);
+		T other = part.findAdjacent(grid, part.bounds);
+		if (!(other != null ? other.addVoxel(pos) : grid.addPart(part)))
+			return ActionResultType.FAIL;
 		if (!player.isCreative()) stack.shrink(1);
 		return ActionResultType.SUCCESS;
 	}

@@ -1,0 +1,16 @@
+{
+	"parent": "block/block",
+	"loader": "cd4017be_lib:rcp",
+	"textures": {
+		"particle": "rs_ctr2:part/solar_s",
+		"top": "rs_ctr2:part/solar_t",
+		"bot": "rs_ctr2:part/solar_b"
+	},
+	"code": [
+		"Loc Q = [4,4,4, 12,12,12]#, T = [0,0, 4,4]#;",
+		"for(F:['-vu', '+vu', 'uv+', 'uv-'])",
+		"	ARG.rect(Q, T, F);",
+		"ARG.rect(Q, T, 'v+u', 'top');",
+		"ARG.rect(Q, T, 'v-u', 'bot');"
+	]
+}
