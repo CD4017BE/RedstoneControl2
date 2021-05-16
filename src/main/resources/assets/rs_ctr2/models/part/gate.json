@@ -7,8 +7,9 @@
 	"code": [
 		"Loc Q = [0,0,0, 4,4,4]#, T = [0,0, 16,16]#;",
 		"for(F:['V-u', 'V+u']) ARG.rect(Q, T, F);",
-		"for(F:['-Vu', '+vu']) ARG.rect(Q, T, F, 'portS');",
-		"ARG.rect(Q, T, 'Uv+', 'portB');",
-		"ARG.rect(Q, T, 'Uv-', 'portF');"
+		"ARG.rect(Q, T, '-Vu', 'portU');",
+		"ARG.rect(Q, T, '+vu', 'portD');",
+		"ARG.rect(Q, T, 'Uv+', 'portL');",
+		"ARG.rect(Q, T, 'Uv-', 'portR');"
 	]
 }

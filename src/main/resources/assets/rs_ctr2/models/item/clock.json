@@ -1,9 +1,10 @@
 {
 	"parent": "rs_ctr2:part/gate",
 	"textures": {
-		"portB": "rs_ctr2:part/data_in",
-		"portF": "rs_ctr2:part/data_out",
-		"portS": "rs_ctr2:part/clock",
+		"portL": "rs_ctr2:part/data_in",
+		"portR": "rs_ctr2:part/data_out",
+		"portU": "rs_ctr2:part/clock",
+		"portD": "rs_ctr2:part/clock",
 		"main": "rs_ctr2:part/clock"
 	}
 }

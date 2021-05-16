@@ -161,14 +161,12 @@ public class Cable extends GridPart implements IWire {
 
 	@Override
 	public Object getHandler(int port) {
-		if (port != 0) Main.LOG.warn("provider access from wrong side");
 		Port p = host.findPort(this, ports[port ^ 1]);
 		return p == null ? null : p.getHandler();
 	}
 
 	@Override
 	public void setHandler(int port, Object handler) {
-		if (port == 0) Main.LOG.warn("master access from wrong side");
 		Port p = host.findPort(this, ports[port ^ 1]);
 		if (p != null) p.setHandler(handler);
 	}

@@ -131,10 +131,18 @@ public class ExtGridPorts implements INBTSerializable<LongArrayNBT> {
 		int f0 = ((port0 | port0 - 0x111) & 0x888) != 0 ? 2 : 0;
 		int f1 = ((port1 | port1 - 0x111) & 0x888) != 0 ? 2 : 0;
 		if ((f0 | f1) == 0) return false;
-		if (f0 == 0 && part.host.findPort(part, port0) != null) f0 = 1;
-		if (f1 == 0 && part.host.findPort(part, port1) != null) f1 = 1;
-		int i0 = create(port0, f0 | 8);
-		int i1 = create(port1, f1);
+		int master1 = 0;
+		Port p;
+		if (f0 == 0 && (p = part.host.findPort(part, port0)) != null) {
+			f0 = 1;
+			if (!p.isMaster()) master1 = 8;
+		}
+		if (f1 == 0 && (p = part.host.findPort(part, port1)) != null) {
+			f1 = 1;
+			if (p.isMaster()) master1 = 8;
+		}
+		int i0 = create(port0, f0 | master1 ^ 8);
+		int i1 = create(port1, f1 | master1);
 		long l0 = ports[i0], l1 = ports[i1];
 		ports[i0] = f0 == 2
 			? l0 & 0xffff_ffff_0000_0000L | mirroredPort(l1) | i1 << 16

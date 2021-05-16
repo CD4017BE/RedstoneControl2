@@ -24,10 +24,10 @@ public class Transformer extends SignalGate implements ISignalReceiver {
 	public void set(int pos, Orientation orient) {
 		super.set(pos, orient);
 		setBounds(pos, pos);
-		setPort(0, pos, Direction.NORTH, ISignalReceiver.TYPE_ID);
-		setPort(1, pos, Direction.SOUTH, ISignalReceiver.TYPE_ID);
-		setPort(2, pos, Direction.WEST, IEnergyAccess.TYPE_ID);
-		setPort(3, pos, Direction.EAST, IEnergyAccess.TYPE_ID);
+		setPort(0, pos, Direction.EAST, ISignalReceiver.TYPE_ID);
+		setPort(1, pos, Direction.WEST, ISignalReceiver.TYPE_ID);
+		setPort(2, pos, Direction.SOUTH, IEnergyAccess.TYPE_ID);
+		setPort(3, pos, Direction.NORTH, IEnergyAccess.TYPE_ID);
 	}
 
 	@Override

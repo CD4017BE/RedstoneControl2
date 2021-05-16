@@ -58,16 +58,18 @@ public class OrientedPartItem extends DocumentedItem implements IGridItem {
 	}
 
 	protected void position(OrientedPart part, int pos, BlockRayTraceResult hit, PlayerEntity player) {
-		Direction d = hit.getDirection(), d1;
+		Direction d = hit.getDirection(), d1 = null;
 		Orientation o;
-		if (player.isShiftKeyDown()) {
+		if (!player.isShiftKeyDown()) {
+			d1 = d;
+			d = Direction.orderedByNearest(player)[0];
+			if (d == d1.getOpposite()) d1 = null;
+		}
+		if(d1 == null) {
 			float[] vec = sca(3, blockRelVecF(hit.getLocation(), hit.getBlockPos()), 4F);
 			sub(3, vec, (pos & 3) + .5F, (pos >> 2 & 3) + .5F, (pos >> 4 & 3) + .5F);
 			vec[d.getAxis().ordinal()] = 0;
 			d1 = getNearest(vec[0], vec[1], vec[2]);
-		} else {
-			d1 = d;
-			d = Direction.orderedByNearest(player)[0];
 		}
 		o = Orientation.byBackUp(d, d1);
 		if (o == null) o = Orientation.byBack(d);
