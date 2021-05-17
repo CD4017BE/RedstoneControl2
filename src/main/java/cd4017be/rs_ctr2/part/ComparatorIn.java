@@ -2,6 +2,7 @@ package cd4017be.rs_ctr2.part;
 
 import static cd4017be.rs_ctr2.Content.comp_in;
 
+import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.Orientation;
 import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 import net.minecraft.item.Item;
@@ -46,6 +47,11 @@ public class ComparatorIn extends SignalGate {
 		return state != (state =
 			world.getBlockState(pos).getAnalogOutputSignal(world, pos)
 		);
+	}
+
+	@Override
+	public String toString() {
+		return TooltipUtil.format("state.rs_ctr2.in", state);
 	}
 
 }

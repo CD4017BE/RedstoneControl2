@@ -5,6 +5,7 @@ import static net.minecraftforge.registries.ForgeRegistries.ITEMS;
 import cd4017be.rs_ctr2.api.gate.IPortHolder;
 import cd4017be.lib.network.INBTSynchronized;
 import cd4017be.lib.render.model.JitBakedModel;
+import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.ItemFluidUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -117,6 +118,11 @@ public abstract class GridPart implements IPortHolder, INBTSynchronized {
 	 * @param pos changed TE's postion
 	 * @param dir side of this grid */
 	public void onTEChange(World world, BlockPos pos, Direction dir) {}
+
+	@Override
+	public String toString() {
+		return TooltipUtil.translate("state.rs_ctr2.none");
+	}
 
 	/**@param pos x & 0x03 | y & 0x0c | z & 0x30
 	 * @param dir side of the cell

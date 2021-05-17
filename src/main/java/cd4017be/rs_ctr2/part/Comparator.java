@@ -33,4 +33,9 @@ public class Comparator extends MultiInputGate {
 		return Content.comparator;
 	}
 
+	@Override
+	protected String info() {
+		return "state.rs_ctr2.comp";
+	}
+
 }

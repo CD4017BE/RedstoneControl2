@@ -10,6 +10,7 @@ import cd4017be.rs_ctr2.container.ContainerConstant;
 import cd4017be.rs_ctr2.item.*;
 import cd4017be.rs_ctr2.part.*;
 import cd4017be.rs_ctr2.render.GridModels;
+import cd4017be.rs_ctr2.render.SignalProbeRenderer;
 import cd4017be.rs_ctr2.tileentity.*;
 import cd4017be.lib.block.BlockTE;
 import cd4017be.lib.item.DocumentedBlockItem;
@@ -53,6 +54,7 @@ public class Content {
 	// items:
 	public static final TEModeledItem grid = null;
 	public static final DocumentedBlockItem assembler = null;
+	public static final SignalProbeItem probe = null;
 	public static final MicroBlockItem microblock = null;
 	public static final CableItem
 	data_cable = null, power_cable = null, item_cable = null, fluid_cable = null;
@@ -88,10 +90,13 @@ public class Content {
 	public static void registerItems(Register<Item> ev) {
 		// use redstone tab so recipes don't appear under miscellaneous
 		Item.Properties rs = new Item.Properties().tab(ItemGroup.TAB_REDSTONE);
+		Item.Properties probe = new Item.Properties().tab(ItemGroup.TAB_TOOLS)
+		.stacksTo(1).setISTER(()-> SignalProbeRenderer::new);
 		Item.Properties p = new Item.Properties().tab(CREATIVE_TAB);
 		ev.getRegistry().registerAll(
 			new TEModeledItem(GRID, p),
 			new DocumentedBlockItem(ASSEMBLER, p),
+			new SignalProbeItem(probe).tab(CREATIVE_TAB).setRegistryName(rl("probe")),
 			new MicroBlockItem(p).setRegistryName(rl("microblock")),
 			new CableItem(rs, ISignalReceiver.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("data_cable")),
 			new CableItem(rs, IEnergyAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("power_cable")),
@@ -163,7 +168,8 @@ public class Content {
 
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
-	public static void registerModel(ModelRegistryEvent ev) {
+	public static void registerModels(ModelRegistryEvent ev) {
+		ModelLoader.addSpecialModel(SignalProbeRenderer.baseModel(probe));
 		for (ResourceLocation loc : GridModels.PORTS)
 			ModelLoader.addSpecialModel(loc);
 		for (ResourceLocation loc : Cable.MODELS)

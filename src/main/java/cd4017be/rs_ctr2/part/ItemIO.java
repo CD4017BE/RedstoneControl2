@@ -10,6 +10,7 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
 import cd4017be.lib.network.Sync;
+import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.Orientation;
 import cd4017be.rs_ctr2.Content;
 import cd4017be.rs_ctr2.Main;
@@ -35,7 +36,7 @@ implements IInventoryAccess, IGate {
 	public ItemIO() {
 		super(3);
 		in0 = s0 = 0;
-		s1 = Integer.MAX_VALUE;
+		in1 = s1 = 255;
 	}
 
 	@Override
@@ -158,6 +159,11 @@ implements IInventoryAccess, IGate {
 				return ItemStack.EMPTY;
 		}
 		return stack;
+	}
+
+	@Override
+	public String toString() {
+		return TooltipUtil.format("state.rs_ctr2.item_io", in0, in1);
 	}
 
 }

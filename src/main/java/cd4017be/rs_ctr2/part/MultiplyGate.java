@@ -34,4 +34,9 @@ public class MultiplyGate extends MultiInputGate {
 		return product_gate;
 	}
 
+	@Override
+	protected String info() {
+		return "state.rs_ctr2.multiply";
+	}
+
 }

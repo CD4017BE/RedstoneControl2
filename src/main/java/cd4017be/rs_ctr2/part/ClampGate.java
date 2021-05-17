@@ -14,6 +14,8 @@ public class ClampGate extends MultiInputGate {
 
 	public ClampGate() {
 		super(3);
+		in[1] = Integer.MIN_VALUE;
+		in[2] = Integer.MAX_VALUE;
 	}
 
 	@Override
@@ -22,20 +24,24 @@ public class ClampGate extends MultiInputGate {
 		setBounds(pos, pos);
 		setPort(0, pos, Direction.NORTH, ISignalReceiver.TYPE_ID);
 		setPort(1, pos, Direction.SOUTH, ISignalReceiver.TYPE_ID);
-		setPort(2, pos, Direction.WEST, ISignalReceiver.TYPE_ID);
-		setPort(3, pos, Direction.EAST, ISignalReceiver.TYPE_ID);
+		setPort(2, pos, Direction.EAST, ISignalReceiver.TYPE_ID);
+		setPort(3, pos, Direction.WEST, ISignalReceiver.TYPE_ID);
 	}
 
 	@Override
 	public boolean evaluate() {
 		active = false;
-		int l0 = in[1], l1 = in[2];
-		return host != null && state != (state = min(max(l0, l1), max(min(l0, l1), in[0])));
+		return host != null && state != (state = min(max(in[1], in[0]), in[2]));
 	}
 
 	@Override
 	public Item item() {
 		return clamp_gate;
+	}
+
+	@Override
+	protected String info() {
+		return "state.rs_ctr2.clamp";
 	}
 
 }

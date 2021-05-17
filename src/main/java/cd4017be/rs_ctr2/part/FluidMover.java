@@ -8,6 +8,7 @@ import static java.lang.Math.abs;
 import com.google.common.base.Predicates;
 
 import cd4017be.lib.network.Sync;
+import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.Orientation;
 import cd4017be.rs_ctr2.api.gate.IGate;
 import cd4017be.rs_ctr2.api.gate.ports.*;
@@ -109,6 +110,11 @@ public class FluidMover extends OrientedPart implements ISignalReceiver, IGate {
 	private static int cost(int am) {
 		long e = (-100L - abs((long)am)) * SERVER_CFG.move_fluid.get() >> 10;
 		return e < 0xc0000000 ? 0xc0000000 : (int)e;
+	}
+
+	@Override
+	public String toString() {
+		return TooltipUtil.format("state.rs_ctr2.fluid_mover", clk, num, res);
 	}
 
 }

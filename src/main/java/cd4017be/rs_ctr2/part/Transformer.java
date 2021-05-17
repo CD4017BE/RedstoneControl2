@@ -3,6 +3,7 @@ package cd4017be.rs_ctr2.part;
 import static cd4017be.rs_ctr2.Content.transformer;
 
 import cd4017be.lib.network.Sync;
+import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.Orientation;
 import cd4017be.rs_ctr2.api.gate.ports.IEnergyAccess;
 import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
@@ -73,6 +74,11 @@ public class Transformer extends SignalGate implements ISignalReceiver {
 	@Override
 	public void updateInput(int value, int rec) {
 		if (in != (in = value)) update();
+	}
+
+	@Override
+	public String toString() {
+		return TooltipUtil.format("state.rs_ctr2.transformer", state, in);
 	}
 
 }

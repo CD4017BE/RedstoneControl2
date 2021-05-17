@@ -1,0 +1,23 @@
+{
+	"parent": "rs_ctr2:progression/io",
+	"display": {
+		"icon": { "item": "rs_ctr2:probe" },
+		"title": { "translate": "advancements.rs_ctr2.probe" },
+		"description": { "translate": "advancements.rs_ctr2.probe.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"use": {
+			"trigger": "minecraft:item_used_on_block",
+			"conditions": {
+				"item": { "item": "rs_ctr2:probe" }
+			}
+		}
+	},
+	"rewards": {
+		"experience": 25
+	}
+}

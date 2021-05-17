@@ -11,6 +11,7 @@ import java.util.Arrays;
 import org.apache.commons.lang3.ArrayUtils;
 
 import cd4017be.lib.network.Sync;
+import cd4017be.lib.text.TooltipUtil;
 import cd4017be.rs_ctr2.Content;
 import cd4017be.rs_ctr2.Main;
 import cd4017be.rs_ctr2.api.gate.IGate;
@@ -139,6 +140,11 @@ public class Battery extends MultiBlock<Battery> implements IGate, IEnergyAccess
 		if (host == null) return false;
 		state = energy;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return TooltipUtil.format("state.rs_ctr2.battery", state, cap);
 	}
 
 	@Override

@@ -35,4 +35,9 @@ public class BitShift extends MultiInputGate {
 		return bit_shift;
 	}
 
+	@Override
+	protected String info() {
+		return "state.rs_ctr2.shift";
+	}
+
 }

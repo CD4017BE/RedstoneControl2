@@ -18,5 +18,8 @@
 				]
 			}
 		}
-	}
+	},
+	"rewards": { "recipes": [
+		"rs_ctr2:probe"
+	]}
 }

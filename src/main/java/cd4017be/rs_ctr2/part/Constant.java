@@ -7,6 +7,7 @@ import static cd4017be.rs_ctr2.Content.constant;
 import cd4017be.lib.container.IUnnamedContainerProvider;
 import cd4017be.lib.network.IPlayerPacketReceiver;
 import cd4017be.lib.network.Sync;
+import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.Orientation;
 import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 import cd4017be.rs_ctr2.container.ContainerConstant;
@@ -82,6 +83,11 @@ implements IUnnamedContainerProvider, IPlayerPacketReceiver {
 		int v = pkt.readInt();
 		if (v != value)
 			out.updateInput(value = v);
+	}
+
+	@Override
+	public String toString() {
+		return TooltipUtil.format("state.rs_ctr2.in", value);
 	}
 
 }

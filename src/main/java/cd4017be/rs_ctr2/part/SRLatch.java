@@ -3,6 +3,7 @@ package cd4017be.rs_ctr2.part;
 import static cd4017be.rs_ctr2.Content.sr_latch;
 
 import cd4017be.lib.network.Sync;
+import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.Orientation;
 import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 import net.minecraft.item.Item;
@@ -24,8 +25,8 @@ public class SRLatch extends SignalGate {
 		setBounds(pos, pos);
 		setPort(0, pos, Direction.NORTH, ISignalReceiver.TYPE_ID);
 		setPort(1, pos, Direction.SOUTH, ISignalReceiver.TYPE_ID);
-		setPort(2, pos, Direction.WEST, ISignalReceiver.TYPE_ID);
-		setPort(3, pos, Direction.EAST, ISignalReceiver.TYPE_ID);
+		setPort(2, pos, Direction.EAST, ISignalReceiver.TYPE_ID);
+		setPort(3, pos, Direction.WEST, ISignalReceiver.TYPE_ID);
 	}
 
 	@Override
@@ -60,6 +61,11 @@ public class SRLatch extends SignalGate {
 	@Override
 	public Item item() {
 		return sr_latch;
+	}
+
+	@Override
+	public String toString() {
+		return TooltipUtil.format("state.rs_ctr2.sr_latch", state, ~state, inR, inS);
 	}
 
 }

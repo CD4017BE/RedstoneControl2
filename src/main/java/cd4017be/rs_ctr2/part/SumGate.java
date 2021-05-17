@@ -34,4 +34,9 @@ public class SumGate extends MultiInputGate {
 		return sum_gate;
 	}
 
+	@Override
+	protected String info() {
+		return "state.rs_ctr2.sum";
+	}
+
 }

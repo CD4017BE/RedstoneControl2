@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"^ ^",
+		"|#|",
+		"QGQ"
+	],
+	"key": {
+		"^": { "item": "minecraft:iron_nugget" },
+		"#": { "item": "minecraft:glass_pane" },
+		"|": { "item": "rs_ctr2:data_cable" },
+		"Q": { "item": "minecraft:quartz" },
+		"G": { "item": "minecraft:glowstone_dust" }
+	},
+	"result": { "item": "rs_ctr2:probe" }
+}

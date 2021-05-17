@@ -36,4 +36,9 @@ public class DataMux extends MultiInputGate {
 		return data_mux;
 	}
 
+	@Override
+	protected String info() {
+		return "state.rs_ctr2.mux";
+	}
+
 }

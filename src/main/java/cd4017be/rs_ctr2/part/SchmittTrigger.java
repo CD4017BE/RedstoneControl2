@@ -20,8 +20,8 @@ public class SchmittTrigger extends MultiInputGate {
 		setBounds(pos, pos);
 		setPort(0, pos, Direction.NORTH, ISignalReceiver.TYPE_ID);
 		setPort(1, pos, Direction.SOUTH, ISignalReceiver.TYPE_ID);
-		setPort(2, pos, Direction.WEST, ISignalReceiver.TYPE_ID);
-		setPort(3, pos, Direction.EAST, ISignalReceiver.TYPE_ID);
+		setPort(2, pos, Direction.EAST, ISignalReceiver.TYPE_ID);
+		setPort(3, pos, Direction.WEST, ISignalReceiver.TYPE_ID);
 	}
 
 	@Override
@@ -38,6 +38,11 @@ public class SchmittTrigger extends MultiInputGate {
 	@Override
 	public Item item() {
 		return schmitt_trigger;
+	}
+
+	@Override
+	protected String info() {
+		return "state.rs_ctr2.schmitt_trigger";
 	}
 
 }
