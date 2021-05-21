@@ -1,0 +1,19 @@
+{
+	"parent": "block/cube",
+	"loader": "cd4017be_lib:rcp",
+	"textures": {
+		"particle": "rs_ctr2:block/autocraft_s",
+		"top": "minecraft:block/crafting_table_top",
+		"bot": "minecraft:block/smooth_stone",
+		"panel": "rs_ctr2:block/autocraft_bp"
+	},
+	"code": [
+		"Loc Q = [0,0,0, 16,16,16]#, T = [0,0, 16,16]#;",
+		"ARG.rect(Q, T, 'U+vT', 'top');",
+		"ARG.rect(Q, T, 'U-vB', 'bot');",
+		"for(F:['-vuW', '+vUE', 'uv-N'])",
+		"	ARG.rect(Q, T, F);",
+		"ARG.rect([0,8,0, 16,16,16]#, [0,0, 16,8]#, 'Uv+S');",
+		"ARG.rect([0,0,0, 16,8,16]#, T, 'Uv+S', 'panel');"
+	]
+}

@@ -31,11 +31,15 @@ public abstract class OrientedPart extends GridPart {
 	}
 
 	protected void setPort(int i, int pos, Direction dir, int type) {
-		ports[i] = port(pos(pos, orient), orient.apply(dir), type);
+		ports[i] = port(orient, pos, dir, type);
 	}
 
 	protected void setBounds(int p0, int p1) {
 		bounds = bounds(pos(p0, orient), pos(p1, orient));
+	}
+
+	public static short port(Orientation orient, int pos, Direction dir, int type) {
+		return port(pos(pos, orient), orient.apply(dir), type);
 	}
 
 	public static int pos(int pos, Orientation orient) {

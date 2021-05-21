@@ -14,7 +14,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 
 public class ConfigServer extends ModConfig implements Consumer<FMLServerStartingEvent> {
 
-	public final IntValue battery_cap, solar_power, move_item, move_fluid;
+	public final IntValue battery_cap, solar_power, move_item, move_fluid, craft;
 	public final DoubleValue daytime;
 	public final IntValue rec_data, rec_power, rec_item, rec_fluid;
 
@@ -27,6 +27,7 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 		daytime = b.defineInRange("daytime", 7.0/18.0, 0.0, 1.0);
 		move_item = b.defineInRange("move_item", 64, 0, Integer.MAX_VALUE);
 		move_fluid = b.defineInRange("move_fluid", 64, 0, Integer.MAX_VALUE);
+		craft = b.defineInRange("craft", 20, 0, Integer.MAX_VALUE);
 		b.pop();
 		b.push("recursion_limit");
 		rec_data = b.defineInRange("data", Link.REC_DATA, 0, 64);

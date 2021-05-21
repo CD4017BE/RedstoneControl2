@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"TBC",
+		"IMI"
+	],
+	"key": {
+		"I": { "item": "rs_ctr2:item_io" },
+		"M": { "item": "rs_ctr2:item_mover" },
+		"B": { "item": "rs_ctr2:bit_shift" },
+		"T": { "item": "minecraft:crafting_table" },
+		"C": { "item": "minecraft:chest" }
+	},
+	"result": {
+		"item": "rs_ctr2:autocraft"
+	}
+}

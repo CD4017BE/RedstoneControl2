@@ -62,6 +62,13 @@ public class ExtGridPorts implements INBTSerializable<LongArrayNBT> {
 			disconnect(i);
 	}
 
+	public void clear() {
+		for (int i = 0; i < ports.length; i++) {
+			disconnect(i);
+			ports[i] = 0;
+		}
+	}
+
 	@Override
 	public LongArrayNBT serializeNBT() {
 		return new LongArrayNBT(ports);

@@ -1,11 +1,13 @@
 package cd4017be.rs_ctr2;
 
 import static cd4017be.lib.block.BlockTE.flags;
+import static cd4017be.lib.property.PropertyOrientation.HOR_AXIS;
 import static cd4017be.rs_ctr2.Main.*;
 
 import cd4017be.rs_ctr2.api.gate.ports.*;
 import cd4017be.rs_ctr2.api.grid.GridPart;
 import cd4017be.rs_ctr2.container.ContainerAssembler;
+import cd4017be.rs_ctr2.container.ContainerAutoCraft;
 import cd4017be.rs_ctr2.container.ContainerConstant;
 import cd4017be.rs_ctr2.item.*;
 import cd4017be.rs_ctr2.part.*;
@@ -13,6 +15,7 @@ import cd4017be.rs_ctr2.render.GridModels;
 import cd4017be.rs_ctr2.render.SignalProbeRenderer;
 import cd4017be.rs_ctr2.tileentity.*;
 import cd4017be.lib.block.BlockTE;
+import cd4017be.lib.block.OrientedBlock;
 import cd4017be.lib.item.DocumentedBlockItem;
 import cd4017be.lib.item.TEModeledItem;
 import net.minecraft.block.AbstractBlock.Properties;
@@ -50,10 +53,11 @@ public class Content {
 	// blocks:
 	public static final BlockTE<RsGrid> GRID = null;
 	public static final BlockTE<Assembler> ASSEMBLER = null;
+	public static final OrientedBlock<AutoCrafter> AUTOCRAFT = null;
 
 	// items:
 	public static final TEModeledItem grid = null;
-	public static final DocumentedBlockItem assembler = null;
+	public static final DocumentedBlockItem assembler = null, autocraft = null;
 	public static final SignalProbeItem probe = null;
 	public static final MicroBlockItem microblock = null;
 	public static final CableItem
@@ -74,6 +78,7 @@ public class Content {
 	// containers:
 	public static final ContainerType<ContainerAssembler> aSSEMBLER = null;
 	public static final ContainerType<ContainerConstant> cONSTANT = null;
+	public static final ContainerType<ContainerAutoCraft> aUTOCRAFT = null;
 
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> ev) {
@@ -82,7 +87,8 @@ public class Content {
 		.noOcclusion().dynamicShape();
 		ev.getRegistry().registerAll(
 			new BlockTE<>(p_grid, flags(RsGrid.class)).setRegistryName(rl("grid")),
-			new BlockTE<>(p, flags(Assembler.class)).setRegistryName(rl("assembler"))
+			new BlockTE<>(p, flags(Assembler.class)).setRegistryName(rl("assembler")),
+			new OrientedBlock<>(p, flags(AutoCrafter.class), HOR_AXIS).setRegistryName(rl("autocraft"))
 		);
 	}
 
@@ -96,6 +102,7 @@ public class Content {
 		ev.getRegistry().registerAll(
 			new TEModeledItem(GRID, p),
 			new DocumentedBlockItem(ASSEMBLER, p),
+			new DocumentedBlockItem(AUTOCRAFT, p),
 			new SignalProbeItem(probe).tab(CREATIVE_TAB).setRegistryName(rl("probe")),
 			new MicroBlockItem(p).setRegistryName(rl("microblock")),
 			new CableItem(rs, ISignalReceiver.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("data_cable")),
@@ -146,7 +153,8 @@ public class Content {
 	public static void registerTileEntities(Register<TileEntityType<?>> ev) {
 		ev.getRegistry().registerAll(
 			GRID.makeTEType(RsGrid::new),
-			ASSEMBLER.makeTEType(Assembler::new)
+			ASSEMBLER.makeTEType(Assembler::new),
+			AUTOCRAFT.makeTEType(AutoCrafter::new)
 		);
 		GridPart.GRID_HOST_BLOCK = GRID.defaultBlockState();
 	}
@@ -155,7 +163,8 @@ public class Content {
 	public static void registerContainers(Register<ContainerType<?>> ev) {
 		ev.getRegistry().registerAll(
 			IForgeContainerType.create(ContainerAssembler::new).setRegistryName(rl("assembler")),
-			IForgeContainerType.create(ContainerConstant::new).setRegistryName(rl("constant"))
+			IForgeContainerType.create(ContainerConstant::new).setRegistryName(rl("constant")),
+			IForgeContainerType.create(ContainerAutoCraft::new).setRegistryName(rl("autocraft"))
 		);
 	}
 
@@ -164,6 +173,7 @@ public class Content {
 	public static void setupClient(FMLClientSetupEvent ev) {
 		ScreenManager.register(aSSEMBLER, ContainerAssembler::setupGui);
 		ScreenManager.register(cONSTANT, ContainerConstant::setupGui);
+		ScreenManager.register(aUTOCRAFT, ContainerAutoCraft::setupGui);
 	}
 
 	@SubscribeEvent

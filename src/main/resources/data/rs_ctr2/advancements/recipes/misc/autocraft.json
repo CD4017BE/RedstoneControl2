@@ -1,0 +1,22 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:autocraft"
+	]},
+	"criteria": {
+		"has_item_mover": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:item_mover" }
+			]}
+		},
+		"has_the_recipe": {
+			"trigger": "minecraft:recipe_unlocked",
+			"conditions": { "recipe": "rs_ctr2:autocraft" }
+		}
+	},
+	"requirements": [[
+		"has_item_mover",
+		"has_the_recipe"
+	]]
+}

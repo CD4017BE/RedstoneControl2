@@ -140,5 +140,8 @@
   "state.rs_ctr2.sum": "§a0:§7 Σ §c%sd\n§91:§7 + §c%sd\n§92:§7 + §c%sd\n§93:§7 - §c%sd",
   "state.rs_ctr2.shift": "§a0: §c0x%s08X %s1$d\n§91: §c0x%s08X %s2$d\n§92: §c%sd§7 Bit shift <<",
   "state.rs_ctr2.multiply": "§a0:§7 Π §c%sd\n§91:§7 x §c%sd\n§92:§7 x §c%sd\n§93:§7 /2^ §c%sd",
-  "state.rs_ctr2.schmitt_trigger": "§a0: §c0x%s08X§7 State\n§91: §c%sd§7 Input\n§92: §c%sd§7 OFF threshold\n§93: §c%sd§7 ON threshold"
+  "state.rs_ctr2.schmitt_trigger": "§a0: §c0x%s08X§7 State\n§91: §c%sd§7 Input\n§92: §c%sd§7 OFF threshold\n§93: §c%sd§7 ON threshold",
+  "block.rs_ctr2.autocraft": "Automatic Crafter",
+  "gui.rs_ctr2.autocraft": "Buffer            Crafting",
+  "gui.rs_ctr2.pattern": "Pattern hex code"
 }

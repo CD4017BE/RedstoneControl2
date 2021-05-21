@@ -46,7 +46,7 @@ public class ContainerConstant extends AdvancedContainer {
 				catch (NumberFormatException e) {}
 			}
 		);
-		new TextField(frame, 52, 7, 28, 27, 8,
+		new TextField(frame, 48, 7, 28, 27, 8,
 			()-> String.format("%08X", value.getAsInt()),
 			t -> {
 				try { gui.sendPkt((int)Long.parseLong(t, 16)); }
