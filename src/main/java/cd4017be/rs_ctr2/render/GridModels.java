@@ -23,15 +23,18 @@ import net.minecraftforge.client.model.data.EmptyModelData;
 public class GridModels {
 
 	private static final HashMap<Object, BakedQuad[]> CUBE_MODELS = new HashMap<>();
+	public static final ResourceLocation[] PORTS;
 	static {
 		TileEntityModel.registerCacheInvalidate(CUBE_MODELS::clear);
+		ResourceLocation obj_p = Main.rl("part/obj_p"), obj_u = Main.rl("part/obj_u");
+		PORTS = new ResourceLocation[] {
+			Main.rl("part/data_in"), Main.rl("part/data_out"),
+			Main.rl("part/power_p"), Main.rl("part/power_u"),
+			Main.rl("part/item_p"), Main.rl("part/item_u"),
+			Main.rl("part/fluid_p"), Main.rl("part/fluid_u"),
+			obj_p, obj_u, obj_p, obj_u, obj_p, obj_u, obj_p, obj_u
+		};
 	}
-	public static final ResourceLocation[] PORTS = {
-		Main.rl("part/data_in"), Main.rl("part/data_out"),
-		Main.rl("part/power_p"), Main.rl("part/power_u"),
-		Main.rl("part/item_p"), Main.rl("part/item_u"),
-		Main.rl("part/fluid_p"), Main.rl("part/fluid_u")
-	};
 
 	private static final int[] ORIENTS = {
 		Orientation.W12.o, Orientation.E12.o,
@@ -52,7 +55,7 @@ public class GridModels {
 			o |= 1;
 		}
 		BakedQuad face = CUBE_MODELS.computeIfAbsent(
-			PORTS[port >> 11 & 6 | (master ? 1:0)], GridModels::load
+			PORTS[port >> 11 & 14 | (master ? 1:0)], GridModels::load
 		)[3];
 		if (face == null) return;
 		o = ORIENTS[o];

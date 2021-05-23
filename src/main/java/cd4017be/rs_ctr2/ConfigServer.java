@@ -17,6 +17,7 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 	public final IntValue battery_cap, solar_power, move_item, move_fluid, craft;
 	public final DoubleValue daytime;
 	public final IntValue rec_data, rec_power, rec_item, rec_fluid;
+	public final IntValue memory_size;
 
 	protected ConfigServer() {
 		super(Type.SERVER);
@@ -29,6 +30,7 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 		move_fluid = b.defineInRange("move_fluid", 64, 0, Integer.MAX_VALUE);
 		craft = b.defineInRange("craft", 20, 0, Integer.MAX_VALUE);
 		b.pop();
+		memory_size = b.defineInRange("memory_size", 256, 32, 16384);
 		b.push("recursion_limit");
 		rec_data = b.defineInRange("data", Link.REC_DATA, 0, 64);
 		rec_power = b.defineInRange("power", Link.REC_POWER, 0, 64);

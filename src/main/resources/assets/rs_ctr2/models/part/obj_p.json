@@ -1,0 +1,4 @@
+{
+	"parent": "rs_ctr2:part/port",
+	"textures": {"particle": "rs_ctr2:part/obj_p"}
+}

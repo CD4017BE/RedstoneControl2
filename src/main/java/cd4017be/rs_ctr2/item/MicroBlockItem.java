@@ -7,10 +7,8 @@ import java.util.ArrayList;
 
 import cd4017be.rs_ctr2.api.grid.GridPart;
 import cd4017be.rs_ctr2.api.grid.IGridHost;
-import cd4017be.rs_ctr2.api.grid.IGridItem;
 import cd4017be.rs_ctr2.part.MicroBlock;
 import cd4017be.rs_ctr2.render.MicroBlockFace;
-import cd4017be.lib.item.DocumentedItem;
 import cd4017be.lib.render.model.*;
 import cd4017be.lib.text.TooltipUtil;
 import net.minecraft.block.Block;
@@ -32,8 +30,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.data.ModelDataMap;
 
-
-public class MicroBlockItem extends DocumentedItem implements IGridItem, IModelDataItem {
+/**@author CD4017BE */
+public class MicroBlockItem extends GridItem implements IModelDataItem {
 
 	public MicroBlockItem(Properties p) {
 		super(p);
@@ -91,10 +89,6 @@ public class MicroBlockItem extends DocumentedItem implements IGridItem, IModelD
 		return ActionResultType.SUCCESS;
 	}
 
-	public ActionResultType useOn(ItemUseContext context) {
-		return placeAndInteract(context);
-	}
-
 	public ItemStack convert(ItemStack stack, World world, BlockPos pos) {
 		BlockState state = getBlock(new BlockItemUseContext(
 			world, null, Hand.MAIN_HAND, stack,
@@ -104,15 +98,6 @@ public class MicroBlockItem extends DocumentedItem implements IGridItem, IModelD
 			)
 		));
 		return state != null ? wrap(stack, state, 64) : ItemStack.EMPTY;
-	}
-
-	@Override
-	public boolean canAttackBlock(
-		BlockState state, World world, BlockPos pos, PlayerEntity player
-	) {
-		if (player.isCreative())
-			world.getBlockState(pos).attack(world, pos, player);
-		return false;
 	}
 
 	public static BlockState getBlock(BlockItemUseContext context) {

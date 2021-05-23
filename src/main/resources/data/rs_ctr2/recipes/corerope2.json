@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "corerope",
+	"pattern": [
+		"###",
+		"# #",
+		"###"
+	],
+	"key": {
+		"#": { "item": "rs_ctr2:corerope1" }
+	},
+	"result": { "item": "rs_ctr2:corerope2" }
+}

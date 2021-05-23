@@ -1,23 +1,17 @@
 package cd4017be.rs_ctr2.item;
 
 import cd4017be.rs_ctr2.api.grid.IGridHost;
-import cd4017be.rs_ctr2.api.grid.IGridItem;
 import cd4017be.rs_ctr2.part.MultiBlock;
 
 import java.util.function.IntFunction;
-import cd4017be.lib.item.DocumentedItem;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.World;
 
 /**
  * @author CD4017BE */
-public class MultiblockItem<T extends MultiBlock<T>> extends DocumentedItem
-implements IGridItem {
+public class MultiblockItem<T extends MultiBlock<T>> extends GridItem {
 
 	private final IntFunction<T> factory;
 
@@ -47,19 +41,6 @@ implements IGridItem {
 			return ActionResultType.FAIL;
 		if (!player.isCreative()) stack.shrink(1);
 		return ActionResultType.SUCCESS;
-	}
-
-	public ActionResultType useOn(ItemUseContext context) {
-		return placeAndInteract(context);
-	}
-
-	@Override
-	public boolean canAttackBlock(
-		BlockState state, World world, BlockPos pos, PlayerEntity player
-	) {
-		if (player.isCreative())
-			world.getBlockState(pos).attack(world, pos, player);
-		return false;
 	}
 
 }

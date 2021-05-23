@@ -3,27 +3,21 @@ package cd4017be.rs_ctr2.item;
 import cd4017be.rs_ctr2.api.gate.IPortHolder.Port;
 import cd4017be.rs_ctr2.api.grid.GridPart;
 import cd4017be.rs_ctr2.api.grid.IGridHost;
-import cd4017be.rs_ctr2.api.grid.IGridItem;
 import cd4017be.rs_ctr2.part.Cable;
 
 import static cd4017be.math.Linalg.*;
 import static cd4017be.math.MCConv.blockRelVecF;
 import static net.minecraft.util.Direction.getNearest;
 
-import cd4017be.lib.item.DocumentedItem;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.World;
 
-
-public class CableItem extends DocumentedItem implements IGridItem {
+/**@author CD4017BE */
+public class CableItem extends GridItem {
 
 	final int type;
 
@@ -65,19 +59,6 @@ public class CableItem extends DocumentedItem implements IGridItem {
 		Cable c = new Cable();
 		c.ports[0] = c.ports[1] = (short)(type << 12);
 		return c;
-	}
-
-	public ActionResultType useOn(ItemUseContext context) {
-		return placeAndInteract(context);
-	}
-
-	@Override
-	public boolean canAttackBlock(
-		BlockState state, World world, BlockPos pos, PlayerEntity player
-	) {
-		if (!world.isClientSide && player.isCreative())
-			world.getBlockState(pos).attack(world, pos, player);
-		return false;
 	}
 
 }

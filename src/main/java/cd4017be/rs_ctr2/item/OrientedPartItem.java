@@ -9,23 +9,17 @@ import java.util.function.Supplier;
 
 import cd4017be.rs_ctr2.Main;
 import cd4017be.rs_ctr2.api.grid.IGridHost;
-import cd4017be.rs_ctr2.api.grid.IGridItem;
 import cd4017be.rs_ctr2.part.OrientedPart;
-import cd4017be.lib.item.DocumentedItem;
 import cd4017be.lib.util.Orientation;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.World;
 
-
-public class OrientedPartItem extends DocumentedItem implements IGridItem {
+/** @author CD4017BE */
+public class OrientedPartItem extends GridItem {
 
 	private final Supplier<OrientedPart> factory;
 
@@ -74,19 +68,6 @@ public class OrientedPartItem extends DocumentedItem implements IGridItem {
 		o = Orientation.byBackUp(d, d1);
 		if (o == null) o = Orientation.byBack(d);
 		part.set(OrientedPart.pos(pos, o.inv()), o);
-	}
-
-	public ActionResultType useOn(ItemUseContext context) {
-		return placeAndInteract(context);
-	}
-
-	@Override
-	public boolean canAttackBlock(
-		BlockState state, World world, BlockPos pos, PlayerEntity player
-	) {
-		if (!world.isClientSide && player.isCreative())
-			world.getBlockState(pos).attack(world, pos, player);
-		return false;
 	}
 
 }

@@ -6,9 +6,8 @@ import static cd4017be.rs_ctr2.Main.*;
 
 import cd4017be.rs_ctr2.api.gate.ports.*;
 import cd4017be.rs_ctr2.api.grid.GridPart;
-import cd4017be.rs_ctr2.container.ContainerAssembler;
-import cd4017be.rs_ctr2.container.ContainerAutoCraft;
-import cd4017be.rs_ctr2.container.ContainerConstant;
+import cd4017be.rs_ctr2.container.*;
+import cd4017be.rs_ctr2.container.gui.GuiRAM;
 import cd4017be.rs_ctr2.item.*;
 import cd4017be.rs_ctr2.part.*;
 import cd4017be.rs_ctr2.render.GridModels;
@@ -17,6 +16,7 @@ import cd4017be.rs_ctr2.tileentity.*;
 import cd4017be.lib.block.BlockTE;
 import cd4017be.lib.block.OrientedBlock;
 import cd4017be.lib.item.DocumentedBlockItem;
+import cd4017be.lib.item.DocumentedItem;
 import cd4017be.lib.item.TEModeledItem;
 import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.Block;
@@ -70,15 +70,18 @@ public class Content {
 	xor_gate = null, schmitt_trigger = null, delay = null, comparator = null,
 	sr_latch = null, data_mux = null, clamp_gate = null, or_buffer = null,
 	bit_shift = null, sum_gate = null, product_gate = null, division_gate = null,
-	neg_gate = null, transformer = null, item_mover = null, fluid_mover = null,
+	neg_gate = null, counter = null, mem_read = null, mem_write = null,
+	transformer = null, item_mover = null, fluid_mover = null,
 	power_splitter = null, item_splitter = null, fluid_splitter = null;
 	public static final MultiblockItem<Battery> battery = null;
 	public static final MultiblockItem<SolarCell> solarcell = null;
+	public static final MultiblockItem<Memory> memory = null;
 
 	// containers:
 	public static final ContainerType<ContainerAssembler> aSSEMBLER = null;
 	public static final ContainerType<ContainerConstant> cONSTANT = null;
 	public static final ContainerType<ContainerAutoCraft> aUTOCRAFT = null;
+	public static final ContainerType<ContainerMemory> mEMORY = null;
 
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> ev) {
@@ -138,6 +141,9 @@ public class Content {
 			new OrientedPartItem(rs, MultiplyGate::new).setRegistryName(rl("product_gate")),
 			new OrientedPartItem(rs, DivisionGate::new).setRegistryName(rl("division_gate")),
 			new OrientedPartItem(rs, Negate::new).setRegistryName(rl("neg_gate")),
+			new OrientedPartItem(rs, Counter::new).setRegistryName(rl("counter")),
+			new OrientedPartItem(rs, MemRead::new).setRegistryName(rl("mem_read")),
+			new OrientedPartItem(rs, MemWrite::new).setRegistryName(rl("mem_write")),
 			new OrientedPartItem(rs, Transformer::new).setRegistryName(rl("transformer")),
 			new OrientedPartItem(rs, ItemMover::new).tooltipArgs(SERVER_CFG.move_item).setRegistryName(rl("item_mover")),
 			new OrientedPartItem(rs, FluidMover::new).tooltipArgs(SERVER_CFG.move_fluid).setRegistryName(rl("fluid_mover")),
@@ -145,8 +151,14 @@ public class Content {
 			new OrientedPartItem(rs, SplitterI::new).setRegistryName(rl("item_splitter")),
 			new OrientedPartItem(rs, SplitterF::new).setRegistryName(rl("fluid_splitter")),
 			new MultiblockItem<>(p, Battery::new).tooltipArgs(SERVER_CFG.battery_cap).setRegistryName(rl("battery")),
-			new MultiblockItem<>(p, SolarCell::new).tooltipArgs(SERVER_CFG.solar_power, SERVER_CFG.daytime).setRegistryName(rl("solarcell"))
+			new MultiblockItem<>(p, SolarCell::new).tooltipArgs(SERVER_CFG.solar_power, SERVER_CFG.daytime).setRegistryName(rl("solarcell")),
+			new MultiblockItem<>(p, Memory::new).tooltipArgs(SERVER_CFG.memory_size).setRegistryName(rl("memory")),
+			item(p, "corerope1"), item(p, "corerope2")
 		);
+	}
+
+	private static Item item(Item.Properties p, String id) {
+		return new DocumentedItem(p).setRegistryName(rl(id));
 	}
 
 	@SubscribeEvent
@@ -164,7 +176,8 @@ public class Content {
 		ev.getRegistry().registerAll(
 			IForgeContainerType.create(ContainerAssembler::new).setRegistryName(rl("assembler")),
 			IForgeContainerType.create(ContainerConstant::new).setRegistryName(rl("constant")),
-			IForgeContainerType.create(ContainerAutoCraft::new).setRegistryName(rl("autocraft"))
+			IForgeContainerType.create(ContainerAutoCraft::new).setRegistryName(rl("autocraft")),
+			IForgeContainerType.create(ContainerMemory::new).setRegistryName(rl("memory"))
 		);
 	}
 
@@ -174,6 +187,7 @@ public class Content {
 		ScreenManager.register(aSSEMBLER, ContainerAssembler::setupGui);
 		ScreenManager.register(cONSTANT, ContainerConstant::setupGui);
 		ScreenManager.register(aUTOCRAFT, ContainerAutoCraft::setupGui);
+		ScreenManager.register(mEMORY, GuiRAM::new);
 	}
 
 	@SubscribeEvent
@@ -186,6 +200,7 @@ public class Content {
 			ModelLoader.addSpecialModel(loc);
 		ModelLoader.addSpecialModel(Battery.MODEL);
 		ModelLoader.addSpecialModel(SolarCell.MODEL);
+		ModelLoader.addSpecialModel(Memory.MODEL);
 	}
 
 }

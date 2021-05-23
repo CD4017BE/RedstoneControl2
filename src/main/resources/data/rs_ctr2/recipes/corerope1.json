@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "corerope",
+	"pattern": [
+		"-I-",
+		"I I",
+		"-I-"
+	],
+	"key": {
+		"-": { "item": "rs_ctr2:data_cable" },
+		"I": { "item": "minecraft:iron_nugget" }
+	},
+	"result": { "item": "rs_ctr2:corerope1" }
+}

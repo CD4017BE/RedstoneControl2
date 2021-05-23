@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "arithmetic",
+	"pattern": [
+		" A ",
+		"LNL",
+		"CAB"
+	],
+	"key": {
+		"B": { "item": "rs_ctr2:bit_shift" },
+		"C": { "item": "rs_ctr2:comparator" },
+		"L": { "item": "rs_ctr2:sr_latch" },
+		"N": { "item": "rs_ctr2:not_gate" },
+		"A": { "item": "rs_ctr2:and_gate" }
+	},
+	"result": {
+		"item": "rs_ctr2:counter",
+		"count": 1
+	}
+}
