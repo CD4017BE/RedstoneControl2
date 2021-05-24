@@ -11,7 +11,6 @@ import cd4017be.api.grid.IGridHost;
 import cd4017be.api.grid.IGridItem;
 import cd4017be.lib.container.IUnnamedContainerProvider;
 import cd4017be.lib.network.Sync;
-import cd4017be.lib.text.TooltipUtil;
 import cd4017be.rs_ctr2.Main;
 import cd4017be.rs_ctr2.container.ContainerMemory;
 import net.minecraft.entity.player.PlayerEntity;
@@ -102,8 +101,8 @@ public class Memory extends MultiBlock<Memory> implements IUnnamedContainerProvi
 	}
 
 	@Override
-	public String toString() {
-		return TooltipUtil.format("state.rs_ctr2.memory", data.length << 5);
+	public Object[] stateInfo() {
+		return new Object[]{"state.rs_ctr2.memory", data.length << 5};
 	}
 
 }

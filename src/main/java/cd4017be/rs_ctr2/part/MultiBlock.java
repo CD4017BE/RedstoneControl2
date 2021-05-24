@@ -9,6 +9,7 @@ import cd4017be.lib.render.GridModels;
 import cd4017be.lib.render.MicroBlockFace;
 import cd4017be.lib.render.model.JitBakedModel;
 import cd4017be.lib.util.ItemFluidUtil;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,7 +25,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 /**
  * @param <T> type of extending class
  * @author CD4017BE */
-public abstract class MultiBlock<T extends MultiBlock<T>> extends GridPart {
+public abstract class MultiBlock<T extends MultiBlock<T>> extends GridPart
+implements IProbeInfo {
 
 	public MultiBlock(int pos) {
 		super(0);

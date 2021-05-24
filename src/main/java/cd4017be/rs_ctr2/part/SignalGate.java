@@ -7,9 +7,10 @@ import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.tick.IGate;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 
 /**@author CD4017BE */
-public abstract class SignalGate extends OrientedPart implements IGate {
+public abstract class SignalGate extends OrientedPart implements IGate, IProbeInfo {
 
 	protected ISignalReceiver output = ISignalReceiver.NOP;
 	@Sync public int state;

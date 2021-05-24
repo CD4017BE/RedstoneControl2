@@ -8,19 +8,18 @@ import static java.lang.Math.abs;
 import com.google.common.base.Predicates;
 
 import cd4017be.api.grid.IGridHost;
-import cd4017be.api.grid.port.IEnergyAccess;
-import cd4017be.api.grid.port.IInventoryAccess;
-import cd4017be.api.grid.port.ISignalReceiver;
+import cd4017be.api.grid.port.*;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.part.OrientedPart;
-import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.tick.IGate;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
 /**@author CD4017BE */
-public class ItemMover extends OrientedPart implements ISignalReceiver, IGate {
+public class ItemMover extends OrientedPart
+implements ISignalReceiver, IGate, IProbeInfo {
 
 	IInventoryAccess a = IInventoryAccess.NOP;
 	IInventoryAccess b = IInventoryAccess.NOP;
@@ -116,8 +115,12 @@ public class ItemMover extends OrientedPart implements ISignalReceiver, IGate {
 	}
 
 	@Override
-	public String toString() {
-		return TooltipUtil.format("state.rs_ctr2.item_mover", clk, num, res);
+	public Object[] stateInfo() {
+		return new Object[]{
+			"state.rs_ctr2.item_mover", clk, num, res,
+			-energy.transferEnergy(Integer.MIN_VALUE, true),
+			a != IInventoryAccess.NOP, b != IInventoryAccess.NOP
+		};
 	}
 
 }

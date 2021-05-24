@@ -27,6 +27,7 @@ import cd4017be.lib.network.Sync;
 import cd4017be.lib.tick.IGate;
 import cd4017be.lib.util.Orientation;
 import cd4017be.lib.util.SaferFakePlayer;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import cd4017be.rs_ctr2.container.ContainerItemPlacer;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
@@ -55,10 +56,10 @@ import net.minecraftforge.common.util.LazyOptional;
  * @author CD4017BE */
 public class ItemPlacer extends Machine
 implements IGate, IBlockSupplier, ISignalReceiver, ITEPlace,
-IUnnamedContainerProvider {
+IUnnamedContainerProvider, IProbeInfo {
 
 	private static final int R_SUCCESS = 0, R_UNLOADED = 1,
-	R_UNBREAKABLE = 2, R_NO_ENERGY = 4, R_INV_FULL = 8;
+	R_UNBREAKABLE = 2, R_INV_FULL = 4, R_NO_ENERGY = 8;
 	private static final CompoundNBT DEFAULT_DATA = new CompoundNBT();
 	static {
 		DEFAULT_DATA.putString("name", "FakePlayer");
@@ -298,6 +299,16 @@ IUnnamedContainerProvider {
 	@Override
 	public ContainerItemPlacer createMenu(int id, PlayerInventory inv, PlayerEntity player) {
 		return new ContainerItemPlacer(id, inv, this);
+	}
+
+	@Override
+	public Object[] stateInfo() {
+		return new Object[] {
+			"state.rs_ctr2.item_placer", clk, aim0, res,
+			-energy.transferEnergy(Integer.MIN_VALUE, true),
+			inv != IInventoryAccess.NOP,
+			IBlockSupplier.toString(target)
+		};
 	}
 
 }

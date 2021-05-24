@@ -7,14 +7,15 @@ import static org.apache.commons.lang3.ArrayUtils.EMPTY_INT_ARRAY;
 import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.part.OrientedPart;
-import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.tick.IGate;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
 /**@author CD4017BE */
-public class MemWrite extends OrientedPart implements IGate, ISignalReceiver {
+public class MemWrite extends OrientedPart
+implements IGate, ISignalReceiver, IProbeInfo {
 
 	int[] mem = EMPTY_INT_ARRAY;
 	int idx, val;
@@ -86,8 +87,8 @@ public class MemWrite extends OrientedPart implements IGate, ISignalReceiver {
 	}
 
 	@Override
-	public String toString() {
-		return TooltipUtil.format("state.rs_ctr2.mem_write", state, addr, bits);
+	public Object[] stateInfo() {
+		return new Object[]{"state.rs_ctr2.mem_write", state, addr, bits};
 	}
 
 }

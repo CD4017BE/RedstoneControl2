@@ -72,11 +72,15 @@ public class SolarCell extends MultiBlock<SolarCell> implements ISlowTickable {
 	public boolean tick8() {
 		if (host == null) return active = false;
 		if (power < 0 || (TICK & 0x38) == 0) updatePower();
-		int p = fixTime ? power : sunPower(
-			(int)((host.world().dayTime() + 6000) % 24000) - 12000
-		);
+		int p = power();
 		if (p > 0) energy.transferEnergy(p, false);
 		return true;
+	}
+
+	private int power() {
+		return fixTime ? power : sunPower(power,
+			(int)((host.world().dayTime() + 6000) % 24000) - 12000
+		);
 	}
 
 	private void updatePower() {
@@ -85,13 +89,13 @@ public class SolarCell extends MultiBlock<SolarCell> implements ISlowTickable {
 		* world.getBrightness(LightType.SKY, host.pos().above()) / 15;
 		if (fixTime) {
 			float t = world.getTimeOfDay(1F);
-			power = sunPower((t > 0.5F ? t - 1 : t) * 24000F);
+			power = sunPower(power, (t > 0.5F ? t - 1 : t) * 24000F);
 		}
 	}
 
-	private int sunPower(float dt) {
+	private static int sunPower(int base, float dt) {
 		dt *= INV_DAY_LENGHT;
-		return round((1F - dt * dt) * power);
+		return round((1F - dt * dt) * base);
 	}
 
 	@Override
@@ -123,5 +127,13 @@ public class SolarCell extends MultiBlock<SolarCell> implements ISlowTickable {
 	}
 
 	public static final ResourceLocation MODEL = Main.rl("part/solarcell");
+
+	@Override
+	public Object[] stateInfo() {
+		return new Object[] {
+			"state.rs_ctr2.solar", Math.max(power(), 0),
+			energy.transferEnergy(Integer.MAX_VALUE, true)
+		};
+	}
 
 }

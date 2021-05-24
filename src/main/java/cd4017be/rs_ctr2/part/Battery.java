@@ -3,7 +3,6 @@ package cd4017be.rs_ctr2.part;
 import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
 import static cd4017be.rs_ctr2.Content.battery;
 import static cd4017be.rs_ctr2.Main.SERVER_CFG;
-import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 import java.util.Arrays;
@@ -15,7 +14,6 @@ import cd4017be.api.grid.IGridItem;
 import cd4017be.api.grid.port.IEnergyAccess;
 import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
-import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.tick.IGate;
 import cd4017be.rs_ctr2.Content;
 import cd4017be.rs_ctr2.Main;
@@ -122,10 +120,10 @@ public class Battery extends MultiBlock<Battery> implements IGate, IEnergyAccess
 	@Override
 	public int transferEnergy(int amount, boolean test, int rec) {
 		if (amount == 0) return 0;
-		int e = max(min(energy + amount, cap), 0);
-		amount = e - energy;
+		if (amount < -energy) amount = -energy;
+		else if (amount > cap - energy) amount = cap - energy;
 		if (!test) {
-			energy = e;
+			energy += amount;
 			if (!active) {
 				active = true;
 				GATE_UPDATER.add(this);
@@ -143,8 +141,8 @@ public class Battery extends MultiBlock<Battery> implements IGate, IEnergyAccess
 	}
 
 	@Override
-	public String toString() {
-		return TooltipUtil.format("state.rs_ctr2.battery", state, cap);
+	public Object[] stateInfo() {
+		return new Object[]{"state.rs_ctr2.battery", energy, cap};
 	}
 
 	@Override

@@ -24,6 +24,7 @@ import cd4017be.lib.network.Sync;
 import cd4017be.lib.tick.IGate;
 import cd4017be.lib.util.ItemFluidUtil;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import cd4017be.rs_ctr2.container.ContainerAutoCraft;
 import cd4017be.rs_ctr2.util.RefCraftingInventory;
 import net.minecraft.block.BlockState;
@@ -42,7 +43,7 @@ import net.minecraftforge.common.util.Constants.NBT;
 
 /**@author CD4017BE */
 public class AutoCrafter extends Machine
-implements ITEBreak, IUnnamedContainerProvider, IGate,
+implements ITEBreak, IUnnamedContainerProvider, IGate, IProbeInfo,
 ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {
 
 	private static final byte R_SUCCESS = 0, R_MISSING_INGRED = 1,
@@ -265,6 +266,14 @@ ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {
 		default: return;
 		}
 		updatePattern();
+	}
+
+	@Override
+	public Object[] stateInfo() {
+		return new Object[] {
+			"state.rs_ctr2.autocraft", clk, p2, p1, slotI, res,
+			-energy.transferEnergy(Integer.MIN_VALUE, true)
+		};
 	}
 
 }

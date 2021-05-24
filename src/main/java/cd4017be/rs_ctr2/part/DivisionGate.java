@@ -6,14 +6,14 @@ import static cd4017be.rs_ctr2.Content.division_gate;
 import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.part.OrientedPart;
-import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.tick.IGate;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
 /**@author CD4017BE */
-public class DivisionGate extends OrientedPart implements IGate {
+public class DivisionGate extends OrientedPart implements IGate, IProbeInfo {
 
 	ISignalReceiver outD = ISignalReceiver.NOP;
 	ISignalReceiver outR = ISignalReceiver.NOP;
@@ -82,8 +82,8 @@ public class DivisionGate extends OrientedPart implements IGate {
 	}
 
 	@Override
-	public String toString() {
-		return TooltipUtil.format("state.rs_ctr2.division", div, rem, a, b);
+	public Object[] stateInfo() {
+		return new Object[]{"state.rs_ctr2.division", div, rem, a, b};
 	}
 
 }

@@ -2,7 +2,6 @@ package cd4017be.rs_ctr2.part;
 
 import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
-import cd4017be.lib.text.TooltipUtil;
 
 /**@author CD4017BE */
 public abstract class MultiInputGate extends SignalGate {
@@ -31,12 +30,13 @@ public abstract class MultiInputGate extends SignalGate {
 	}
 
 	@Override
-	public String toString() {
-		Object[] args = new Object[in.length + 1];
-		args[0] = state;
+	public Object[] stateInfo() {
+		Object[] args = new Object[in.length + 2];
+		args[0] = info();
+		args[1] = state;
 		for (int i = 0; i < in.length; i++)
-			args[i + 1] = in[i];
-		return TooltipUtil.format(info(), args);
+			args[i + 2] = in[i];
+		return args;
 	}
 
 }

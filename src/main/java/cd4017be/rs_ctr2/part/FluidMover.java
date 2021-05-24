@@ -13,14 +13,15 @@ import cd4017be.api.grid.port.IFluidAccess;
 import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.part.OrientedPart;
-import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.tick.IGate;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
 /**@author CD4017BE */
-public class FluidMover extends OrientedPart implements ISignalReceiver, IGate {
+public class FluidMover extends OrientedPart
+implements ISignalReceiver, IGate, IProbeInfo {
 
 	IFluidAccess a = IFluidAccess.NOP;
 	IFluidAccess b = IFluidAccess.NOP;
@@ -116,8 +117,12 @@ public class FluidMover extends OrientedPart implements ISignalReceiver, IGate {
 	}
 
 	@Override
-	public String toString() {
-		return TooltipUtil.format("state.rs_ctr2.fluid_mover", clk, num, res);
+	public Object[] stateInfo() {
+		return new Object[]{
+			"state.rs_ctr2.fluid_mover", clk, num, res,
+			-energy.transferEnergy(Integer.MIN_VALUE, true),
+			a != IFluidAccess.NOP, b != IFluidAccess.NOP
+		};
 	}
 
 }

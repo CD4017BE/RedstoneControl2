@@ -5,13 +5,14 @@ import static cd4017be.rs_ctr2.Content.analog_out;
 import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.part.OrientedPart;
-import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
 /**@author CD4017BE */
-public class AnalogOut extends OrientedPart implements ISignalReceiver {
+public class AnalogOut extends OrientedPart
+implements ISignalReceiver, IProbeInfo {
 
 	@Sync public int state;
 
@@ -63,8 +64,8 @@ public class AnalogOut extends OrientedPart implements ISignalReceiver {
 	}
 
 	@Override
-	public String toString() {
-		return TooltipUtil.format("state.rs_ctr2.out", state);
+	public Object[] stateInfo() {
+		return new Object[]{"state.rs_ctr2.out", state};
 	}
 
 }

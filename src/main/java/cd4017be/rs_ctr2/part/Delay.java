@@ -4,7 +4,6 @@ import static cd4017be.rs_ctr2.Content.delay;
 
 import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
-import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.Orientation;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
@@ -52,8 +51,8 @@ public class Delay extends SignalGate implements ISignalReceiver {
 	}
 
 	@Override
-	public String toString() {
-		return TooltipUtil.format("state.rs_ctr2.gate1", state, in);
+	public Object[] stateInfo() {
+		return new Object[]{"state.rs_ctr2.gate1", state, in};
 	}
 
 }

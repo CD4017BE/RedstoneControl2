@@ -14,6 +14,7 @@ import cd4017be.lib.network.Sync;
 import cd4017be.lib.tick.IGate;
 import cd4017be.lib.util.ItemFluidUtil;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.item.ItemEntity;
@@ -27,10 +28,10 @@ import net.minecraft.world.server.ServerWorld;
 
 /**@author CD4017BE */
 public class BlockBreaker extends Machine
-implements ISignalReceiver, IGate, IBlockSupplier {
+implements ISignalReceiver, IGate, IBlockSupplier, IProbeInfo {
 
 	private static final int R_SUCCESS = 0, R_UNLOADED = 1,
-	R_UNBREAKABLE = 2, R_NO_ENERGY = 4, R_INV_FULL = 8;
+	R_UNBREAKABLE = 2, R_INV_FULL = 4, R_NO_ENERGY = 8;
 
 	ArrayList<ItemStack> drops = new ArrayList<>();
 	IBlockSupplier target = this;
@@ -142,6 +143,16 @@ implements ISignalReceiver, IGate, IBlockSupplier {
 		super.setRemoved();
 		for (ItemStack stack : drops)
 			ItemFluidUtil.dropStack(stack, level, worldPosition);
+	}
+
+	@Override
+	public Object[] stateInfo() {
+		return new Object[] {
+			"state.rs_ctr2.block_breaker", clk, res,
+			-energy.transferEnergy(Integer.MIN_VALUE, true),
+			inv != IInventoryAccess.NOP,
+			IBlockSupplier.toString(target)
+		};
 	}
 
 }

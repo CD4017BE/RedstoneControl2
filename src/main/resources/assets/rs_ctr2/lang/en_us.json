@@ -135,9 +135,9 @@
   "item.rs_ctr2.solarcell": "Solar Cell",
   "item.rs_ctr2.solarcell.tip": "Harvests energy from sunlight.\nMust be placed in top layer, adjacent cells combine.\n§e⏺§7 use power cable for power output.",
   "item.rs_ctr2.probe": "Gate Probe",
-  "state.rs_ctr2.transformer": "§a0: §c%sd §7RF/t Flow\n§91: §c%sd §7RF/t Limit\n§a2 §e-> §a3",
-  "state.rs_ctr2.fluid_mover": "§90: §c0x%s08X§7 Clock\n§91: §c%sd§7 mB Limit\n§a2: §c%sd§7 mB Moved\n§a3: §ePower supply\n§a4 §b-> §a5",
-  "state.rs_ctr2.item_mover": "§90: §c0x%s08X§7 Clock\n§91: §c%sd§7 stack Limit\n§a2: §c%sd§7 items Moved\n§a3: §ePower supply\n§a4 §f-> §a5",
+  "state.rs_ctr2.transformer": "§a0: §c%sd §7RF/t Flow\n§91: §c%sd §7RF/t Limit\n§a2: §7out §e%ss/%sd RF\n§a3: §7into §e%ss/%ss RF",
+  "state.rs_ctr2.fluid_mover": "§90: §c0x%s08X§7 Clock\n§91: §c%sd§7 mB Limit\n§a2: §c%sd§7 mB Moved\n§a3: §e%sd RF§7 available energy\n§a4: §bcan pull fluid: %ss\n§a5: §bcan push fluid: %ss",
+  "state.rs_ctr2.item_mover": "§90: §c0x%s08X§7 Clock\n§91: §c%sd§7 stack limit\n§a2: §c%sd§7 items moved\n§a3: §e%sd RF§7 available energy\n§a4: §fcan pull items: %ss\n§a5: §fcan push items: %ss",
   "state.rs_ctr2.division": "§a0: §c%d§7 A / B\n§a1: §c%d§7 Remainder\n§92: §c%d§7 A\n§93: §c%d§7 B",
   "state.rs_ctr2.mover": "",
   "state.rs_ctr2.no_connection": "Interact on Gate to monitor!",
@@ -187,5 +187,14 @@
   "item.rs_ctr2.block_cable.tip": "Connects §none§7 §5block interaction §auser§7\nwith §none§7 §5block interaction §9provider§7.",
   "item.rs_ctr2.block_io": "Block Interaction Port",
   "item.rs_ctr2.block_splitter": "Block Interaction Splitter",
-  "item.rs_ctr2.block_splitter.tip": "Re-provides a used block interaction 5 times."
+  "item.rs_ctr2.block_splitter.tip": "Re-provides a used block interaction 5 times.",
+  "state.rs_ctr2.link1": "%sd #%s08X -> %sd",
+  "state.rs_ctr2.link2": "%sd <-> %sd Cable link",
+  "state.rs_ctr2.link3": "%sd #%s08X",
+  "state.rs_ctr2.links": "     Connection Debug Info:",
+  "state.rs_ctr2.link0": "%sd Cable End -> %sd",
+  "state.rs_ctr2.autocraft": "§90: §c0x%s08X§7 Crafting Clock\n§91: §c0x%s08X§7 Low 2x3 Pattern\n§92: §c0x%s03X§7 Top 1x3 Pattern\n§93: §c0x%sX§7 I/O Slot\n§94: §fInternal Inventory\n§a5: §c0x%s01X§7 Error Code\n§a6: §e%sd RF§7 available energy",
+  "state.rs_ctr2.block_breaker": "§90: §c0x%s08X§7 Clock\n§a1: §c0x%s01X§7 Error Code\n§a2: §e%sd RF§7 available energy\n§a3: §fcan output loot: %ss\n§a4: §5%ss",
+  "state.rs_ctr2.item_placer": "§90: §c0x%s08X§7 Clock\n§95: §c0x%s06X§7 Interact Settings\n§a1: §c0x%s01X§7 Error Code\n§a2: §e%sd RF§7 available energy\n§a3: §fcan restock hand: %ss\n§a4: §5%ss",
+  "state.rs_ctr2.solar": "Generating %sd RF / 8 ticks\n§a0: §e%sd RF§7 storable energy"
 }

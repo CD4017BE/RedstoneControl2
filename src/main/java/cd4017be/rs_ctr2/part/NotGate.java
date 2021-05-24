@@ -5,13 +5,13 @@ import static cd4017be.rs_ctr2.Content.not_gate;
 import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.part.OrientedPart;
-import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
 /**@author CD4017BE */
-public class NotGate extends OrientedPart implements ISignalReceiver {
+public class NotGate extends OrientedPart implements ISignalReceiver, IProbeInfo {
 
 	ISignalReceiver out = ISignalReceiver.NOP;
 	@Sync public int state;
@@ -58,8 +58,8 @@ public class NotGate extends OrientedPart implements ISignalReceiver {
 	}
 
 	@Override
-	public String toString() {
-		return TooltipUtil.format("state.rs_ctr2.direct", state);
+	public Object[] stateInfo() {
+		return new Object[]{"state.rs_ctr2.direct", state};
 	}
 
 }

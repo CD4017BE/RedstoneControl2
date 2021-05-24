@@ -3,7 +3,6 @@ package cd4017be.rs_ctr2.part;
 import static cd4017be.rs_ctr2.Content.comp_in;
 
 import cd4017be.api.grid.port.ISignalReceiver;
-import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.Orientation;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
@@ -50,8 +49,8 @@ public class ComparatorIn extends SignalGate {
 	}
 
 	@Override
-	public String toString() {
-		return TooltipUtil.format("state.rs_ctr2.in", state);
+	public Object[] stateInfo() {
+		return new Object[]{"state.rs_ctr2.in", state};
 	}
 
 }
