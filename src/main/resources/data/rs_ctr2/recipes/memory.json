@@ -8,7 +8,7 @@
 	],
 	"key": {
 		"#": { "item": "rs_ctr2:corerope2" },
-		"X": { "item": "rs_ctr2:microblock" },
+		"X": { "item": "cd4017be_lib:microblock" },
 		"M": { "item": "rs_ctr2:data_mux" }
 	},
 	"result": {

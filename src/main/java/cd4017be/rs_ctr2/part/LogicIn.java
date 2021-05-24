@@ -5,6 +5,7 @@ import static cd4017be.rs_ctr2.Content.logic_in;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
+/**@author CD4017BE */
 public class LogicIn extends AnalogIn {
 
 	@Override

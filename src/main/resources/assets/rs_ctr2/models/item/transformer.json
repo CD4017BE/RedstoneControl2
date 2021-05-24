@@ -1,10 +1,10 @@
 {
 	"parent": "rs_ctr2:part/gate",
 	"textures": {
-		"portL": "rs_ctr2:part/power_u",
-		"portR": "rs_ctr2:part/power_u",
-		"portU": "rs_ctr2:part/data_in",
-		"portD": "rs_ctr2:part/data_out",
+		"portL": "cd4017be_lib:part/power_u",
+		"portR": "cd4017be_lib:part/power_u",
+		"portU": "cd4017be_lib:part/data_in",
+		"portD": "cd4017be_lib:part/data_out",
 		"main": "rs_ctr2:part/transformer"
 	}
 }

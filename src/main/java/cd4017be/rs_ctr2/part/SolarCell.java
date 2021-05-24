@@ -1,17 +1,17 @@
 package cd4017be.rs_ctr2.part;
 
+import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
+import static cd4017be.lib.tick.GateUpdater.TICK;
 import static cd4017be.rs_ctr2.Content.solarcell;
 import static cd4017be.rs_ctr2.Main.SERVER_CFG;
-import static cd4017be.rs_ctr2.api.gate.GateUpdater.GATE_UPDATER;
-import static cd4017be.rs_ctr2.api.gate.GateUpdater.TICK;
 import static java.lang.Math.round;
 
+import cd4017be.api.grid.IGridHost;
+import cd4017be.api.grid.IGridItem;
+import cd4017be.api.grid.port.IEnergyAccess;
+import cd4017be.lib.tick.ISlowTickable;
 import cd4017be.rs_ctr2.Content;
 import cd4017be.rs_ctr2.Main;
-import cd4017be.rs_ctr2.api.gate.ISlowTickable;
-import cd4017be.rs_ctr2.api.gate.ports.IEnergyAccess;
-import cd4017be.rs_ctr2.api.grid.IGridHost;
-import cd4017be.rs_ctr2.api.grid.IGridItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.ResourceLocation;
@@ -19,7 +19,7 @@ import net.minecraft.world.DimensionType;
 import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 
-
+/**@author CD4017BE */
 public class SolarCell extends MultiBlock<SolarCell> implements ISlowTickable {
 
 	public static float INV_DAY_LENGHT;

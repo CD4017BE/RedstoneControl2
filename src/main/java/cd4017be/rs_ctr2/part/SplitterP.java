@@ -2,12 +2,13 @@ package cd4017be.rs_ctr2.part;
 
 import static cd4017be.rs_ctr2.Content.power_splitter;
 
+import cd4017be.api.grid.port.IEnergyAccess;
+import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.Orientation;
-import cd4017be.rs_ctr2.api.gate.ports.IEnergyAccess;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
-
+/**@author CD4017BE */
 public class SplitterP extends OrientedPart implements IEnergyAccess {
 
 	IEnergyAccess src = IEnergyAccess.NOP;

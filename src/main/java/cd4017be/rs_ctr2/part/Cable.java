@@ -1,15 +1,15 @@
 package cd4017be.rs_ctr2.part;
 
 
-import static cd4017be.rs_ctr2.api.grid.IGridHost.posOfport;
+import static cd4017be.api.grid.IGridHost.posOfport;
 import static cd4017be.math.Linalg.*;
 
 import java.util.List;
 
 import cd4017be.rs_ctr2.Content;
 import cd4017be.rs_ctr2.Main;
-import cd4017be.rs_ctr2.api.grid.*;
-import cd4017be.rs_ctr2.render.MicroBlockFace;
+import cd4017be.api.grid.*;
+import cd4017be.lib.render.MicroBlockFace;
 import cd4017be.lib.render.model.JitBakedModel;
 import cd4017be.lib.util.ItemFluidUtil;
 import net.minecraft.client.renderer.model.BakedQuad;
@@ -22,6 +22,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+/**@author CD4017BE */
 public class Cable extends GridPart implements IWire {
 
 	public Cable() {

@@ -4,12 +4,13 @@ import static cd4017be.lib.network.Sync.GUI;
 import static cd4017be.lib.network.Sync.SAVE;
 import static cd4017be.rs_ctr2.Content.constant;
 
+import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.container.IUnnamedContainerProvider;
 import cd4017be.lib.network.IPlayerPacketReceiver;
 import cd4017be.lib.network.Sync;
+import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.Orientation;
-import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 import cd4017be.rs_ctr2.container.ContainerConstant;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -21,7 +22,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockRayTraceResult;
 
-
+/**@author CD4017BE */
 public class Constant extends OrientedPart
 implements IUnnamedContainerProvider, IPlayerPacketReceiver {
 

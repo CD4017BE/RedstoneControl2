@@ -1,6 +1,6 @@
 package cd4017be.rs_ctr2.part;
 
-import static cd4017be.rs_ctr2.api.gate.GateUpdater.GATE_UPDATER;
+import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static net.minecraftforge.items.ItemHandlerHelper.canItemStacksStack;
@@ -9,15 +9,15 @@ import java.util.function.ObjIntConsumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
+import cd4017be.api.grid.IGridHost;
+import cd4017be.api.grid.port.IInventoryAccess;
+import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.text.TooltipUtil;
+import cd4017be.lib.tick.IGate;
 import cd4017be.lib.util.Orientation;
 import cd4017be.rs_ctr2.Content;
 import cd4017be.rs_ctr2.Main;
-import cd4017be.rs_ctr2.api.gate.IGate;
-import cd4017be.rs_ctr2.api.gate.ports.IInventoryAccess;
-import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
-import cd4017be.rs_ctr2.api.grid.IGridHost;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
@@ -26,6 +26,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.EmptyHandler;
 
+/**@author CD4017BE */
 public class ItemIO extends CapabilityIO<IItemHandler>
 implements IInventoryAccess, IGate {
 

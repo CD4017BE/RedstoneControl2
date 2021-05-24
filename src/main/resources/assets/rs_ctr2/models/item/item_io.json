@@ -1,9 +1,9 @@
 {
 	"parent": "rs_ctr2:part/gate",
 	"textures": {
-		"portU": "rs_ctr2:part/data_in",
-		"portD": "rs_ctr2:part/data_in",
-		"portL": "rs_ctr2:part/item_p",
+		"portU": "cd4017be_lib:part/data_in",
+		"portD": "cd4017be_lib:part/data_in",
+		"portL": "cd4017be_lib:part/item_p",
 		"portR": "rs_ctr2:part/item_io",
 		"main": "rs_ctr2:part/item_acc"
 	}

@@ -2,8 +2,8 @@
 	"parent": "rs_ctr2:progression/microblocks",
 	"display": {
 		"icon": {
-			"item": "rs_ctr2:grid",
-			"nbt": "{BlockEntityTag:{parts:[{id: \"rs_ctr2:microblock\", s:1, m:1395835530495852545L}], hash: 817073886}}"
+			"item": "cd4017be_lib:grid",
+			"nbt": "{BlockEntityTag:{parts:[{id: \"cd4017be_lib:microblock\", s:1, m:1395835530495852545L}], hash: 817073886}}"
 		},
 		"title": { "translate": "advancements.rs_ctr2.replicate" },
 		"description": { "translate": "advancements.rs_ctr2.replicate.desc" },
@@ -17,7 +17,7 @@
 			"trigger": "minecraft:inventory_changed",
 			"conditions": {
 				"items": [{
-					"item": "rs_ctr2:grid",
+					"item": "cd4017be_lib:grid",
 					"count": { "min": 16 }
 				}]
 			}

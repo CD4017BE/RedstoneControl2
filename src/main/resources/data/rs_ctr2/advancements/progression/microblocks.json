@@ -1,7 +1,7 @@
 {
 	"parent": "rs_ctr2:progression/root",
 	"display": {
-		"icon": { "item": "rs_ctr2:assembler" },
+		"icon": { "item": "cd4017be_lib:assembler" },
 		"title": { "translate": "advancements.rs_ctr2.microblocks" },
 		"description": { "translate": "advancements.rs_ctr2.microblocks.desc" },
 		"frame": "task",
@@ -14,7 +14,7 @@
 			"trigger": "minecraft:inventory_changed",
 			"conditions": {
 				"items": [
-					{ "item": "rs_ctr2:microblock" }
+					{ "item": "cd4017be_lib:microblock" }
 				]
 			}
 		}

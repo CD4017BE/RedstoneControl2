@@ -4,7 +4,7 @@ import static cd4017be.rs_ctr2.Content.neg_gate;
 
 import net.minecraft.item.Item;
 
-
+/**@author CD4017BE */
 public class Negate extends NotGate {
 
 	@Override

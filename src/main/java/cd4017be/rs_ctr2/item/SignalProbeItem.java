@@ -1,8 +1,10 @@
 package cd4017be.rs_ctr2.item;
 
+import cd4017be.api.grid.GridPart;
+import cd4017be.api.grid.IGridHost;
+import cd4017be.api.grid.IGridItem;
 import cd4017be.lib.item.DocumentedItem;
 import cd4017be.lib.network.Sync;
-import cd4017be.rs_ctr2.api.grid.*;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;

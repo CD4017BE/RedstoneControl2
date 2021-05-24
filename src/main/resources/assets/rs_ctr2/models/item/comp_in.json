@@ -2,7 +2,7 @@
 	"parent": "rs_ctr2:part/gate",
 	"textures": {
 		"portR": "rs_ctr2:part/comp_in",
-		"portL": "rs_ctr2:part/data_out",
+		"portL": "cd4017be_lib:part/data_out",
 		"portU": "rs_ctr2:part/comp2data",
 		"portD": "rs_ctr2:part/comp2data",
 		"main": "rs_ctr2:part/comp2data"

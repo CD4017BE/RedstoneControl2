@@ -4,7 +4,7 @@
 		"minecraft:redstone_torch",
 		"minecraft:repeater",
 		"minecraft:comparator",
-		"rs_ctr2:assembler",
-		"rs_ctr2:grid"
+		"cd4017be_lib:assembler",
+		"cd4017be_lib:grid"
 	]
 }

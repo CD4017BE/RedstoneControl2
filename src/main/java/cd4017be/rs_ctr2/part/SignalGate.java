@@ -1,13 +1,14 @@
 package cd4017be.rs_ctr2.part;
 
-import static cd4017be.rs_ctr2.api.gate.GateUpdater.GATE_UPDATER;
+import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
 
-import cd4017be.rs_ctr2.api.gate.IGate;
-import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
-import cd4017be.rs_ctr2.api.grid.IGridHost;
+import cd4017be.api.grid.IGridHost;
+import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
+import cd4017be.lib.part.OrientedPart;
+import cd4017be.lib.tick.IGate;
 
-
+/**@author CD4017BE */
 public abstract class SignalGate extends OrientedPart implements IGate {
 
 	protected ISignalReceiver output = ISignalReceiver.NOP;

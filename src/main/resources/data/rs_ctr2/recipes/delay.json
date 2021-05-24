@@ -7,7 +7,7 @@
 		"# #"
 	],
 	"key": {
-		"#": { "item": "rs_ctr2:microblock" },
+		"#": { "item": "cd4017be_lib:microblock" },
 		"-": { "item": "rs_ctr2:data_cable" },
 		"R": { "item": "minecraft:repeater" }
 	},

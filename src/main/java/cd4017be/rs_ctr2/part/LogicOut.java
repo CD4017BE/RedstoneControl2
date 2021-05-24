@@ -4,6 +4,7 @@ import static cd4017be.rs_ctr2.Content.logic_out;
 
 import net.minecraft.item.Item;
 
+/**@author CD4017BE */
 public class LogicOut extends AnalogOut {
 
 	@Override

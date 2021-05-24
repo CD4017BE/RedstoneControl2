@@ -1,8 +1,9 @@
 package cd4017be.rs_ctr2.item;
 
-import cd4017be.rs_ctr2.api.gate.IPortHolder.Port;
-import cd4017be.rs_ctr2.api.grid.GridPart;
-import cd4017be.rs_ctr2.api.grid.IGridHost;
+import cd4017be.api.grid.GridPart;
+import cd4017be.api.grid.IGridHost;
+import cd4017be.api.grid.IPortHolder.Port;
+import cd4017be.lib.item.GridItem;
 import cd4017be.rs_ctr2.part.Cable;
 
 import static cd4017be.math.Linalg.*;

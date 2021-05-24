@@ -2,30 +2,30 @@ package cd4017be.rs_ctr2.tileentity;
 
 import static cd4017be.lib.network.Sync.GUI;
 import static cd4017be.lib.network.Sync.SAVE;
+import static cd4017be.lib.part.OrientedPart.port;
+import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
 import static cd4017be.lib.util.ItemFluidUtil.canSlotStack;
 import static cd4017be.rs_ctr2.Main.SERVER_CFG;
-import static cd4017be.rs_ctr2.api.gate.GateUpdater.GATE_UPDATER;
-import static cd4017be.rs_ctr2.part.OrientedPart.port;
 import static net.minecraft.util.Direction.SOUTH;
 
 import java.util.function.ObjIntConsumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
+import cd4017be.api.grid.ExtGridPorts;
+import cd4017be.api.grid.IGridPortHolder;
+import cd4017be.api.grid.port.IEnergyAccess;
+import cd4017be.api.grid.port.IInventoryAccess;
+import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.block.BlockTE.ITEBreak;
 import cd4017be.lib.capability.BasicInventory;
 import cd4017be.lib.container.IUnnamedContainerProvider;
 import cd4017be.lib.network.IPlayerPacketReceiver;
 import cd4017be.lib.network.Sync;
+import cd4017be.lib.tick.IGate;
 import cd4017be.lib.tileentity.BaseTileEntity;
 import cd4017be.lib.util.ItemFluidUtil;
 import cd4017be.lib.util.Orientation;
-import cd4017be.rs_ctr2.api.gate.IGate;
-import cd4017be.rs_ctr2.api.gate.ports.IEnergyAccess;
-import cd4017be.rs_ctr2.api.gate.ports.IInventoryAccess;
-import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
-import cd4017be.rs_ctr2.api.grid.ExtGridPorts;
-import cd4017be.rs_ctr2.api.grid.IGridPortHolder;
 import cd4017be.rs_ctr2.container.ContainerAutoCraft;
 import cd4017be.rs_ctr2.util.RefCraftingInventory;
 import net.minecraft.block.BlockState;
@@ -45,7 +45,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 
-
+/**@author CD4017BE */
 public class AutoCrafter extends BaseTileEntity
 implements IGridPortHolder, ITEBreak, IUnnamedContainerProvider,
 IGate, ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {

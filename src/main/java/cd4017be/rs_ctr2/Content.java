@@ -4,20 +4,17 @@ import static cd4017be.lib.block.BlockTE.flags;
 import static cd4017be.lib.property.PropertyOrientation.HOR_AXIS;
 import static cd4017be.rs_ctr2.Main.*;
 
-import cd4017be.rs_ctr2.api.gate.ports.*;
-import cd4017be.rs_ctr2.api.grid.GridPart;
+import cd4017be.api.grid.port.*;
 import cd4017be.rs_ctr2.container.*;
 import cd4017be.rs_ctr2.container.gui.GuiRAM;
 import cd4017be.rs_ctr2.item.*;
 import cd4017be.rs_ctr2.part.*;
-import cd4017be.rs_ctr2.render.GridModels;
 import cd4017be.rs_ctr2.render.SignalProbeRenderer;
 import cd4017be.rs_ctr2.tileentity.*;
 import cd4017be.lib.block.BlockTE;
 import cd4017be.lib.block.OrientedBlock;
 import cd4017be.lib.item.DocumentedBlockItem;
 import cd4017be.lib.item.DocumentedItem;
-import cd4017be.lib.item.TEModeledItem;
 import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -51,15 +48,11 @@ import net.minecraftforge.registries.ObjectHolder;
 public class Content {
 
 	// blocks:
-	public static final BlockTE<RsGrid> GRID = null;
-	public static final BlockTE<Assembler> ASSEMBLER = null;
 	public static final OrientedBlock<AutoCrafter> AUTOCRAFT = null;
 
 	// items:
-	public static final TEModeledItem grid = null;
-	public static final DocumentedBlockItem assembler = null, autocraft = null;
+	public static final DocumentedBlockItem autocraft = null;
 	public static final SignalProbeItem probe = null;
-	public static final MicroBlockItem microblock = null;
 	public static final CableItem
 	data_cable = null, power_cable = null, item_cable = null, fluid_cable = null;
 	public static final OrientedPartItem
@@ -78,7 +71,6 @@ public class Content {
 	public static final MultiblockItem<Memory> memory = null;
 
 	// containers:
-	public static final ContainerType<ContainerAssembler> aSSEMBLER = null;
 	public static final ContainerType<ContainerConstant> cONSTANT = null;
 	public static final ContainerType<ContainerAutoCraft> aUTOCRAFT = null;
 	public static final ContainerType<ContainerMemory> mEMORY = null;
@@ -86,11 +78,7 @@ public class Content {
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> ev) {
 		Properties p = Properties.of(Material.STONE).strength(1.5F);
-		Properties p_grid = Properties.of(Material.STONE).strength(1.5F)
-		.noOcclusion().dynamicShape();
 		ev.getRegistry().registerAll(
-			new BlockTE<>(p_grid, flags(RsGrid.class)).setRegistryName(rl("grid")),
-			new BlockTE<>(p, flags(Assembler.class)).setRegistryName(rl("assembler")),
 			new OrientedBlock<>(p, flags(AutoCrafter.class), HOR_AXIS).setRegistryName(rl("autocraft"))
 		);
 	}
@@ -103,11 +91,8 @@ public class Content {
 		.stacksTo(1).setISTER(()-> SignalProbeRenderer::new);
 		Item.Properties p = new Item.Properties().tab(CREATIVE_TAB);
 		ev.getRegistry().registerAll(
-			new TEModeledItem(GRID, p),
-			new DocumentedBlockItem(ASSEMBLER, p),
 			new DocumentedBlockItem(AUTOCRAFT, p),
 			new SignalProbeItem(probe).tab(CREATIVE_TAB).setRegistryName(rl("probe")),
-			new MicroBlockItem(p).setRegistryName(rl("microblock")),
 			new CableItem(rs, ISignalReceiver.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("data_cable")),
 			new CableItem(rs, IEnergyAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("power_cable")),
 			new CableItem(rs, IInventoryAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("item_cable")),
@@ -164,17 +149,13 @@ public class Content {
 	@SubscribeEvent
 	public static void registerTileEntities(Register<TileEntityType<?>> ev) {
 		ev.getRegistry().registerAll(
-			GRID.makeTEType(RsGrid::new),
-			ASSEMBLER.makeTEType(Assembler::new),
 			AUTOCRAFT.makeTEType(AutoCrafter::new)
 		);
-		GridPart.GRID_HOST_BLOCK = GRID.defaultBlockState();
 	}
 
 	@SubscribeEvent
 	public static void registerContainers(Register<ContainerType<?>> ev) {
 		ev.getRegistry().registerAll(
-			IForgeContainerType.create(ContainerAssembler::new).setRegistryName(rl("assembler")),
 			IForgeContainerType.create(ContainerConstant::new).setRegistryName(rl("constant")),
 			IForgeContainerType.create(ContainerAutoCraft::new).setRegistryName(rl("autocraft")),
 			IForgeContainerType.create(ContainerMemory::new).setRegistryName(rl("memory"))
@@ -184,7 +165,6 @@ public class Content {
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
 	public static void setupClient(FMLClientSetupEvent ev) {
-		ScreenManager.register(aSSEMBLER, ContainerAssembler::setupGui);
 		ScreenManager.register(cONSTANT, ContainerConstant::setupGui);
 		ScreenManager.register(aUTOCRAFT, ContainerAutoCraft::setupGui);
 		ScreenManager.register(mEMORY, GuiRAM::new);
@@ -194,8 +174,6 @@ public class Content {
 	@OnlyIn(Dist.CLIENT)
 	public static void registerModels(ModelRegistryEvent ev) {
 		ModelLoader.addSpecialModel(SignalProbeRenderer.baseModel(probe));
-		for (ResourceLocation loc : GridModels.PORTS)
-			ModelLoader.addSpecialModel(loc);
 		for (ResourceLocation loc : Cable.MODELS)
 			ModelLoader.addSpecialModel(loc);
 		ModelLoader.addSpecialModel(Battery.MODEL);

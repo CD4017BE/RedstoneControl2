@@ -1,16 +1,17 @@
 package cd4017be.rs_ctr2.part;
 
 import static cd4017be.rs_ctr2.Content.power_io;
+
+import cd4017be.api.grid.port.IEnergyAccess;
 import cd4017be.lib.capability.NullEnergyStorage;
 import cd4017be.lib.util.Orientation;
-import cd4017be.rs_ctr2.api.gate.ports.IEnergyAccess;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 
-
+/**@author CD4017BE */
 public class PowerIO extends CapabilityIO<IEnergyStorage> implements IEnergyAccess {
 
 	public PowerIO() {

@@ -9,6 +9,7 @@ import net.minecraft.util.IReorderingProcessor;
 import net.minecraft.util.math.vector.Matrix4f;
 import net.minecraft.util.text.ITextComponent;
 
+/**@author CD4017BE */
 public class Printer {
 	public final FontRenderer fr;
 	private final IRenderTypeBuffer rtb;

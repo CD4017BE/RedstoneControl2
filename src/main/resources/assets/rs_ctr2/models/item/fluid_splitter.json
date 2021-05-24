@@ -1,10 +1,10 @@
 {
 	"parent": "rs_ctr2:part/gate",
 	"textures": {
-		"portR": "rs_ctr2:part/fluid_u",
-		"portL": "rs_ctr2:part/fluid_p",
-		"portU": "rs_ctr2:part/fluid_p",
-		"portD": "rs_ctr2:part/fluid_p",
-		"main": "rs_ctr2:part/fluid_p"
+		"portR": "cd4017be_lib:part/fluid_u",
+		"portL": "cd4017be_lib:part/fluid_p",
+		"portU": "cd4017be_lib:part/fluid_p",
+		"portD": "cd4017be_lib:part/fluid_p",
+		"main": "cd4017be_lib:part/fluid_p"
 	}
 }

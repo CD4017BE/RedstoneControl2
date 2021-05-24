@@ -1,7 +1,7 @@
 {
 	"parent": "rs_ctr2:part/gate",
 	"textures": {
-		"portR": "rs_ctr2:part/data_out",
+		"portR": "cd4017be_lib:part/data_out",
 		"portL": "rs_ctr2:part/const_b",
 		"portU": "rs_ctr2:part/const_s",
 		"portD": "rs_ctr2:part/const_s",

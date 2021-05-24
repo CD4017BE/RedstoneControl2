@@ -8,8 +8,9 @@ import static net.minecraft.util.Direction.getNearest;
 import java.util.function.Supplier;
 
 import cd4017be.rs_ctr2.Main;
-import cd4017be.rs_ctr2.api.grid.IGridHost;
-import cd4017be.rs_ctr2.part.OrientedPart;
+import cd4017be.api.grid.IGridHost;
+import cd4017be.lib.item.GridItem;
+import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.Orientation;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;

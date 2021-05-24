@@ -6,13 +6,14 @@ import java.util.function.ObjIntConsumer;
 import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 
+import cd4017be.api.grid.port.IFluidAccess;
+import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.Orientation;
-import cd4017be.rs_ctr2.api.gate.ports.IFluidAccess;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 import net.minecraftforge.fluids.FluidStack;
 
-
+/**@author CD4017BE */
 public class SplitterF extends OrientedPart implements IFluidAccess {
 
 	IFluidAccess src = IFluidAccess.NOP;

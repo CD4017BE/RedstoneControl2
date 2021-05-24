@@ -28,6 +28,6 @@
 		"has_cable"
 	]],
 	"rewards": { "recipes": [
-		"rs_ctr2:assembler"
+		"cd4017be_lib:assembler"
 	]}
 }

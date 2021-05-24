@@ -2,13 +2,13 @@ package cd4017be.rs_ctr2.part;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+import cd4017be.api.grid.GridPart;
+import cd4017be.api.grid.IGridHost;
+import cd4017be.api.grid.IGridItem;
+import cd4017be.lib.render.GridModels;
+import cd4017be.lib.render.MicroBlockFace;
 import cd4017be.lib.render.model.JitBakedModel;
 import cd4017be.lib.util.ItemFluidUtil;
-import cd4017be.rs_ctr2.api.grid.GridPart;
-import cd4017be.rs_ctr2.api.grid.IGridHost;
-import cd4017be.rs_ctr2.api.grid.IGridItem;
-import cd4017be.rs_ctr2.render.GridModels;
-import cd4017be.rs_ctr2.render.MicroBlockFace;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

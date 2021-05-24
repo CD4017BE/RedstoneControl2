@@ -4,7 +4,7 @@ import static cd4017be.rs_ctr2.Content.or_buffer;
 
 import net.minecraft.item.Item;
 
-
+/**@author CD4017BE */
 public class OrBuffer extends NotGate {
 
 	@Override

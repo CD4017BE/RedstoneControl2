@@ -1,7 +1,8 @@
 package cd4017be.rs_ctr2.part;
 
+import cd4017be.api.grid.IGridHost;
+import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.Utils;
-import cd4017be.rs_ctr2.api.grid.IGridHost;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -10,7 +11,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.common.util.NonNullConsumer;
 
-
+/**@author CD4017BE */
 public abstract class CapabilityIO<T> extends OrientedPart
 implements NonNullConsumer<LazyOptional<T>> {
 

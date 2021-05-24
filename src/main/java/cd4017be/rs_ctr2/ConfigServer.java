@@ -2,8 +2,8 @@ package cd4017be.rs_ctr2;
 
 import java.util.function.Consumer;
 
+import cd4017be.api.grid.Link;
 import cd4017be.lib.config.ModConfig;
-import cd4017be.rs_ctr2.api.gate.Link;
 import cd4017be.rs_ctr2.part.SolarCell;
 import net.minecraftforge.common.ForgeConfigSpec.Builder;
 import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
@@ -12,6 +12,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 
+/**@author CD4017BE */
 public class ConfigServer extends ModConfig implements Consumer<FMLServerStartingEvent> {
 
 	public final IntValue battery_cap, solar_power, move_item, move_fluid, craft;

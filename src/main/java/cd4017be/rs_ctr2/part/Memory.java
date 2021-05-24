@@ -7,12 +7,12 @@ import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+import cd4017be.api.grid.IGridHost;
+import cd4017be.api.grid.IGridItem;
 import cd4017be.lib.container.IUnnamedContainerProvider;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.text.TooltipUtil;
 import cd4017be.rs_ctr2.Main;
-import cd4017be.rs_ctr2.api.grid.IGridHost;
-import cd4017be.rs_ctr2.api.grid.IGridItem;
 import cd4017be.rs_ctr2.container.ContainerMemory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

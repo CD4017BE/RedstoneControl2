@@ -1,24 +1,25 @@
 package cd4017be.rs_ctr2.part;
 
+import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
 import static cd4017be.rs_ctr2.Content.item_mover;
 import static cd4017be.rs_ctr2.Main.SERVER_CFG;
-import static cd4017be.rs_ctr2.api.gate.GateUpdater.GATE_UPDATER;
 import static java.lang.Math.abs;
 
 import com.google.common.base.Predicates;
 
+import cd4017be.api.grid.IGridHost;
+import cd4017be.api.grid.port.IEnergyAccess;
+import cd4017be.api.grid.port.IInventoryAccess;
+import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
+import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.text.TooltipUtil;
+import cd4017be.lib.tick.IGate;
 import cd4017be.lib.util.Orientation;
-import cd4017be.rs_ctr2.api.gate.IGate;
-import cd4017be.rs_ctr2.api.gate.ports.IEnergyAccess;
-import cd4017be.rs_ctr2.api.gate.ports.IInventoryAccess;
-import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
-import cd4017be.rs_ctr2.api.grid.IGridHost;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
-
+/**@author CD4017BE */
 public class ItemMover extends OrientedPart implements ISignalReceiver, IGate {
 
 	IInventoryAccess a = IInventoryAccess.NOP;

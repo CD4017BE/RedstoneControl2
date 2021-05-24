@@ -4,12 +4,12 @@ import static cd4017be.rs_ctr2.Content.clamp_gate;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
+import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.util.Orientation;
-import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
-
+/**@author CD4017BE */
 public class ClampGate extends MultiInputGate {
 
 	public ClampGate() {

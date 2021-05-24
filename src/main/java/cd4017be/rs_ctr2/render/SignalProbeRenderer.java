@@ -6,11 +6,12 @@ import static java.lang.Math.max;
 import static net.minecraft.client.renderer.model.ItemCameraTransforms.TransformType.*;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+
+import cd4017be.api.grid.GridPart;
+import cd4017be.api.grid.IGridHost;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.render.model.JitBakedModel;
-import cd4017be.rs_ctr2.api.grid.GridPart;
-import cd4017be.rs_ctr2.api.grid.IGridHost;
-import cd4017be.rs_ctr2.util.VoxelShape4x4x4;
+import cd4017be.lib.util.VoxelShape4x4x4;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.*;

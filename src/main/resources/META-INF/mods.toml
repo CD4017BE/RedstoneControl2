@@ -32,6 +32,6 @@ description='''
 [[dependencies.rs_ctr2]]
     modId="cd4017be_lib"
     mandatory=true
-    versionRange="[7,)"
+    versionRange="[7.0.1,)"
     ordering="NONE"
     side="BOTH"

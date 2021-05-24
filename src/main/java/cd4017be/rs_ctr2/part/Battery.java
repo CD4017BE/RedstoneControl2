@@ -1,8 +1,8 @@
 package cd4017be.rs_ctr2.part;
 
+import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
 import static cd4017be.rs_ctr2.Content.battery;
 import static cd4017be.rs_ctr2.Main.SERVER_CFG;
-import static cd4017be.rs_ctr2.api.gate.GateUpdater.GATE_UPDATER;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
@@ -10,15 +10,15 @@ import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+import cd4017be.api.grid.IGridHost;
+import cd4017be.api.grid.IGridItem;
+import cd4017be.api.grid.port.IEnergyAccess;
+import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.text.TooltipUtil;
+import cd4017be.lib.tick.IGate;
 import cd4017be.rs_ctr2.Content;
 import cd4017be.rs_ctr2.Main;
-import cd4017be.rs_ctr2.api.gate.IGate;
-import cd4017be.rs_ctr2.api.gate.ports.IEnergyAccess;
-import cd4017be.rs_ctr2.api.gate.ports.ISignalReceiver;
-import cd4017be.rs_ctr2.api.grid.IGridHost;
-import cd4017be.rs_ctr2.api.grid.IGridItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.ActionResultType;

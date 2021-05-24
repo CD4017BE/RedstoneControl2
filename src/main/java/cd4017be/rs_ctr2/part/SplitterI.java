@@ -6,13 +6,14 @@ import java.util.function.ObjIntConsumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
+import cd4017be.api.grid.port.IInventoryAccess;
+import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.Orientation;
-import cd4017be.rs_ctr2.api.gate.ports.IInventoryAccess;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 
-
+/**@author CD4017BE */
 public class SplitterI extends OrientedPart implements IInventoryAccess {
 
 	IInventoryAccess src = IInventoryAccess.NOP;

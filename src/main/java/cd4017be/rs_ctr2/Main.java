@@ -3,13 +3,12 @@ package cd4017be.rs_ctr2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import cd4017be.rs_ctr2.api.gate.GateUpdater;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 
+/**@author CD4017BE */
 @Mod(Main.ID)
 public class Main {
 
@@ -29,7 +28,6 @@ public class Main {
 
 	public Main() {
 		SERVER_CFG.register("RedstoneControl2");
-		MinecraftForge.EVENT_BUS.register(GateUpdater.class);
 	}
 
 }
