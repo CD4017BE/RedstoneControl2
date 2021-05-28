@@ -13,7 +13,6 @@ import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
 import cd4017be.api.grid.ExtGridPorts;
-import cd4017be.api.grid.IGridPortHolder;
 import cd4017be.api.grid.port.IEnergyAccess;
 import cd4017be.api.grid.port.IInventoryAccess;
 import cd4017be.api.grid.port.ISignalReceiver;
@@ -23,7 +22,6 @@ import cd4017be.lib.container.IUnnamedContainerProvider;
 import cd4017be.lib.network.IPlayerPacketReceiver;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.tick.IGate;
-import cd4017be.lib.tileentity.BaseTileEntity;
 import cd4017be.lib.util.ItemFluidUtil;
 import cd4017be.lib.util.Orientation;
 import cd4017be.rs_ctr2.container.ContainerAutoCraft;
@@ -37,23 +35,19 @@ import net.minecraft.item.crafting.ICraftingRecipe;
 import net.minecraft.item.crafting.IRecipeType;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.LongArrayNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 
 /**@author CD4017BE */
-public class AutoCrafter extends BaseTileEntity
-implements IGridPortHolder, ITEBreak, IUnnamedContainerProvider,
-IGate, ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {
+public class AutoCrafter extends Machine
+implements ITEBreak, IUnnamedContainerProvider, IGate,
+ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {
 
 	private static final byte R_SUCCESS = 0, R_MISSING_INGRED = 1,
 	R_INVALID_RECIPE = 2, R_OUT_FULL = 4, R_NO_ENERGY = 8;
 
-	final ExtGridPorts ports = new ExtGridPorts(this);
 	public final BasicInventory inv = new BasicInventory(16);
 	public final RefCraftingInventory craftInv;
 	ISignalReceiver out = ISignalReceiver.NOP;
@@ -220,45 +214,21 @@ IGate, ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {
 	}
 
 	@Override
-	public ExtGridPorts extPorts() {
-		return ports;
-	}
-
-	@Override
-	public World world() {
-		return level;
-	}
-
-	@Override
-	public BlockPos pos() {
-		return worldPosition;
-	}
-
-	@Override
 	public void storeState(CompoundNBT nbt, int mode) {
 		super.storeState(nbt, mode);
-		if ((mode & SAVE) != 0) {
+		if ((mode & SAVE) != 0)
 			nbt.put("inv", inv.write());
-			nbt.put("ports", ports.serializeNBT());
-		}
 	}
 
 	@Override
 	public void loadState(CompoundNBT nbt, int mode) {
 		super.loadState(nbt, mode);
-		if ((mode & SAVE) != 0) {
+		if ((mode & SAVE) != 0)
 			inv.read(nbt.getList("inv", NBT.TAG_COMPOUND));
-			if (nbt.contains("ports", NBT.TAG_LONG_ARRAY))
-				ports.deserializeNBT((LongArrayNBT)nbt.get("ports"));
-		}
 	}
 
 	@Override
-	public void clearCache() {
-		super.clearCache();
-		if (level.isClientSide) return;
-		Orientation o = orientation();
-		ports.clear();
+	protected void init(ExtGridPorts ports, Orientation o) {
 		ports.createPort(port(o, 0x32, SOUTH, ISignalReceiver.TYPE_ID), false, true);
 		ports.createPort(port(o, 0x30, SOUTH, ISignalReceiver.TYPE_ID), false, true);
 		ports.createPort(port(o, 0x31, SOUTH, ISignalReceiver.TYPE_ID), false, true);
@@ -270,23 +240,9 @@ IGate, ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {
 
 	@Override
 	public void onLoad() {
-		if (!level.isClientSide) {
-			ports.onLoad();
-			if (active != 0) GATE_UPDATER.add(this);
-		}
+		if (!level.isClientSide && active != 0)
+			GATE_UPDATER.add(this);
 		super.onLoad();
-	}
-
-	@Override
-	protected void onUnload() {
-		super.onUnload();
-		if (!level.isClientSide) ports.onUnload();
-	}
-
-	@Override
-	public void setRemoved() {
-		super.setRemoved();
-		if (!level.isClientSide) ports.onRemove();
 	}
 
 	@Override

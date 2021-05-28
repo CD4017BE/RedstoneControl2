@@ -15,7 +15,8 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 /**@author CD4017BE */
 public class ConfigServer extends ModConfig implements Consumer<FMLServerStartingEvent> {
 
-	public final IntValue battery_cap, solar_power, move_item, move_fluid, craft;
+	public final IntValue battery_cap, solar_power, move_item, move_fluid,
+	craft, block_break, hardness_break;
 	public final DoubleValue daytime;
 	public final IntValue rec_data, rec_power, rec_item, rec_fluid;
 	public final IntValue memory_size;
@@ -30,6 +31,8 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 		move_item = b.defineInRange("move_item", 64, 0, Integer.MAX_VALUE);
 		move_fluid = b.defineInRange("move_fluid", 64, 0, Integer.MAX_VALUE);
 		craft = b.defineInRange("craft", 20, 0, Integer.MAX_VALUE);
+		block_break = b.defineInRange("block_break", 100, 0, Integer.MAX_VALUE);
+		hardness_break = b.defineInRange("hardness_cost", 40, 0, Integer.MAX_VALUE);
 		b.pop();
 		memory_size = b.defineInRange("memory_size", 256, 32, 16384);
 		b.push("recursion_limit");

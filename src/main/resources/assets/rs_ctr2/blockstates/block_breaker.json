@@ -1,0 +1,8 @@
+{
+	"variants": {
+		"orient=s12": { "model": "rs_ctr2:block/block_breaker" },
+		"orient=w12": { "model": "rs_ctr2:block/block_breaker", "y": 90 },
+		"orient=n12": { "model": "rs_ctr2:block/block_breaker", "y": 180 },
+		"orient=e12": { "model": "rs_ctr2:block/block_breaker", "y": 270 }
+	}
+}

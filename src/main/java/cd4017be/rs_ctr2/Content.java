@@ -49,9 +49,12 @@ public class Content {
 
 	// blocks:
 	public static final OrientedBlock<AutoCrafter> AUTOCRAFT = null;
+	public static final OrientedBlock<BlockBreaker> BLOCK_BREAKER = null;
+	public static final OrientedBlock<ItemPlacer> ITEM_PLACER = null;
 
 	// items:
 	public static final DocumentedBlockItem autocraft = null;
+	public static final DocumentedBlockItem block_breaker = null, item_placer = null;
 	public static final SignalProbeItem probe = null;
 	public static final CableItem
 	data_cable = null, power_cable = null, item_cable = null, fluid_cable = null;
@@ -74,12 +77,15 @@ public class Content {
 	public static final ContainerType<ContainerConstant> cONSTANT = null;
 	public static final ContainerType<ContainerAutoCraft> aUTOCRAFT = null;
 	public static final ContainerType<ContainerMemory> mEMORY = null;
+	public static final ContainerType<ContainerItemPlacer> iTEM_PLACER = null;
 
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> ev) {
 		Properties p = Properties.of(Material.STONE).strength(1.5F);
 		ev.getRegistry().registerAll(
-			new OrientedBlock<>(p, flags(AutoCrafter.class), HOR_AXIS).setRegistryName(rl("autocraft"))
+			new OrientedBlock<>(p, flags(AutoCrafter.class), HOR_AXIS).setRegistryName(rl("autocraft")),
+			new OrientedBlock<>(p, flags(BlockBreaker.class), HOR_AXIS).setRegistryName(rl("block_breaker")),
+			new OrientedBlock<>(p, flags(ItemPlacer.class), HOR_AXIS).setRegistryName(rl("item_placer"))
 		);
 	}
 
@@ -92,6 +98,8 @@ public class Content {
 		Item.Properties p = new Item.Properties().tab(CREATIVE_TAB);
 		ev.getRegistry().registerAll(
 			new DocumentedBlockItem(AUTOCRAFT, p),
+			new DocumentedBlockItem(BLOCK_BREAKER, p),
+			new DocumentedBlockItem(ITEM_PLACER, p),
 			new SignalProbeItem(probe).tab(CREATIVE_TAB).setRegistryName(rl("probe")),
 			new CableItem(rs, ISignalReceiver.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("data_cable")),
 			new CableItem(rs, IEnergyAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("power_cable")),
@@ -149,7 +157,9 @@ public class Content {
 	@SubscribeEvent
 	public static void registerTileEntities(Register<TileEntityType<?>> ev) {
 		ev.getRegistry().registerAll(
-			AUTOCRAFT.makeTEType(AutoCrafter::new)
+			AUTOCRAFT.makeTEType(AutoCrafter::new),
+			BLOCK_BREAKER.makeTEType(BlockBreaker::new),
+			ITEM_PLACER.makeTEType(ItemPlacer::new)
 		);
 	}
 
@@ -158,7 +168,8 @@ public class Content {
 		ev.getRegistry().registerAll(
 			IForgeContainerType.create(ContainerConstant::new).setRegistryName(rl("constant")),
 			IForgeContainerType.create(ContainerAutoCraft::new).setRegistryName(rl("autocraft")),
-			IForgeContainerType.create(ContainerMemory::new).setRegistryName(rl("memory"))
+			IForgeContainerType.create(ContainerMemory::new).setRegistryName(rl("memory")),
+			IForgeContainerType.create(ContainerItemPlacer::new).setRegistryName(rl("item_placer"))
 		);
 	}
 
@@ -168,6 +179,7 @@ public class Content {
 		ScreenManager.register(cONSTANT, ContainerConstant::setupGui);
 		ScreenManager.register(aUTOCRAFT, ContainerAutoCraft::setupGui);
 		ScreenManager.register(mEMORY, GuiRAM::new);
+		ScreenManager.register(iTEM_PLACER, ContainerItemPlacer::setupGui);
 	}
 
 	@SubscribeEvent

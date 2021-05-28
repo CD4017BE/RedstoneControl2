@@ -46,8 +46,8 @@ public class CableItem extends GridItem {
 		} else d = Direction.orderedByNearest(player)[5];
 		Cable part = new Cable(pos, d0.getOpposite(), d, type);
 		//merge with existing wires:
-		Port p0 = grid.findPort(null, part.ports[0]);
-		Port p1 = grid.findPort(null, part.ports[1]);
+		Port p0 = grid.findPort(part, part.ports[0]);
+		Port p1 = grid.findPort(part, part.ports[1]);
 		if (p0 != null) part.merge((GridPart)p0.host);
 		if (p1 != null) part.merge((GridPart)p1.host);
 		part.addTo(grid);

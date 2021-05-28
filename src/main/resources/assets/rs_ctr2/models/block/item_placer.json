@@ -1,0 +1,28 @@
+{
+	"parent": "block/cube",
+	"loader": "cd4017be_lib:rcp",
+	"textures": {
+		"particle": "rs_ctr2:block/placer_s",
+		"front": "rs_ctr2:block/placer_f",
+		"back": "rs_ctr2:block/placer_b",
+		"di": "cd4017be_lib:part/data_in",
+		"do": "cd4017be_lib:part/data_out",
+		"eu": "cd4017be_lib:part/power_u",
+		"iu": "cd4017be_lib:part/item_u"
+	},
+	"code": [
+		"Loc Q = [0,0,0, 16,16,16]#; T = [0,0, 16,16]#;",
+		"for(F:['-vuW', '+vuE', 'v+uT', 'v-uB'])",
+		"	ARG.rect(Q, T, F);",
+		"ARG.rect(Q, T, 'uv-N', 'back');",
+		"ARG.rect(Q, T, 'Uv+S', 'front');",
+		"port(x, y, tex) {",
+		"	ARG.rect([x,y,-0.0625, x+4,y+4,0]#, T, 'uv-N', tex);",
+		"}",
+		"port(4, 4, 'di');",
+		"port(8, 4, 'do');",
+		"port(4, 8, 'eu');",
+		"port(8, 8, 'iu');",
+		"port(4, 0, 'di');"
+	]
+}

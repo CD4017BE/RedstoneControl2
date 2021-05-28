@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"IHI",
+		"-P-",
+		"_M_"
+	],
+	"key": {
+		"-": { "item": "rs_ctr2:power_cable" },
+		"_": { "item": "rs_ctr2:data_cable" },
+		"M": { "item": "rs_ctr2:item_mover" },
+		"P": { "item": "minecraft:dispenser" },
+		"I": { "item": "minecraft:iron_ingot" },
+		"H": { "item": "minecraft:zombie_head" }
+	},
+	"result": {
+		"item": "rs_ctr2:item_placer"
+	}
+}

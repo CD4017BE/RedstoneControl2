@@ -39,7 +39,7 @@ public class Clock extends SignalGate implements ISignalReceiver {
 
 	@Override
 	public void latchOut() {
-		super.latchOut();
+		if (t == 0) super.latchOut();
 		if (dt > 0) update();
 	}
 

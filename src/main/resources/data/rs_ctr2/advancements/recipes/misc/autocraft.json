@@ -1,7 +1,9 @@
 {
 	"parent": "minecraft:recipes/root",
 	"rewards": { "recipes": [
-		"rs_ctr2:autocraft"
+		"rs_ctr2:autocraft",
+		"rs_ctr2:block_breaker",
+		"rs_ctr2:item_placer"
 	]},
 	"criteria": {
 		"has_item_mover": {
@@ -9,14 +11,6 @@
 			"conditions": { "items": [
 				{ "item": "rs_ctr2:item_mover" }
 			]}
-		},
-		"has_the_recipe": {
-			"trigger": "minecraft:recipe_unlocked",
-			"conditions": { "recipe": "rs_ctr2:autocraft" }
 		}
-	},
-	"requirements": [[
-		"has_item_mover",
-		"has_the_recipe"
-	]]
+	}
 }

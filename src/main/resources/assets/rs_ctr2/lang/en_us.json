@@ -20,6 +20,16 @@
   "gui.rs_ctr2.fmt_h": "Image height\n§7for .png export",
   "gui.rs_ctr2.import_file": "Import memory from file",
   "gui.rs_ctr2.export_file": "Export memory to file",
+  "gui.rs_ctr2.item_placer": "controlled Item User",
+  "gui.rs_ctr2.item_placer.slot": "Equipped Item:\n§7Slot: §4%sd §8= bits[0...5]",
+  "gui.rs_ctr2.item_placer.aim": "Block surface aim:\n§7right: %sd §8& 0x0F0000\n§7up: %sd §8& 0xF00000",
+  "gui.rs_ctr2.item_placer.look": "Look orientation:\n§7yaw: §4%sd §8& 0x000300\n§7pitch: §2%sd §8& 0x000C00\n§7§orelative to §1§oFront",
+  "gui.rs_ctr2.item_placer.sneak0": "Crouching: No\n§80x001000",
+  "gui.rs_ctr2.item_placer.sneak1": "Crouching: Yes\n§80x00§f1§8000",
+  "gui.rs_ctr2.item_placer.side0": "allow existing blocks\n§80x004000",
+  "gui.rs_ctr2.item_placer.side1": "don't allow existing blocks\n§80x00§f4§8000",
+  "gui.rs_ctr2.item_placer.air0": "Use on Blocks\n§80x008000",
+  "gui.rs_ctr2.item_placer.air1": "Use in Air\n§80x00§f8§8000",
   "advancements.rs_ctr2.root": "Redstone Control",
   "advancements.rs_ctr2.root.desc": "All about compact circuitry.",
   "advancements.rs_ctr2.microblocks": "Small Construction",
@@ -168,5 +178,9 @@
   "item.rs_ctr2.mem_write.tip": "Writes §9⏶§7 as word of size §9⏴§7 bits to index §9⏷§7 in memory §8⏵§7.\nA write happens @ t+1 when §9⏶§7, §9⏷§7 or §9⏴§7 changed and §9⏴§7 ≠ 0.\nWhen multiple writes to the same 32 bit block of the same memory happen in the same tick, only one will succeed!\n§4Word size must be a power of two or results are undefined!",
   "item.rs_ctr2.memory.tip": "Stores data that can be read and written by connected §6Memory Reader§7s and §6Writer§7s.\nContent can be viewed by interacting.\nAdjacent cells combine.\n§4Removing cells or merging structures may cause data loss!",
   "item.rs_ctr2.corerope2": "Core Rope Matrix",
-  "item.rs_ctr2.corerope1": "Weaved Core Rope"
+  "item.rs_ctr2.corerope1": "Weaved Core Rope",
+  "block.rs_ctr2.block_breaker": "controlled Block Breaker",
+  "block.rs_ctr2.item_placer": "controlled Item User",
+  "gui.rs_ctr2.item_placer.restock0": "auto restock\n§80x000080",
+  "gui.rs_ctr2.item_placer.restock1": "No restock\n§80x0000§f8§80"
 }
