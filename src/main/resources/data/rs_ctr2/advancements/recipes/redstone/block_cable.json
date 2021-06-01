@@ -1,0 +1,28 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:block_cable",
+		"rs_ctr2:block_io",
+		"rs_ctr2:block_splitter"
+	]},
+	"criteria": {
+		"has_lapis": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "minecraft:lapis_lazuli" }
+			]}
+		},
+		"has_obsidian": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "minecraft:obsidian" }
+			]}
+		},
+		"has_enderpearl": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "minecraft:ender_pearl" }
+			]}
+		}
+	}
+}

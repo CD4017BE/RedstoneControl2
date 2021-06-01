@@ -2,17 +2,17 @@
 	"type": "minecraft:crafting_shaped",
 	"group": "io",
 	"pattern": [
-		"#|#",
-		"-- ",
-		"#|#"
+		"## ",
+		"--E",
+		"## "
 	],
 	"key": {
 		"#": { "item": "cd4017be_lib:microblock" },
-		"-": { "item": "rs_ctr2:item_cable" },
-		"|": { "item": "rs_ctr2:data_cable" }
+		"-": { "item": "rs_ctr2:block_cable" },
+		"E": { "item": "minecraft:ender_pearl" }
 	},
 	"result": {
-		"item": "rs_ctr2:item_io",
+		"item": "rs_ctr2:block_io",
 		"count": 4
 	}
 }

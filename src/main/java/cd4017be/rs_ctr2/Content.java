@@ -53,22 +53,24 @@ public class Content {
 	public static final OrientedBlock<ItemPlacer> ITEM_PLACER = null;
 
 	// items:
-	public static final DocumentedBlockItem autocraft = null;
-	public static final DocumentedBlockItem block_breaker = null, item_placer = null;
+	public static final DocumentedBlockItem
+	autocraft = null, block_breaker = null, item_placer = null;
+	public static final DocumentedBlockItem frame = null;
+
 	public static final SignalProbeItem probe = null;
 	public static final CableItem
-	data_cable = null, power_cable = null, item_cable = null, fluid_cable = null;
+	data_cable = null, power_cable = null, item_cable = null, fluid_cable = null, block_cable = null;
 	public static final OrientedPartItem
 	analog_in = null, logic_in = null, analog_out = null, logic_out = null,
-	comp_in = null, power_io = null, item_io = null, fluid_io = null,
-	splitter = null, not_gate = null, clock = null, constant = null,
+	comp_in = null, power_io = null, item_io = null, fluid_io = null, block_io = null,
+	splitter = null, power_splitter = null, item_splitter = null, fluid_splitter = null, block_splitter = null,
+	not_gate = null, clock = null, constant = null,
 	or_gate = null, and_gate = null, nor_gate = null, nand_gate = null,
 	xor_gate = null, schmitt_trigger = null, delay = null, comparator = null,
 	sr_latch = null, data_mux = null, clamp_gate = null, or_buffer = null,
 	bit_shift = null, sum_gate = null, product_gate = null, division_gate = null,
 	neg_gate = null, counter = null, mem_read = null, mem_write = null,
-	transformer = null, item_mover = null, fluid_mover = null,
-	power_splitter = null, item_splitter = null, fluid_splitter = null;
+	transformer = null, item_mover = null, fluid_mover = null;
 	public static final MultiblockItem<Battery> battery = null;
 	public static final MultiblockItem<SolarCell> solarcell = null;
 	public static final MultiblockItem<Memory> memory = null;
@@ -105,6 +107,7 @@ public class Content {
 			new CableItem(rs, IEnergyAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("power_cable")),
 			new CableItem(rs, IInventoryAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("item_cable")),
 			new CableItem(rs, IFluidAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("fluid_cable")),
+			new CableItem(rs, IBlockSupplier.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("block_cable")),
 			new OrientedPartItem(rs, AnalogIn::new).setRegistryName(rl("analog_in")),
 			new OrientedPartItem(rs, LogicIn::new).setRegistryName(rl("logic_in")),
 			new OrientedPartItem(rs, ComparatorIn::new).setRegistryName(rl("comp_in")),
@@ -113,7 +116,12 @@ public class Content {
 			new OrientedPartItem(rs, PowerIO::new).setRegistryName(rl("power_io")),
 			new OrientedPartItem(rs, ItemIO::new).setRegistryName(rl("item_io")),
 			new OrientedPartItem(rs, FluidIO::new).setRegistryName(rl("fluid_io")),
+			new OrientedPartItem(rs, BlockIO::new).setRegistryName(rl("block_io")),
 			new OrientedPartItem(rs, Splitter::new).setRegistryName(rl("splitter")),
+			new OrientedPartItem(rs, SplitterP::new).setRegistryName(rl("power_splitter")),
+			new OrientedPartItem(rs, SplitterI::new).setRegistryName(rl("item_splitter")),
+			new OrientedPartItem(rs, SplitterF::new).setRegistryName(rl("fluid_splitter")),
+			new OrientedPartItem(rs, SplitterB::new).setRegistryName(rl("block_splitter")),
 			new OrientedPartItem(rs, NotGate::new).setRegistryName(rl("not_gate")),
 			new OrientedPartItem(rs, Clock::new).setRegistryName(rl("clock")),
 			new OrientedPartItem(rs, Constant::new).setRegistryName(rl("constant")),
@@ -140,9 +148,6 @@ public class Content {
 			new OrientedPartItem(rs, Transformer::new).setRegistryName(rl("transformer")),
 			new OrientedPartItem(rs, ItemMover::new).tooltipArgs(SERVER_CFG.move_item).setRegistryName(rl("item_mover")),
 			new OrientedPartItem(rs, FluidMover::new).tooltipArgs(SERVER_CFG.move_fluid).setRegistryName(rl("fluid_mover")),
-			new OrientedPartItem(rs, SplitterP::new).setRegistryName(rl("power_splitter")),
-			new OrientedPartItem(rs, SplitterI::new).setRegistryName(rl("item_splitter")),
-			new OrientedPartItem(rs, SplitterF::new).setRegistryName(rl("fluid_splitter")),
 			new MultiblockItem<>(p, Battery::new).tooltipArgs(SERVER_CFG.battery_cap).setRegistryName(rl("battery")),
 			new MultiblockItem<>(p, SolarCell::new).tooltipArgs(SERVER_CFG.solar_power, SERVER_CFG.daytime).setRegistryName(rl("solarcell")),
 			new MultiblockItem<>(p, Memory::new).tooltipArgs(SERVER_CFG.memory_size).setRegistryName(rl("memory")),
@@ -187,7 +192,7 @@ public class Content {
 	public static void registerModels(ModelRegistryEvent ev) {
 		ModelLoader.addSpecialModel(SignalProbeRenderer.baseModel(probe));
 		for (ResourceLocation loc : Cable.MODELS)
-			ModelLoader.addSpecialModel(loc);
+			if (loc != null) ModelLoader.addSpecialModel(loc);
 		ModelLoader.addSpecialModel(Battery.MODEL);
 		ModelLoader.addSpecialModel(SolarCell.MODEL);
 		ModelLoader.addSpecialModel(Memory.MODEL);

@@ -50,7 +50,7 @@ implements NonNullConsumer<LazyOptional<T>> {
 
 	@Override
 	public void accept(LazyOptional<T> t) {
-		if (host == null) {
+		if (host == null || !onEdge()) {
 			inv = fallback();
 			return;
 		}

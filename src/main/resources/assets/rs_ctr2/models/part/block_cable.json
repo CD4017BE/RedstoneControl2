@@ -1,0 +1,4 @@
+{
+	"parent": "block/cube_all",
+	"textures": { "all": "rs_ctr2:part/block_cable" }
+}

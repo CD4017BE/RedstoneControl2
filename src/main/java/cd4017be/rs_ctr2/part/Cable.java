@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -38,7 +39,7 @@ public class Cable extends GridPart implements IWire {
 
 	@Override
 	public Item item() {
-		return ITEMS[ports[0] >> 12 & 3];
+		return ITEMS[ports[0] >> 12 & 7];
 	}
 
 	@Override
@@ -180,7 +181,7 @@ public class Cable extends GridPart implements IWire {
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public void fillModel(JitBakedModel model, long opaque) {
-		MicroBlockFace[] faces = MicroBlockFace.facesOf(MODELS[ports[0] >> 12 & 3]);
+		MicroBlockFace[] faces = MicroBlockFace.facesOf(MODELS[ports[0] >> 12 & 7]);
 		List<BakedQuad> quads = model.inner();
 		long b = bounds, visible = ~opaque;
 		drawPort(quads, faces, ports[0], b, visible);
@@ -247,13 +248,17 @@ public class Cable extends GridPart implements IWire {
 		Content.power_cable,
 		Content.item_cable,
 		Content.fluid_cable,
+		Content.block_cable,
+		Items.AIR, Items.AIR, Items.AIR
 	};
 
 	public static final ResourceLocation[] MODELS = {
 		Main.rl("part/data_cable"),
 		Main.rl("part/power_cable"),
 		Main.rl("part/item_cable"),
-		Main.rl("part/fluid_cable")
+		Main.rl("part/fluid_cable"),
+		Main.rl("part/block_cable"),
+		null, null, null
 	};
 
 }

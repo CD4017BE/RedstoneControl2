@@ -182,5 +182,10 @@
   "block.rs_ctr2.block_breaker": "controlled Block Breaker",
   "block.rs_ctr2.item_placer": "controlled Item User",
   "gui.rs_ctr2.item_placer.restock0": "auto restock\n§80x000080",
-  "gui.rs_ctr2.item_placer.restock1": "No restock\n§80x0000§f8§80"
+  "gui.rs_ctr2.item_placer.restock1": "No restock\n§80x0000§f8§80",
+  "item.rs_ctr2.block_cable": "Block Interaction Cable",
+  "item.rs_ctr2.block_cable.tip": "Connects §none§7 §5block interaction §auser§7\nwith §none§7 §5block interaction §9provider§7.",
+  "item.rs_ctr2.block_io": "Block Interaction Port",
+  "item.rs_ctr2.block_splitter": "Block Interaction Splitter",
+  "item.rs_ctr2.block_splitter.tip": "Re-provides a used block interaction 5 times."
 }
