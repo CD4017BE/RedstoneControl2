@@ -113,7 +113,8 @@ public class Content {
 			new OrientedBlock<>(p, flags(PipeController.class), HOR_AXIS).setRegistryName(rl("pipe_controller")),
 			new AccessPipe(
 				Properties.copy(Blocks.OBSIDIAN).harvestTool(ToolType.PICKAXE).harvestLevel(3)
-			).setRegistryName(rl("access_pipe"))
+			).setRegistryName(rl("access_pipe")),
+			new BlockTE<>(p, flags(Frame.class)).setRegistryName(rl("frame"))
 		);
 	}
 
