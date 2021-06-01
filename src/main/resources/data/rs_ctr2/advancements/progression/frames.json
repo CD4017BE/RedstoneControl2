@@ -1,0 +1,26 @@
+{
+	"parent": "rs_ctr2:progression/block_io2",
+	"display": {
+		"icon": { "item": "rs_ctr2:frame_controller" },
+		"title": { "translate": "advancements.rs_ctr2.frames" },
+		"description": { "translate": "advancements.rs_ctr2.frames.desc" },
+		"frame": "goal",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"place_ctr": {
+			"trigger": "minecraft:placed_block",
+			"conditions": {
+				"item": { "item": "rs_ctr2:frame_controller" }
+			}
+		},
+		"place_frame": {
+			"trigger": "minecraft:placed_block",
+			"conditions": {
+				"item": { "item": "rs_ctr2:frame" }
+			}
+		}
+	}
+}

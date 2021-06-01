@@ -1,0 +1,12 @@
+{
+	"parent": "block/cube",
+	"loader": "cd4017be_lib:te",
+	"textures": {
+		"particle": "rs_ctr2:block/frame0",
+		"active": "rs_ctr2:block/frame1"
+	},
+	"parts": {
+		"0": [ "ARG.rect([0,0,0, 16,16,16]#, [0,0, 16,16]#, 'Uv+S', 'particle');" ],
+		"1": [ "ARG.rect([0,0,0, 16,16,16]#, [0,0, 16,16]#, 'Uv+S', 'active');" ]
+	}
+}

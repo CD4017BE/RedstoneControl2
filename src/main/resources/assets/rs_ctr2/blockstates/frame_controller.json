@@ -1,0 +1,8 @@
+{
+	"variants": {
+		"orient=s12": { "model": "rs_ctr2:block/frame_controller" },
+		"orient=w12": { "model": "rs_ctr2:block/frame_controller", "y": 90 },
+		"orient=n12": { "model": "rs_ctr2:block/frame_controller", "y": 180 },
+		"orient=e12": { "model": "rs_ctr2:block/frame_controller", "y": 270 }
+	}
+}

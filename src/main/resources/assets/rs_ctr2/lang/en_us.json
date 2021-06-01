@@ -15,6 +15,8 @@
   "msg.rs_ctr2.no_file": "§cThe selected file doesn't exist!",
   "msg.rs_ctr2.count_slots": "Counting empty slots.",
   "msg.rs_ctr2.count_items": "Counting all items.",
+  "msg.rs_ctr2.visible": "§aRegion set to visible.",
+  "msg.rs_ctr2.invisible": "§cRegion set to invisible.",
   "gui.rs_ctr2.constant": "Value",
   "gui.rs_ctr2.ram": "Memory content",
   "gui.rs_ctr2.ram.layout": "%s2$d words of size %sd bit",
@@ -59,6 +61,8 @@
   "advancements.rs_ctr2.item_placer": "Item Interaction Bot",
   "advancements.rs_ctr2.autocraft": "Automatic Crafting",
   "advancements.rs_ctr2.autocraft.desc": "One machine to rule all the recipes!",
+  "advancements.rs_ctr2.frames": "3D printing Buildings",
+  "advancements.rs_ctr2.frames.desc": "Random Block Access Controllers are much easier to control but also more expensive.",
   "item.rs_ctr2.data_cable": "Data Cable",
   "item.rs_ctr2.data_cable.tip": "Connects §none§7 data §aoutput§7\nwith §none§7 data §9input§7.",
   "item.rs_ctr2.logic_in": "Logic reader",
@@ -194,6 +198,7 @@
   "block.rs_ctr2.item_placer": "controlled Item User",
   "gui.rs_ctr2.item_placer.restock0": "auto restock\n§80x000080",
   "gui.rs_ctr2.item_placer.restock1": "No restock\n§80x0000§f8§80",
+  "block.rs_ctr2.frame": "Interaction Frame",
   "item.rs_ctr2.block_cable": "Block Interaction Cable",
   "item.rs_ctr2.block_cable.tip": "Connects §none§7 §5block interaction §auser§7\nwith §none§7 §5block interaction §9provider§7.",
   "item.rs_ctr2.block_io": "Block Interaction Port",
@@ -275,5 +280,10 @@
   "state.rs_ctr2.item_buffer": "%sd/%sd§7 Items stored\n%sd/%sd§7 Types used",
   "item.rs_ctr2.label": "Text Label",
   "item.rs_ctr2.label.tip": "Interact with empty hand to edit text.\nInteract with Labels on the sides to extend.\nInteract with dye to change colors.\n§oCrouch placement recommended!",
-  "gui.rs_ctr2.label": "Label text"
+  "gui.rs_ctr2.label": "Label text",
+  "block.rs_ctr2.frame_controller": "Random Block Access Controller",
+  "state.rs_ctr2.frame_controller": "§90: §c%sd§7 ← [%sd...%sd]\n§91: §c%sd§7 ↑ [%sd...%sd]\n§92: §c%sd§7 ⨂ [%sd...%sd]\n§93: §5%ss",
+  "block.rs_ctr2.frame.tip": "Must be placed in all 8 (up to 27) corners of the cubiod regions that §6Random Block Access Controller§7s should operate in.\nDevices connect to the closest axis aligned Frame block and use the sourrounding regions (up to 8) combined.",
+  "block.rs_ctr2.frame.ext": "Frames connect up to %sd blocks apart and to machines within %sd blocks.",
+  "block.rs_ctr2.frame_controller.tip": "Provides interaction with blocks inside a cuboid region defined by §6Interaction Frame§7s.\nThe block is selected with 3 supplied §ccoordinate-numbers§7 [t-½] that are relative to the connected origin Frame."
 }

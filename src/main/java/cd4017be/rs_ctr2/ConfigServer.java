@@ -18,7 +18,8 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 	craft, block_break, hardness_break, item_place;
 	public final DoubleValue daytime;
 	public final IntValue rec_data, rec_power, rec_item, rec_fluid, rec_block;
-	public final IntValue memory_size, pipe_limit, item_buffer_size;
+	public final IntValue memory_size, item_buffer_size;
+	public final IntValue pipe_limit, frame_range, device_range;
 
 	protected ConfigServer() {
 		super(Type.SERVER);
@@ -62,6 +63,12 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 		pipe_limit = b
 		.comment("Maximum distance Block Interaction Pipes can be extended.")
 		.defineInRange("max_pipe_length", 256, 0, 30000000);
+		frame_range = b
+		.comment("Maximum distance between Frame blocks.")
+		.defineInRange("max_frame_distance", 96, 0, 255);
+		device_range = b
+		.comment("Maximum distance between Frame and machine.")
+		.defineInRange("max_device_distance", 16, 0, 255);
 		
 		b.push("recursion_limit");
 		rec_data = b.defineInRange("data", Link.REC_DATA, 0, 64);

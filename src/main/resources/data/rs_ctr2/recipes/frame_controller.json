@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"BEB",
+		"dWd",
+		"RRR"
+	],
+	"key": {
+		"W": { "item": "rs_ctr2:block_send" },
+		"R": { "item": "rs_ctr2:analog_out" },
+		"B": { "item": "rs_ctr2:block_io" },
+		"E": { "item": "minecraft:ender_eye" },
+		"d": { "item": "minecraft:diamond" }
+	},
+	"result": { "item": "rs_ctr2:frame_controller" }
+}

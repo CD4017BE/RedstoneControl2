@@ -1,0 +1,13 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" P ",
+		"PGP",
+		" P "
+	],
+	"key": {
+		"P": { "item": "rs_ctr2:access_pipe" },
+		"G": { "item": "minecraft:glowstone" }
+	},
+	"result": { "item": "rs_ctr2:frame" }
+}

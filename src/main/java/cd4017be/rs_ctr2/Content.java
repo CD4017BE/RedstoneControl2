@@ -13,6 +13,7 @@ import cd4017be.rs_ctr2.container.*;
 import cd4017be.rs_ctr2.container.gui.GuiRAM;
 import cd4017be.rs_ctr2.item.*;
 import cd4017be.rs_ctr2.part.*;
+import cd4017be.rs_ctr2.render.FrameRenderer;
 import cd4017be.rs_ctr2.render.SignalProbeRenderer;
 import cd4017be.rs_ctr2.tileentity.*;
 import cd4017be.lib.block.BlockTE;
@@ -38,6 +39,7 @@ import net.minecraftforge.common.ToolType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -60,11 +62,14 @@ public class Content {
 	public static final OrientedBlock<BlockBreaker> BLOCK_BREAKER = null;
 	public static final OrientedBlock<ItemPlacer> ITEM_PLACER = null;
 	public static final OrientedBlock<PipeController> PIPE_CONTROLLER = null;
+	public static final OrientedBlock<FrameController> FRAME_CONTROLLER = null;
 	public static final AccessPipe ACCESS_PIPE = null;
+	public static final BlockTE<Frame> FRAME = null;
 
 	// items:
 	public static final DocumentedBlockItem
-	autocraft = null, block_breaker = null, item_placer = null, pipe_controller = null;
+	autocraft = null, block_breaker = null, item_placer = null,
+	pipe_controller = null, frame_controller = null;
 	public static final DocumentedBlockItem frame = null, access_pipe = null;
 
 	public static final SignalProbeItem probe = null;
@@ -111,6 +116,7 @@ public class Content {
 			new OrientedBlock<>(p, flags(BlockBreaker.class), HOR_AXIS).setRegistryName(rl("block_breaker")),
 			new OrientedBlock<>(p, flags(ItemPlacer.class), HOR_AXIS).setRegistryName(rl("item_placer")),
 			new OrientedBlock<>(p, flags(PipeController.class), HOR_AXIS).setRegistryName(rl("pipe_controller")),
+			new OrientedBlock<>(p, flags(FrameController.class), HOR_AXIS).setRegistryName(rl("frame_controller")),
 			new AccessPipe(
 				Properties.copy(Blocks.OBSIDIAN).harvestTool(ToolType.PICKAXE).harvestLevel(3)
 			).setRegistryName(rl("access_pipe")),
@@ -130,7 +136,9 @@ public class Content {
 			new DocumentedBlockItem(BLOCK_BREAKER, p).tooltipArgs(SERVER_CFG.block_break, SERVER_CFG.hardness_break),
 			new DocumentedBlockItem(ITEM_PLACER, p).tooltipArgs(SERVER_CFG.item_place),
 			new DocumentedBlockItem(PIPE_CONTROLLER, p).tooltipArgs(SERVER_CFG.pipe_limit),
+			new DocumentedBlockItem(FRAME_CONTROLLER, p),
 			new DocumentedBlockItem(ACCESS_PIPE, p),
+			new DocumentedBlockItem(FRAME, p).tooltipArgs(SERVER_CFG.frame_range, SERVER_CFG.device_range),
 			new SignalProbeItem(probe).tab(CREATIVE_TAB).setRegistryName(rl("probe")),
 			new CableItem(rs, ISignalReceiver.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("data_cable")),
 			new CableItem(rs, IEnergyAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("power_cable")),
@@ -219,7 +227,9 @@ public class Content {
 			AUTOCRAFT.makeTEType(AutoCrafter::new),
 			BLOCK_BREAKER.makeTEType(BlockBreaker::new),
 			ITEM_PLACER.makeTEType(ItemPlacer::new),
-			PIPE_CONTROLLER.makeTEType(PipeController::new)
+			PIPE_CONTROLLER.makeTEType(PipeController::new),
+			FRAME_CONTROLLER.makeTEType(FrameController::new),
+			FRAME.makeTEType(Frame::new)
 		);
 	}
 
@@ -246,6 +256,7 @@ public class Content {
 		ScreenManager.register(iTEM_FILTER, ContainerItemFilter::setupGui);
 		ScreenManager.register(iTEM_BUFFER, ContainerItemBuffer::setupGui);
 		ScreenManager.register(lABEL, ContainerLabel::setupGui);
+		ClientRegistry.bindTileEntityRenderer(FRAME_CONTROLLER.tileType, FrameRenderer::new);
 	}
 
 	@SubscribeEvent

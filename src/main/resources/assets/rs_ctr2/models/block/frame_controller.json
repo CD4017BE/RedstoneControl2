@@ -1,0 +1,23 @@
+{
+	"parent": "block/cube",
+	"loader": "cd4017be_lib:rcp",
+	"textures": {
+		"particle": "rs_ctr2:block/frame_controller0",
+		"front": "rs_ctr2:block/frame_controller1",
+		"di": "cd4017be_lib:part/data_in",
+		"bp": "cd4017be_lib:part/block_p"
+	},
+	"code": [
+		"Loc Q = [0,0,0, 16,16,16]#; T = [0,0, 16,16]#;",
+		"for(F:['-vuW', '+vuE', 'v+uT', 'v-uB', 'Uv+S'])",
+		"	ARG.rect(Q, T, F);",
+		"ARG.rect(Q, T, 'uv-N', 'front');",
+		"port(x, y, tex) {",
+		"	ARG.rect([x,y,-0.0625, x+4,y+4,0]#, T, 'uv-N', tex);",
+		"}",
+		"port(12, 0, 'di');",
+		"port(8, 0, 'di');",
+		"port(4, 0, 'di');",
+		"port(0, 0, 'bp');"
+	]
+}
