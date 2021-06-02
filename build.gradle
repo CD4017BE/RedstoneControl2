@@ -25,10 +25,6 @@ sourceSets {
 		java { srcDirs = ["$projectDir/src/main/java"] }
 		resources { srcDirs = ["$projectDir/src/main/resources"] }
 	}
-	lib {
-		java { srcDirs = ["$projectDir/../CD4017BE_lib/src/java"] }
-		resources { srcDirs = ["$projectDir/../CD4017BE_lib/src/resources"] }
-	}
 }
 
 minecraft {
@@ -46,7 +42,7 @@ minecraft {
 	mappings channel: 'official', version: "${mc_version}"
 	// makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 	
-	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+	//accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
 	// Default run configurations.
 	// These can be tweaked, removed, or duplicated as needed.
@@ -70,9 +66,6 @@ minecraft {
 				rs_ctr {
 					source sourceSets.main
 				}
-				cd4017be_lib {
-					source sourceSets.lib
-				}
 			}
 		}
 
@@ -94,9 +87,6 @@ minecraft {
 			mods {
 				rs_ctr {
 					source sourceSets.main
-				}
-				cd4017be_lib {
-					source sourceSets.lib
 				}
 			}
 		}
@@ -122,9 +112,6 @@ minecraft {
 			mods {
 				rs_ctr {
 					source sourceSets.main
-				}
-				cd4017be_lib {
-					source sourceSets.lib
 				}
 			}
 		}
@@ -159,6 +146,17 @@ dependencies {
 	runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 	
 	compileOnly files("E:/git/CD4017BE_lib/build/libs/cd4017be_lib-${mc_version}-${lib_version}-deobf.jar")
+}
+
+eclipse {
+	classpath {
+		file {
+			whenMerged { 
+				def lib = entries.find { it.path.contains "cd4017be_lib-${mc_version}-${lib_version}-deobf.jar" }
+				lib.sourcePath = fileReference(file("E:/git/CD4017BE_lib/build/libs/cd4017be_lib-${mc_version}-${lib_version}-sources.jar"))
+			}
+		}
+	}
 }
 
 task deobfJar(type: Jar) {

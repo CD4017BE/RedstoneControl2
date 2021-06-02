@@ -37,20 +37,6 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="E:\git\RedstoneControl2\build\natives"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" output="bin/lib" path="src-java">
-		<attributes>
-			<attribute name="gradle_scope" value="lib"/>
-			<attribute name="gradle_used_by_scope" value="lib"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="E:\git\RedstoneControl2\build\natives"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="src" output="bin/lib" path="src-resources">
-		<attributes>
-			<attribute name="gradle_scope" value="lib"/>
-			<attribute name="gradle_used_by_scope" value="lib"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="E:\git\RedstoneControl2\build\natives"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry kind="output" path="bin/default"/>

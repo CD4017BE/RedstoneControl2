@@ -305,7 +305,7 @@ IUnnamedContainerProvider, IProbeInfo {
 	public Object[] stateInfo() {
 		return new Object[] {
 			"state.rs_ctr2.item_placer", clk, aim0, res,
-			-energy.transferEnergy(Integer.MIN_VALUE, true),
+			-energy.transferEnergy(-Integer.MAX_VALUE, true),
 			inv != IInventoryAccess.NOP,
 			IBlockSupplier.toString(target)
 		};

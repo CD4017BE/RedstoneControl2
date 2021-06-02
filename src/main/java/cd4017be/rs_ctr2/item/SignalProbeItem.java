@@ -19,6 +19,7 @@ import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 
@@ -32,6 +33,12 @@ public class SignalProbeItem extends DocumentedItem implements IGridItem {
 	@Override
 	public GridPart createPart() {
 		return null;
+	}
+
+	@Override
+	public boolean
+	doesSneakBypassUse(ItemStack stack, IWorldReader world, BlockPos pos, PlayerEntity player) {
+		return world.getBlockEntity(pos) instanceof IGridHost;
 	}
 
 	@Override

@@ -149,7 +149,7 @@ implements ISignalReceiver, IGate, IBlockSupplier, IProbeInfo {
 	public Object[] stateInfo() {
 		return new Object[] {
 			"state.rs_ctr2.block_breaker", clk, res,
-			-energy.transferEnergy(Integer.MIN_VALUE, true),
+			-energy.transferEnergy(-Integer.MAX_VALUE, true),
 			inv != IInventoryAccess.NOP,
 			IBlockSupplier.toString(target)
 		};

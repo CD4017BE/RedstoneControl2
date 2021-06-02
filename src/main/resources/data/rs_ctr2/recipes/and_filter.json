@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "unary_gates",
+	"pattern": [
+		"C",
+		"A",
+		"C"
+	],
+	"key": {
+		"C": { "item": "rs_ctr2:constant" },
+		"A": { "item": "rs_ctr2:and_gate" }
+	},
+	"result": {
+		"item": "rs_ctr2:and_filter",
+		"count": 2
+	}
+}

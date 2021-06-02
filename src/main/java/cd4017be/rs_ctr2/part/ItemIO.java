@@ -4,12 +4,14 @@ import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static net.minecraftforge.items.ItemHandlerHelper.canItemStacksStack;
+import static net.minecraftforge.items.wrapper.EmptyHandler.INSTANCE;
 
 import java.util.function.ObjIntConsumer;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 
 import cd4017be.api.grid.IGridHost;
+import cd4017be.api.grid.port.IBlockSupplier;
 import cd4017be.api.grid.port.IInventoryAccess;
 import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
@@ -24,7 +26,6 @@ import net.minecraft.util.Direction;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.wrapper.EmptyHandler;
 
 /**@author CD4017BE */
 public class ItemIO extends CapabilityIO<IItemHandler>
@@ -35,7 +36,7 @@ implements IInventoryAccess, IGate, IProbeInfo {
 	@Sync public boolean active;
 
 	public ItemIO() {
-		super(3);
+		super(4);
 		in0 = s0 = 0;
 		in1 = s1 = 255;
 	}
@@ -44,14 +45,10 @@ implements IInventoryAccess, IGate, IProbeInfo {
 	public void set(int pos, Orientation orient) {
 		super.set(pos, orient);
 		setBounds(pos, pos);
-		setPort(0, pos, Direction.SOUTH, IInventoryAccess.TYPE_ID);
-		setPort(1, pos, Direction.WEST, ISignalReceiver.TYPE_ID);
-		setPort(2, pos, Direction.EAST, ISignalReceiver.TYPE_ID);
-	}
-
-	@Override
-	protected IItemHandler fallback() {
-		return EmptyHandler.INSTANCE;
+		setPort(0, pos, Direction.NORTH, IBlockSupplier.TYPE_ID);
+		setPort(1, pos, Direction.SOUTH, IInventoryAccess.TYPE_ID);
+		setPort(2, pos, Direction.WEST, ISignalReceiver.TYPE_ID);
+		setPort(3, pos, Direction.EAST, ISignalReceiver.TYPE_ID);
 	}
 
 	@Override
@@ -67,19 +64,15 @@ implements IInventoryAccess, IGate, IProbeInfo {
 	@Override
 	public Object getHandler(int port) {
 		switch(port) {
-		case 0: return super.getHandler(port);
-		case 1: return (ISignalReceiver) (v, r) -> {
-			if (in0 != (in0 = v)) update();
-		};
-		case 2: return (ISignalReceiver) (v, r) -> {
-			if (in1 != (in1 = v)) update();
-		};
+		case 1: return this;
+		case 2: return (ISignalReceiver) (v, r)-> update(in0, in0 = v);
+		case 3: return (ISignalReceiver) (v, r)-> update(in1, in1 = v);
 		default: return null;
 		}
 	}
 
-	private void update() {
-		if (!active) {
+	private void update(int old, int val) {
+		if (val != old && !active) {
 			active = true;
 			GATE_UPDATER.add(this);
 		}
@@ -102,14 +95,14 @@ implements IInventoryAccess, IGate, IProbeInfo {
 
 	@Override
 	public void getContent(ObjIntConsumer<ItemStack> inspector, int rec) {
-		if (inv == null) accept(null);
+		IItemHandler inv = get(INSTANCE);
 		for (int l = min(s1, inv.getSlots()), i = max(s0, 0); i < l; i++)
 			inspector.accept(inv.getStackInSlot(i), inv.getSlotLimit(i));
 	}
 
 	@Override
 	public int transfer(int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target, int rec) {
-		if (inv == null) accept(null);
+		IItemHandler inv = get(INSTANCE);
 		for (int l = min(s1, inv.getSlots()), i = max(s0, 0); i < l; i++) {
 			//find matching item
 			ItemStack stack = inv.extractItem(i, amount, true);
@@ -144,7 +137,7 @@ implements IInventoryAccess, IGate, IProbeInfo {
 
 	@Override
 	public ItemStack insert(ItemStack stack, int rec) {
-		if (inv == null) accept(null);
+		IItemHandler inv = get(INSTANCE);
 		int l = min(s1, inv.getSlots()), p = l;
 		//fill non empty slots
 		for (int i = max(s0, 0); i < l; i++) {
@@ -164,7 +157,12 @@ implements IInventoryAccess, IGate, IProbeInfo {
 
 	@Override
 	public Object[] stateInfo() {
-		return new Object[]{"state.rs_ctr2.item_io", in0, in1};
+		IItemHandler inv = get(INSTANCE);
+		return new Object[]{
+			"state.rs_ctr2.item_io",
+			IBlockSupplier.toString(block),
+			inv.getSlots(), in0, in1
+		};
 	}
 
 }

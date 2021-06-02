@@ -85,7 +85,11 @@ public class SolarCell extends MultiBlock<SolarCell> implements ISlowTickable {
 
 	private void updatePower() {
 		World world = host.world();
-		power = Long.bitCount(bounds & FACES[1]) * SERVER_CFG.solar_power.get()
+		long b = host.bounds();
+		b = b >> 4 & 0x0fff_0fff_0fff_0fffL
+		  | b >> 8 & 0x00ff_00ff_00ff_00ffL
+		  | b >> 12 & 0x000f_000f_000f_000fL;
+		power = Long.bitCount(bounds & ~b) * SERVER_CFG.solar_power.get()
 		* world.getBrightness(LightType.SKY, host.pos().above()) / 15;
 		if (fixTime) {
 			float t = world.getTimeOfDay(1F);

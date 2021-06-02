@@ -272,7 +272,7 @@ ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {
 	public Object[] stateInfo() {
 		return new Object[] {
 			"state.rs_ctr2.autocraft", clk, p2, p1, slotI, res,
-			-energy.transferEnergy(Integer.MIN_VALUE, true)
+			-energy.transferEnergy(-Integer.MAX_VALUE, true)
 		};
 	}
 

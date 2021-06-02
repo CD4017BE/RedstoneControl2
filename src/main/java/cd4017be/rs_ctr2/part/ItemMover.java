@@ -118,7 +118,7 @@ implements ISignalReceiver, IGate, IProbeInfo {
 	public Object[] stateInfo() {
 		return new Object[]{
 			"state.rs_ctr2.item_mover", clk, num, res,
-			-energy.transferEnergy(Integer.MIN_VALUE, true),
+			-energy.transferEnergy(-Integer.MAX_VALUE, true),
 			a != IInventoryAccess.NOP, b != IInventoryAccess.NOP
 		};
 	}

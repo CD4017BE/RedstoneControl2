@@ -150,9 +150,9 @@
   "state.rs_ctr2.gate1": "§a0: §c0x%s08X %s1$d\n§91: §c0x%s08X %s2$d",
   "state.rs_ctr2.gate2": "§a0: §c0x%s08X %s1$d\n§91: §c0x%s08X %s2$d\n§92: §c0x%s08X %s3$d",
   "state.rs_ctr2.gate3": "§a0: §c0x%s08X %s1$d\n§91: §c0x%s08X %s2$d\n§92: §c0x%s08X %s3$d\n§93: §c0x%s08X %s4$d",
-  "state.rs_ctr2.direct": "§a0: §c0x%s08X %s1$d\n§91: §c?",
+  "state.rs_ctr2.direct": "§90: §c?\n§a1: §c0x%s08X %s1$d",
   "state.rs_ctr2.clock": "§a0: §c0x%s08X§7 Clock\n§91: §c%sd§7 Ticks\nt = %sd",
-  "state.rs_ctr2.item_io": "§90: §fInventory\n§91: §c%sd§7 First Slot\n§92: §c%sd§7 Last Slot",
+  "state.rs_ctr2.item_io": "§a0: §5%ss\n§91: §fInventory [%sd Slots]\n§92: §c%sd§7 First Slot\n§93: §c%sd§7 Last Slot",
   "state.rs_ctr2.sr_latch": "§a0: §c0x%s08X§7 Q\n§a1: §c0x%s08X§7 ¬Q\n§92: §c0x%s08X§7 Reset\n§93: §c0x%s08X§7 Set",
   "state.rs_ctr2.comp": "§a0: §c0x%s08X§7 Big > Small\n§91: §c%sd§7 Small\n§92: §c%sd§7 Big",
   "state.rs_ctr2.mux": "§a0: §c0x%s08X %s1$d\n§91: §c0x%s08X§7 Control\n§92: §c0x%s08X %s3$d§7 I0\n§93: §c0x%s08X %s4$d§7 I1",
@@ -196,5 +196,11 @@
   "state.rs_ctr2.autocraft": "§90: §c0x%s08X§7 Crafting Clock\n§91: §c0x%s08X§7 Low 2x3 Pattern\n§92: §c0x%s03X§7 Top 1x3 Pattern\n§93: §c0x%sX§7 I/O Slot\n§94: §fInternal Inventory\n§a5: §c0x%s01X§7 Error Code\n§a6: §e%sd RF§7 available energy",
   "state.rs_ctr2.block_breaker": "§90: §c0x%s08X§7 Clock\n§a1: §c0x%s01X§7 Error Code\n§a2: §e%sd RF§7 available energy\n§a3: §fcan output loot: %ss\n§a4: §5%ss",
   "state.rs_ctr2.item_placer": "§90: §c0x%s08X§7 Clock\n§95: §c0x%s06X§7 Interact Settings\n§a1: §c0x%s01X§7 Error Code\n§a2: §e%sd RF§7 available energy\n§a3: §fcan restock hand: %ss\n§a4: §5%ss",
-  "state.rs_ctr2.solar": "Generating %sd RF / 8 ticks\n§a0: §e%sd RF§7 storable energy"
+  "state.rs_ctr2.solar": "Generating %sd RF / 8 ticks\n§a0: §e%sd RF§7 storable energy",
+  "state.rs_ctr2.power_io": "§a0: §5%ss\n§91: §e%sd/%sd RF§7 storage",
+  "cd4017be.unloaded": "<position unloaded>",
+  "state.rs_ctr2.fluid_io": "§a0: §5%ss\n§91: §bis fluid container: %ss",
+  "item.rs_ctr2.and_filter": "AND-Filter Gate",
+  "item.rs_ctr2.and_filter.tip": "§A⏵§7 = §9⏴§7 AND number set in GUI (interact with block).",
+  "state.rs_ctr2.and_filter": "§7#: §c0x%s08X§7 AND-mask\n§90: §c0x%s08X§7 IN\n§a1: §c0x%s08X§7 OUT"
 }

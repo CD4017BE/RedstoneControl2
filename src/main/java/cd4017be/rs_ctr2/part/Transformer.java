@@ -77,9 +77,9 @@ public class Transformer extends SignalGate implements ISignalReceiver {
 
 	@Override
 	public Object[] stateInfo() {
-		int stoA = -a.transferEnergy(Integer.MIN_VALUE, true);
+		int stoA = -a.transferEnergy(-Integer.MAX_VALUE, true);
 		int capA = a.transferEnergy(Integer.MAX_VALUE, true) + stoA;
-		int stoB = -b.transferEnergy(Integer.MIN_VALUE, true);
+		int stoB = -b.transferEnergy(-Integer.MAX_VALUE, true);
 		int capB = b.transferEnergy(Integer.MAX_VALUE, true) + stoB;
 		return new Object[]{"state.rs_ctr2.transformer", state, in, stoA, capA, stoB, capB};
 	}

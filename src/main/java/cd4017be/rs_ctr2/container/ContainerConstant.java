@@ -4,6 +4,7 @@ import static cd4017be.rs_ctr2.Content.cONSTANT;
 
 import java.util.function.IntSupplier;
 
+import cd4017be.api.grid.GridPart;
 import cd4017be.lib.container.AdvancedContainer;
 import cd4017be.lib.gui.ModularGui;
 import cd4017be.lib.gui.comp.GuiFrame;
@@ -25,7 +26,7 @@ public class ContainerConstant extends AdvancedContainer {
 		super(cONSTANT, id, inv, StateSyncAdv.of(true, Constant.class), 0);
 	}
 
-	public ContainerConstant(int id, PlayerInventory inv, Constant part) {
+	public ContainerConstant(int id, PlayerInventory inv, GridPart part) {
 		super(cONSTANT, id, inv, StateSyncAdv.of(false, part), 0);
 	}
 
