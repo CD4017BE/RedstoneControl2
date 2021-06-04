@@ -1,0 +1,7 @@
+{
+	"switch_flip": {
+		"category": "block",
+		"subtitle": "rs_ctr2.subtitle.switch_flip",
+		"sounds": [ "rs_ctr2:switch_flip" ]
+	}
+}

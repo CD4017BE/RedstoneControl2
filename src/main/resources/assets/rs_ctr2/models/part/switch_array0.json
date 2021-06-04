@@ -1,0 +1,9 @@
+{
+	"parent": "rs_ctr2:part/grid_part",
+	"textures": {
+		"particle": "rs_ctr2:part/switch",
+		"port": "cd4017be_lib:part/data_out"
+	},
+	"loader": "cd4017be_lib:rcp",
+	"code": "(LOAD:'rs_ctr2:part/switch')().baseN(ARG, 1);"
+}

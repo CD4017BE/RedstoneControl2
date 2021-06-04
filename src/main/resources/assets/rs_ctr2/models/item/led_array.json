@@ -1,0 +1,20 @@
+{
+	"parent": "rs_ctr2:part/grid_part",
+	"textures": {
+		"particle": "rs_ctr2:part/switch",
+		"port": "cd4017be_lib:part/data_in"
+	},
+	"loader": "cd4017be_lib:rcp",
+	"code": [
+		"Loc M = (LOAD:'rs_ctr2:part/switch')();",
+		"ARG.translate(-2, -2, -2);",
+		"ARG.scale(2, 2, 2);",
+		"ARG.orient('xYz', 2, 2, 2);",
+		"M.baseN(ARG, 1);",
+		"ARG.translate(-1, 0, 0);",
+		"ARG.color(0.25, 0, 0, 1);",
+		"M.lamp(ARG);",
+		"ARG.translate(2, 0, 0);",
+		"M.lamp(ARG);"
+	]
+}

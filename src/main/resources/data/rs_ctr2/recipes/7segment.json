@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "io",
+	"pattern": [
+		"#N#",
+		"#A#",
+		"#B#"
+	],
+	"key": {
+		"#": { "item": "rs_ctr2:led" },
+		"N": { "item": "rs_ctr2:not_gate" },
+		"A": { "item": "rs_ctr2:and_gate" },
+		"B": { "item": "rs_ctr2:or_buffer" }
+	},
+	"result": { "item": "rs_ctr2:_7segment" }
+}

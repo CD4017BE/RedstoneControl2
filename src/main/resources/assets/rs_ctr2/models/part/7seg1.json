@@ -1,0 +1,6 @@
+{
+	"parent": "rs_ctr2:part/grid_part",
+	"textures": { "particle": "rs_ctr2:part/7segments" },
+	"loader": "cd4017be_lib:rcp",
+	"code": "(LOAD:'rs_ctr2:part/switch')().digit(ARG, 1);"
+}

@@ -1,0 +1,9 @@
+{
+	"parent": "rs_ctr2:part/grid_part",
+	"textures": {
+		"main": "rs_ctr2:part/7seg",
+		"port": "cd4017be_lib:part/data_in"
+	},
+	"loader": "cd4017be_lib:rcp",
+	"code": "(LOAD:'rs_ctr2:part/switch')().display(ARG, 3);"
+}

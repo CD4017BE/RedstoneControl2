@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "io",
+	"pattern": [
+		"L#-"
+	],
+	"key": {
+		"-": { "item": "rs_ctr2:data_cable" },
+		"#": { "item": "cd4017be_lib:microblock" },
+		"L": { "item": "minecraft:lever" }
+	},
+	"result": {
+		"item": "rs_ctr2:switch",
+		"count": 4
+	}
+}

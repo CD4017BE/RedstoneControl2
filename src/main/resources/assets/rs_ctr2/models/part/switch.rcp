@@ -1,0 +1,61 @@
+base(M) {
+	Loc Q = [1,1,0, 3,3,1]#, T = [4,2, 8,4]#;
+	M.rect(Q, [4,4, 12,12]#, 'uV-N', 'port');
+	M.rect(Q, [8,0, 12,4]#, 'uV+');
+	for(F:['-uv', '+uv', 'u+v', 'u-v'])
+		M.rect(Q, T, F);
+}
+
+base2(M, port, sides) {
+	Loc Q = [0,1,0, 4,3,1]#, T = [0,0, 8,2]#;
+	M.rect(Q, [0,4, 16,12]#, 'uV-N', port);
+	M.rect(Q, [8,0, 16,4]#, 'uV+');
+	for(F:sides) M.rect(Q, [4,2, 8,4]#, F);
+	for(F:['u+v', 'u-v']) M.rect(Q, T, F);
+}
+
+baseN(M, n) {
+	if(n == 1) base2(M, 'port', ['-uvW', '+uvE']);
+	else {
+		Loc sides = [[], ['-uvW'], ['+uvE']];
+		for(i : n-1) {
+			base2(M, 'back', sides:(i == 0 & 1));
+			M.translate(4, 0, 0);
+		}
+		base2(M, 'port', sides:2);
+	}
+}
+
+lever(M, angle) {
+	M.push();
+	M.translate(2, 2, 0.5);
+	M.rotate(1, 0, 0, angle);
+	Loc Q = [-0.5,-0.5,0, 0.5,0.5,2.5]#, T = [4,4, 8,16]#;
+	for(F:['-Uv', '+Uv']) M.rect(Q, T, F);
+	M.rect(Q, [8,4, 12,16]#, 'U+v');
+	M.rect(Q, [12,4, 16,16]#, 'U-v');
+	M.rect(Q, [0,12, 4,16]#, 'UV+');
+	M.pop();
+}
+
+lamp(M) {
+	Loc Q = [1.5,1.5,1, 2.5,2.5,2.5]#, T = [0,2, 4,8]#;
+	M.rect(Q, [0,8, 4,12]#, 'uV+');
+	for(F:['-uv', '+uv', 'u+v', 'u-v'])
+		M.rect(Q, T, F);
+}
+
+digit(M, i) {
+	Loc u = (i & 7) << 1, v = i & 8;
+	M.rect([0.25,0.5,0, 1.75,3.5,4.01]#, [u,v, u+2,v+7]#, 'Uv+');
+}
+
+display(M, n) {
+	Loc x = 4*n;
+	Loc Q = [0,0,0, x,4,4]#, T = [0,4, x,8]#;
+	M.rect(Q, [0,8, x,12]#, 'Uv-N', 'main');
+	M.rect(Q, [0,0, x,4]#, 'Uv+S', 'main');
+	for(F:['U+vT', 'U-vB']) M.rect(Q, T, F, 'main');
+	for(F:['-UvW', '+UvE']) M.rect(Q, [0,12, 4,16]#, F, 'main');
+	M.rect([x-3.25,0.75,-0.01, x-0.75,3.25,4]#, [3,3, 13,13]#, 'uv-N', 'port');
+}

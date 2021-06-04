@@ -202,5 +202,17 @@
   "state.rs_ctr2.fluid_io": "§a0: §5%ss\n§91: §bis fluid container: %ss",
   "item.rs_ctr2.and_filter": "AND-Filter Gate",
   "item.rs_ctr2.and_filter.tip": "§A⏵§7 = §9⏴§7 AND number set in GUI (interact with block).",
-  "state.rs_ctr2.and_filter": "§7#: §c0x%s08X§7 AND-mask\n§90: §c0x%s08X§7 IN\n§a1: §c0x%s08X§7 OUT"
+  "state.rs_ctr2.and_filter": "§7#: §c0x%s08X§7 AND-mask\n§90: §c0x%s08X§7 IN\n§a1: §c0x%s08X§7 OUT",
+  "item.rs_ctr2.switch": "Small Switch",
+  "item.rs_ctr2.led": "Small Lamp",
+  "item.rs_ctr2.switch.tip": "§A⏵§7 = -1 if ON, 0 if OFF.",
+  "item.rs_ctr2.led.tip": "Lights up if §9⏵§7 ≠ 0.\nInteract with dye to change color.",
+  "item.rs_ctr2.switch_array": "Binary Switch Array",
+  "item.rs_ctr2.led_array": "Binary Lamp Array",
+  "item.rs_ctr2.switch_array.tip": "§a⏵§7 = binary number represented by switches.\nInteract with Switch Arrays on the sides to extend.",
+  "item.rs_ctr2.led_array.tip": "Displays §9⏵§7 in binary.\nInteract with Lamp Arrays on the sides to extend.\nInteract with dye to change color.",
+  "item.rs_ctr2._7segment": "7-Segment Display",
+  "item.rs_ctr2._7segment.tip": "Displays §9⏵§7 as hexadecimal number (see §6BCD-Converter§7).\nInteract with Displays on the sides to extend.\nInteract with dye to change color.",
+  "item.rs_ctr2.bcd_converter": "BCD-Converter",
+  "item.rs_ctr2.bcd_converter.tip": "§a⏵§7 = §9⏴§7 converted to \"binary counted decimal\".\nUsed to display decimal numbers on §67-Segment Display§7s."
 }

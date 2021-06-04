@@ -3,6 +3,9 @@ package cd4017be.rs_ctr2;
 import static cd4017be.lib.block.BlockTE.flags;
 import static cd4017be.lib.property.PropertyOrientation.HOR_AXIS;
 import static cd4017be.rs_ctr2.Main.*;
+import static net.minecraftforge.client.model.ModelLoader.addSpecialModel;
+
+import java.util.function.Supplier;
 
 import cd4017be.api.grid.port.*;
 import cd4017be.rs_ctr2.container.*;
@@ -15,6 +18,8 @@ import cd4017be.lib.block.BlockTE;
 import cd4017be.lib.block.OrientedBlock;
 import cd4017be.lib.item.DocumentedBlockItem;
 import cd4017be.lib.item.DocumentedItem;
+import cd4017be.lib.part.OrientedPart;
+import cd4017be.lib.templates.BaseSound;
 import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -23,10 +28,10 @@ import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.*;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -70,7 +75,9 @@ public class Content {
 	sr_latch = null, data_mux = null, clamp_gate = null, or_buffer = null,
 	bit_shift = null, sum_gate = null, product_gate = null, division_gate = null,
 	neg_gate = null, counter = null, mem_read = null, mem_write = null,
-	transformer = null, item_mover = null, fluid_mover = null;
+	transformer = null, item_mover = null, fluid_mover = null,
+	switcH = null, led = null, switch_array = null, led_array = null,
+	_7segment = null, bcd_converter = null;
 	public static final MultiblockItem<Battery> battery = null;
 	public static final MultiblockItem<SolarCell> solarcell = null;
 	public static final MultiblockItem<Memory> memory = null;
@@ -80,6 +87,9 @@ public class Content {
 	public static final ContainerType<ContainerAutoCraft> aUTOCRAFT = null;
 	public static final ContainerType<ContainerMemory> mEMORY = null;
 	public static final ContainerType<ContainerItemPlacer> iTEM_PLACER = null;
+
+	//sounds:
+	public static final BaseSound SWITCH_FLIp = null;
 
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> ev) {
@@ -108,52 +118,66 @@ public class Content {
 			new CableItem(rs, IInventoryAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("item_cable")),
 			new CableItem(rs, IFluidAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("fluid_cable")),
 			new CableItem(rs, IBlockSupplier.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("block_cable")),
-			new OrientedPartItem(rs, AnalogIn::new).setRegistryName(rl("analog_in")),
-			new OrientedPartItem(rs, LogicIn::new).setRegistryName(rl("logic_in")),
-			new OrientedPartItem(rs, ComparatorIn::new).setRegistryName(rl("comp_in")),
-			new OrientedPartItem(rs, AnalogOut::new).setRegistryName(rl("analog_out")),
-			new OrientedPartItem(rs, LogicOut::new).setRegistryName(rl("logic_out")),
-			new OrientedPartItem(rs, PowerIO::new).setRegistryName(rl("power_io")),
-			new OrientedPartItem(rs, ItemIO::new).setRegistryName(rl("item_io")),
-			new OrientedPartItem(rs, FluidIO::new).setRegistryName(rl("fluid_io")),
-			new OrientedPartItem(rs, BlockIO::new).setRegistryName(rl("block_io")),
-			new OrientedPartItem(rs, Splitter::new).setRegistryName(rl("splitter")),
-			new OrientedPartItem(rs, SplitterP::new).setRegistryName(rl("power_splitter")),
-			new OrientedPartItem(rs, SplitterI::new).setRegistryName(rl("item_splitter")),
-			new OrientedPartItem(rs, SplitterF::new).setRegistryName(rl("fluid_splitter")),
-			new OrientedPartItem(rs, SplitterB::new).setRegistryName(rl("block_splitter")),
-			new OrientedPartItem(rs, NotGate::new).setRegistryName(rl("not_gate")),
-			new OrientedPartItem(rs, Clock::new).setRegistryName(rl("clock")),
-			new OrientedPartItem(rs, Constant::new).setRegistryName(rl("constant")),
-			new OrientedPartItem(rs, AndFilter::new).setRegistryName(rl("and_filter")),
-			new OrientedPartItem(rs, OrGate::new).setRegistryName(rl("or_gate")),
-			new OrientedPartItem(rs, AndGate::new).setRegistryName(rl("and_gate")),
-			new OrientedPartItem(rs, NorGate::new).setRegistryName(rl("nor_gate")),
-			new OrientedPartItem(rs, NandGate::new).setRegistryName(rl("nand_gate")),
-			new OrientedPartItem(rs, XorGate::new).setRegistryName(rl("xor_gate")),
-			new OrientedPartItem(rs, SchmittTrigger::new).setRegistryName(rl("schmitt_trigger")),
-			new OrientedPartItem(rs, Delay::new).setRegistryName(rl("delay")),
-			new OrientedPartItem(rs, Comparator::new).setRegistryName(rl("comparator")),
-			new OrientedPartItem(rs, SRLatch::new).setRegistryName(rl("sr_latch")),
-			new OrientedPartItem(rs, DataMux::new).setRegistryName(rl("data_mux")),
-			new OrientedPartItem(rs, ClampGate::new).setRegistryName(rl("clamp_gate")),
-			new OrientedPartItem(rs, OrBuffer::new).setRegistryName(rl("or_buffer")),
-			new OrientedPartItem(rs, BitShift::new).setRegistryName(rl("bit_shift")),
-			new OrientedPartItem(rs, SumGate::new).setRegistryName(rl("sum_gate")),
-			new OrientedPartItem(rs, MultiplyGate::new).setRegistryName(rl("product_gate")),
-			new OrientedPartItem(rs, DivisionGate::new).setRegistryName(rl("division_gate")),
-			new OrientedPartItem(rs, Negate::new).setRegistryName(rl("neg_gate")),
-			new OrientedPartItem(rs, Counter::new).setRegistryName(rl("counter")),
-			new OrientedPartItem(rs, MemRead::new).setRegistryName(rl("mem_read")),
-			new OrientedPartItem(rs, MemWrite::new).setRegistryName(rl("mem_write")),
-			new OrientedPartItem(rs, Transformer::new).setRegistryName(rl("transformer")),
-			new OrientedPartItem(rs, ItemMover::new).tooltipArgs(SERVER_CFG.move_item).setRegistryName(rl("item_mover")),
-			new OrientedPartItem(rs, FluidMover::new).tooltipArgs(SERVER_CFG.move_fluid).setRegistryName(rl("fluid_mover")),
+			orientedPart("analog_in", rs, AnalogIn::new),
+			orientedPart("logic_in", rs, LogicIn::new),
+			orientedPart("comp_in", rs, ComparatorIn::new),
+			orientedPart("analog_out", rs, AnalogOut::new),
+			orientedPart("logic_out", rs, LogicOut::new),
+			orientedPart("power_io", rs, PowerIO::new),
+			orientedPart("item_io", rs, ItemIO::new),
+			orientedPart("fluid_io", rs, FluidIO::new),
+			orientedPart("block_io", rs, BlockIO::new),
+			orientedPart("splitter", rs, Splitter::new),
+			orientedPart("power_splitter", rs, SplitterP::new),
+			orientedPart("item_splitter", rs, SplitterI::new),
+			orientedPart("fluid_splitter", rs, SplitterF::new),
+			orientedPart("block_splitter", rs, SplitterB::new),
+			orientedPart("not_gate", rs, NotGate::new),
+			orientedPart("clock", rs, Clock::new),
+			orientedPart("constant", rs, Constant::new),
+			orientedPart("and_filter", rs, AndFilter::new),
+			orientedPart("or_gate", rs, OrGate::new),
+			orientedPart("and_gate", rs, AndGate::new),
+			orientedPart("nor_gate", rs, NorGate::new),
+			orientedPart("nand_gate", rs, NandGate::new),
+			orientedPart("xor_gate", rs, XorGate::new),
+			orientedPart("schmitt_trigger", rs, SchmittTrigger::new),
+			orientedPart("delay", rs, Delay::new),
+			orientedPart("comparator", rs, Comparator::new),
+			orientedPart("sr_latch", rs, SRLatch::new),
+			orientedPart("data_mux", rs, DataMux::new),
+			orientedPart("clamp_gate", rs, ClampGate::new),
+			orientedPart("or_buffer", rs, OrBuffer::new),
+			orientedPart("bit_shift", rs, BitShift::new),
+			orientedPart("sum_gate", rs, SumGate::new),
+			orientedPart("product_gate", rs, MultiplyGate::new),
+			orientedPart("division_gate", rs, DivisionGate::new),
+			orientedPart("neg_gate", rs, Negate::new),
+			orientedPart("counter", rs, Counter::new),
+			orientedPart("mem_read", rs, MemRead::new),
+			orientedPart("mem_write", rs, MemWrite::new),
+			orientedPart("transformer", rs, Transformer::new),
+			orientedPart("item_mover", rs, ItemMover::new).tooltipArgs(SERVER_CFG.move_item),
+			orientedPart("fluid_mover", rs, FluidMover::new).tooltipArgs(SERVER_CFG.move_fluid),
+			orientedPart("switch", rs, Switch::new),
+			orientedPart("led", rs, LED::new),
+			orientedPart("switch_array", rs, SwitchArray::new),
+			orientedPart("led_array", rs, LEDArray::new),
+			orientedPart("_7segment", rs, _7Segment::new),
+			orientedPart("bcd_converter", rs, BCDConverter::new),
 			new MultiblockItem<>(p, Battery::new).tooltipArgs(SERVER_CFG.battery_cap).setRegistryName(rl("battery")),
 			new MultiblockItem<>(p, SolarCell::new).tooltipArgs(SERVER_CFG.solar_power, SERVER_CFG.daytime).setRegistryName(rl("solarcell")),
 			new MultiblockItem<>(p, Memory::new).tooltipArgs(SERVER_CFG.memory_size).setRegistryName(rl("memory")),
 			item(p, "corerope1"), item(p, "corerope2")
 		);
+	}
+
+	private static OrientedPartItem orientedPart(
+		String id, Item.Properties p, Supplier<OrientedPart> factory
+	) {
+		OrientedPartItem item = new OrientedPartItem(p, factory);
+		item.setRegistryName(rl(id));
+		return item;
 	}
 
 	private static Item item(Item.Properties p, String id) {
@@ -191,12 +215,27 @@ public class Content {
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
 	public static void registerModels(ModelRegistryEvent ev) {
-		ModelLoader.addSpecialModel(SignalProbeRenderer.baseModel(probe));
+		addSpecialModel(SignalProbeRenderer.baseModel(probe));
 		for (ResourceLocation loc : Cable.MODELS)
-			if (loc != null) ModelLoader.addSpecialModel(loc);
-		ModelLoader.addSpecialModel(Battery.MODEL);
-		ModelLoader.addSpecialModel(SolarCell.MODEL);
-		ModelLoader.addSpecialModel(Memory.MODEL);
+			if (loc != null) addSpecialModel(loc);
+		addSpecialModel(Battery.MODEL);
+		addSpecialModel(SolarCell.MODEL);
+		addSpecialModel(Memory.MODEL);
+		addSpecialModel(Switch.BASE);
+		addSpecialModel(Switch.OFF);
+		addSpecialModel(Switch.ON);
+		addSpecialModel(LED.LED);
+		ExtendablePart.registerModels(switch_array);
+		ExtendablePart.registerModels(_7segment);
+		for (int i = 0; i < 16; i++)
+			addSpecialModel(_7Segment.MODELS[i] = rl("part/7seg" + Integer.toHexString(i)));
+	}
+
+	@SubscribeEvent
+	public static void registerSounds(Register<SoundEvent> ev) {
+		ev.getRegistry().registerAll(
+			new BaseSound(rl("switch_flip"))
+		);
 	}
 
 }

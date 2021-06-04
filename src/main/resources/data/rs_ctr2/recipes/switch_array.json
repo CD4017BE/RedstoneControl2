@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "io",
+	"pattern": [
+		"XX"
+	],
+	"key": {
+		"X": { "item": "rs_ctr2:switch" }
+	},
+	"result": { "item": "rs_ctr2:switch_array" }
+}
