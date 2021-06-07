@@ -1,6 +1,6 @@
 {
 	"type": "minecraft:crafting_shaped",
-	"group": "logic_io",
+	"group": "data_io",
 	"pattern": [
 		"## ",
 		"-RR",

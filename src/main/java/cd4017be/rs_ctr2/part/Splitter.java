@@ -35,7 +35,7 @@ implements ISignalReceiver, IProbeInfo {
 
 	@Override
 	public Object getHandler(int port) {
-		return this;
+		return port == 0 ? this : null;
 	}
 
 	@Override

@@ -223,5 +223,12 @@
   "block.rs_ctr2.access_pipe": "Interaction Pipe",
   "state.rs_ctr2.pipe_controller": "§90: §c%sd§7 Direction [↑↓⨂⨀←→]\n§91: §f%sd Interaction Pipes\n§92,3: §5%ss",
   "block.rs_ctr2.access_pipe.tip": "Inserted into the §fInventory Port§7 of an §6Interaction Pipe Driver§7 for path building.",
-  "block.rs_ctr2.pipe_controller.tip": "Lets machines §5interact with distant blocks§7 via a path of §6Interaction Pipe§7 that extends by insertion and retracts by extraction of items through its §finventory port§7.\nExtending direction and target block are controlled by §cdata input§7."
+  "block.rs_ctr2.pipe_controller.tip": "Lets machines §5interact with distant blocks§7 via a path of §6Interaction Pipe§7 that extends by insertion and retracts by extraction of items through its §finventory port§7.\nExtending direction and target block are controlled by §cdata input§7 [t-½].",
+  "block.rs_ctr2.item_placer.tip": "Performs an emulated player interaction on the block in front of it, whenever any bit in §9clock§7[t-1] transitions low to high.\n§9Settings§7[t-1] controls interaction parameters such as selected Item, aim, crouching, ... (see GUI).\nConsumed items are automatically restocked from the §fconnected Inventory§7.\n§aError Codes§7: 1 = block unloaded, 2 = action failed/passed, 4 = couldn't restock, 8 = no energy. ",
+  "block.rs_ctr2.block_breaker.tip": "Breaks the block in front of it whenever any bit in §9clock§7[t-1] transitions low to high.\nHarvested items are send to the §fconnected Inventory§7.\n§aError Codes§7: 1 = unloaded block, 2 = unbreakable/air, 4 = inventory full, 8 = no energy.",
+  "block.rs_ctr2.autocraft.tip": "Automatically crafts items based on a hexadecimal §9pattern§7 that maps the crafting grid slots onto its 16-slot §finternal inventory§7.\nCrafting is executed @ t+½ whenever any bit in §9clock§7 transitioned low to high.\n§aError Codes§7: 1 = missing ingredients, 2 = invalid recipe, 4 = output slot full, 8 = no energy.",
+  "block.rs_ctr2.pipe_controller.ext": "Pipe can extend up to %sd blocks.",
+  "block.rs_ctr2.block_breaker.ext": "Energy Consumption: %sd RF + block_hardness * %sd RF",
+  "block.rs_ctr2.autocraft.ext": "Energy consumption: %sd RF per craft.",
+  "block.rs_ctr2.item_placer.ext": "Energy Consumption: %sd RF"
 }

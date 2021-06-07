@@ -1,0 +1,22 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:led",
+		"rs_ctr2:led_array",
+		"rs_ctr2:7segment"
+	]},
+	"criteria": {
+		"has_glowstone": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "minecraft:glowstone_dust" }
+			]}
+		},
+		"has_cable": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:data_cable" }
+			]}
+		}
+	}
+}

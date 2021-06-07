@@ -114,10 +114,10 @@ public class Content {
 		.stacksTo(1).setISTER(()-> SignalProbeRenderer::new);
 		Item.Properties p = new Item.Properties().tab(CREATIVE_TAB);
 		ev.getRegistry().registerAll(
-			new DocumentedBlockItem(AUTOCRAFT, p),
-			new DocumentedBlockItem(BLOCK_BREAKER, p),
-			new DocumentedBlockItem(ITEM_PLACER, p),
-			new DocumentedBlockItem(PIPE_CONTROLLER, p),
+			new DocumentedBlockItem(AUTOCRAFT, p).tooltipArgs(SERVER_CFG.craft),
+			new DocumentedBlockItem(BLOCK_BREAKER, p).tooltipArgs(SERVER_CFG.block_break, SERVER_CFG.hardness_break),
+			new DocumentedBlockItem(ITEM_PLACER, p).tooltipArgs(SERVER_CFG.item_place),
+			new DocumentedBlockItem(PIPE_CONTROLLER, p).tooltipArgs(SERVER_CFG.pipe_limit),
 			new DocumentedBlockItem(ACCESS_PIPE, p),
 			new SignalProbeItem(probe).tab(CREATIVE_TAB).setRegistryName(rl("probe")),
 			new CableItem(rs, ISignalReceiver.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("data_cable")),

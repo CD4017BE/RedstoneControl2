@@ -158,7 +158,7 @@ IUnnamedContainerProvider, IProbeInfo {
 		if (b == null) return R_UNLOADED;
 		BlockPos pos = b.left;
 		ServerWorld world = b.right;
-		int e = -SERVER_CFG.block_break.get();
+		int e = -SERVER_CFG.item_place.get();
 		if (energy.transferEnergy(e, true) != e) return R_NO_ENERGY;
 		BlockRayTraceResult res = setupInteraction(player, world, pos, orientation(), aim);
 		Hand hand = player.inventory.selected < 36 ? MAIN_HAND : OFF_HAND;

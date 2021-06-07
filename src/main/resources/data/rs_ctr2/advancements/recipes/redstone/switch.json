@@ -1,0 +1,21 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:switch",
+		"rs_ctr2:switch_array"
+	]},
+	"criteria": {
+		"has_lever": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "minecraft:lever" }
+			]}
+		},
+		"has_cable": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:data_cable" }
+			]}
+		}
+	}
+}
