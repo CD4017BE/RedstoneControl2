@@ -1,0 +1,15 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:access_pipe",
+		"rs_ctr2:pipe_controller"
+	]},
+	"criteria": {
+		"has_block_port": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:block_io" }
+			]}
+		}
+	}
+}

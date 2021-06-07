@@ -1,0 +1,22 @@
+{
+	"parent": "rs_ctr2:progression/block_io",
+	"display": {
+		"icon": { "item": "rs_ctr2:pipe_controller" },
+		"title": { "translate": "advancements.rs_ctr2.block_io2" },
+		"description": { "translate": "advancements.rs_ctr2.block_io2.desc" },
+		"frame": "goal",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"io": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{ "item": "rs_ctr2:pipe_controller" }
+				]
+			}
+		}
+	}
+}

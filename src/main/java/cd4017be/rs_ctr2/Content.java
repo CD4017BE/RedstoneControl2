@@ -8,6 +8,7 @@ import static net.minecraftforge.client.model.ModelLoader.addSpecialModel;
 import java.util.function.Supplier;
 
 import cd4017be.api.grid.port.*;
+import cd4017be.rs_ctr2.block.AccessPipe;
 import cd4017be.rs_ctr2.container.*;
 import cd4017be.rs_ctr2.container.gui.GuiRAM;
 import cd4017be.rs_ctr2.item.*;
@@ -56,11 +57,13 @@ public class Content {
 	public static final OrientedBlock<AutoCrafter> AUTOCRAFT = null;
 	public static final OrientedBlock<BlockBreaker> BLOCK_BREAKER = null;
 	public static final OrientedBlock<ItemPlacer> ITEM_PLACER = null;
+	public static final OrientedBlock<PipeController> PIPE_CONTROLLER = null;
+	public static final AccessPipe ACCESS_PIPE = null;
 
 	// items:
 	public static final DocumentedBlockItem
-	autocraft = null, block_breaker = null, item_placer = null;
-	public static final DocumentedBlockItem frame = null;
+	autocraft = null, block_breaker = null, item_placer = null, pipe_controller = null;
+	public static final DocumentedBlockItem frame = null, access_pipe = null;
 
 	public static final SignalProbeItem probe = null;
 	public static final CableItem
@@ -97,7 +100,9 @@ public class Content {
 		ev.getRegistry().registerAll(
 			new OrientedBlock<>(p, flags(AutoCrafter.class), HOR_AXIS).setRegistryName(rl("autocraft")),
 			new OrientedBlock<>(p, flags(BlockBreaker.class), HOR_AXIS).setRegistryName(rl("block_breaker")),
-			new OrientedBlock<>(p, flags(ItemPlacer.class), HOR_AXIS).setRegistryName(rl("item_placer"))
+			new OrientedBlock<>(p, flags(ItemPlacer.class), HOR_AXIS).setRegistryName(rl("item_placer")),
+			new OrientedBlock<>(p, flags(PipeController.class), HOR_AXIS).setRegistryName(rl("pipe_controller")),
+			new AccessPipe(p).setRegistryName(rl("access_pipe"))
 		);
 	}
 
@@ -112,6 +117,8 @@ public class Content {
 			new DocumentedBlockItem(AUTOCRAFT, p),
 			new DocumentedBlockItem(BLOCK_BREAKER, p),
 			new DocumentedBlockItem(ITEM_PLACER, p),
+			new DocumentedBlockItem(PIPE_CONTROLLER, p),
+			new DocumentedBlockItem(ACCESS_PIPE, p),
 			new SignalProbeItem(probe).tab(CREATIVE_TAB).setRegistryName(rl("probe")),
 			new CableItem(rs, ISignalReceiver.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("data_cable")),
 			new CableItem(rs, IEnergyAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("power_cable")),
@@ -189,7 +196,8 @@ public class Content {
 		ev.getRegistry().registerAll(
 			AUTOCRAFT.makeTEType(AutoCrafter::new),
 			BLOCK_BREAKER.makeTEType(BlockBreaker::new),
-			ITEM_PLACER.makeTEType(ItemPlacer::new)
+			ITEM_PLACER.makeTEType(ItemPlacer::new),
+			PIPE_CONTROLLER.makeTEType(PipeController::new)
 		);
 	}
 

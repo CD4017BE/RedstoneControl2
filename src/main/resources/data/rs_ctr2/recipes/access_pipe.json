@@ -1,0 +1,11 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"--I"
+	],
+	"key": {
+		"-": { "item": "rs_ctr2:block_cable" },
+		"I": { "item": "minecraft:iron_bars" }
+	},
+	"result": { "item": "rs_ctr2:access_pipe" }
+}

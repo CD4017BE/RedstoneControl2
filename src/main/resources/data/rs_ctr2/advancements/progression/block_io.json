@@ -1,0 +1,22 @@
+{
+	"parent": "rs_ctr2:progression/microblocks",
+	"display": {
+		"icon": { "item": "rs_ctr2:block_io" },
+		"title": { "translate": "advancements.rs_ctr2.block_io" },
+		"description": { "translate": "advancements.rs_ctr2.block_io.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"io": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{ "item": "rs_ctr2:block_io" }
+				]
+			}
+		}
+	}
+}

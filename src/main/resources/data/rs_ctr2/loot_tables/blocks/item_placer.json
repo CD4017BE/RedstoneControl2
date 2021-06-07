@@ -1,0 +1,10 @@
+{
+	"type": "minecraft:block",
+	"pools": [{
+		"rolls": 1,
+		"entries": [{
+			"type": "minecraft:item",
+			"name": "rs_ctr2:item_placer"
+		}]
+	}]
+}

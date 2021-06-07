@@ -1,0 +1,11 @@
+{
+	"parent": "block/cube",
+	"loader": "cd4017be_lib:rcp",
+	"textures": { "particle": "minecraft:block/obsidian" },
+	"code": [
+		"Loc Q = [4,4,4, 12,12,20]#, T = [0,0, 16,8]#;",
+		"for(F:['-vU', '+VU', 'v+U', 'V-U'])",
+		"	ARG.rect(Q, T, F);",
+		"ARG.rect(Q, [0,8, 8,16]#, 'Uv-');"
+	]
+}

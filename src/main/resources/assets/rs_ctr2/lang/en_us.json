@@ -31,7 +31,7 @@
   "gui.rs_ctr2.item_placer.air0": "Use on Blocks\n§80x008000",
   "gui.rs_ctr2.item_placer.air1": "Use in Air\n§80x00§f8§8000",
   "advancements.rs_ctr2.root": "Redstone Control",
-  "advancements.rs_ctr2.root.desc": "All about compact circuitry.",
+  "advancements.rs_ctr2.root.desc": "Compact circuitry and automation.",
   "advancements.rs_ctr2.microblocks": "Small Construction",
   "advancements.rs_ctr2.microblocks.desc": "Cut a block into bits using a Microblock Workbench.",
   "advancements.rs_ctr2.replicate": "Mass production",
@@ -48,6 +48,10 @@
   "advancements.rs_ctr2.energy.desc": "Find a way to supply energy to your Microblocks.",
   "advancements.rs_ctr2.logistics": "Small scale logistics",
   "advancements.rs_ctr2.logistics.desc": "Transport items and fluids through your Microblocks.",
+  "advancements.rs_ctr2.block_io": "Spooky action from a distance",
+  "advancements.rs_ctr2.block_io.desc": "Block Interaction Ports let machines like Block Breaker act on blocks further away.",
+  "advancements.rs_ctr2.block_io2": "Machines playing Snake",
+  "advancements.rs_ctr2.block_io2.desc": "Interaction Pipe Drivers give you a movable block target.",
   "item.rs_ctr2.data_cable": "Data Cable",
   "item.rs_ctr2.data_cable.tip": "Connects §none§7 data §aoutput§7\nwith §none§7 data §9input§7.",
   "item.rs_ctr2.logic_in": "Logic reader",
@@ -214,5 +218,10 @@
   "item.rs_ctr2._7segment": "7-Segment Display",
   "item.rs_ctr2._7segment.tip": "Displays §9⏵§7 as hexadecimal number (see §6BCD-Converter§7).\nInteract with Displays on the sides to extend.\nInteract with dye to change color.",
   "item.rs_ctr2.bcd_converter": "BCD-Converter",
-  "item.rs_ctr2.bcd_converter.tip": "§a⏵§7 = §9⏴§7 converted to \"binary counted decimal\".\nUsed to display decimal numbers on §67-Segment Display§7s."
+  "item.rs_ctr2.bcd_converter.tip": "§a⏵§7 = §9⏴§7 converted to \"binary counted decimal\".\nUsed to display decimal numbers on §67-Segment Display§7s.",
+  "block.rs_ctr2.pipe_controller": "Interaction Pipe Driver",
+  "block.rs_ctr2.access_pipe": "Interaction Pipe",
+  "state.rs_ctr2.pipe_controller": "§90: §c%sd§7 Direction [↑↓⨂⨀←→]\n§91: §f%sd Interaction Pipes\n§92,3: §5%ss",
+  "block.rs_ctr2.access_pipe.tip": "Inserted into the §fInventory Port§7 of an §6Interaction Pipe Driver§7 for path building.",
+  "block.rs_ctr2.pipe_controller.tip": "Lets machines §5interact with distant blocks§7 via a path of §6Interaction Pipe§7 that extends by insertion and retracts by extraction of items through its §finventory port§7.\nExtending direction and target block are controlled by §cdata input§7."
 }

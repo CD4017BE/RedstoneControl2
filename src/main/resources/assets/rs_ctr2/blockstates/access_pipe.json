@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"back=south": { "model": "rs_ctr2:block/access_pipe" },
+		"back=west": { "model": "rs_ctr2:block/access_pipe", "y": 90 },
+		"back=north": { "model": "rs_ctr2:block/access_pipe", "y": 180 },
+		"back=east": { "model": "rs_ctr2:block/access_pipe", "y": 270 },
+		"back=down": { "model": "rs_ctr2:block/access_pipe", "x": 270 },
+		"back=up": { "model": "rs_ctr2:block/access_pipe", "x": 90 }
+	}
+}
