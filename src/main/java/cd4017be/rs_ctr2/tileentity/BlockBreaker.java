@@ -99,8 +99,10 @@ implements ISignalReceiver, IGate, IBlockSupplier, IProbeInfo {
 		BlockPos pos = b.left;
 		ServerWorld world = b.right;
 		BlockState state = world.getBlockState(pos);
-		int e = -(int)(state.getDestroySpeed(world, pos) * SERVER_CFG.hardness_break.get())
-			- SERVER_CFG.block_break.get();
+		float h = state.getDestroySpeed(world, pos);
+		if (h < 0) return R_UNBREAKABLE;
+		int e = -(int)(h * SERVER_CFG.hardness_break.get()) - SERVER_CFG.block_break.get();
+		if (!state.requiresCorrectToolForDrops()) e >>= 1;
 		if (energy.transferEnergy(e, true) != e) return R_NO_ENERGY;
 		TileEntity te = state.hasTileEntity() ? world.getBlockEntity(pos) : null;
 		if (!world.removeBlock(pos, false)) return R_UNBREAKABLE;

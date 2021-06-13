@@ -7,7 +7,8 @@
 		"rs_ctr2:data_mux",
 		"rs_ctr2:sum_gate",
 		"rs_ctr2:neg_gate",
-		"rs_ctr2:and_filter"
+		"rs_ctr2:and_filter",
+		"rs_ctr2:counter"
 	]},
 	"criteria": {
 		"has_or": {

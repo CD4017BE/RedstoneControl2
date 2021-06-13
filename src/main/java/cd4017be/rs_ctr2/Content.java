@@ -23,6 +23,7 @@ import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.templates.BaseSound;
 import net.minecraft.block.AbstractBlock.Properties;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.inventory.container.ContainerType;
@@ -33,6 +34,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -100,13 +102,15 @@ public class Content {
 
 	@SubscribeEvent
 	public static void registerBlocks(Register<Block> ev) {
-		Properties p = Properties.of(Material.STONE).strength(1.5F);
+		Properties p = Properties.of(Material.STONE).strength(1.5F).requiresCorrectToolForDrops();
 		ev.getRegistry().registerAll(
 			new OrientedBlock<>(p, flags(AutoCrafter.class), HOR_AXIS).setRegistryName(rl("autocraft")),
 			new OrientedBlock<>(p, flags(BlockBreaker.class), HOR_AXIS).setRegistryName(rl("block_breaker")),
 			new OrientedBlock<>(p, flags(ItemPlacer.class), HOR_AXIS).setRegistryName(rl("item_placer")),
 			new OrientedBlock<>(p, flags(PipeController.class), HOR_AXIS).setRegistryName(rl("pipe_controller")),
-			new AccessPipe(p).setRegistryName(rl("access_pipe"))
+			new AccessPipe(
+				Properties.copy(Blocks.OBSIDIAN).harvestTool(ToolType.PICKAXE).harvestLevel(3)
+			).setRegistryName(rl("access_pipe"))
 		);
 	}
 

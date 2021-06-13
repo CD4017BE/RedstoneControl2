@@ -74,8 +74,11 @@ public class Battery extends MultiBlock<Battery> implements IGate, IEnergyAccess
 			// add or change data port
 			IGridHost host = this.host;
 			host.removePart(this);
-			if (ports.length > 0 && (ports[0] & 0xf000) == 0) ports[0] = port;
-			else ports = ArrayUtils.insert(0, ports, port);
+			if (ports.length == 0 || (ports[0] & 0xf000) != 0) {
+				short[] arr = ports;
+				System.arraycopy(arr, 0, ports = new short[arr.length + 1], 1, arr.length);
+			}
+			ports[0] = port;
 			host.addPart(this);
 			return ActionResultType.SUCCESS;
 		}

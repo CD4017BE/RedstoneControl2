@@ -1,11 +1,17 @@
 {
 	"type": "minecraft:crafting_shaped",
 	"pattern": [
-		"--I"
+		" I ",
+		"-O-",
+		" I "
 	],
 	"key": {
 		"-": { "item": "rs_ctr2:block_cable" },
-		"I": { "item": "minecraft:iron_bars" }
+		"I": { "item": "minecraft:iron_bars" },
+		"O": { "item": "minecraft:obsidian" }
 	},
-	"result": { "item": "rs_ctr2:access_pipe" }
+	"result": {
+		"item": "rs_ctr2:access_pipe",
+		"count": 4
+	}
 }
