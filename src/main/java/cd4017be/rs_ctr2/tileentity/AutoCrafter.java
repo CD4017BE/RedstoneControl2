@@ -8,9 +8,7 @@ import static cd4017be.lib.util.ItemFluidUtil.canSlotStack;
 import static cd4017be.rs_ctr2.Main.SERVER_CFG;
 import static net.minecraft.util.Direction.SOUTH;
 
-import java.util.function.ObjIntConsumer;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 import cd4017be.api.grid.ExtGridPorts;
 import cd4017be.api.grid.port.IEnergyAccess;
@@ -199,19 +197,18 @@ ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {
 
 	@Override
 	public int transfer(
-		int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target, int rec
+		int amount, Predicate<ItemStack> filter, ToIntFunction<ItemStack> target, int rec
 	) {
 		ItemStack stack = inv.extractItem(slot & 15, amount, true);
 		if (stack.isEmpty() || !filter.test(stack)) return 0;
-		stack.shrink(target.apply(stack).getCount());
-		if ((amount = stack.getCount()) <= 0) return 0;
-		inv.extractItem(slot & 15, amount, false);
+		amount = target.applyAsInt(stack);
+		if (amount > 0) inv.extractItem(slot & 15, amount, false);
 		return amount;
 	}
 
 	@Override
-	public ItemStack insert(ItemStack stack, int rec) {
-		return inv.insertItem(slot & 15, stack, false);
+	public int insert(ItemStack stack, int rec) {
+		return stack.getCount() - inv.insertItem(slot & 15, stack, false).getCount();
 	}
 
 	@Override

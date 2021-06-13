@@ -79,17 +79,21 @@ public class Content {
 	bit_shift = null, sum_gate = null, product_gate = null, division_gate = null,
 	neg_gate = null, counter = null, mem_read = null, mem_write = null,
 	transformer = null, item_mover = null, fluid_mover = null,
+	item_filter = null, item_counter = null, item_dropper = null,
 	switcH = null, led = null, switch_array = null, led_array = null,
 	_7segment = null, bcd_converter = null;
 	public static final MultiblockItem<Battery> battery = null;
 	public static final MultiblockItem<SolarCell> solarcell = null;
 	public static final MultiblockItem<Memory> memory = null;
+	public static final MultiblockItem<ItemBuffer> item_buffer = null;
 
 	// containers:
 	public static final ContainerType<ContainerConstant> cONSTANT = null;
 	public static final ContainerType<ContainerAutoCraft> aUTOCRAFT = null;
 	public static final ContainerType<ContainerMemory> mEMORY = null;
 	public static final ContainerType<ContainerItemPlacer> iTEM_PLACER = null;
+	public static final ContainerType<ContainerItemFilter> iTEM_FILTER = null;
+	public static final ContainerType<ContainerItemBuffer> iTEM_BUFFER = null;
 
 	//sounds:
 	public static final BaseSound SWITCH_FLIp = null;
@@ -134,11 +138,11 @@ public class Content {
 			orientedPart("item_io", rs, ItemIO::new),
 			orientedPart("fluid_io", rs, FluidIO::new),
 			orientedPart("block_io", rs, BlockIO::new),
-			orientedPart("splitter", rs, Splitter::new),
-			orientedPart("power_splitter", rs, SplitterP::new),
-			orientedPart("item_splitter", rs, SplitterI::new),
-			orientedPart("fluid_splitter", rs, SplitterF::new),
-			orientedPart("block_splitter", rs, SplitterB::new),
+			orientedPart("splitter", rs, Splitter::new).tooltipArgs(SERVER_CFG.rec_data),
+			orientedPart("power_splitter", rs, SplitterP::new).tooltipArgs(SERVER_CFG.rec_power),
+			orientedPart("item_splitter", rs, SplitterI::new).tooltipArgs(SERVER_CFG.rec_item),
+			orientedPart("fluid_splitter", rs, SplitterF::new).tooltipArgs(SERVER_CFG.rec_fluid),
+			orientedPart("block_splitter", rs, SplitterB::new).tooltipArgs(SERVER_CFG.rec_block),
 			orientedPart("not_gate", rs, NotGate::new),
 			orientedPart("clock", rs, Clock::new),
 			orientedPart("constant", rs, Constant::new),
@@ -166,6 +170,9 @@ public class Content {
 			orientedPart("transformer", rs, Transformer::new),
 			orientedPart("item_mover", rs, ItemMover::new).tooltipArgs(SERVER_CFG.move_item),
 			orientedPart("fluid_mover", rs, FluidMover::new).tooltipArgs(SERVER_CFG.move_fluid),
+			orientedPart("item_filter", rs, ItemFilter::new),
+			orientedPart("item_counter", rs, ItemCounter::new),
+			orientedPart("item_dropper", rs, ItemDropper::new),
 			orientedPart("switch", rs, Switch::new),
 			orientedPart("led", rs, LED::new),
 			orientedPart("switch_array", rs, SwitchArray::new),
@@ -175,6 +182,7 @@ public class Content {
 			new MultiblockItem<>(p, Battery::new).tooltipArgs(SERVER_CFG.battery_cap).setRegistryName(rl("battery")),
 			new MultiblockItem<>(p, SolarCell::new).tooltipArgs(SERVER_CFG.solar_power, SERVER_CFG.daytime).setRegistryName(rl("solarcell")),
 			new MultiblockItem<>(p, Memory::new).tooltipArgs(SERVER_CFG.memory_size).setRegistryName(rl("memory")),
+			new MultiblockItem<>(p, ItemBuffer::new).tooltipArgs(SERVER_CFG.item_buffer_size).setRegistryName(rl("item_buffer")),
 			item(p, "corerope1"), item(p, "corerope2")
 		);
 	}
@@ -207,7 +215,9 @@ public class Content {
 			IForgeContainerType.create(ContainerConstant::new).setRegistryName(rl("constant")),
 			IForgeContainerType.create(ContainerAutoCraft::new).setRegistryName(rl("autocraft")),
 			IForgeContainerType.create(ContainerMemory::new).setRegistryName(rl("memory")),
-			IForgeContainerType.create(ContainerItemPlacer::new).setRegistryName(rl("item_placer"))
+			IForgeContainerType.create(ContainerItemPlacer::new).setRegistryName(rl("item_placer")),
+			IForgeContainerType.create(ContainerItemFilter::new).setRegistryName(rl("item_filter")),
+			IForgeContainerType.create(ContainerItemBuffer::new).setRegistryName(rl("item_buffer"))
 		);
 	}
 
@@ -218,6 +228,8 @@ public class Content {
 		ScreenManager.register(aUTOCRAFT, ContainerAutoCraft::setupGui);
 		ScreenManager.register(mEMORY, GuiRAM::new);
 		ScreenManager.register(iTEM_PLACER, ContainerItemPlacer::setupGui);
+		ScreenManager.register(iTEM_FILTER, ContainerItemFilter::setupGui);
+		ScreenManager.register(iTEM_BUFFER, ContainerItemBuffer::setupGui);
 	}
 
 	@SubscribeEvent
@@ -229,6 +241,7 @@ public class Content {
 		addSpecialModel(Battery.MODEL);
 		addSpecialModel(SolarCell.MODEL);
 		addSpecialModel(Memory.MODEL);
+		addSpecialModel(ItemBuffer.MODEL);
 		addSpecialModel(Switch.BASE);
 		addSpecialModel(Switch.OFF);
 		addSpecialModel(Switch.ON);

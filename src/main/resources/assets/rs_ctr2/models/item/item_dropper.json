@@ -1,0 +1,10 @@
+{
+	"parent": "rs_ctr2:part/gate",
+	"textures": {
+		"portR": "rs_ctr2:part/item_io",
+		"portL": "cd4017be_lib:part/item_p",
+		"portU": "rs_ctr2:part/item_dropper",
+		"portD": "rs_ctr2:part/item_dropper",
+		"main": "rs_ctr2:part/item_dropper"
+	}
+}

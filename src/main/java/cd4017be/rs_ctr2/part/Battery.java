@@ -21,7 +21,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
 
 /**
  * @author CD4017BE */
@@ -148,6 +150,12 @@ public class Battery extends MultiBlock<Battery> implements IGate, IEnergyAccess
 	@Override
 	public void latchOut() {
 		out.updateInput(state);
+	}
+
+	@Override
+	public boolean dissassemble(World world, BlockPos pos) {
+		energy = 0;
+		return true;
 	}
 
 	@Override

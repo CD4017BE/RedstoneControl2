@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "io",
+	"pattern": [
+		"## ",
+		"--D",
+		"## "
+	],
+	"key": {
+		"#": { "item": "cd4017be_lib:microblock" },
+		"-": { "item": "rs_ctr2:item_cable" },
+		"D": { "item": "minecraft:dropper" }
+	},
+	"result": {
+		"item": "rs_ctr2:item_dropper",
+		"count": 4
+	}
+}

@@ -6,9 +6,7 @@ import static java.lang.Math.min;
 import static net.minecraftforge.items.ItemHandlerHelper.canItemStacksStack;
 import static net.minecraftforge.items.wrapper.EmptyHandler.INSTANCE;
 
-import java.util.function.ObjIntConsumer;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 import cd4017be.api.grid.IGridHost;
 import cd4017be.api.grid.port.IBlockSupplier;
@@ -101,7 +99,7 @@ implements IInventoryAccess, IGate, IProbeInfo {
 	}
 
 	@Override
-	public int transfer(int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target, int rec) {
+	public int transfer(int amount, Predicate<ItemStack> filter, ToIntFunction<ItemStack> target, int rec) {
 		IItemHandler inv = get(INSTANCE);
 		for (int l = min(s1, inv.getSlots()), i = max(s0, 0); i < l; i++) {
 			//find matching item
@@ -116,7 +114,7 @@ implements IInventoryAccess, IGate, IProbeInfo {
 			}
 			stack.setCount(n);
 			//try transfer
-			n -= target.apply(stack).getCount();
+			n = target.applyAsInt(stack);
 			if (n <= 0) continue;
 			amount = n;
 			//extract
@@ -136,23 +134,24 @@ implements IInventoryAccess, IGate, IProbeInfo {
 	}
 
 	@Override
-	public ItemStack insert(ItemStack stack, int rec) {
+	public int insert(ItemStack stack, int rec) {
 		IItemHandler inv = get(INSTANCE);
 		int l = min(s1, inv.getSlots()), p = l;
+		int n = stack.getCount();
 		//fill non empty slots
 		for (int i = max(s0, 0); i < l; i++) {
 			if (inv.getStackInSlot(i).isEmpty())
 				p = min(p, i);
 			else if ((stack = inv.insertItem(i, stack, false)).isEmpty())
-				return ItemStack.EMPTY;
+				return n;
 		}
 		//fill empty slots
 		for(; p < l; p++) {
 			if (!inv.getStackInSlot(p).isEmpty()) continue;
 			if ((stack = inv.insertItem(p, stack, false)).isEmpty())
-				return ItemStack.EMPTY;
+				return n;
 		}
-		return stack;
+		return n - stack.getCount();
 	}
 
 	@Override

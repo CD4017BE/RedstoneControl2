@@ -120,7 +120,8 @@ implements ISignalReceiver, IGate, IBlockSupplier, IProbeInfo {
 
 	private int eject() {
 		for (int i = drops.size() - 1; i >= 0; i--) {
-			ItemStack stack = inv.apply(drops.get(i));
+			ItemStack stack = drops.get(i);
+			stack.shrink(inv.applyAsInt(stack));
 			if (stack.isEmpty()) drops.remove(i);
 			else drops.set(i, stack);
 		}
@@ -128,8 +129,8 @@ implements ISignalReceiver, IGate, IBlockSupplier, IProbeInfo {
 	}
 
 	private void addDrop(ItemStack stack) {
-		if (!(stack = inv.apply(stack)).isEmpty())
-			drops.add(stack);
+		stack.shrink(inv.applyAsInt(stack));
+		if (!stack.isEmpty()) drops.add(stack);
 	}
 
 	@Override

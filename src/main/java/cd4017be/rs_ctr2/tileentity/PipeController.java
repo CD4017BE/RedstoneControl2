@@ -7,9 +7,8 @@ import static cd4017be.rs_ctr2.Content.ACCESS_PIPE;
 import static cd4017be.rs_ctr2.Content.access_pipe;
 import static cd4017be.rs_ctr2.block.AccessPipe.BACK;
 import static net.minecraft.util.Direction.NORTH;
-import java.util.function.ObjIntConsumer;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
+
+import java.util.function.*;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 
@@ -28,7 +27,6 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.items.ItemHandlerHelper;
 
 
 /**
@@ -72,7 +70,7 @@ implements IInventoryAccess, IBlockSupplier, ISignalReceiver, IGate, IProbeInfo 
 
 	@Override
 	public int transfer(
-		int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target, int rec
+		int amount, Predicate<ItemStack> filter, ToIntFunction<ItemStack> target, int rec
 	) {
 		ItemStack stack = new ItemStack(access_pipe);
 		if (!filter.test(stack)) return 0;
@@ -86,7 +84,7 @@ implements IInventoryAccess, IBlockSupplier, ISignalReceiver, IGate, IProbeInfo 
 			}
 			return 0;
 		}
-		if (!target.apply(stack).isEmpty()) return 0;
+		if (target.applyAsInt(stack) == 0) return 0;
 		level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
 		updateBlock(pos.relative(state.getValue(BACK)));
 		len--;
@@ -95,8 +93,8 @@ implements IInventoryAccess, IBlockSupplier, ISignalReceiver, IGate, IProbeInfo 
 
 	@Override
 	@SuppressWarnings("deprecation")
-	public ItemStack insert(ItemStack stack, int rec) {
-		if (len >= MAX_LEN || stack.getItem() != access_pipe) return stack;
+	public int insert(ItemStack stack, int rec) {
+		if (len >= MAX_LEN || stack.getItem() != access_pipe) return 0;
 		if (!ACCESS_PIPE.validSource(level.getBlockState(end))) {
 			updateBlock(worldPosition);
 			len = 0;
@@ -104,14 +102,16 @@ implements IInventoryAccess, IBlockSupplier, ISignalReceiver, IGate, IProbeInfo 
 		BlockPos pos = end.relative(back, -1);
 		BlockState state = level.getBlockState(pos);
 		BlockState place = ACCESS_PIPE.defaultBlockState().setValue(BACK, back);
-		if (state != place) {
-			if (!state.isAir(level, pos) && !state.getMaterial().isLiquid()) return stack;
-			if (!level.setBlockAndUpdate(pos, place)) return stack;
-			stack = ItemHandlerHelper.copyStackWithSize(stack, stack.getCount() - 1);
+		if (state == place) {
+			updateBlock(pos);
+			len++;
+			return 0;
 		}
+		if (!state.isAir(level, pos) && !state.getMaterial().isLiquid()) return 0;
+		if (!level.setBlockAndUpdate(pos, place)) return 0;
 		updateBlock(pos);
 		len++;
-		return stack;
+		return 1;
 	}
 
 	private void updateBlock(BlockPos pos) {

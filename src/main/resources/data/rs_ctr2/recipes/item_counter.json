@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"-C"
+	],
+	"key": {
+		"-": { "item": "rs_ctr2:item_cable" },
+		"C": { "item": "rs_ctr2:comparator" }
+	},
+	"result": {
+		"item": "rs_ctr2:item_counter",
+		"count": 1
+	}
+}

@@ -1,7 +1,6 @@
 package cd4017be.rs_ctr2;
 
 import java.util.function.Consumer;
-
 import cd4017be.api.grid.Link;
 import cd4017be.lib.config.ModConfig;
 import cd4017be.rs_ctr2.part.SolarCell;
@@ -18,8 +17,8 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 	public final IntValue battery_cap, solar_power, move_item, move_fluid,
 	craft, block_break, hardness_break, item_place;
 	public final DoubleValue daytime;
-	public final IntValue rec_data, rec_power, rec_item, rec_fluid;
-	public final IntValue memory_size, pipe_limit;
+	public final IntValue rec_data, rec_power, rec_item, rec_fluid, rec_block;
+	public final IntValue memory_size, pipe_limit, item_buffer_size;
 
 	protected ConfigServer() {
 		super(Type.SERVER);
@@ -57,6 +56,9 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 		memory_size = b
 		.comment("memory size in bits per cell.")
 		.defineInRange("memory_size", 256, 32, 16384);
+		item_buffer_size = b
+		.comment("max stack size per buffer cell")
+		.defineInRange("buffer_stacksize", 400, 1, 15625);
 		pipe_limit = b
 		.comment("Maximum distance Block Interaction Pipes can be extended.")
 		.defineInRange("max_pipe_length", 256, 0, 30000000);
@@ -66,6 +68,7 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 		rec_power = b.defineInRange("power", Link.REC_POWER, 0, 64);
 		rec_item = b.defineInRange("power", Link.REC_ITEM, 0, 64);
 		rec_fluid = b.defineInRange("power", Link.REC_FLUID, 0, 64);
+		rec_block = b.defineInRange("block", Link.REC_BLOCK, 0, 64);
 		b.pop();
 		finish(b);
 		MinecraftForge.EVENT_BUS.addListener(this);
@@ -77,6 +80,7 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 		Link.REC_POWER = rec_power.get();
 		Link.REC_ITEM = rec_item.get();
 		Link.REC_FLUID = rec_fluid.get();
+		Link.REC_BLOCK = rec_block.get();
 		SolarCell.INV_DAY_LENGHT = 1F / (float)(daytime.get() * 18000.0);
 	}
 

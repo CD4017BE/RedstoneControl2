@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"C|C",
+		"-H-",
+		"C-C"
+	],
+	"key": {
+		"-": { "item": "rs_ctr2:item_cable" },
+		"|": { "item": "rs_ctr2:data_cable" },
+		"C": { "item": "rs_ctr2:comparator" },
+		"H": { "item": "minecraft:hopper" }
+	},
+	"result": {
+		"item": "rs_ctr2:item_filter",
+		"count": 4
+	}
+}

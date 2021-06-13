@@ -178,17 +178,16 @@ IUnnamedContainerProvider, IProbeInfo {
 		ItemStack stack = pinv.getItem(i), old = oldStack;
 		if (ItemStack.isSame(stack, old)) return true;
 		if (!stack.isEmpty()) {
-			ItemStack stack1 = inv.apply(stack);
-			pinv.setItem(i, stack1);
-			if (!stack1.isEmpty()) return false;
+			stack.shrink(inv.applyAsInt(stack));
+			if (!stack.isEmpty()) return false;
 		}
 		if (old.isEmpty()) return true;
 		return inv.transfer(old.getMaxStackSize(), old::sameItem, s -> {
 			ItemStack s1 = pinv.getItem(i);
 			if (s1.isEmpty()) pinv.setItem(i, s);
-			else if (!canItemStacksStack(s1, s)) return s;
+			else if (!canItemStacksStack(s1, s)) return 0;
 			else s1.grow(s.getCount());
-			return ItemStack.EMPTY;
+			return s.getCount();
 		}) > 0;
 	}
 

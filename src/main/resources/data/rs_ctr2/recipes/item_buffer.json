@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"#-#",
+		"-C-",
+		"#-#"
+	],
+	"key": {
+		"#": { "item": "cd4017be_lib:microblock" },
+		"-": { "item": "rs_ctr2:item_cable" },
+		"C": { "item": "minecraft:chest" }
+	},
+	"result": {
+		"item": "rs_ctr2:item_buffer",
+		"count": 4
+	}
+}

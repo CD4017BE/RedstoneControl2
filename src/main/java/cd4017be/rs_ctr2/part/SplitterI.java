@@ -2,9 +2,7 @@ package cd4017be.rs_ctr2.part;
 
 import static cd4017be.rs_ctr2.Content.item_splitter;
 
-import java.util.function.ObjIntConsumer;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 import cd4017be.api.grid.port.IInventoryAccess;
 import cd4017be.lib.part.OrientedPart;
@@ -62,14 +60,14 @@ public class SplitterI extends OrientedPart implements IInventoryAccess {
 
 	@Override
 	public int transfer(
-		int amount, Predicate<ItemStack> filter, UnaryOperator<ItemStack> target, int rec
+		int amount, Predicate<ItemStack> filter, ToIntFunction<ItemStack> target, int rec
 	) {
 		return --rec < 0 ? 0 : src.transfer(amount, filter, target, rec);
 	}
 
 	@Override
-	public ItemStack insert(ItemStack stack, int rec) {
-		return --rec < 0 ? stack : src.insert(stack, rec);
+	public int insert(ItemStack stack, int rec) {
+		return --rec < 0 ? 0 : src.insert(stack, rec);
 	}
 
 }

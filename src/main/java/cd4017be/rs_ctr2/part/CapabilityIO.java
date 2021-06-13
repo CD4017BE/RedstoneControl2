@@ -9,21 +9,21 @@ import org.apache.commons.lang3.tuple.ImmutablePair;
 import cd4017be.api.grid.IGridHost;
 import cd4017be.api.grid.port.IBlockSupplier;
 import cd4017be.lib.part.OrientedPart;
+import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.common.util.NonNullConsumer;
 
 /**@author CD4017BE */
-public abstract class CapabilityIO<T> extends OrientedPart
-implements NonNullConsumer<LazyOptional<T>>, IBlockSupplier {
+public abstract class CapabilityIO<T> extends OrientedPart implements IBlockSupplier {
 
 	protected IBlockSupplier block = this;
 	protected ImmutablePair<BlockPos, ServerWorld> last;
 	LazyOptional<T> cap = LazyOptional.empty();
-	int t;
+	int t, exp;
 
 	public CapabilityIO(int ports) {
 		super(ports);
@@ -52,12 +52,14 @@ implements NonNullConsumer<LazyOptional<T>>, IBlockSupplier {
 	@Override
 	public void setHost(IGridHost host) {
 		super.setHost(host);
-		accept(cap);
+		cap = LazyOptional.empty();
 	}
 
 	protected T get(T fallback) {
-		if (t != TICK && !(Objects.equals(last, last = block.getBlock()) && cap.isPresent()))
-			cap = getCap(last);
+		if (t != TICK && !(
+			Objects.equals(last, last = block.getBlock())
+			&& cap.isPresent() && TICK < exp
+		)) cap = getCap(last);
 		return cap.orElse(fallback);
 	}
 
@@ -65,15 +67,18 @@ implements NonNullConsumer<LazyOptional<T>>, IBlockSupplier {
 		t = TICK; //To not request block multiple times per tick
 		if (block == null) return LazyOptional.empty();
 		TileEntity te = last.right.getBlockEntity(last.left);
-		if (te == null) return LazyOptional.empty();
-		LazyOptional<T> lo = te.getCapability(capability(), orient.b);
-		lo.addListener(this);
-		return lo;
-	}
-
-	@Override
-	public void accept(LazyOptional<T> t) {
-		if (t == cap) cap = LazyOptional.empty();
+		if (te != null) {
+			exp = Integer.MAX_VALUE;
+			return te.getCapability(capability(), orient.b);
+		}
+		for (Entity e : last.right.getEntities(null, new AxisAlignedBB(last.left))) {
+			LazyOptional<T> lo = e.getCapability(capability(), orient.b);
+			if (lo.isPresent()) {
+				exp = t + 10; //refresh regularly as entities may move around.
+				return lo;
+			}
+		}
+		return LazyOptional.empty();
 	}
 
 	@Override
