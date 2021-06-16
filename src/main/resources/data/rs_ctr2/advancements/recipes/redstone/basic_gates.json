@@ -11,7 +11,8 @@
 		"rs_ctr2:or_gate",
 		"rs_ctr2:nor_gate",
 		"rs_ctr2:and_gate",
-		"rs_ctr2:nand_gate"
+		"rs_ctr2:nand_gate",
+		"rs_ctr2:corerope1"
 	]},
 	"criteria": {
 		"has_cable": {

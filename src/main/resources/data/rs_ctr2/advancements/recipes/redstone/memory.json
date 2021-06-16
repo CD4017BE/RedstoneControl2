@@ -1,14 +1,16 @@
 {
 	"parent": "minecraft:recipes/root",
 	"rewards": { "recipes": [
-		"rs_ctr2:product_gate",
-		"rs_ctr2:division_gate"
+		"rs_ctr2:corerope2",
+		"rs_ctr2:memory",
+		"rs_ctr2:mem_write",
+		"rs_ctr2:mem_read"
 	]},
 	"criteria": {
-		"has_sum": {
+		"has_corerope": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": { "items": [
-				{ "item": "rs_ctr2:sum_gate" }
+				{ "item": "rs_ctr2:corerope1" }
 			]}
 		}
 	}

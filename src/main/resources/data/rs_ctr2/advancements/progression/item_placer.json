@@ -1,0 +1,20 @@
+{
+	"parent": "rs_ctr2:progression/logistics",
+	"display": {
+		"icon": { "item": "rs_ctr2:item_placer" },
+		"title": { "translate": "advancements.rs_ctr2.item_placer" },
+		"description": { "translate": "advancements.rs_ctr2.machine.desc" },
+		"frame": "goal",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"placed": {
+			"trigger": "minecraft:placed_block",
+			"conditions": {
+				"item": { "item": "rs_ctr2:item_placer" }
+			}
+		}
+	}
+}

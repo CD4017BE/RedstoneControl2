@@ -20,18 +20,18 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockRayTraceResult;
 
 /** @author CD4017BE */
-public class OrientedPartItem extends GridItem {
+public class OrientedPartItem<T extends OrientedPart> extends GridItem {
 
-	private final Supplier<OrientedPart> factory;
+	protected final Supplier<T> factory;
 
-	public OrientedPartItem(Properties p, Supplier<OrientedPart> factory) {
+	public OrientedPartItem(Properties p, Supplier<T> factory) {
 		super(p);
 		tab(Main.CREATIVE_TAB);
 		this.factory = factory;
 	}
 
 	@Override
-	public OrientedPart createPart() {
+	public T createPart() {
 		return factory.get();
 	}
 
@@ -45,14 +45,14 @@ public class OrientedPartItem extends GridItem {
 		if (pos < 0) return ActionResultType.PASS;
 		if (player.level.isClientSide) return ActionResultType.CONSUME;
 		
-		OrientedPart part = createPart();
+		T part = createPart();
 		position(part, pos, hit, player);
 		if (!grid.addPart(part)) return ActionResultType.FAIL;
-		if (!player.isCreative()) stack.shrink(1);
+		onPlace(part, stack, player);
 		return ActionResultType.SUCCESS;
 	}
 
-	protected void position(OrientedPart part, int pos, BlockRayTraceResult hit, PlayerEntity player) {
+	protected void position(T part, int pos, BlockRayTraceResult hit, PlayerEntity player) {
 		Direction d = hit.getDirection(), d1 = null;
 		Orientation o;
 		if (!player.isShiftKeyDown()) {
@@ -69,6 +69,10 @@ public class OrientedPartItem extends GridItem {
 		o = Orientation.byBackUp(d, d1);
 		if (o == null) o = Orientation.byBack(d);
 		part.set(OrientedPart.pos(pos, o.inv()), o);
+	}
+
+	protected void onPlace(T part, ItemStack stack, PlayerEntity player) {
+		if (!player.isCreative()) stack.shrink(1);
 	}
 
 }

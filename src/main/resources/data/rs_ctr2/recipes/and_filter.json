@@ -1,6 +1,5 @@
 {
 	"type": "minecraft:crafting_shaped",
-	"group": "unary_gates",
 	"pattern": [
 		"C",
 		"A",

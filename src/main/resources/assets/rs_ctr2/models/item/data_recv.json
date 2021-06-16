@@ -1,0 +1,10 @@
+{
+	"parent": "rs_ctr2:part/gate",
+	"textures": {
+		"portR": "cd4017be_lib:part/data_out",
+		"portL": "rs_ctr2:part/blank",
+		"portU": "rs_ctr2:part/data_recv",
+		"portD": "rs_ctr2:part/data_recv",
+		"main": "rs_ctr2:part/data_recv"
+	}
+}

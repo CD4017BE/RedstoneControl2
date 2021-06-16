@@ -1,0 +1,20 @@
+{
+	"parent": "rs_ctr2:progression/logistics",
+	"display": {
+		"icon": { "item": "rs_ctr2:autocraft" },
+		"title": { "translate": "advancements.rs_ctr2.autocraft" },
+		"description": { "translate": "advancements.rs_ctr2.autocraft.desc" },
+		"frame": "goal",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"placed": {
+			"trigger": "minecraft:placed_block",
+			"conditions": {
+				"item": { "item": "rs_ctr2:autocraft" }
+			}
+		}
+	}
+}

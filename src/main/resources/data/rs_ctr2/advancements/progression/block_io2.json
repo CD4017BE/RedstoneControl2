@@ -10,12 +10,10 @@
 		"hidden": false
 	},
 	"criteria": {
-		"io": {
-			"trigger": "minecraft:inventory_changed",
+		"place": {
+			"trigger": "minecraft:placed_block",
 			"conditions": {
-				"items": [
-					{ "item": "rs_ctr2:pipe_controller" }
-				]
+				"item": { "item": "rs_ctr2:pipe_controller" }
 			}
 		}
 	}

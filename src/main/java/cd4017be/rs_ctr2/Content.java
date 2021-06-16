@@ -70,7 +70,7 @@ public class Content {
 	public static final SignalProbeItem probe = null;
 	public static final CableItem
 	data_cable = null, power_cable = null, item_cable = null, fluid_cable = null, block_cable = null;
-	public static final OrientedPartItem
+	public static final OrientedPartItem<?>
 	analog_in = null, logic_in = null, analog_out = null, logic_out = null,
 	comp_in = null, power_io = null, item_io = null, fluid_io = null, block_io = null,
 	splitter = null, power_splitter = null, item_splitter = null, fluid_splitter = null, block_splitter = null,
@@ -84,6 +84,8 @@ public class Content {
 	item_filter = null, item_counter = null, item_dropper = null,
 	switcH = null, led = null, switch_array = null, led_array = null,
 	_7segment = null, bcd_converter = null;
+	public static final WirelessItem
+	data_send = null, data_recv = null, block_send = null, block_recv = null;
 	public static final MultiblockItem<Battery> battery = null;
 	public static final MultiblockItem<SolarCell> solarcell = null;
 	public static final MultiblockItem<Memory> memory = null;
@@ -189,12 +191,16 @@ public class Content {
 			new MultiblockItem<>(p, ItemBuffer::new).tooltipArgs(SERVER_CFG.item_buffer_size).setRegistryName(rl("item_buffer")),
 			item(p, "corerope1"), item(p, "corerope2")
 		);
+		new WirelessItem(rs, WirelessData::new, ISignalReceiver.TYPE_ID)
+		.register(ev.getRegistry(), rl("data_send"), rl("data_recv"));
+		new WirelessItem(rs, WirelessBlock::new, IBlockSupplier.TYPE_ID)
+		.register(ev.getRegistry(), rl("block_send"), rl("block_recv"));
 	}
 
-	private static OrientedPartItem orientedPart(
-		String id, Item.Properties p, Supplier<OrientedPart> factory
+	private static <T extends OrientedPart> OrientedPartItem<T> orientedPart(
+		String id, Item.Properties p, Supplier<T> factory
 	) {
-		OrientedPartItem item = new OrientedPartItem(p, factory);
+		OrientedPartItem<T> item = new OrientedPartItem<>(p, factory);
 		item.setRegistryName(rl(id));
 		return item;
 	}

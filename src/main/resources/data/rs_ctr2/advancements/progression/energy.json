@@ -10,10 +10,10 @@
 		"hidden": false
 	},
 	"criteria": {
-		"io": {
+		"battery": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": { "items": [
-				{ "item": "rs_ctr2:power_io" }
+				{ "item": "rs_ctr2:battery" }
 			]}
 		},
 		"solar": {
@@ -22,8 +22,5 @@
 				{ "item": "rs_ctr2:solarcell" }
 			]}
 		}
-	},
-	"requirements": [[
-		"io", "solar"
-	]]
+	}
 }
