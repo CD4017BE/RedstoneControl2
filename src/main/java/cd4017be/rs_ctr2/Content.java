@@ -83,7 +83,7 @@ public class Content {
 	transformer = null, item_mover = null, fluid_mover = null,
 	item_filter = null, item_counter = null, item_dropper = null,
 	switcH = null, led = null, switch_array = null, led_array = null,
-	_7segment = null, bcd_converter = null;
+	_7segment = null, bcd_converter = null, hardness_sensor = null;
 	public static final WirelessItem
 	data_send = null, data_recv = null, block_send = null, block_recv = null;
 	public static final MultiblockItem<Battery> battery = null;
@@ -185,6 +185,7 @@ public class Content {
 			orientedPart("led_array", rs, LEDArray::new),
 			orientedPart("_7segment", rs, _7Segment::new),
 			orientedPart("bcd_converter", rs, BCDConverter::new),
+			orientedPart("hardness_sensor", rs, HardnessSensor::new),
 			new MultiblockItem<>(p, Battery::new).tooltipArgs(SERVER_CFG.battery_cap).setRegistryName(rl("battery")),
 			new MultiblockItem<>(p, SolarCell::new).tooltipArgs(SERVER_CFG.solar_power, SERVER_CFG.daytime).setRegistryName(rl("solarcell")),
 			new MultiblockItem<>(p, Memory::new).tooltipArgs(SERVER_CFG.memory_size).setRegistryName(rl("memory")),

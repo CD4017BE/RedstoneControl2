@@ -263,5 +263,7 @@
   "item.rs_ctr2.data_recv.tip": "§a⏵§7 = §9⏵§7 of linked Transmitter.",
   "item.rs_ctr2.block_send.tip": "§9⏵§7 propagates interaction to §a⏵§7 of linked Receiver.\n§oYou get the linked §6§oWireless Block Interaction Receiver§7§o during initial placement.",
   "item.rs_ctr2.block_recv.tip": "§a⏵§7 <- §9⏵§7 of linked Transmitter.",
-  "item.rs_ctr2.item_dropper.tip": "§f⏴§7 drops items or picks them up."
+  "item.rs_ctr2.item_dropper.tip": "§f⏴§7 drops items or picks them up.",
+  "item.rs_ctr2.hardness_sensor": "Block Hardness Sensor",
+  "state.rs_ctr2.sensor": "§a0: §5%ss\n§a1: §c%sd§7 hardness\n§92: §c%s08X§7 Clock"
 }

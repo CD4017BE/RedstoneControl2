@@ -1,0 +1,10 @@
+{
+	"parent": "rs_ctr2:part/gate",
+	"textures": {
+		"portU": "cd4017be_lib:part/data_in",
+		"portD": "rs_ctr2:part/blank",
+		"portL": "cd4017be_lib:part/data_out",
+		"portR": "cd4017be_lib:part/block_u",
+		"main": "rs_ctr2:part/hardness_sensor"
+	}
+}
