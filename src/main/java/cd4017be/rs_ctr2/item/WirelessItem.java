@@ -1,16 +1,22 @@
 package cd4017be.rs_ctr2.item;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 import cd4017be.api.grid.Link;
+import cd4017be.lib.text.TooltipUtil;
 import cd4017be.lib.util.ItemFluidUtil;
 import cd4017be.rs_ctr2.part.Wireless;
 import cd4017be.rs_ctr2.part.WirelessMaster;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Rarity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -41,6 +47,21 @@ public class WirelessItem extends OrientedPartItem<Wireless> {
 			this.setRegistryName(main),
 			pair.setRegistryName(master)
 		);
+	}
+
+	@Override
+	public Rarity getRarity(ItemStack stack) {
+		return hasLink(stack) ? Rarity.RARE : Rarity.COMMON;
+	}
+
+	@Override
+	public void appendHoverText(
+		ItemStack stack, World world, List<ITextComponent> tooltip, ITooltipFlag flag
+	) {
+		if (hasLink(stack)) tooltip.add(
+			TooltipUtil.cFormat("item.wireless.link", stack.getTag().getInt("link"))
+		);
+		super.appendHoverText(stack, world, tooltip, flag);
 	}
 
 	@Override

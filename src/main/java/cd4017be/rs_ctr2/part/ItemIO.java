@@ -137,7 +137,7 @@ implements IInventoryAccess, IGate, IProbeInfo {
 	public int insert(ItemStack stack, int rec) {
 		IItemHandler inv = get(INSTANCE);
 		int l = min(s1, inv.getSlots()), p = l;
-		int n = stack.getCount();
+		int n = (stack = stack.copy()).getCount();
 		//fill non empty slots
 		for (int i = max(s0, 0); i < l; i++) {
 			if (inv.getStackInSlot(i).isEmpty())

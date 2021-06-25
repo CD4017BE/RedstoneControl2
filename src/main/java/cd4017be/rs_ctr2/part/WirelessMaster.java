@@ -1,14 +1,13 @@
 package cd4017be.rs_ctr2.part;
 
 import cd4017be.api.grid.IGridHost;
-import cd4017be.rs_ctr2.api.IProbeInfo;
 import cd4017be.rs_ctr2.item.WirelessItem;
 import net.minecraft.util.math.BlockPos;
 
 
 /**
  * @author CD4017BE */
-public class WirelessMaster extends Wireless implements IProbeInfo {
+public class WirelessMaster extends Wireless {
 
 	Wireless other;
 	Object out;

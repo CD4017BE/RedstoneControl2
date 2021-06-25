@@ -29,4 +29,12 @@ public class WirelessBlock extends Wireless implements IBlockSupplier {
 		return --rec < 0 ? null : block.getBlock(rec);
 	}
 
+	@Override
+	public Object[] stateInfo() {
+		return new Object[] {
+			"state.rs_ctr2.block_send",
+			IBlockSupplier.toString(block), link
+		};
+	}
+
 }

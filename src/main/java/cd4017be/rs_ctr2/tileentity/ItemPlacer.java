@@ -69,7 +69,7 @@ IUnnamedContainerProvider, IProbeInfo {
 	private CompoundNBT playerData = DEFAULT_DATA;
 	private FakePlayer player = null;
 	IBlockSupplier target = this;
-	ItemStack oldStack;
+	public ItemStack oldStack;
 	IEnergyAccess energy = IEnergyAccess.NOP;
 	ISignalReceiver out = ISignalReceiver.NOP;
 	IInventoryAccess inv = IInventoryAccess.NOP;
@@ -184,11 +184,16 @@ IUnnamedContainerProvider, IProbeInfo {
 		if (old.isEmpty()) return true;
 		return inv.transfer(old.getMaxStackSize(), old::sameItem, s -> {
 			ItemStack s1 = pinv.getItem(i);
-			if (s1.isEmpty()) pinv.setItem(i, s);
+			if (s1.isEmpty()) pinv.setItem(i, s.copy());
 			else if (!canItemStacksStack(s1, s)) return 0;
 			else s1.grow(s.getCount());
 			return s.getCount();
 		}) > 0;
+	}
+
+	public void resetRestock(int slot) {
+		if (slot == player.inventory.selected)
+			oldStack = null;
 	}
 
 	private static BlockRayTraceResult setupInteraction(

@@ -265,5 +265,11 @@
   "item.rs_ctr2.block_recv.tip": "§a⏵§7 <- §9⏵§7 of linked Transmitter.",
   "item.rs_ctr2.item_dropper.tip": "§f⏴§7 drops items or picks them up.",
   "item.rs_ctr2.hardness_sensor": "Block Hardness Sensor",
-  "state.rs_ctr2.sensor": "§a0: §5%ss\n§a1: §c%sd§7 hardness\n§92: §c%s08X§7 Clock"
+  "state.rs_ctr2.sensor": "§a0: §5%ss\n§a1: §c%sd§7 hardness\n§92: §c%s08X§7 Clock",
+  "state.rs_ctr2.data_send": "§90: §c0x%s08X %s1$d\n§7to Link #%s08X",
+  "state.rs_ctr2.block_send": "§90: §5%ss\n§7to Link #%s08X",
+  "item.wireless.link": "Link #%s08X",
+  "state.rs_ctr2.res_splitter": "§a0: §fConnected: %ss\n§7<- §91 2 3 4 5",
+  "state.rs_ctr2.block_splitter": "§a0: §5%ss\n§7<- §91 2 3 4 5",
+  "state.rs_ctr2.power_splitter": "§a0: §e%sd / %sd RF\n§e<- §91 2 3 4 5"
 }

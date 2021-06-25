@@ -26,8 +26,13 @@ public class BitShift extends MultiInputGate {
 	@Override
 	public boolean evaluate() {
 		active = false;
-		int a = in[0], b = in[1];
-		return host != null && state != (state = b < 0 ? a >>> -b : a << b);
+		return host != null && state != (state = shift(in[0], in[1]));
+	}
+
+	private static int shift(int v, int s) {
+		if (s < 0)
+			return s > -32 ? v >>> -s : 0;
+		else return s < 32 ? v << s : 0;
 	}
 
 	@Override

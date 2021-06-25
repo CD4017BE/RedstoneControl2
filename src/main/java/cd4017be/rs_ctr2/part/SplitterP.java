@@ -5,11 +5,13 @@ import static cd4017be.rs_ctr2.Content.power_splitter;
 import cd4017be.api.grid.port.IEnergyAccess;
 import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 
 /**@author CD4017BE */
-public class SplitterP extends OrientedPart implements IEnergyAccess {
+public class SplitterP extends OrientedPart
+implements IEnergyAccess, IProbeInfo {
 
 	IEnergyAccess src = IEnergyAccess.NOP;
 
@@ -52,6 +54,15 @@ public class SplitterP extends OrientedPart implements IEnergyAccess {
 	@Override
 	public Item item() {
 		return power_splitter;
+	}
+
+	@Override
+	public Object[] stateInfo() {
+		int sto = -src.transferEnergy(-Integer.MAX_VALUE, true);
+		int cap = src.transferEnergy(Integer.MAX_VALUE, true) + sto;
+		return new Object[] {
+			"state.rs_ctr2.power_splitter", sto, cap
+		};
 	}
 
 }

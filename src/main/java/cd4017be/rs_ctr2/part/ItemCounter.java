@@ -81,7 +81,7 @@ implements ISignalReceiver, ObjIntConsumer<ItemStack>, IProbeInfo {
 	@Override
 	public ActionResultType
 	onInteract(PlayerEntity player, Hand hand, BlockRayTraceResult hit, int pos) {
-		if (hand == null || player.isCrouching())
+		if (hand == null || !player.getItemInHand(hand).isEmpty())
 			return super.onInteract(player, hand, hit, pos);
 		if (player.level.isClientSide) return ActionResultType.CONSUME;
 		player.displayClientMessage(new TranslationTextComponent(

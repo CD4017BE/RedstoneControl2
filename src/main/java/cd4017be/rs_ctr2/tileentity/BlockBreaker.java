@@ -105,10 +105,11 @@ implements ISignalReceiver, IGate, IBlockSupplier, IProbeInfo {
 		if (!state.requiresCorrectToolForDrops()) e >>= 1;
 		if (energy.transferEnergy(e, true) != e) return R_NO_ENERGY;
 		TileEntity te = state.hasTileEntity() ? world.getBlockEntity(pos) : null;
-		if (!world.removeBlock(pos, false)) return R_UNBREAKABLE;
+		if (!world.destroyBlock(pos, false)) return R_UNBREAKABLE;
 		energy.transferEnergy(e, false);
 		//Minecraft's loot table code looks potentially performance heavy, let's see how bad it really is ...
 		profiler.push("collect_loot");
+		world.random.setSeed(e);
 		for (ItemStack stack : Block.getDrops(state, world, pos, te))
 			addDrop(stack);
 		if (te != null)

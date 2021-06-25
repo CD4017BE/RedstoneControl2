@@ -9,12 +9,14 @@ import java.util.function.ToIntFunction;
 import cd4017be.api.grid.port.IFluidAccess;
 import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 import net.minecraftforge.fluids.FluidStack;
 
 /**@author CD4017BE */
-public class SplitterF extends OrientedPart implements IFluidAccess {
+public class SplitterF extends OrientedPart
+implements IFluidAccess, IProbeInfo {
 
 	IFluidAccess src = IFluidAccess.NOP;
 
@@ -70,6 +72,14 @@ public class SplitterF extends OrientedPart implements IFluidAccess {
 	@Override
 	public int insert(FluidStack stack, int rec) {
 		return --rec < 0 ? 0 : src.insert(stack, rec);
+	}
+
+	@Override
+	public Object[] stateInfo() {
+		return new Object[] {
+			"state.rs_ctr2.res_splitter",
+			src != IFluidAccess.NOP
+		};
 	}
 
 }

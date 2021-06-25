@@ -44,6 +44,13 @@ public class Battery extends MultiBlock<Battery> implements IGate, IEnergyAccess
 	}
 
 	@Override
+	public void setHost(IGridHost host) {
+		super.setHost(host);
+		if (active && host != null)
+			GATE_UPDATER.add(this);
+	}
+
+	@Override
 	protected void onBoundsChange() {
 		cap = Long.bitCount(bounds) * SERVER_CFG.battery_cap.get();
 		energy = min(energy, cap);

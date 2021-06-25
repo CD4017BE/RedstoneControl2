@@ -28,4 +28,9 @@ public class WirelessData extends Wireless implements ISignalReceiver {
 			out.updateInput(value, rec);
 	}
 
+	@Override
+	public Object[] stateInfo() {
+		return new Object[] { "state.rs_ctr2.data_send", state, link };
+	}
+
 }

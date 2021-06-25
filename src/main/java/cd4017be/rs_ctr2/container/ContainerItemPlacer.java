@@ -14,8 +14,11 @@ import cd4017be.lib.gui.comp.*;
 import cd4017be.lib.network.StateSyncAdv;
 import cd4017be.rs_ctr2.Main;
 import cd4017be.rs_ctr2.tileentity.ItemPlacer;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.inventory.container.ClickType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
@@ -27,6 +30,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
  * @author CD4017BE */
 public class ContainerItemPlacer extends AdvancedContainer {
 
+	final ItemPlacer tile;
+
 	public ContainerItemPlacer(int id, PlayerInventory inv, PacketBuffer pkt) {
 		this(id, inv, (ItemPlacer)null);
 	}
@@ -37,6 +42,7 @@ public class ContainerItemPlacer extends AdvancedContainer {
 			tile == null ? StateSyncAdv.of(true, ItemPlacer.class)
 				: StateSyncAdv.of(false, tile), 0
 		);
+		this.tile = tile;
 		inv = tile != null ? tile.getPlayer().inventory : new PlayerInventory(inv.player);
 		int x = 26, y = 26;
 		for (int i = 0; i < 9; i++)
@@ -48,6 +54,13 @@ public class ContainerItemPlacer extends AdvancedContainer {
 			addSlot(new SlotArmor(inv, i + 36, x - 18, y - i * 18 + 36, EquipmentSlotType.values()[i + 2]));
 		addSlot(new SlotArmor(inv, 40, x - 18, y + 58, EquipmentSlotType.OFFHAND));
 		addPlayerInventory(26, 124, true);
+	}
+
+	@Override
+	public ItemStack clicked(int s, int b, ClickType m, PlayerEntity player) {
+		if (s < 36 && m == ClickType.PICKUP && tile != null && !player.inventory.getCarried().isEmpty())
+			tile.resetRestock(s);
+		return super.clicked(s, b, m, player);
 	}
 
 	private static final ResourceLocation TEX = Main.rl("textures/gui/item_placer.png");

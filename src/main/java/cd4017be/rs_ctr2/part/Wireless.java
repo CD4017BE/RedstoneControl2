@@ -7,6 +7,7 @@ import cd4017be.lib.network.Sync;
 import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.ItemFluidUtil;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import cd4017be.rs_ctr2.item.WirelessItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -19,7 +20,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 
 /**
  * @author CD4017BE */
-public abstract class Wireless extends OrientedPart {
+public abstract class Wireless extends OrientedPart implements IProbeInfo {
 
 	private final WirelessItem item;
 	@Sync public int link;

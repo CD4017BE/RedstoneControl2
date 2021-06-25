@@ -57,17 +57,15 @@ implements IProbeInfo {
 		Item item = player.getItemInHand(hand).getItem();
 		short port = port(pos, hit.getDirection(), 0);
 		int p = findPort(port);
-		if (p < 0 && item instanceof IGridItem)
-			return createPort((IGridItem)item, port, client);
-		if (item != Items.AIR)
-			return ActionResultType.PASS;
+		if (item instanceof IGridItem)
+			return p >= 0 ? ActionResultType.PASS
+				: createPort((IGridItem)item, port, client);
 		if (!player.isShiftKeyDown())
 			return onInteract(player, client);
-		if (client)
-			return ActionResultType.CONSUME;
-		if (p < 0)
-			return ActionResultType.FAIL;
+		if (item != Items.AIR) return ActionResultType.PASS;
 		//remove port
+		if (client) return ActionResultType.CONSUME;
+		if (p < 0) return ActionResultType.FAIL;
 		IGridHost host = this.host;
 		host.removePart(this);
 		ports = ArrayUtils.remove(ports, p);

@@ -7,12 +7,14 @@ import java.util.function.*;
 import cd4017be.api.grid.port.IInventoryAccess;
 import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 
 /**@author CD4017BE */
-public class SplitterI extends OrientedPart implements IInventoryAccess {
+public class SplitterI extends OrientedPart
+implements IInventoryAccess, IProbeInfo {
 
 	IInventoryAccess src = IInventoryAccess.NOP;
 
@@ -68,6 +70,14 @@ public class SplitterI extends OrientedPart implements IInventoryAccess {
 	@Override
 	public int insert(ItemStack stack, int rec) {
 		return --rec < 0 ? 0 : src.insert(stack, rec);
+	}
+
+	@Override
+	public Object[] stateInfo() {
+		return new Object[] {
+			"state.rs_ctr2.res_splitter",
+			src != IInventoryAccess.NOP
+		};
 	}
 
 }
