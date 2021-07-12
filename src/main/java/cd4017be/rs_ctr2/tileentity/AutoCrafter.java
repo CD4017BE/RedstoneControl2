@@ -7,6 +7,7 @@ import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
 import static cd4017be.lib.util.ItemFluidUtil.canSlotStack;
 import static cd4017be.rs_ctr2.Main.SERVER_CFG;
 import static net.minecraft.util.Direction.SOUTH;
+import static net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
 
 import java.util.function.*;
 
@@ -36,8 +37,12 @@ import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.util.Direction;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.IItemHandler;
 
 /**@author CD4017BE */
 public class AutoCrafter extends Machine
@@ -49,6 +54,7 @@ ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {
 
 	public final BasicInventory inv = new BasicInventory(16);
 	public final RefCraftingInventory craftInv;
+	private LazyOptional<IItemHandler> invCap;
 	ISignalReceiver out = ISignalReceiver.NOP;
 	IEnergyAccess energy = IEnergyAccess.NOP;
 	ICraftingRecipe last;
@@ -244,6 +250,15 @@ ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {
 	}
 
 	@Override
+	protected void onUnload() {
+		super.onUnload();
+		if (invCap != null) {
+			invCap.invalidate();
+			invCap = null;
+		}
+	}
+
+	@Override
 	public void onBreak(BlockState newState, boolean moving) {
 		for (ItemStack stack : inv.items)
 			ItemFluidUtil.dropStack(stack, level, worldPosition);
@@ -271,6 +286,15 @@ ISignalReceiver, IInventoryAccess, IPlayerPacketReceiver {
 			"state.rs_ctr2.autocraft", clk, p2, p1, slotI, res,
 			-energy.transferEnergy(-Integer.MAX_VALUE, true)
 		};
+	}
+
+	@Override
+	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+		if (cap == ITEM_HANDLER_CAPABILITY) {
+			if (invCap == null) invCap = LazyOptional.of(()-> inv);
+			return invCap.cast();
+		}
+		return super.getCapability(cap, side);
 	}
 
 }
