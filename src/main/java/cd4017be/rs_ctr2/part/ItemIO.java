@@ -8,6 +8,7 @@ import static net.minecraftforge.items.wrapper.EmptyHandler.INSTANCE;
 
 import java.util.function.*;
 
+import cd4017be.api.grid.GridPart;
 import cd4017be.api.grid.IGridHost;
 import cd4017be.api.grid.port.IBlockSupplier;
 import cd4017be.api.grid.port.IInventoryAccess;
@@ -77,10 +78,10 @@ implements IInventoryAccess, IGate, IProbeInfo {
 	}
 
 	@Override
-	public void setHost(IGridHost host) {
-		super.setHost(host);
+	public GridPart setHost(IGridHost host) {
 		if (active && host != null)
 			GATE_UPDATER.add(this);
+		return super.setHost(host);
 	}
 
 	@Override

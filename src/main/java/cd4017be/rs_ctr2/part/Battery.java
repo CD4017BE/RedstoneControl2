@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+import cd4017be.api.grid.GridPart;
 import cd4017be.api.grid.IGridHost;
 import cd4017be.api.grid.IGridItem;
 import cd4017be.api.grid.port.IEnergyAccess;
@@ -44,10 +45,10 @@ public class Battery extends MultiBlock<Battery> implements IGate, IEnergyAccess
 	}
 
 	@Override
-	public void setHost(IGridHost host) {
-		super.setHost(host);
+	public GridPart setHost(IGridHost host) {
 		if (active && host != null)
 			GATE_UPDATER.add(this);
+		return super.setHost(host);
 	}
 
 	@Override

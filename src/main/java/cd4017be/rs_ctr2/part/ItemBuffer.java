@@ -119,9 +119,9 @@ IPlayerPacketReceiver, IItemHandler {
 	}
 
 	@Override
-	public void setHost(IGridHost host) {
+	public ItemBuffer setHost(IGridHost host) {
 		super.setHost(host);
-		if (host == null) return;
+		if (host == null) return this;
 		while(inv.size() > slots) {
 			ItemStack stack = inv.pollLast();
 			n -= stack.getCount();
@@ -134,6 +134,7 @@ IPlayerPacketReceiver, IItemHandler {
 			if (stack.isEmpty()) inv.pollLast();
 			ItemFluidUtil.dropStack(stack1, host.world(), host.pos());
 		}
+		return this;
 	}
 
 	@Override

@@ -1,8 +1,6 @@
 package cd4017be.rs_ctr2.part;
 
-import cd4017be.api.grid.IGridHost;
-import cd4017be.api.grid.IGridItem;
-import cd4017be.api.grid.Link;
+import cd4017be.api.grid.*;
 import cd4017be.lib.network.Sync;
 import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.ItemFluidUtil;
@@ -53,10 +51,10 @@ public abstract class Wireless extends OrientedPart implements IProbeInfo {
 	}
 
 	@Override
-	public void setHost(IGridHost host) {
-		super.setHost(host);
+	public GridPart setHost(IGridHost host) {
 		if (host != null) Link.load(this, 1, link);
 		else Link.unload(this, 1, link);
+		return super.setHost(host);
 	}
 
 	@Override

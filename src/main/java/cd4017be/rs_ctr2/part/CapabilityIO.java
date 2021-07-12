@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
 
+import cd4017be.api.grid.GridPart;
 import cd4017be.api.grid.IGridHost;
 import cd4017be.api.grid.port.IBlockSupplier;
 import cd4017be.lib.part.OrientedPart;
@@ -50,9 +51,9 @@ public abstract class CapabilityIO<T> extends OrientedPart implements IBlockSupp
 	}
 
 	@Override
-	public void setHost(IGridHost host) {
-		super.setHost(host);
+	public GridPart setHost(IGridHost host) {
 		cap = LazyOptional.empty();
+		return super.setHost(host);
 	}
 
 	protected T get(T fallback) {

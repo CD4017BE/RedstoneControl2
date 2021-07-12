@@ -15,9 +15,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -208,5 +206,29 @@ implements IProbeInfo {
 	protected abstract T splitOff(long splitBounds, long thisBounds);
 	protected abstract short[] merge(T other);
 	protected abstract ResourceLocation model();
+
+	@Override
+	public boolean canRotate() {
+		return true;
+	}
+
+	@Override
+	public void rotate(int steps) {
+		rotate(ports, steps);
+		super.rotate(steps);
+	}
+
+	@Override
+	public boolean canMove(Direction d, int n) {
+		long m = mask(d.ordinal(), n);
+		return (bounds & m) == 0 || (bounds & ~m) == 0;
+	}
+
+	@Override
+	public GridPart move(Direction d, int n) {
+		GridPart part = super.move(d, n);
+		move(ports, d, n, part != null);
+		return part;
+	}
 
 }

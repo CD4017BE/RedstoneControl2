@@ -261,4 +261,88 @@ public class Cable extends GridPart implements IWire {
 		null, null, null
 	};
 
+	@Override
+	public boolean merge(IGridHost other) {
+		Port p0 = other.findPort(this, ports[0]);
+		Port p1 = other.findPort(this, ports[1]);
+		Cable c0 = p0 != null && p0.host instanceof Cable ? (Cable)p0.host : null;
+		Cable c1 = p1 != null && p1.host instanceof Cable ? (Cable)p1.host : null;
+		int i = 1;
+		if (c0 == null) {
+			if (c1 == null) return true;
+			p0 = p1; c0 = c1; c1 = null;
+			i = 0;
+		}
+		c0.bounds |= this.bounds;
+		if (c1 != null) {
+			c0.bounds |= c1.bounds;
+			c0.ports[p0.channel] = c1.ports[p1.channel ^ 1];
+			other.removePart(c1);
+		} else c0.ports[p0.channel] = ports[i];
+		return false;
+	}
+
+	@Override
+	public boolean canRotate() {
+		return true;
+	}
+
+	@Override
+	public void rotate(int steps) {
+		rotate(ports, steps);
+		super.rotate(steps);
+	}
+
+	@Override
+	public boolean canMove(Direction d, int n) {
+		long m = mask(d.ordinal(), n), b0 = bounds & m, b1 = bounds & ~m;
+		return b0 == 0 || b1 == 0 || Long.bitCount(outline(b0) & b1) == 1;
+	}
+
+	@Override
+	public GridPart move(Direction d, int n) {
+		GridPart part = super.move(d, n);
+		if (part == null || part == this) {
+			move(ports, d, n, part == this);
+			return part;
+		}
+		move(part.ports, d, n, true);
+		move(ports, d, n, false);
+		int xor = 0;
+		long b = part.bounds;
+		switch(d) {
+		case DOWN: b >>>= 12; xor = 0x080; break;
+		case UP: b <<= 12; xor = 0x080; break;
+		case NORTH: b >>>= 48; xor = 0x800; break; 
+		case SOUTH: b <<= 48; xor = 0x800; break;
+		case WEST: b >>>= 3; xor = 0x008; break;
+		case EAST: b <<= 3; xor = 0x008; break;
+		}
+		short p0 = port(
+			Long.numberOfTrailingZeros(b & bounds & FACES[d.ordinal()]),
+			d, ports[0] >> 12
+		), p1 = (short)(p0 ^ xor);
+		if (overflow(ports[0])) {
+			ports[0] = p0;
+			part.ports[1] = p1;
+		} else {
+			ports[1] = p0;
+			part.ports[0] = p1;
+		}
+		return part;
+	}
+
+	private static boolean overflow(short p) {
+		return ((p & 0x888) * 7 >> 3 & p) != 0;
+	}
+
+	@Override
+	protected Cable copy(long bounds) {
+		Cable c = new Cable();
+		c.bounds = bounds;
+		c.ports[0] = ports[0];
+		c.ports[1] = ports[1];
+		return c;
+	}
+
 }

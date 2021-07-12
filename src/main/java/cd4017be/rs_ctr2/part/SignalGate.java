@@ -2,6 +2,7 @@ package cd4017be.rs_ctr2.part;
 
 import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
 
+import cd4017be.api.grid.GridPart;
 import cd4017be.api.grid.IGridHost;
 import cd4017be.api.grid.port.ISignalReceiver;
 import cd4017be.lib.network.Sync;
@@ -21,10 +22,10 @@ public abstract class SignalGate extends OrientedPart implements IGate, IProbeIn
 	}
 
 	@Override
-	public void setHost(IGridHost host) {
+	public GridPart setHost(IGridHost host) {
 		if (active && host != null && this.host == null)
 			GATE_UPDATER.add(this);
-		super.setHost(host);
+		return super.setHost(host);
 	}
 
 	@Override

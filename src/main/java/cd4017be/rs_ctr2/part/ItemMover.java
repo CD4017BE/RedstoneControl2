@@ -7,6 +7,7 @@ import static java.lang.Math.abs;
 
 import com.google.common.base.Predicates;
 
+import cd4017be.api.grid.GridPart;
 import cd4017be.api.grid.IGridHost;
 import cd4017be.api.grid.port.*;
 import cd4017be.lib.network.Sync;
@@ -47,10 +48,10 @@ implements ISignalReceiver, IGate, IProbeInfo {
 	}
 
 	@Override
-	public void setHost(IGridHost host) {
-		super.setHost(host);
+	public GridPart setHost(IGridHost host) {
 		if (host != null && active)
 			GATE_UPDATER.add(this);
+		return super.setHost(host);
 	}
 
 	@Override

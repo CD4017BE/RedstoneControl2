@@ -3,6 +3,7 @@ package cd4017be.rs_ctr2.part;
 import static cd4017be.rs_ctr2.Content.block_io;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 
+import cd4017be.api.grid.GridPart;
 import cd4017be.api.grid.IGridHost;
 import cd4017be.api.grid.port.IBlockSupplier;
 import cd4017be.lib.part.OrientedPart;
@@ -47,12 +48,12 @@ public class BlockIO extends OrientedPart implements IBlockSupplier {
 	}
 
 	@Override
-	public void setHost(IGridHost host) {
-		super.setHost(host);
+	public GridPart setHost(IGridHost host) {
 		block = host != null && onEdge() ? ImmutablePair.of(
 			host.pos().relative(orient.b, -1),
 			(ServerWorld)host.world()
 		) : null;
+		return super.setHost(host);
 	}
 
 	@Override

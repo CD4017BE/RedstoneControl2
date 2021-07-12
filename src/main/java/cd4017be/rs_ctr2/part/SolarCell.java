@@ -58,14 +58,15 @@ public class SolarCell extends MultiBlock<SolarCell> implements ISlowTickable {
 	}
 
 	@Override
-	public void setHost(IGridHost host) {
+	public SolarCell setHost(IGridHost host) {
 		super.setHost(host);
-		if (host == null || active) return;
+		if (host == null || active) return this;
 		DimensionType dt = host.world().dimensionType();
-		if (!dt.hasSkyLight()) return;
+		if (!dt.hasSkyLight()) return this;
 		fixTime = dt.hasFixedTime();
 		active = true;
 		GATE_UPDATER.add(this);
+		return this;
 	}
 
 	@Override
