@@ -120,7 +120,7 @@ IUnnamedContainerProvider, IProbeInfo {
 		ports.createPort(port(o, 0x06, NORTH, ISignalReceiver.TYPE_ID), true, true);
 		ports.createPort(port(o, 0x09, NORTH, IEnergyAccess.TYPE_ID), true, true);
 		ports.createPort(port(o, 0x0a, NORTH, IInventoryAccess.TYPE_ID), true, true);
-		ports.createPort(port(o, 0x35, SOUTH, IBlockSupplier.TYPE_ID), true, true);
+		ports.createPort(port(o, 0x39, SOUTH, IBlockSupplier.TYPE_ID), true, true);
 		ports.createPort(port(o, 0x01, NORTH, ISignalReceiver.TYPE_ID), false, true);
 	}
 
@@ -280,6 +280,13 @@ IUnnamedContainerProvider, IProbeInfo {
 			playerData = nbt.getCompound("FP");
 			aim = aim0;
 		}
+	}
+
+	@Override
+	public void onLoad() {
+		if (active && !level.isClientSide)
+			GATE_UPDATER.add(this);
+		super.onLoad();
 	}
 
 	public FakePlayer getPlayer() {

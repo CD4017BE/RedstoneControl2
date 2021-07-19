@@ -203,7 +203,7 @@ public class Cable extends GridPart implements IWire {
 			for (long l = m << s; (line & l) != 0; l <<= s, n++) m |= l;
 			line &= ~m;
 			if (((m | m << 1) & visible) == 0) continue;
-			float[] vec = sca(3, dadd(3, MicroBlockFace.vec(p), .25F), .25F);
+			float[] vec = sca(3, dadd(3, vec(p), .25F), .25F);
 			float[] size = {.125F, .125F, .125F};
 			size[ax] += n * .25F;
 			for (int i = 0; i < 6; i++)
@@ -231,7 +231,7 @@ public class Cable extends GridPart implements IWire {
 		} else p0 = p1;
 		int ax = Integer.numberOfTrailingZeros(0x111 & ~port) >> 2;
 		if (ax >= 3) return;
-		float[] vec = dadd(3, vec(p0 & 3, p0 >> 2 & 3, p0 >> 4 & 3), .25F);
+		float[] vec = dadd(3, vec(p0), .25F);
 		float[] size = {.5F, .5F, .5F};
 		if (p1 < 0) vec[ax] -= .2505F;
 		size[ax] = .751F;

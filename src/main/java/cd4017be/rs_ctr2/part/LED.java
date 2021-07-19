@@ -3,6 +3,8 @@ package cd4017be.rs_ctr2.part;
 import static cd4017be.lib.network.Sync.ALL;
 import static cd4017be.lib.network.Sync.Type.Enum;
 import static cd4017be.rs_ctr2.Content.led;
+import static cd4017be.rs_ctr2.util.Utils.heldColor;
+import static cd4017be.rs_ctr2.util.Utils.serverAction;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 
@@ -18,7 +20,6 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -60,13 +61,12 @@ public class LED extends OrientedPart implements IDynamicPart, ISignalReceiver {
 	public ActionResultType
 	onInteract(PlayerEntity player, Hand hand, BlockRayTraceResult hit, int pos) {
 		if (hand == null) return super.onInteract(player, hand, hit, pos);
-		ItemStack stack = player.getItemInHand(hand);
-		DyeColor color = stack.isEmpty() ? null : DyeColor.getColor(stack);
-		if (color == null) return ActionResultType.PASS;
-		if (player.level.isClientSide) return ActionResultType.CONSUME;
-		this.color = color;
-		host.onPartChange();
-		return ActionResultType.SUCCESS;
+		DyeColor color = heldColor(player, hand);
+		return color != null ?
+			serverAction(player, ()-> {
+				this.color = color;
+				host.onPartChange();
+			}) : ActionResultType.PASS;
 	}
 
 	@Override

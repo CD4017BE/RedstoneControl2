@@ -83,7 +83,7 @@ public class Content {
 	transformer = null, item_mover = null, fluid_mover = null,
 	item_filter = null, item_counter = null, item_dropper = null,
 	switcH = null, led = null, switch_array = null, led_array = null,
-	_7segment = null, bcd_converter = null, hardness_sensor = null;
+	_7segment = null, bcd_converter = null, label = null, hardness_sensor = null;
 	public static final WirelessItem
 	data_send = null, data_recv = null, block_send = null, block_recv = null;
 	public static final MultiblockItem<Battery> battery = null;
@@ -98,6 +98,7 @@ public class Content {
 	public static final ContainerType<ContainerItemPlacer> iTEM_PLACER = null;
 	public static final ContainerType<ContainerItemFilter> iTEM_FILTER = null;
 	public static final ContainerType<ContainerItemBuffer> iTEM_BUFFER = null;
+	public static final ContainerType<ContainerLabel> lABEL = null;
 
 	//sounds:
 	public static final BaseSound SWITCH_FLIp = null;
@@ -179,6 +180,7 @@ public class Content {
 			orientedPart("item_filter", rs, ItemFilter::new),
 			orientedPart("item_counter", rs, ItemCounter::new),
 			orientedPart("item_dropper", rs, ItemDropper::new),
+			orientedPart("label", rs, Label::new),
 			orientedPart("switch", rs, Switch::new),
 			orientedPart("led", rs, LED::new),
 			orientedPart("switch_array", rs, SwitchArray::new),
@@ -228,7 +230,8 @@ public class Content {
 			IForgeContainerType.create(ContainerMemory::new).setRegistryName(rl("memory")),
 			IForgeContainerType.create(ContainerItemPlacer::new).setRegistryName(rl("item_placer")),
 			IForgeContainerType.create(ContainerItemFilter::new).setRegistryName(rl("item_filter")),
-			IForgeContainerType.create(ContainerItemBuffer::new).setRegistryName(rl("item_buffer"))
+			IForgeContainerType.create(ContainerItemBuffer::new).setRegistryName(rl("item_buffer")),
+			IForgeContainerType.create(ContainerLabel::new).setRegistryName(rl("label"))
 		);
 	}
 
@@ -241,6 +244,7 @@ public class Content {
 		ScreenManager.register(iTEM_PLACER, ContainerItemPlacer::setupGui);
 		ScreenManager.register(iTEM_FILTER, ContainerItemFilter::setupGui);
 		ScreenManager.register(iTEM_BUFFER, ContainerItemBuffer::setupGui);
+		ScreenManager.register(lABEL, ContainerLabel::setupGui);
 	}
 
 	@SubscribeEvent
@@ -253,6 +257,7 @@ public class Content {
 		addSpecialModel(SolarCell.MODEL);
 		addSpecialModel(Memory.MODEL);
 		addSpecialModel(ItemBuffer.MODEL);
+		addSpecialModel(Label.MODEL);
 		addSpecialModel(Switch.BASE);
 		addSpecialModel(Switch.OFF);
 		addSpecialModel(Switch.ON);

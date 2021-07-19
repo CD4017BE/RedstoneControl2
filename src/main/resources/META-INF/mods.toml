@@ -14,8 +14,7 @@ displayName="Redstone Control"
 logoFile=""
 credits="" #optional
 authors="CD4017BE"
-description='''
-'''
+description="Adds compact circuitry in the form of microblock logic gates and various automation machinery to control with it.\nAll based on the microblock system from CD4017BE_lib."
 
 [[dependencies.rs_ctr2]]
     modId="forge"
@@ -32,6 +31,6 @@ description='''
 [[dependencies.rs_ctr2]]
     modId="cd4017be_lib"
     mandatory=true
-    versionRange="[7.0.1,)"
+    versionRange="[7.1.1,)"
     ordering="NONE"
     side="BOTH"

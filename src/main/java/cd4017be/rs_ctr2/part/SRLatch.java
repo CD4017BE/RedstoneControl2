@@ -46,6 +46,11 @@ public class SRLatch extends SignalGate {
 	}
 
 	@Override
+	public boolean isMaster(int channel) {
+		return channel < 2;
+	}
+
+	@Override
 	public boolean evaluate() {
 		active = false;
 		return host != null && state != (state = (state | inS) & ~inR);

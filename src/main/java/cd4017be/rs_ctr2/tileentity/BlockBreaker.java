@@ -66,7 +66,7 @@ implements ISignalReceiver, IGate, IBlockSupplier, IProbeInfo {
 		ports.createPort(port(o, 0x06, NORTH, ISignalReceiver.TYPE_ID), true, true);
 		ports.createPort(port(o, 0x09, NORTH, IEnergyAccess.TYPE_ID), true, true);
 		ports.createPort(port(o, 0x0a, NORTH, IInventoryAccess.TYPE_ID), true, true);
-		ports.createPort(port(o, 0x35, SOUTH, IBlockSupplier.TYPE_ID), true, true);
+		ports.createPort(port(o, 0x39, SOUTH, IBlockSupplier.TYPE_ID), true, true);
 	}
 
 	@Override
@@ -140,6 +140,13 @@ implements ISignalReceiver, IGate, IBlockSupplier, IProbeInfo {
 	public ImmutablePair<BlockPos, ServerWorld> getBlock(int rec) {
 		return ports.isLinked(4) ? null //prevent breaking connected cables
 			: new ImmutablePair<>(worldPosition.relative(orientation().b), (ServerWorld)level);
+	}
+
+	@Override
+	public void onLoad() {
+		if (active && !level.isClientSide)
+			GATE_UPDATER.add(this);
+		super.onLoad();
 	}
 
 	@Override

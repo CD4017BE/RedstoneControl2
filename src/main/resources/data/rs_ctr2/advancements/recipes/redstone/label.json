@@ -1,0 +1,14 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:label"
+	]},
+	"criteria": {
+		"placed_sign": {
+			"trigger": "minecraft:placed_block",
+			"conditions": {
+				"item": { "tag": "minecraft:signs" }
+			}
+		}
+	}
+}

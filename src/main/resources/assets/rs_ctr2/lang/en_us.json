@@ -271,5 +271,9 @@
   "item.wireless.link": "Link #%s08X",
   "state.rs_ctr2.res_splitter": "§a0: §fConnected: %ss\n§7<- §91 2 3 4 5",
   "state.rs_ctr2.block_splitter": "§a0: §5%ss\n§7<- §91 2 3 4 5",
-  "state.rs_ctr2.power_splitter": "§a0: §e%sd / %sd RF\n§e<- §91 2 3 4 5"
+  "state.rs_ctr2.power_splitter": "§a0: §e%sd / %sd RF\n§e<- §91 2 3 4 5",
+  "state.rs_ctr2.item_buffer": "%sd/%sd§7 Items stored\n%sd/%sd§7 Types used",
+  "item.rs_ctr2.label": "Text Label",
+  "item.rs_ctr2.label.tip": "Interact with empty hand to edit text.\nInteract with Labels on the sides to extend.\nInteract with dye to change colors.\n§oCrouch placement recommended!",
+  "gui.rs_ctr2.label": "Label text"
 }
