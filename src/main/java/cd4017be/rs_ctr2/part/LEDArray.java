@@ -59,13 +59,11 @@ public class LEDArray extends ExtendablePart implements IDynamicPart, ISignalRec
 	@Override
 	public ActionResultType
 	onInteract(PlayerEntity player, Hand hand, BlockRayTraceResult hit, int pos) {
-		ActionResultType ret = super.onInteract(player, hand, hit, pos);
-		if (ret != ActionResultType.PASS) return ret;
 		DyeColor color = heldColor(player, hand);
 		return color != null ? serverAction(player, ()-> {
 			this.color = color;
 			host.onPartChange();
-		}) : ActionResultType.PASS;
+		}) : super.onInteract(player, hand, hit, pos);
 	}
 
 	@Override

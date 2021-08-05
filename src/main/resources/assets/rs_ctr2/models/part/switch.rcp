@@ -38,6 +38,21 @@ lever(M, angle) {
 	M.pop();
 }
 
+button(M) {
+	Loc Q = [0.95,0.95,0.75, 3.05,3.05,1.75]#, T = [0,4, 8,8]#;
+	M.rect(Q, [0,8, 8,16]#, 'uV+');
+	for(F:['-uv', '+uv', 'u+v', 'u-v'])
+		M.rect(Q, T, F);
+}
+
+button1(M) {
+	M.push();
+	M.translate(0, 0, -0.5);
+	M.translateUV(8, 0);
+	button(M);
+	M.pop();
+}
+
 lamp(M) {
 	Loc Q = [1.5,1.5,1, 2.5,2.5,2.5]#, T = [0,2, 4,8]#;
 	M.rect(Q, [0,8, 4,12]#, 'uV+');

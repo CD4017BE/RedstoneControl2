@@ -1,5 +1,8 @@
 {
   "itemGroup.rs_ctr2": "Redstone Control 2",
+  "rs_ctr2.subtitle.switch_flip": "Switch flipped",
+  "rs_ctr2.subtitle.button_press": "Button pressed",
+  "rs_ctr2.subtitle.button_release": "Button unpressed",
   "msg.rs_ctr2.battery": "%s / %s RF in %s Cells",
   "msg.rs_ctr2.decode_hex": "§bDecoding file in intel hex format ...",
   "msg.rs_ctr2.decode_img": "§bDecoding file as image with %sd bits per pixel ...",
@@ -285,5 +288,8 @@
   "state.rs_ctr2.frame_controller": "§90: §c%sd§7 ← [%sd...%sd]\n§91: §c%sd§7 ↑ [%sd...%sd]\n§92: §c%sd§7 ⨂ [%sd...%sd]\n§93: §5%ss",
   "block.rs_ctr2.frame.tip": "Must be placed in all 8 (up to 27) corners of the cubiod regions that §6Random Block Access Controller§7s should operate in.\nDevices connect to the closest axis aligned Frame block and use the sourrounding regions (up to 8) combined.",
   "block.rs_ctr2.frame.ext": "Frames connect up to %sd blocks apart and to machines within %sd blocks.",
-  "block.rs_ctr2.frame_controller.tip": "Provides interaction with blocks inside a cuboid region defined by §6Interaction Frame§7s.\nThe block is selected with 3 supplied §ccoordinate-numbers§7 [t-½] that are relative to the connected origin Frame."
+  "block.rs_ctr2.frame_controller.tip": "Provides interaction with blocks inside a cuboid region defined by §6Interaction Frame§7s.\nThe block is selected with 3 supplied §ccoordinate-numbers§7 [t-½] that are relative to the connected origin Frame.",
+  "item.rs_ctr2.button": "Small Button",
+  "item.rs_ctr2.button.tip": "§A⏵§7 = -1 if ON, 0 if OFF.\nTurns off after a delay (crouch interact to configure).",
+  "gui.rs_ctr2.pulse_len": "Pulse Length"
 }

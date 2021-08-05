@@ -3,5 +3,15 @@
 		"category": "block",
 		"subtitle": "rs_ctr2.subtitle.switch_flip",
 		"sounds": [ "rs_ctr2:switch_flip" ]
+	},
+	"button_press": {
+		"category": "block",
+		"subtitle": "rs_ctr2.subtitle.button_press",
+		"sounds": [ "rs_ctr2:btn_press" ]
+	},
+	"button_release": {
+		"category": "block",
+		"subtitle": "rs_ctr2.subtitle.button_release",
+		"sounds": [ "rs_ctr2:btn_release" ]
 	}
 }

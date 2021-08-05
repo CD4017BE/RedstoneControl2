@@ -7,6 +7,12 @@ This is the Minecraft 1.16 port of my previous mod [Redstone Control](https://gi
 To not put unnecessary burden on your CPU, the microblocks are hosted by non-ticking TileEntities and have **zero** idle¹ performance impact (they only cost RAM). Microblock devices also communicate directly without block updates, so even complicated active microblock circuits often have a much lower server performance impact than just a single piece of redstone dust being pulsed.  
 *¹: idle includes decorative structures, logic gates in a stable state and inactive machines.*
 
+## Server/Client Installation
+Simply put the downloaded `.jar` files of the mod and the required verison of CD4017BE_lib in your `mods` folder. Requires Forge Modloader to be installed in your Minecraft instance.
+
+Latest development downloads can be found in [packages](https://github.com/CD4017BE/RedstoneControl2/packages/914303).
+Stable, more thoroughly tested downloads available on [Curse Forge](https://www.curseforge.com/minecraft/mc-mods/redstone-control-2).
+
 ## Project Setup
 The setup is the same as for [CD4017BE_lib](https://github.com/CD4017BE/CD4017BE_lib#project-setup-for-mc-1165).
 Gradle will require GitHub authentication for downloading the CD4017BE_lib dependencies [as described here](https://github.com/CD4017BE/CD4017BE_lib#using-this-mod-as-dependency-1165).
