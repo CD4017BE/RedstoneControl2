@@ -202,7 +202,7 @@ public class Cable extends GridPart implements IWire {
 			long m = 1L << p;
 			for (long l = m << s; (line & l) != 0; l <<= s, n++) m |= l;
 			line &= ~m;
-			if (((m | m << 1) & visible) == 0) continue;
+			if (((m | m << s) & visible) == 0) continue;
 			float[] vec = sca(3, dadd(3, vec(p), .25F), .25F);
 			float[] size = {.125F, .125F, .125F};
 			size[ax] += n * .25F;

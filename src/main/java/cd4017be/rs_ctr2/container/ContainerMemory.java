@@ -42,7 +42,7 @@ public class ContainerMemory extends AdvancedContainer {
 	}
 
 	public ContainerMemory(int id, PlayerInventory inv, Memory part) {
-		super(mEMORY, id, inv, StateSyncAdv.of(part == null, SYNC_FORMAT, 0, new Object[0]), 0);
+		super(mEMORY, id, inv, StateSyncAdv.of(part == null, SYNC_FORMAT, 1, new Object[0]), 0);
 		this.part = part;
 	}
 

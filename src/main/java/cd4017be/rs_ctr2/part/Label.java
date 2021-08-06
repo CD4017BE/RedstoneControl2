@@ -128,8 +128,9 @@ implements IDynamicPart, IPlayerPacketReceiver, IUnnamedContainerProvider {
 		updateSize();
 		float[] size = {((pos >> 6 & 3) + 1) * 0.25F, 0.25F, 0.005F};
 		float scale = Math.min((size[0] - 0.03125F) / w, (size[1] - 0.03125F) / h);
-		float[] p = sca(3, vec(pos), 0.25F), q = {w * scale, h * scale, 0.005F};
+		float[] p = sca(3, vec(pos), 0.25F), q = {w * scale, h * scale, size[2]};
 		int o = orient.o;
+		if ((o<<31 ^ o<<27 ^ o<<23) < 0) q[0] = -q[0];
 		add(3, p, sca(3, sub(3, size, q), .5F));
 		p = dadd(3, orient(o, dadd(3, p, -0.5F)), 0.5F);
 		q = orient(o, q);

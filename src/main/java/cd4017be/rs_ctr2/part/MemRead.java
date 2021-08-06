@@ -75,7 +75,10 @@ public class MemRead extends SignalGate implements ISignalReceiver {
 
 	@Override
 	public Object[] stateInfo() {
-		return new Object[]{"state.rs_ctr2.mem_read", state, addr, bits};
+		return new Object[]{
+			"state.rs_ctr2.mem_read",
+			state, mem.length << 5, addr, bits
+		};
 	}
 
 }

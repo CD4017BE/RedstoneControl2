@@ -126,20 +126,17 @@ implements IProbeInfo {
 			return;
 		}
 		long b1 = floodFill(b, Long.lowestOneBit(b));
-		if (b1 == b) {// still in one piece
-			setBounds(b);
-			return;
+		if (b1 != b) {// not in one piece
+			host.removePart(this);
+			do {//split off piece
+				T part = splitOff(b1, b);
+				part.ports = ports;
+				part.setBounds(b1);
+				host.addPart(part);
+				b &= ~b1;
+				b1 = floodFill(b, Long.lowestOneBit(b));
+			} while(b1 != b);
 		}
-		host.removePart(this);
-		do {
-			//split off piece
-			T part = splitOff(b1, b);
-			part.ports = ports;
-			part.setBounds(b1);
-			host.addPart(part);
-			b &= ~b1;
-			b1 = floodFill(b, Long.lowestOneBit(b));
-		} while(b1 != b);
 		setBounds(b);
 		host.addPart(this);
 	}

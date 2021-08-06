@@ -21,19 +21,19 @@ public class BMPImage implements RAMImageFormat {
 	@Override
 	public String infoMessage(boolean export, String file, int w, int h, int bits) {
 		return export ?
-			TooltipUtil.format("msg.rs_ctr2.encode_bmp", w * bits, h, file) :
+			TooltipUtil.format("msg.rs_ctr2.encode_bmp", w, h, file) :
 			TooltipUtil.format("msg.rs_ctr2.decode_bmp", file);
 	}
 
 	@Override
 	public void importFile(FileInputStream fis, PacketBuffer data, int[] wh, int bits, int cap) throws IOException {
 		PNG_IMAGE.importFile(fis, data, wh, 1, cap);
-		wh[0] /= bits;
+		//wh[0] /= bits;
 	}
 
 	@Override
 	public void exportFile(FileOutputStream fos, ByteBuffer data, int w, int h, int bits) throws IOException {
-		w *= bits;
+		//w *= bits;
 		h = Math.min(h, ((data.capacity() << 3) - 1) / w + 1);
 		final int offset = 62, line = (w + 31 >> 3 & ~3), sizeIm = line * h;
 		//create Bitmap info header

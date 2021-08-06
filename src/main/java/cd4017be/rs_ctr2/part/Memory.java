@@ -51,7 +51,10 @@ public class Memory extends MultiBlock<Memory> implements IUnnamedContainerProvi
 	protected void onBoundsChange() {
 		int l = Long.bitCount(bounds) * (SERVER_CFG.memory_size.get() >> 5);
 		if (data == null) data = new int[l];
-		else if (l != data.length) data = Arrays.copyOf(data, l);
+		else if (l != data.length) {
+			data = Arrays.copyOf(data, l);
+			if (host != null) host.removePart(this);
+		}
 	}
 
 	private boolean isMemory(IGridItem item) {

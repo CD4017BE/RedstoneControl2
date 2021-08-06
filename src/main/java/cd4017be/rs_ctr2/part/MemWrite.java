@@ -88,7 +88,10 @@ implements IGate, ISignalReceiver, IProbeInfo {
 
 	@Override
 	public Object[] stateInfo() {
-		return new Object[]{"state.rs_ctr2.mem_write", state, addr, bits};
+		return new Object[]{
+			"state.rs_ctr2.mem_write",
+			mem.length << 5, state, addr, bits
+		};
 	}
 
 }
