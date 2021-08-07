@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"B#-"
+	],
+	"key": {
+		"-": { "item": "rs_ctr2:data_cable" },
+		"#": { "item": "rs_ctr2:delay" },
+		"B": { "item": "minecraft:stone_button" }
+	},
+	"result": {
+		"item": "rs_ctr2:button",
+		"count": 4
+	}
+}

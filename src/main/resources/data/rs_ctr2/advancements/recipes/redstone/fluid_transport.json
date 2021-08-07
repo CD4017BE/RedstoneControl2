@@ -2,6 +2,8 @@
 	"parent": "minecraft:recipes/root",
 	"rewards": { "recipes": [
 		"rs_ctr2:fluid_io",
+		"rs_ctr2:fluid_filter",
+		"rs_ctr2:fluid_counter",
 		"rs_ctr2:fluid_splitter",
 		"rs_ctr2:fluid_mover"
 	]},

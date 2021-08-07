@@ -18,7 +18,7 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 	craft, block_break, hardness_break, item_place;
 	public final DoubleValue daytime;
 	public final IntValue rec_data, rec_power, rec_item, rec_fluid, rec_block;
-	public final IntValue memory_size, item_buffer_size;
+	public final IntValue memory_size, item_buffer_size, fluid_buffer_size;
 	public final IntValue pipe_limit, frame_range, device_range;
 
 	protected ConfigServer() {
@@ -60,6 +60,9 @@ public class ConfigServer extends ModConfig implements Consumer<FMLServerStartin
 		item_buffer_size = b
 		.comment("max stack size per buffer cell")
 		.defineInRange("buffer_stacksize", 400, 1, 15625);
+		fluid_buffer_size = b
+		.comment("max mB fluid per buffer cell")
+		.defineInRange("buffer_fluidcap", 1000, 1, Integer.MAX_VALUE / 64);
 		pipe_limit = b
 		.comment("Maximum distance Block Interaction Pipes can be extended.")
 		.defineInRange("max_pipe_length", 256, 0, 30000000);

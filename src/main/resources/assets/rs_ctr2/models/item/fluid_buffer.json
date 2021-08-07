@@ -1,0 +1,12 @@
+{
+	"parent": "block/block",
+	"loader": "cd4017be_lib:rcp",
+	"textures": {
+		"particle": "rs_ctr2:part/fluid_buffer"
+	},
+	"code": [
+		"Loc Q = [4,4,4, 12,12,12]#, T = [8,4, 12,8]#;",
+		"for(F:['-vu', '+vu', 'uv+', 'uv-', 'v+u', 'v-u'])",
+		"	ARG.rect(Q, T, F);"
+	]
+}

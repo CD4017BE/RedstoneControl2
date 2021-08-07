@@ -1,6 +1,7 @@
 {
 	"parent": "minecraft:recipes/root",
 	"rewards": { "recipes": [
+		"rs_ctr2:button",
 		"rs_ctr2:switch",
 		"rs_ctr2:switch_array"
 	]},
@@ -11,11 +12,21 @@
 				{ "item": "minecraft:lever" }
 			]}
 		},
+		"has_button": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "minecraft:stone_button" }
+			]}
+		},
 		"has_cable": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": { "items": [
 				{ "item": "rs_ctr2:data_cable" }
 			]}
 		}
-	}
+	},
+	"requirements": [
+		[ "has_button", "has_lever" ],
+		[ "has_cable" ]
+	]
 }

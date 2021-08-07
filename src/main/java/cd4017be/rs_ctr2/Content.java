@@ -87,6 +87,7 @@ public class Content {
 	neg_gate = null, counter = null, mem_read = null, mem_write = null,
 	transformer = null, item_mover = null, fluid_mover = null,
 	item_filter = null, item_counter = null, item_dropper = null,
+	fluid_filter = null, fluid_counter = null,
 	switcH = null, led = null, switch_array = null, led_array = null,
 	_7segment = null, bcd_converter = null, label = null, button = null,
 	hardness_sensor = null;
@@ -96,6 +97,7 @@ public class Content {
 	public static final MultiblockItem<SolarCell> solarcell = null;
 	public static final MultiblockItem<Memory> memory = null;
 	public static final MultiblockItem<ItemBuffer> item_buffer = null;
+	public static final MultiblockItem<FluidBuffer> fluid_buffer = null;
 
 	// containers:
 	public static final ContainerType<ContainerConstant> cONSTANT = null;
@@ -191,6 +193,8 @@ public class Content {
 			orientedPart("item_filter", rs, ItemFilter::new),
 			orientedPart("item_counter", rs, ItemCounter::new),
 			orientedPart("item_dropper", rs, ItemDropper::new),
+			orientedPart("fluid_filter", rs, FluidFilter::new),
+			orientedPart("fluid_counter", rs, FluidCounter::new),
 			orientedPart("label", rs, Label::new),
 			orientedPart("button", rs, Button::new),
 			orientedPart("switch", rs, Switch::new),
@@ -204,6 +208,7 @@ public class Content {
 			new MultiblockItem<>(p, SolarCell::new).tooltipArgs(SERVER_CFG.solar_power, SERVER_CFG.daytime).setRegistryName(rl("solarcell")),
 			new MultiblockItem<>(p, Memory::new).tooltipArgs(SERVER_CFG.memory_size).setRegistryName(rl("memory")),
 			new MultiblockItem<>(p, ItemBuffer::new).tooltipArgs(SERVER_CFG.item_buffer_size).setRegistryName(rl("item_buffer")),
+			new MultiblockItem<>(p, FluidBuffer::new).tooltipArgs(SERVER_CFG.fluid_buffer_size).setRegistryName(rl("fluid_buffer")),
 			item(p, "corerope1"), item(p, "corerope2")
 		);
 		new WirelessItem(rs, WirelessData::new, ISignalReceiver.TYPE_ID)
@@ -274,6 +279,7 @@ public class Content {
 		addSpecialModel(SolarCell.MODEL);
 		addSpecialModel(Memory.MODEL);
 		addSpecialModel(ItemBuffer.MODEL);
+		addSpecialModel(FluidBuffer.MODEL);
 		addSpecialModel(Label.MODEL);
 		addSpecialModel(Switch.BASE);
 		addSpecialModel(Switch.OFF);
