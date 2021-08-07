@@ -1,10 +1,10 @@
 {
-	"gui_light": "side",
+	"gui_light": "front",
 	"display": {
 		"gui": {
-			"rotation": [ 30, 225, 0 ],
-			"translation": [ -10.60660, 6.49519, 0 ],
-			"scale":[ 1.25, 1.25, 1.25 ]
+			"rotation": [ 0, 270, -105 ],
+			"translation": [ -12, -15.10583, 0 ],
+			"scale":[ 2, 2, 2 ]
 		},
 		"ground": {
 			"rotation": [ 0, 0, 0 ],

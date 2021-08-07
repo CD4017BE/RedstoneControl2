@@ -1,5 +1,12 @@
 {
 	"parent": "rs_ctr2:part/grid_part",
+	"display": {
+		"gui": {
+			"rotation": [ 0, 270, -15 ],
+			"translation": [ -6, 3.41181, 0 ],
+			"scale":[ 1.5, 1.5, 1.5 ]
+		}
+	},
 	"textures": {
 		"particle": "#main"
 	},
