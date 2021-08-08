@@ -24,7 +24,7 @@ public abstract class CapabilityIO<T> extends OrientedPart implements IBlockSupp
 	protected IBlockSupplier block = this;
 	protected ImmutablePair<BlockPos, ServerWorld> last;
 	LazyOptional<T> cap = LazyOptional.empty();
-	int t, exp;
+	protected int t, exp;
 
 	public CapabilityIO(int ports) {
 		super(ports);
@@ -59,7 +59,7 @@ public abstract class CapabilityIO<T> extends OrientedPart implements IBlockSupp
 	protected T get(T fallback) {
 		if (t != TICK && !(
 			Objects.equals(last, last = block.getBlock())
-			&& cap.isPresent() && TICK < exp
+			&& TICK < exp && cap.isPresent()
 		)) cap = getCap(last);
 		return cap.orElse(fallback);
 	}
@@ -67,18 +67,23 @@ public abstract class CapabilityIO<T> extends OrientedPart implements IBlockSupp
 	protected LazyOptional<T> getCap(ImmutablePair<BlockPos, ServerWorld> block) {
 		t = TICK; //To not request block multiple times per tick
 		if (block == null) return LazyOptional.empty();
-		TileEntity te = last.right.getBlockEntity(last.left);
+		TileEntity te = block.right.getBlockEntity(block.left);
 		if (te != null) {
 			exp = Integer.MAX_VALUE;
 			return te.getCapability(capability(), orient.b);
 		}
-		for (Entity e : last.right.getEntities(null, new AxisAlignedBB(last.left))) {
+		for (Entity e : block.right.getEntities(null, new AxisAlignedBB(block.left))) {
 			LazyOptional<T> lo = e.getCapability(capability(), orient.b);
 			if (lo.isPresent()) {
 				exp = t + 10; //refresh regularly as entities may move around.
 				return lo;
 			}
 		}
+		exp = 0;
+		return alternative(block);
+	}
+
+	protected LazyOptional<T> alternative(ImmutablePair<BlockPos, ServerWorld> block) {
 		return LazyOptional.empty();
 	}
 

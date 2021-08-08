@@ -8,6 +8,8 @@ import static net.minecraftforge.items.wrapper.EmptyHandler.INSTANCE;
 
 import java.util.function.*;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
+
 import cd4017be.api.grid.GridPart;
 import cd4017be.api.grid.IGridHost;
 import cd4017be.api.grid.port.IBlockSupplier;
@@ -19,12 +21,19 @@ import cd4017be.lib.util.Orientation;
 import cd4017be.rs_ctr2.Content;
 import cd4017be.rs_ctr2.Main;
 import cd4017be.rs_ctr2.api.IProbeInfo;
+import net.minecraft.block.BlockState;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.ISidedInventoryProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 /**@author CD4017BE */
 public class ItemIO extends CapabilityIO<IItemHandler>
@@ -90,6 +99,20 @@ implements IInventoryAccess, IGate, IProbeInfo {
 		s0 = min(in0, in1);
 		s1 = max(in0, in1) + 1;
 		return false;
+	}
+
+	@Override
+	protected LazyOptional<IItemHandler>
+	alternative(ImmutablePair<BlockPos, ServerWorld> src) {
+		BlockState state = src.right.getBlockState(src.left);
+		if (state.getBlock() instanceof ISidedInventoryProvider)
+			return LazyOptional.of(()-> {
+				ISidedInventory inv = ((ISidedInventoryProvider)state.getBlock())
+					.getContainer(state, src.right, src.left);
+				return inv == null ? INSTANCE
+					: new SidedInvWrapper(inv, orient.b);
+			});
+		return LazyOptional.empty();
 	}
 
 	@Override

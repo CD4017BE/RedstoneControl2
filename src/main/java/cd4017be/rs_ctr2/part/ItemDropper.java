@@ -107,7 +107,7 @@ public class ItemDropper extends OrientedPart implements IInventoryAccess, IBloc
 		if (pos == null) return 0;
 		BlockPos p = pos.left;
 		ItemEntity ei = new ItemEntity(
-			pos.right, p.getX() + 0.5, p.getY() + (double)y, p.getZ() + 0.5, stack
+			pos.right, p.getX() + 0.5, p.getY() + (double)y, p.getZ() + 0.5, stack.copy()
 		);
 		ei.setDefaultPickUpDelay();
 		ei.setDeltaMovement(Vector3d.ZERO);
