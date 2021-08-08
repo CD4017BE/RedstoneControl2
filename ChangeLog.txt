@@ -14,6 +14,8 @@ v1.0.6:
 - fix partially covered wire segments sometimes getting invisible
 - fix Item Dropper deleting ejected items
 - fix Item Port not working with Composters
+- fix Item Buffer not dropping content when last piece removed
+- fix Random Block Access Controller getting stuck after load
 
 v1.0.5:
 - add Interaction Frame and Random Block Access Controller

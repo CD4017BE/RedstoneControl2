@@ -121,6 +121,7 @@ implements IProbeInfo {
 		long b = bounds & ~(1L << pos);
 		IGridHost host = this.host;
 		if (b == 0) {// completely removed
+			dissassemble(host.world(), host.pos());
 			host.removePart(this);
 			host.removeIfEmpty();
 			return;

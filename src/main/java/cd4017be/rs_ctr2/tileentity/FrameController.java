@@ -170,6 +170,8 @@ implements IFrameOperator, IBlockSupplier, IGate, IProbeInfo, ITEInteract {
 	public void onLoad() {
 		if (level instanceof ServerWorld && block != null)
 			block = ImmutablePair.of(block.left, (ServerWorld)level);
+		if (active && !level.isClientSide)
+			GATE_UPDATER.add(this);
 		super.onLoad();
 	}
 

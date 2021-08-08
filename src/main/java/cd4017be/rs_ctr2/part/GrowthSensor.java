@@ -17,6 +17,7 @@ public class GrowthSensor extends Sensor {
 
 	@Override
 	protected int measure(ImmutablePair<BlockPos, ServerWorld> src) {
+		if (src == null) return 0;
 		BlockState state = src.right.getBlockState(src.left);
 		Block block = state.getBlock();
 		if (block instanceof IGrowable)
