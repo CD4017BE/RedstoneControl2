@@ -79,7 +79,7 @@ public class Content {
 	analog_in = null, logic_in = null, analog_out = null, logic_out = null,
 	comp_in = null, power_io = null, item_io = null, fluid_io = null, block_io = null,
 	splitter = null, power_splitter = null, item_splitter = null, fluid_splitter = null, block_splitter = null,
-	not_gate = null, clock = null, constant = null, and_filter = null,
+	not_gate = null, clock = null, constant = null, and_filter = null, const_inc = null,
 	or_gate = null, and_gate = null, nor_gate = null, nand_gate = null,
 	xor_gate = null, schmitt_trigger = null, delay = null, comparator = null,
 	sr_latch = null, data_mux = null, clamp_gate = null, or_buffer = null,
@@ -87,10 +87,10 @@ public class Content {
 	neg_gate = null, counter = null, mem_read = null, mem_write = null,
 	transformer = null, item_mover = null, fluid_mover = null,
 	item_filter = null, item_counter = null, item_dropper = null,
-	fluid_filter = null, fluid_counter = null,
+	fluid_filter = null, fluid_counter = null, power_counter = null,
 	switcH = null, led = null, switch_array = null, led_array = null,
 	_7segment = null, bcd_converter = null, label = null, button = null,
-	hardness_sensor = null;
+	hardness_sensor = null, growth_sensor = null;
 	public static final WirelessItem
 	data_send = null, data_recv = null, block_send = null, block_recv = null;
 	public static final MultiblockItem<Battery> battery = null;
@@ -167,6 +167,7 @@ public class Content {
 			orientedPart("clock", rs, Clock::new),
 			orientedPart("constant", rs, Constant::new),
 			orientedPart("and_filter", rs, AndFilter::new),
+			orientedPart("const_inc", rs, ConstInc::new),
 			orientedPart("or_gate", rs, OrGate::new),
 			orientedPart("and_gate", rs, AndGate::new),
 			orientedPart("nor_gate", rs, NorGate::new),
@@ -195,6 +196,7 @@ public class Content {
 			orientedPart("item_dropper", rs, ItemDropper::new),
 			orientedPart("fluid_filter", rs, FluidFilter::new),
 			orientedPart("fluid_counter", rs, FluidCounter::new),
+			orientedPart("power_counter", rs, EnergyCounter::new),
 			orientedPart("label", rs, Label::new),
 			orientedPart("button", rs, Button::new),
 			orientedPart("switch", rs, Switch::new),
@@ -204,6 +206,7 @@ public class Content {
 			orientedPart("_7segment", rs, _7Segment::new),
 			orientedPart("bcd_converter", rs, BCDConverter::new),
 			orientedPart("hardness_sensor", rs, HardnessSensor::new),
+			orientedPart("growth_sensor", rs, GrowthSensor::new),
 			new MultiblockItem<>(p, Battery::new).tooltipArgs(SERVER_CFG.battery_cap).setRegistryName(rl("battery")),
 			new MultiblockItem<>(p, SolarCell::new).tooltipArgs(SERVER_CFG.solar_power, SERVER_CFG.daytime).setRegistryName(rl("solarcell")),
 			new MultiblockItem<>(p, Memory::new).tooltipArgs(SERVER_CFG.memory_size).setRegistryName(rl("memory")),

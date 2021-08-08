@@ -3,8 +3,8 @@
 	"textures": {
 		"portU": "cd4017be_lib:part/data_in",
 		"portD": "rs_ctr2:part/blank",
-		"portR": "cd4017be_lib:part/fluid_u",
 		"portL": "cd4017be_lib:part/data_out",
-		"main": "rs_ctr2:part/fluid_counter"
+		"portR": "cd4017be_lib:part/block_u",
+		"main": "rs_ctr2:part/growth_sensor"
 	}
 }

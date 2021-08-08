@@ -4,7 +4,8 @@
 		"rs_ctr2:block_cable",
 		"rs_ctr2:block_io",
 		"rs_ctr2:block_splitter",
-		"rs_ctr2:hardness_sensor"
+		"rs_ctr2:hardness_sensor",
+		"rs_ctr2:growth_sensor"
 	]},
 	"criteria": {
 		"has_lapis": {

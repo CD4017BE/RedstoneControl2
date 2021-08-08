@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"-PC"
+	],
+	"key": {
+		"-": { "item": "rs_ctr2:block_cable" },
+		"P": { "item": "minecraft:wooden_hoe" },
+		"C": { "item": "rs_ctr2:comparator" }
+	},
+	"result": {
+		"item": "rs_ctr2:growth_sensor",
+		"count": 1
+	}
+}
