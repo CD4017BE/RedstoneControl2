@@ -1,0 +1,58 @@
+v1.0.6:
+- add constant increment gate
+- add plant growth sensor
+- add energy counter
+- add buttons
+- add fluid buffer, filter and counter
+- change inventory model orientations to make textures more readable
+- reverse sides for item counter
+- fix missing recipes
+- fix 7-segment display extending
+- fix image width in bitmap export
+- fix read / write still accessing old memory when size changes
+- fix label rendering wrong in some orientations
+- fix partially covered wire segments sometimes getting invisible
+
+v1.0.5:
+- add Interaction Frame and Random Block Access Controller
+
+v1.0.4: (private build)
+- bug fixes
+- add text labels
+- add capability inventory access to Auto-Crafter
+- implement part rotation and translation
+- improved gate info
+- add Hardness Sensor
+- add Wireless transmitters and ungroup some recipes
+
+v1.0.3: (private build)
+- bug fixes
+- add Item Buffer, Filter, Counter and Dropper
+
+v1.0.2: (private build)
+- bug fixes
+- add Interaction Pipe Driver
+- add switches, lamps and 7-Segment Display
+- make Capability I/Os work with block cables
+- let Fluid I/O place & remove fluid blocks.
+- make solar cells work on any position in grid with clear top
+- add AND-Filter Gate
+- rework Gate Probe API
+- add Block Interaction cables
+- add Block Breaker & Item Placer
+- move Grid API to CD4017BE_lib
+- add counter and memory
+- add auto crafting
+
+v1.0.0: (initial private build)
+- add Gate Probe
+- add solar panels
+- add a slow ticking system
+- add recipe advancements
+- add Comparator reader, Negation Gate and missing tool-tips
+- add min/max, multiplexer, bit shift, add/subtract, multiply, divide
+- add energy, item & fluid transport
+- add cable covering
+- add logic gates
+- add signal cables & redstone I/O
+- add Microblock System
