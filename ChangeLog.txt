@@ -12,6 +12,8 @@ v1.0.6:
 - fix read / write still accessing old memory when size changes
 - fix label rendering wrong in some orientations
 - fix partially covered wire segments sometimes getting invisible
+- fix Item Dropper deleting ejected items
+- fix Item Port not working with Composters
 
 v1.0.5:
 - add Interaction Frame and Random Block Access Controller
