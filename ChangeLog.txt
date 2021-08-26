@@ -1,4 +1,7 @@
+
 v1.0.6:
+- fix #2 gate probe text rendering wrong with Optifine
+- fix text label background models messed up by Optifine shaders
 - add constant increment gate
 - add plant growth sensor
 - add energy counter

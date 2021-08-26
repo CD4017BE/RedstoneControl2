@@ -21,7 +21,7 @@ public class Printer {
 	public Printer(IRenderTypeBuffer rtb, MatrixStack mat, int light) {
 		this.fr = Minecraft.getInstance().font;
 		this.rtb = rtb;
-		this.mat = mat.last().pose();
+		this.mat = mat.last().pose().copy();
 		this.light = light;
 	}
 

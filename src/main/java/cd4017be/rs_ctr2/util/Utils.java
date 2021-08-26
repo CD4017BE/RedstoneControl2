@@ -22,7 +22,8 @@ public class Utils {
 	@OnlyIn(Dist.CLIENT)
 	public static BakedQuad colorQuad(BakedQuad quad, int c) {
 		int[] vert = quad.getVertices();
-		for (int i = 3; i < 32; i+=8) vert[i] = c;
+		int stride = vert.length >> 2;
+		for (int i = 3; i < vert.length; i += stride) vert[i] = c;
 		return quad;
 	}
 
