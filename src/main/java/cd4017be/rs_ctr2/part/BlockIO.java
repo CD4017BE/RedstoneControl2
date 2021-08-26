@@ -8,13 +8,14 @@ import cd4017be.api.grid.IGridHost;
 import cd4017be.api.grid.port.IBlockSupplier;
 import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.item.Item;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
 
 /**@author CD4017BE */
-public class BlockIO extends OrientedPart implements IBlockSupplier {
+public class BlockIO extends OrientedPart implements IBlockSupplier, IProbeInfo {
 
 	private ImmutablePair<BlockPos, ServerWorld> block;
 
@@ -59,6 +60,14 @@ public class BlockIO extends OrientedPart implements IBlockSupplier {
 	@Override
 	public ImmutablePair<BlockPos, ServerWorld> getBlock(int rec) {
 		return block;
+	}
+
+	@Override
+	public Object[] stateInfo() {
+		return new Object[] {
+			"state.rs_ctr2.block_io",
+			IBlockSupplier.toString(this)
+		};
 	}
 
 }

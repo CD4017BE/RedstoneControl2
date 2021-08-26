@@ -13,6 +13,7 @@ import cd4017be.api.grid.port.IBlockSupplier;
 import cd4017be.api.grid.port.IInventoryAccess;
 import cd4017be.lib.part.OrientedPart;
 import cd4017be.lib.util.Orientation;
+import cd4017be.rs_ctr2.api.IProbeInfo;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.item.Item;
@@ -26,7 +27,8 @@ import net.minecraft.world.server.ServerWorld;
 
 /**
  * @author CD4017BE */
-public class ItemDropper extends OrientedPart implements IInventoryAccess, IBlockSupplier {
+public class ItemDropper extends OrientedPart
+implements IInventoryAccess, IBlockSupplier, IProbeInfo {
 
 	protected IBlockSupplier block = this;
 	protected ImmutablePair<BlockPos, ServerWorld> last;
@@ -122,6 +124,16 @@ public class ItemDropper extends OrientedPart implements IInventoryAccess, IBloc
 			host.pos().relative(orient.b, -1),
 			(ServerWorld)host.world()
 		) : null;
+	}
+
+	@Override
+	public Object[] stateInfo() {
+		int[] n = {0};
+		getContent((stack, cap) -> n[0] += stack.getCount());
+		return new Object[] {
+			"state.rs_ctr2.dropper",
+			IBlockSupplier.toString(block), n[0]
+		};
 	}
 
 }
