@@ -6,7 +6,7 @@
 	],
 	"key": {
 		"O": { "item": "rs_ctr2:or_gate" },
-		"B": { "item": "rs_ctr2:bit_shift" },
+		"B": { "item": "rs_ctr2:and_filter" },
 		"M": { "item": "rs_ctr2:data_mux" }
 	},
 	"result": {

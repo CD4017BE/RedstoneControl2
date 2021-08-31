@@ -5,7 +5,7 @@ import static cd4017be.rs_ctr2.Content.neg_gate;
 import net.minecraft.item.Item;
 
 /**@author CD4017BE */
-public class Negate extends NotGate {
+public class Negate extends DirectGate {
 
 	@Override
 	public Item item() {
@@ -13,9 +13,8 @@ public class Negate extends NotGate {
 	}
 
 	@Override
-	public void updateInput(int value, int rec) {
-		if (--rec < 0 || state == (state = -value)) return;
-		out.updateInput(state, rec);
+	protected int result() {
+		return -in;
 	}
 
 }

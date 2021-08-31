@@ -5,7 +5,7 @@
 		"IX"
 	],
 	"key": {
-		"I": { "item": "rs_ctr2:not_gate" },
+		"I": { "item": "rs_ctr2:and_filter" },
 		"X": { "item": "rs_ctr2:xor_gate" }
 	},
 	"result": {

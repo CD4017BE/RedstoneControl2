@@ -101,6 +101,7 @@ public class Content {
 
 	// containers:
 	public static final ContainerType<ContainerConstant> cONSTANT = null;
+	public static final ContainerType<ContainerBitShuffle> bIT_SHUFFLE = null;
 	public static final ContainerType<ContainerAutoCraft> aUTOCRAFT = null;
 	public static final ContainerType<ContainerMemory> mEMORY = null;
 	public static final ContainerType<ContainerItemPlacer> iTEM_PLACER = null;
@@ -166,7 +167,7 @@ public class Content {
 			orientedPart("not_gate", rs, NotGate::new),
 			orientedPart("clock", rs, Clock::new),
 			orientedPart("constant", rs, Constant::new),
-			orientedPart("and_filter", rs, AndFilter::new),
+			orientedPart("and_filter", rs, BitShuffle::new),
 			orientedPart("const_inc", rs, ConstInc::new),
 			orientedPart("or_gate", rs, OrGate::new),
 			orientedPart("and_gate", rs, AndGate::new),
@@ -248,6 +249,7 @@ public class Content {
 	public static void registerContainers(Register<ContainerType<?>> ev) {
 		ev.getRegistry().registerAll(
 			IForgeContainerType.create(ContainerConstant::new).setRegistryName(rl("constant")),
+			IForgeContainerType.create(ContainerBitShuffle::new).setRegistryName(rl("bit_shuffle")),
 			IForgeContainerType.create(ContainerAutoCraft::new).setRegistryName(rl("autocraft")),
 			IForgeContainerType.create(ContainerMemory::new).setRegistryName(rl("memory")),
 			IForgeContainerType.create(ContainerItemPlacer::new).setRegistryName(rl("item_placer")),
@@ -262,6 +264,7 @@ public class Content {
 	@OnlyIn(Dist.CLIENT)
 	public static void setupClient(FMLClientSetupEvent ev) {
 		ScreenManager.register(cONSTANT, ContainerConstant::setupGui);
+		ScreenManager.register(bIT_SHUFFLE, ContainerBitShuffle::setupGui);
 		ScreenManager.register(aUTOCRAFT, ContainerAutoCraft::setupGui);
 		ScreenManager.register(mEMORY, GuiRAM::new);
 		ScreenManager.register(iTEM_PLACER, ContainerItemPlacer::setupGui);

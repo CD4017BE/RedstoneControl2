@@ -1,16 +1,17 @@
 {
 	"type": "minecraft:crafting_shaped",
 	"pattern": [
+		"B",
 		"C",
-		"A",
-		"C"
+		"N"
 	],
 	"key": {
 		"C": { "item": "rs_ctr2:constant" },
-		"A": { "item": "rs_ctr2:and_gate" }
+		"N": { "item": "rs_ctr2:not_gate" },
+		"B": { "item": "rs_ctr2:or_buffer"}
 	},
 	"result": {
 		"item": "rs_ctr2:and_filter",
-		"count": 2
+		"count": 1
 	}
 }

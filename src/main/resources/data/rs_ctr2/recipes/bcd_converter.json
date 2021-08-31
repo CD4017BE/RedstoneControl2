@@ -6,7 +6,7 @@
 	"key": {
 		"C": { "item": "rs_ctr2:constant" },
 		"D": { "item": "rs_ctr2:division_gate" },
-		"B": { "item": "rs_ctr2:bit_shift" }
+		"B": { "item": "rs_ctr2:and_filter" }
 	},
 	"result": {
 		"item": "rs_ctr2:bcd_converter",

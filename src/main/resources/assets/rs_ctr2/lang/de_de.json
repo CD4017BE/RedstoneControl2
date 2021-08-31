@@ -82,7 +82,7 @@
   "item.rs_ctr2.block_recv": "Blockinteractionsempfänger",
   "item.rs_ctr2.neg_gate": "Negations Gatter",
   "item.rs_ctr2.fluid_counter": "Flüssigkeitszähler",
-  "item.rs_ctr2.and_filter": "UND-Filter Gatter",
+  "item.rs_ctr2.and_filter": "Bitvertausch Gatter",
   "item.rs_ctr2.comparator": "Vergleicher",
   "item.rs_ctr2.fluid_splitter": "Flüssigkeitsverteiler",
   "item.rs_ctr2.fluid_mover": "Flüssigkeitstransporter",
@@ -163,7 +163,7 @@
   "item.rs_ctr2.splitter.tip": "Gibt den Dateneingang auf 5 Ausgängen aus.",
   "item.rs_ctr2.power_splitter.tip": "Stellt ein verwendetes Energiereservoir 5 Anschlüssen zur Verfügung.",
   "item.rs_ctr2.block_splitter.tip": "Stellt ein verwendetes Blockinteraktionsziel 5 Anschlüssen zur Verfügung.",
-  "item.rs_ctr2.and_filter.tip": "§A⏵§7 = §9⏴§7 bitweise-UND die im GUI eingestellte Zahl.",
+  "item.rs_ctr2.and_filter.tip": "§A⏵§7 = ((§9⏴§7 UND §lX§7) um §lY§7 Bit nach links rotiert) XODER §lZ§7.\n§lX§7, §lY§7 & §lZ§7 werden im GUI eingestellt.",
   "item.rs_ctr2.or_gate.tip": "§A⏵§7[t+1] = §9⏴§7 ODER §9⏷§7 ODER §9⏶§7 (bitweise).\nStartwerte: §9⏴⏷⏶§7 = 0.",
   "item.rs_ctr2.clock.tip": "§a⏵§7 wechselt zwischen 0 und -1 alle §9⏴§7 Ticks,\nhält an wenn §9⏴§7 < 0 und setzt zurück (§a⏵§7 = 0) wenn §9⏴§7 = 0.",
   "item.rs_ctr2.constant.tip": "§a⏵§7 = im GUI eingestellte Zahl (interagiere mit Block).",
@@ -265,7 +265,7 @@
   "state.rs_ctr2.division": "§a0: §c%sd§7 A / B\n§a1: §c%sd§7 Rest\n§92: §c%sd§7 A\n§93: §c%sd§7 B",
   "state.rs_ctr2.mux": "§a0: §c0x%s08X %s1$d\n§91: §c0x%s08X§7 Steuer\n§92: §c0x%s08X %s3$d§7 E0\n§93: §c0x%s08X %s4$d§7 E1",
   "state.rs_ctr2.counter": "§a0: §c%sd§7 Zählwert\n§a1: §c0x%s08X§7 Überlauf\n§92: §c%sd§7 Maximalwert\n§93: §c0x%s08X§7 Takt",
-  "state.rs_ctr2.const_inc": "§7#: §c%sd§7 Erhöhung\n§90: §c%sd§7 EIN\n§a1: §c%sd§7 AUS",
+  "state.rs_ctr2.const_inc": "§a0: §c%sd§7 AUS\n§91: §c%sd§7 EIN\n§7#: §c%sd§7 Erhöhung",
   "state.rs_ctr2.clamp": "§a0: §c%sd§7 Ausgang\n§91: §c%sd§7 Eingang\n§92: §c%sd§7 Minimum\n§93: §c%sd§7 Maximum",
   "state.rs_ctr2.schmitt_trigger": "§a0: §c0x%s08X§7 Zustand\n§91: §c%sd§7 Input\n§92: §c%sd§7 AUS Schwelle\n§93: §c%sd§7 EIN Schwelle",
   "state.rs_ctr2.comp": "§a0: §c0x%s08X§7 groß > klein\n§91: §c%sd§7 klein\n§92: §c%sd§7 groß",
@@ -290,5 +290,10 @@
   "state.rs_ctr2.block_send": "§90: §5%ss\n§7zu Link #%s08X",
   "state.rs_ctr2.item_placer": "§90: §c0x%s08X§7 Takt\n§95: §c0x%s06X§7 Interaktionsmodi\n§a1: §c0x%s01X§7 Fehlercode\n§a2: §e%sd RF§7 verfügbar\n§a3: §fkann Hand nachfüllen: %ss\n§a4: §5%ss",
   "state.rs_ctr2.dropper": "§a0: §5%ss\n§91: §f%sd liegende Items",
-  "state.rs_ctr2.autocraft": "§90: §c0x%s08X§7 Fertigungstakt\n§91: §c0x%s08X§7 2x3 Form unten\n§92: §c0x%s03X§7 1x3 Form oben\n§93: §c0x%sX§7 E/A Slot\n§94: §fPufferinventar\n§a5: §c0x%s01X§7 Fehlercode\n§a6: §e%sd RF§7 verfügbar"
+  "state.rs_ctr2.autocraft": "§90: §c0x%s08X§7 Fertigungstakt\n§91: §c0x%s08X§7 2x3 Form unten\n§92: §c0x%s03X§7 1x3 Form oben\n§93: §c0x%sX§7 E/A Slot\n§94: §fPufferinventar\n§a5: §c0x%s01X§7 Fehlercode\n§a6: §e%sd RF§7 verfügbar",
+  "state.rs_ctr2.bit_shuffle": "§a0: §c0x%s08X§7 AUS\n§91: §c0x%s08X§7 EIN\n§7#: §c0x%s08X§7 UND\n§7#: §c%sd§7 << Bitrotation\n§7#: §c0x%s08X§7 XODER",
+  "gui.rs_ctr2.bit_shuffle": "Bitvertauscher",
+  "gui.rs_ctr2.and_mask": "UND-Maske",
+  "gui.rs_ctr2.xor_mask": "XODER-Maske",
+  "gui.rs_ctr2.shift": "Bitrotation"
 }

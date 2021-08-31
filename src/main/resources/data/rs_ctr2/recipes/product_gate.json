@@ -4,11 +4,12 @@
 	"pattern": [
 		"AB ",
 		"SMM",
-		"-B "
+		"-b "
 	],
 	"key": {
 		"-": { "item": "rs_ctr2:data_cable" },
-		"B": { "item": "rs_ctr2:bit_shift" },
+		"B": { "item": "rs_ctr2:and_filter" },
+		"b": { "item": "rs_ctr2:bit_shift" },
 		"S": { "item": "rs_ctr2:sum_gate" },
 		"M": { "item": "rs_ctr2:data_mux" },
 		"A": { "item": "rs_ctr2:and_gate" }

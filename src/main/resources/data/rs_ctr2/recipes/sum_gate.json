@@ -7,7 +7,7 @@
 		"IAO"
 	],
 	"key": {
-		"I": { "item": "rs_ctr2:not_gate" },
+		"I": { "item": "rs_ctr2:and_filter" },
 		"O": { "item": "rs_ctr2:or_gate" },
 		"N": { "item": "rs_ctr2:nor_gate" },
 		"A": { "item": "rs_ctr2:and_gate" }

@@ -8,7 +8,7 @@
 	],
 	"key": {
 		"-": { "item": "rs_ctr2:data_cable" },
-		"B": { "item": "rs_ctr2:bit_shift" },
+		"B": { "item": "rs_ctr2:and_filter" },
 		"S": { "item": "rs_ctr2:sum_gate" },
 		"M": { "item": "rs_ctr2:data_mux" },
 		"O": { "item": "rs_ctr2:or_gate" },

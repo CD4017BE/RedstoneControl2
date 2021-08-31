@@ -6,7 +6,7 @@
 		"IA "
 	],
 	"key": {
-		"I": { "item": "rs_ctr2:not_gate" },
+		"I": { "item": "rs_ctr2:and_filter" },
 		"N": { "item": "rs_ctr2:nor_gate" },
 		"A": { "item": "rs_ctr2:and_gate" }
 	},

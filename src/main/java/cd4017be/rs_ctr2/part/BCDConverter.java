@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 
 /**
  * @author CD4017BE */
-public class BCDConverter extends NotGate {
+public class BCDConverter extends DirectGate {
 
 	@Override
 	public Item item() {
@@ -14,12 +14,11 @@ public class BCDConverter extends NotGate {
 	}
 
 	@Override
-	public void updateInput(int value, int rec) {
-		if (--rec < 0) return;
+	protected int result() {
 		int x = 0;
-		for (char c : Integer.toString(value).toCharArray())
+		for (char c : Integer.toString(in).toCharArray())
 			x = x << 4 | c - '0' & 15;
-		if (state != x) out.updateInput(state = x, rec);
+		return x;
 	}
 
 }

@@ -7,7 +7,7 @@
 	"key": {
 		"I": { "item": "rs_ctr2:item_io" },
 		"M": { "item": "rs_ctr2:item_mover" },
-		"B": { "item": "rs_ctr2:bit_shift" },
+		"B": { "item": "rs_ctr2:and_filter" },
 		"T": { "item": "minecraft:crafting_table" },
 		"C": { "item": "minecraft:chest" }
 	},
