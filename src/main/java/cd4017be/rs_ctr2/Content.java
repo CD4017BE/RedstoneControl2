@@ -65,12 +65,14 @@ public class Content {
 	public static final OrientedBlock<FrameController> FRAME_CONTROLLER = null;
 	public static final AccessPipe ACCESS_PIPE = null;
 	public static final BlockTE<Frame> FRAME = null;
+	public static final OrientedBlock<CircuitTester> CIRCUIT_TESTER = null;
 
 	// items:
 	public static final DocumentedBlockItem
 	autocraft = null, block_breaker = null, item_placer = null,
 	pipe_controller = null, frame_controller = null;
 	public static final DocumentedBlockItem frame = null, access_pipe = null;
+	public static final DocumentedBlockItem circuit_tester = null;
 
 	public static final SignalProbeItem probe = null;
 	public static final CableItem
@@ -109,6 +111,7 @@ public class Content {
 	public static final ContainerType<ContainerItemBuffer> iTEM_BUFFER = null;
 	public static final ContainerType<ContainerLabel> lABEL = null;
 	public static final ContainerType<ContainerButton> bUTTON = null;
+	public static final ContainerType<ContainerCircuitTest> cIRCUIT_TESTER = null;
 
 	//sounds:
 	public static final BaseSound SWITCH_FLIp = null, BUTTON_PRESs = null, BUTTON_RELEASe = null;
@@ -125,7 +128,8 @@ public class Content {
 			new AccessPipe(
 				Properties.copy(Blocks.OBSIDIAN).harvestTool(ToolType.PICKAXE).harvestLevel(3)
 			).setRegistryName(rl("access_pipe")),
-			new BlockTE<>(p, flags(Frame.class)).setRegistryName(rl("frame"))
+			new BlockTE<>(p, flags(Frame.class)).setRegistryName(rl("frame")),
+			new OrientedBlock<>(p, flags(CircuitTester.class), HOR_AXIS).setRegistryName(rl("circuit_tester"))
 		);
 	}
 
@@ -144,6 +148,7 @@ public class Content {
 			new DocumentedBlockItem(FRAME_CONTROLLER, p),
 			new DocumentedBlockItem(ACCESS_PIPE, p),
 			new DocumentedBlockItem(FRAME, p).tooltipArgs(SERVER_CFG.frame_range, SERVER_CFG.device_range),
+			new DocumentedBlockItem(CIRCUIT_TESTER, p),
 			new SignalProbeItem(probe).tab(CREATIVE_TAB).setRegistryName(rl("probe")),
 			new CableItem(rs, ISignalReceiver.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("data_cable")),
 			new CableItem(rs, IEnergyAccess.TYPE_ID).tab(CREATIVE_TAB).setRegistryName(rl("power_cable")),
@@ -241,7 +246,8 @@ public class Content {
 			ITEM_PLACER.makeTEType(ItemPlacer::new),
 			PIPE_CONTROLLER.makeTEType(PipeController::new),
 			FRAME_CONTROLLER.makeTEType(FrameController::new),
-			FRAME.makeTEType(Frame::new)
+			FRAME.makeTEType(Frame::new),
+			CIRCUIT_TESTER.makeTEType(CircuitTester::new)
 		);
 	}
 
@@ -256,7 +262,8 @@ public class Content {
 			IForgeContainerType.create(ContainerItemFilter::new).setRegistryName(rl("item_filter")),
 			IForgeContainerType.create(ContainerItemBuffer::new).setRegistryName(rl("item_buffer")),
 			IForgeContainerType.create(ContainerLabel::new).setRegistryName(rl("label")),
-			IForgeContainerType.create(ContainerButton::new).setRegistryName(rl("button"))
+			IForgeContainerType.create(ContainerButton::new).setRegistryName(rl("button")),
+			IForgeContainerType.create(ContainerCircuitTest::new).setRegistryName(rl("circuit_tester"))
 		);
 	}
 
@@ -272,6 +279,7 @@ public class Content {
 		ScreenManager.register(iTEM_BUFFER, ContainerItemBuffer::setupGui);
 		ScreenManager.register(lABEL, ContainerLabel::setupGui);
 		ScreenManager.register(bUTTON, ContainerButton::setupGui);
+		ScreenManager.register(cIRCUIT_TESTER, ContainerCircuitTest::setupGui);
 		ClientRegistry.bindTileEntityRenderer(FRAME_CONTROLLER.tileType, FrameRenderer::new);
 	}
 

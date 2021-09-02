@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"IIO",
+		"IIO",
+		"_B_"
+	],
+	"key": {
+		"O": { "item": "rs_ctr2:logic_out" },
+		"I": { "item": "rs_ctr2:logic_in" },
+		"B": { "item": "minecraft:book" },
+		"_": { "item": "minecraft:stone_slab" }
+	},
+	"result": { "item": "rs_ctr2:circuit_tester" }
+}

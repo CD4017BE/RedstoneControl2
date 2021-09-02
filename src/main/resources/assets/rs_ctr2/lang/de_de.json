@@ -295,5 +295,16 @@
   "gui.rs_ctr2.bit_shuffle": "Bitvertauscher",
   "gui.rs_ctr2.and_mask": "UND-Maske",
   "gui.rs_ctr2.xor_mask": "XODER-Maske",
-  "gui.rs_ctr2.shift": "Bitrotation"
+  "gui.rs_ctr2.shift": "Bitrotation",
+  "gui.rs_ctr2.test_mode1": "Test stoppen",
+  "gui.rs_ctr2.text_open": "Test auswählen",
+  "gui.rs_ctr2.test_lat": "E/A-Latenz",
+  "gui.rs_ctr2.test_int": "Testinterval",
+  "gui.rs_ctr2.circuit_test": "Kein Test aktiv",
+  "gui.rs_ctr2.test_mode0": "Test ausführen",
+  "gui.rs_ctr2.test_mode2": "Bauteil freischalten",
+  "gui.rs_ctr2.test_in": "Eingabewert",
+  "gui.rs_ctr2.test_out": "erwartete Ausgabe\n[ist: %ss]",
+  "block.rs_ctr2.circuit_tester": "Schaltungslabor",
+  "block.rs_ctr2.circuit_tester.tip": "Wird benötigt, um Rezepte für Bauteile freizuschalten (wenn durch Spielregeln erforderlich).\nDazu muss die Funktionsweise des Bauteils als Redstone-Schaltung nachgebaut, mit den Anschlüssen auf der Rückseite verbunden werden und den entsprechenden Test fehlerfrei durchlaufen."
 }
