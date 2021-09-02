@@ -4,15 +4,8 @@
 		"rs_ctr2:logic_in",
 		"rs_ctr2:logic_out",
 		"rs_ctr2:splitter",
-		"rs_ctr2:constant",
-		"rs_ctr2:clock",
-		"rs_ctr2:delay",
-		"rs_ctr2:not_gate",
-		"rs_ctr2:or_gate",
-		"rs_ctr2:nor_gate",
-		"rs_ctr2:and_gate",
-		"rs_ctr2:nand_gate",
-		"rs_ctr2:corerope1"
+		"rs_ctr2:corerope1",
+		"rs_ctr2:circuit_tester"
 	]},
 	"criteria": {
 		"has_cable": {

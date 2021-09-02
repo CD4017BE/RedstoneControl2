@@ -1,0 +1,6 @@
+#name=item.rs_ctr2.not_gate
+#level=0
+#shuffle
+ A,  X
+ 0, -1
+-1,  0

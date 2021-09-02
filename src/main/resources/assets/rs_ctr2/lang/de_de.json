@@ -306,5 +306,14 @@
   "gui.rs_ctr2.test_in": "Eingabewert",
   "gui.rs_ctr2.test_out": "erwartete Ausgabe\n[ist: %ss]",
   "block.rs_ctr2.circuit_tester": "Schaltungslabor",
-  "block.rs_ctr2.circuit_tester.tip": "Wird benötigt, um Rezepte für Bauteile freizuschalten (wenn durch Spielregeln erforderlich).\nDazu muss die Funktionsweise des Bauteils als Redstone-Schaltung nachgebaut, mit den Anschlüssen auf der Rückseite verbunden werden und den entsprechenden Test fehlerfrei durchlaufen."
+  "block.rs_ctr2.circuit_tester.tip": "Wird benötigt, um Rezepte für Bauteile freizuschalten (wenn durch Spielregeln erforderlich).\nDazu muss die Funktionsweise des Bauteils als Redstone-Schaltung nachgebaut, mit den Anschlüssen auf der Rückseite verbunden werden und den entsprechenden Test fehlerfrei durchlaufen.",
+  "gui.rs_ctr2.hex0": "Dezimaldarstellung",
+  "gui.rs_ctr2.hex1": "Hexadezimaldarstellung",
+  "test.rs_ctr2.half_adder": "Halbaddierer [als Hilfe]",
+  "test.rs_ctr2.full_adder": "Volladdierer [als Hilfe]",
+  "test.rs_ctr2.adder32": "32 Bit Addierer [als Hilfe]",
+  "test.rs_ctr2.ls0": "Vergleich < 0 [als Hilfe]",
+  "gui.rs_ctr2.test_prog": "Schritt %sd / %sd",
+  "gui.rs_ctr2.test_res": "Test abgeschl.",
+  "gui.rs_ctr2.errors": "%sd Fehler"
 }

@@ -1,0 +1,11 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "recipes": [
+		"rs_ctr2:sum_gate",
+		"rs_ctr2:sum_gate1"
+	]},
+	"criteria": { "test": {
+		"trigger": "rs_ctr2:circuit_test",
+		"conditions": { "test": "rs_ctr2:add_sub" }
+	}}
+}

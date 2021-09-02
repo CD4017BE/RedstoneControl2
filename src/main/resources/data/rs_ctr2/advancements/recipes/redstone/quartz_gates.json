@@ -4,10 +4,8 @@
 		"rs_ctr2:comp_in",
 		"rs_ctr2:analog_in",
 		"rs_ctr2:analog_out",
-		"rs_ctr2:comp_in",
-		"rs_ctr2:comparator",
 		"rs_ctr2:or_buffer",
-		"rs_ctr2:bit_shift"
+		"rs_ctr2:and_filter"
 	]},
 	"criteria": {
 		"has_cable": {

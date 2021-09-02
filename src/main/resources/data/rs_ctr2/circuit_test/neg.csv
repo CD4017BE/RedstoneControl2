@@ -1,0 +1,12 @@
+#name=item.rs_ctr2.neg_gate
+#level=4
+#shuffle
+ A,  X
+ 0,  0
+ 1, -1
+-1,  1
+ 2, -2
+-2,  2
+-22, 22
+63, -63
+-15, 15

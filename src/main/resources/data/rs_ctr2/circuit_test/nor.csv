@@ -1,0 +1,8 @@
+#name=item.rs_ctr2.nor_gate
+#level=1
+#shuffle
+ A,  B,  X
+ 0,  0, -1
+-1,  0,  0
+ 0, -1,  0
+-1, -1,  0

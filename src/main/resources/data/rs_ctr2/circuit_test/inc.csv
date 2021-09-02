@@ -1,0 +1,11 @@
+#name=item.rs_ctr2.const_inc
+#level=4
+#shuffle
+ A,  X
+ 0,  1
+ 1,  2
+ 2,  3
+ 3,  4
+22, 23
+45, 46
+63, 64

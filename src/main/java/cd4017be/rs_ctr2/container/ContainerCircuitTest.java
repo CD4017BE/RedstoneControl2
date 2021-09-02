@@ -1,5 +1,6 @@
 package cd4017be.rs_ctr2.container;
 
+import static cd4017be.lib.text.TooltipUtil.format;
 import static cd4017be.rs_ctr2.Content.cIRCUIT_TESTER;
 
 import java.nio.ByteBuffer;
@@ -17,6 +18,7 @@ import cd4017be.lib.network.StateSyncAdv;
 import cd4017be.lib.text.TooltipUtil;
 import cd4017be.rs_ctr2.Main;
 import cd4017be.rs_ctr2.tileentity.CircuitTester;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
@@ -57,6 +59,11 @@ public class ContainerCircuitTest extends AdvancedContainer {
 
 	@Override
 	protected void detectChanges(BitSet chng) {
+		if (tile.t >= 0 && tile.intv > 0)
+			page = (byte)(tile.t / (tile.intv * 16));
+		if (page > tile.rows() - 1 >> 4)
+			page = (byte)(tile.rows() - 1 >> 4);
+		if (page < 0) page = 0;
 		int[] data = tile.test == null ? new int[0] : tile.test.values;
 		int w = tile.header().length;
 		int l = data.length;
@@ -130,7 +137,7 @@ public class ContainerCircuitTest extends AdvancedContainer {
 	throws Exception {
 		switch(pkt.readByte()) {
 		case A_PAGE:
-			page = pkt.readByte();
+			page += pkt.readByte();
 			break;
 		case A_OPEN:
 			tile.setTest(pkt.readUtf());
@@ -155,7 +162,7 @@ public class ContainerCircuitTest extends AdvancedContainer {
 		final Supplier<String> name;
 		final IntSupplier size;
 		final IntSupplier page;
-		final IntSupplier t, intv, lat;
+		final IntSupplier t, intv, lat, err;
 		int idx = -1;
 		String lastName;
 		boolean hex;
@@ -169,7 +176,17 @@ public class ContainerCircuitTest extends AdvancedContainer {
 			this.t = sync.intGetter("t", true);
 			this.intv = sync.intGetter("intv", false);
 			this.lat = sync.intGetter("lat", false);
+			this.err = sync.intGetter("err", false);
 			this.name = sync.objGetter("name");
+		}
+
+		@Override
+		public boolean mouseIn(int mx, int my, int b, byte d) {
+			if (d == A_SCROLL) {
+				parent.gui.sendPkt(A_PAGE, (byte)-b);
+				return true;
+			}
+			return false;
 		}
 
 		@Override
@@ -221,6 +238,14 @@ public class ContainerCircuitTest extends AdvancedContainer {
 					print(stack, x, j + 1, buf.get(q), hex ? -1 : 10, c);
 				}
 			}
+			FontRenderer fr = parent.fontRenderer;
+			String s = format(
+				t < -1 ? "gui.rs_ctr2.test_res" : "gui.rs_ctr2.test_prog",
+				(t - lat + intv - 2) / intv, size.getAsInt()
+			);
+			fr.draw(stack, s, x + (w - fr.width(s) >> 1) + 9, y + h + 2, 0xff404040);
+			s = format("gui.rs_ctr2.errors", err.getAsInt());
+			fr.draw(stack, s, x + (w - fr.width(s) >> 1) + 9, y + h + 11, 0xff404040);
 			my = (my - y) / 6 - 1;
 			idx = pm >= 0 && my < l ? my * 7 + pm : -1;
 		}

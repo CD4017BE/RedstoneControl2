@@ -49,7 +49,7 @@ implements Consumer<AddReloadListenerEvent> {
 	private static CircuitTest load(ResourceLocation id, InputStream is) throws IOException {
 		int n = 0;
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
-			String name = "";
+			String name = "circuit_test." + id.getNamespace() + "." + id.getPath();
 			int lvl = 0;
 			boolean shuffle = false;
 			String l;
@@ -74,6 +74,7 @@ implements Consumer<AddReloadListenerEvent> {
 					m1++;
 			IntArrayList values = new IntArrayList(4 * m);
 			for(;(l = br.readLine()) != null; n++) {
+				if (l.startsWith("#")) continue;
 				row = l.split(",");
 				if (row.length != m) throw new IOException(
 					String.format("row %d has %d entries, should have %d", n, row.length, m)
@@ -109,7 +110,7 @@ implements Consumer<AddReloadListenerEvent> {
 		entry = entry.trim().toLowerCase();
 		if (entry.isEmpty()) return 0;
 		if (entry.startsWith("0x"))
-			return Integer.parseInt(entry.substring(2), 16);
+			return Integer.parseUnsignedInt(entry.substring(2), 16);
 		return Integer.parseInt(entry);
 	}
 
