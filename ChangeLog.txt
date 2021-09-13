@@ -1,4 +1,9 @@
 
+v1.0.7:
+- add optional progression system, where you unlock component recipes by building Redstone circuits. (/gamerule doLimitedCrafting true)
+- add Redstone Research Lab with 'rs_ctr2:circuit_test' advancement trigger.
+- extend AND Filter Gate to include bit rotate and XOR with constants
+
 v1.0.6:
 - add German translation
 - fix missing Probe Info for Item Dropper and Block Port

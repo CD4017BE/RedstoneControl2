@@ -13,6 +13,11 @@ Simply put the downloaded `.jar` files of the mod and the required verison of CD
 Latest development downloads can be found in [packages](https://github.com/CD4017BE/RedstoneControl2/packages/914303).
 Stable, more thoroughly tested downloads available on [Curse Forge](https://www.curseforge.com/minecraft/mc-mods/redstone-control-2).
 
+## Data Packs
+All crafting recipes of this mod can be changed with data packs in the usual way.
+
+In addition to that, this mod adds a [new advancement trigger](src/main/resources/data/rs_ctr2/circuit_test/README.md) that is used by default to unlock crafting recipes for circuit components via the `Redstone Research Lab`. But modpack and map creators can make use of this trigger as well and add their own tests if they want to lock certain progression or rewards behind circuit engineering challenges.
+
 ## Project Setup
 The setup is the same as for [CD4017BE_lib](https://github.com/CD4017BE/CD4017BE_lib#project-setup-for-mc-1165).
 Gradle will require GitHub authentication for downloading the CD4017BE_lib dependencies [as described here](https://github.com/CD4017BE/CD4017BE_lib#using-this-mod-as-dependency-1165).
