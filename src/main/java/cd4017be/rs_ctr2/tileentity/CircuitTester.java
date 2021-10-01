@@ -9,9 +9,8 @@ import static cd4017be.lib.part.OrientedPart.port;
 import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
 import static net.minecraft.util.Direction.SOUTH;
 
+import java.util.Random;
 import java.util.Set;
-
-import org.apache.commons.lang3.ArrayUtils;
 
 import cd4017be.api.grid.ExtGridPorts;
 import cd4017be.api.grid.port.ISignalReceiver;
@@ -147,12 +146,19 @@ implements IGate, IUnnamedContainerProvider, ITEInteract {
 			err = 0;
 			if (test.shuffle) {
 				int r = test.rows();
+				byte[] perm = this.perm;
 				if (perm.length != r) {
-					perm = new byte[r];
+					this.perm = perm = new byte[r];
 					for (int i = 0; i < r; i++)
 						perm[i] = (byte)i;
 				}
-				ArrayUtils.shuffle(perm, level.random);
+				Random rand = level.random;
+				for (int i = r - 1; i > 0; i--) {
+					int j = rand.nextInt(i + 1);
+					byte tmp = perm[i];
+					perm[i] = perm[j];
+					perm[j] = tmp;
+				}
 			} else perm = ByteArrays.EMPTY_ARRAY;
 			GATE_UPDATER.add(this);
 		}
