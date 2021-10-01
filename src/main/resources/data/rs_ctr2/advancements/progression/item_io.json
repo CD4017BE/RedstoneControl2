@@ -2,8 +2,8 @@
 	"parent": "rs_ctr2:progression/energy",
 	"display": {
 		"icon": { "item": "rs_ctr2:item_mover" },
-		"title": { "translate": "advancements.rs_ctr2.logistics" },
-		"description": { "translate": "advancements.rs_ctr2.logistics.desc" },
+		"title": { "translate": "advancements.rs_ctr2.item_io" },
+		"description": { "translate": "advancements.rs_ctr2.item_io.desc" },
 		"frame": "task",
 		"show_toast": true,
 		"announce_to_chat": true,
@@ -12,19 +12,15 @@
 	"criteria": {
 		"item_mover": {
 			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{ "item": "rs_ctr2:item_mover" }
-				]
-			}
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:item_mover" }
+			]}
 		},
-		"fluid_mover": {
+		"item_io": {
 			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{ "item": "rs_ctr2:fluid_mover" }
-				]
-			}
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:item_io" }
+			]}
 		}
 	}
 }

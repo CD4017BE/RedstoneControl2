@@ -1,0 +1,38 @@
+{
+	"parent": "rs_ctr2:progression/arithmetic",
+	"display": {
+		"icon": { "item": "rs_ctr2:division_gate" },
+		"title": { "translate": "advancements.rs_ctr2.arithmetic2" },
+		"description": { "translate": "advancements.rs_ctr2.arithmetic2.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"has_mul": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:product_gate" }
+			]}
+		},
+		"res_mul": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:multiply" }
+		},
+		"has_div": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:division_gate" }
+			]}
+		},
+		"res_div": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:divide" }
+		}
+	},
+	"requirements": [
+		["has_mul", "res_mul"],
+		["has_div", "res_div"]
+	]
+}

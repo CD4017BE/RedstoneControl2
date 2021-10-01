@@ -1,0 +1,23 @@
+{
+	"parent": "rs_ctr2:progression/microblocks",
+	"display": {
+		"icon": { "item": "rs_ctr2:circuit_tester" },
+		"title": { "translate": "advancements.rs_ctr2.research" },
+		"description": { "translate": "advancements.rs_ctr2.research.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"placed": {
+			"trigger": "minecraft:placed_block",
+			"conditions": {
+				"item": { "item": "rs_ctr2:circuit_tester" }
+			}
+		}
+	},
+	"rewards": {
+		"recipes": ["rs_ctr2:probe"]
+	}
+}

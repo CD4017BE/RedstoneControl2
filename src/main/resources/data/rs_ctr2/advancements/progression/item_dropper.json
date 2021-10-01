@@ -1,0 +1,20 @@
+{
+	"parent": "rs_ctr2:progression/item_io",
+	"display": {
+		"icon": { "item": "rs_ctr2:item_dropper" },
+		"title": { "translate": "advancements.rs_ctr2.dropper" },
+		"description": { "translate": "advancements.rs_ctr2.dropper.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"item_filter": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:item_dropper" }
+			]}
+		}
+	}
+}

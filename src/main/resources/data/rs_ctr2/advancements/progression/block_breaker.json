@@ -1,5 +1,5 @@
 {
-	"parent": "rs_ctr2:progression/logistics",
+	"parent": "rs_ctr2:progression/item_io",
 	"display": {
 		"icon": { "item": "rs_ctr2:block_breaker" },
 		"title": { "translate": "advancements.rs_ctr2.block_breaker" },

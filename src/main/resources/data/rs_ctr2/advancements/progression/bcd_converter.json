@@ -1,0 +1,27 @@
+{
+	"parent": "rs_ctr2:progression/arithmetic2",
+	"display": {
+		"icon": { "item": "rs_ctr2:bcd_converter" },
+		"title": { "translate": "advancements.rs_ctr2.bcd_converter" },
+		"description": { "translate": "advancements.rs_ctr2.bcd_converter.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"has_bcd": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:bcd_converter" }
+			]}
+		},
+		"res_bcd": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:bcd" }
+		}
+	},
+	"requirements": [
+		["has_bcd", "res_bcd"]
+	]
+}

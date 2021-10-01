@@ -5,7 +5,7 @@
 	],
 	"key": {
 		"-": { "item": "rs_ctr2:item_cable" },
-		"C": { "item": "rs_ctr2:comparator" }
+		"C": { "tag": "rs_ctr2:comparator" }
 	},
 	"result": {
 		"item": "rs_ctr2:item_counter",

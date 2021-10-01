@@ -171,6 +171,8 @@ implements IGate, IUnnamedContainerProvider, ITEInteract {
 	@Override
 	public ActionResultType
 	onActivated(PlayerEntity player, Hand hand, BlockRayTraceResult hit) {
+		if (hit.getDirection() == orientation().b)
+			return ActionResultType.PASS;
 		if (player instanceof ServerPlayerEntity) {
 			ServerPlayerEntity spe = (ServerPlayerEntity)player;
 			NetworkHooks.openGui(spe, this, pkt -> {

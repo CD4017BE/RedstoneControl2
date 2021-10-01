@@ -1,0 +1,27 @@
+{
+	"parent": "rs_ctr2:progression/arithmetic",
+	"display": {
+		"icon": { "item": "rs_ctr2:comparator" },
+		"title": { "translate": "advancements.rs_ctr2.comparator" },
+		"description": { "translate": "advancements.rs_ctr2.comparator.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"has_comp": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:comparator" }
+			]}
+		},
+		"res_comp": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:comp" }
+		}
+	},
+	"requirements": [
+		["has_comp", "res_comp"]
+	]
+}

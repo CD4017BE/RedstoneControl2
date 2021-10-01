@@ -1,0 +1,26 @@
+{
+	"parent": "rs_ctr2:progression/bitlogic",
+	"display": {
+		"icon": { "item": "rs_ctr2:data_send" },
+		"title": { "translate": "advancements.rs_ctr2.wireless" },
+		"description": { "translate": "advancements.rs_ctr2.wireless.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"send": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:data_send" }
+		},
+		"recv": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:data_recv" }
+		}
+	},
+	"rewards": {
+		"recipes": ["rs_ctr2:data_send"],
+		"experience": 120
+	}
+}

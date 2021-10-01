@@ -1,10 +1,10 @@
 {
-	"parent": "rs_ctr2:progression/io",
+	"parent": "rs_ctr2:progression/root",
 	"display": {
 		"icon": { "item": "rs_ctr2:probe" },
 		"title": { "translate": "advancements.rs_ctr2.probe" },
 		"description": { "translate": "advancements.rs_ctr2.probe.desc" },
-		"frame": "task",
+		"frame": "goal",
 		"show_toast": true,
 		"announce_to_chat": true,
 		"hidden": false

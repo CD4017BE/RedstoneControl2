@@ -1,3 +1,12 @@
+Planned:
+- Control Panel: slider, analog gauge
+- 4 -> 1 Multiplexer: Item, Fluid, Block Interaction
+
+v1.0.8:
+- add more advancements & fix broken ones
+- make interactions with back of Redstone Research Lab not open GUI
+- add experience rewards for circuit tests
+- add recipe variants for Increment Gate
 
 v1.0.7:
 - add optional progression system, where you unlock component recipes by building Redstone circuits. (/gamerule doLimitedCrafting true)

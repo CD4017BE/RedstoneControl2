@@ -10,7 +10,7 @@
 		"-": { "item": "rs_ctr2:item_cable" },
 		"p": { "item": "rs_ctr2:power_cable" },
 		"d": { "item": "rs_ctr2:data_cable" },
-		"C": { "item": "rs_ctr2:comparator" },
+		"C": { "tag": "rs_ctr2:comparator" },
 		"#": { "item": "cd4017be_lib:microblock" },
 		"P": { "item": "minecraft:piston" }
 	},

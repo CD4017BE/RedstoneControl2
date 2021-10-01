@@ -1,7 +1,7 @@
 {
 	"parent": "rs_ctr2:progression/microblocks",
 	"display": {
-		"icon": { "item": "rs_ctr2:logic_out" },
+		"icon": { "item": "rs_ctr2:switch" },
 		"title": { "translate": "advancements.rs_ctr2.io" },
 		"description": { "translate": "advancements.rs_ctr2.io.desc" },
 		"frame": "task",
@@ -10,16 +10,20 @@
 		"hidden": false
 	},
 	"criteria": {
-		"io": {
+		"switch": {
 			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{ "tag": "rs_ctr2:io" }
-				]
-			}
+			"conditions": { "items": [
+				{"item": "rs_ctr2:switch"}
+			]}
+		},
+		"lamp": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{"item": "rs_ctr2:led"}
+			]}
 		}
 	},
 	"rewards": { "recipes": [
-		"rs_ctr2:probe"
+		"rs_ctr2:label"
 	]}
 }

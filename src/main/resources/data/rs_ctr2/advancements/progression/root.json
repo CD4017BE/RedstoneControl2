@@ -1,7 +1,7 @@
 {
 	"display": {
 		"background": "rs_ctr2:textures/gui/advancements/background.png",
-		"icon": { "item": "rs_ctr2:data_cable" },
+		"icon": { "item": "minecraft:redstone" },
 		"title": { "translate": "advancements.rs_ctr2.root" },
 		"description": { "translate": "advancements.rs_ctr2.root.desc" },
 		"frame": "task",

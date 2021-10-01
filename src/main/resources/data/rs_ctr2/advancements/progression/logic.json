@@ -1,7 +1,7 @@
 {
-	"parent": "rs_ctr2:progression/io",
+	"parent": "rs_ctr2:progression/research",
 	"display": {
-		"icon": { "item": "rs_ctr2:xor_gate" },
+		"icon": { "item": "rs_ctr2:nor_gate" },
 		"title": { "translate": "advancements.rs_ctr2.logic" },
 		"description": { "translate": "advancements.rs_ctr2.logic.desc" },
 		"frame": "task",
@@ -10,41 +10,62 @@
 		"hidden": false
 	},
 	"criteria": {
-		"not": {
+		"has_not": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": { "items": [
 				{ "item": "rs_ctr2:not_gate" }
 			]}
 		},
-		"or": {
+		"res_not": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:not" }
+		},
+		"has_or": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": { "items": [
 				{ "item": "rs_ctr2:or_gate" }
 			]}
 		},
-		"nor": {
+		"res_or": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:or" }
+		},
+		"has_nor": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": { "items": [
 				{ "item": "rs_ctr2:nor_gate" }
 			]}
 		},
-		"and": {
+		"res_nor": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:nor" }
+		},
+		"has_and": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": { "items": [
 				{ "item": "rs_ctr2:and_gate" }
 			]}
 		},
-		"nand": {
+		"res_and": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:and" }
+		},
+		"has_nand": {
 			"trigger": "minecraft:inventory_changed",
 			"conditions": { "items": [
 				{ "item": "rs_ctr2:nand_gate" }
 			]}
 		},
-		"xor": {
-			"trigger": "minecraft:inventory_changed",
-			"conditions": { "items": [
-				{ "item": "rs_ctr2:xor_gate" }
-			]}
+		"res_nand": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:nand" }
 		}
-	}
+	},
+	"requirements": [
+		["has_not", "res_not"],
+		["has_or", "res_or"],
+		["has_nor", "res_nor"],
+		["has_and", "res_and"],
+		["has_nand", "res_nand"]
+	]
 }

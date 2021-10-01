@@ -1,0 +1,38 @@
+{
+	"parent": "rs_ctr2:progression/comparator",
+	"display": {
+		"icon": { "item": "rs_ctr2:schmitt_trigger" },
+		"title": { "translate": "advancements.rs_ctr2.comparator2" },
+		"description": { "translate": "advancements.rs_ctr2.comparator2.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"has_schmitt": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:schmitt_trigger" }
+			]}
+		},
+		"res_schmitt": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:schmitt_trigger" }
+		},
+		"has_clamp": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:clamp_gate" }
+			]}
+		},
+		"res_clamp": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:limit" }
+		}
+	},
+	"requirements": [
+		["has_schmitt", "res_schmitt"],
+		["has_clamp", "res_clamp"]
+	]
+}

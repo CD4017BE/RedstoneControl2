@@ -1,0 +1,8 @@
+{
+	"parent": "minecraft:recipes/root",
+	"rewards": { "experience": 25 },
+	"criteria": { "test": {
+		"trigger": "rs_ctr2:circuit_test",
+		"conditions": { "test": "rs_ctr2:adder32" }
+	}}
+}

@@ -6,7 +6,7 @@
 	"key": {
 		"-": { "item": "rs_ctr2:block_cable" },
 		"P": { "item": "minecraft:wooden_pickaxe" },
-		"C": { "item": "rs_ctr2:comparator" }
+		"C": { "tag": "rs_ctr2:comparator" }
 	},
 	"result": {
 		"item": "rs_ctr2:hardness_sensor",

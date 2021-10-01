@@ -1,6 +1,11 @@
 {
 	"parent": "minecraft:recipes/root",
-	"rewards": { "recipes": [ "rs_ctr2:const_inc" ]},
+	"rewards": {
+		"recipes": [
+			"rs_ctr2:const_inc",
+			"rs_ctr2:const_inc2"
+		], "experience": 50
+	},
 	"criteria": { "test": {
 		"trigger": "rs_ctr2:circuit_test",
 		"conditions": { "test": "rs_ctr2:inc" }

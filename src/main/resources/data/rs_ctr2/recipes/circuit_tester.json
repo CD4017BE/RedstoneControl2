@@ -9,7 +9,7 @@
 		"O": { "item": "rs_ctr2:logic_out" },
 		"I": { "item": "rs_ctr2:logic_in" },
 		"B": { "item": "minecraft:book" },
-		"_": { "item": "minecraft:stone_slab" }
+		"_": { "item": "minecraft:smooth_stone_slab" }
 	},
 	"result": { "item": "rs_ctr2:circuit_tester" }
 }

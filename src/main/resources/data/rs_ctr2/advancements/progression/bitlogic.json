@@ -1,0 +1,20 @@
+{
+	"parent": "rs_ctr2:progression/logic",
+	"display": {
+		"icon": { "item": "rs_ctr2:and_filter" },
+		"title": { "translate": "advancements.rs_ctr2.bitlogic" },
+		"description": { "translate": "advancements.rs_ctr2.bitlogic.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"has_and_filter": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:and_filter" }
+			]}
+		}
+	}
+}

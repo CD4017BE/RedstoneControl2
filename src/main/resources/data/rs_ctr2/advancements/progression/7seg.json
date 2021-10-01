@@ -1,0 +1,20 @@
+{
+	"parent": "rs_ctr2:progression/logic",
+	"display": {
+		"icon": { "item": "rs_ctr2:_7segment" },
+		"title": { "translate": "advancements.rs_ctr2.7seg" },
+		"description": { "translate": "advancements.rs_ctr2.7seg.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"button": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:_7segment" }
+			]}
+		}
+	}
+}

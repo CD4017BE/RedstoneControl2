@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "const_inc",
+	"pattern": [
+		"AF",
+		"NN"
+	],
+	"key": {
+		"F": { "item": "rs_ctr2:and_filter" },
+		"A": { "item": "rs_ctr2:and_gate" },
+		"N": { "item": "rs_ctr2:nor_gate" }
+	},
+	"result": { "item": "rs_ctr2:const_inc" }
+}

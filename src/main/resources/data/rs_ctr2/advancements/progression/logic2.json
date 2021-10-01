@@ -1,0 +1,49 @@
+{
+	"parent": "rs_ctr2:progression/logic",
+	"display": {
+		"icon": { "item": "rs_ctr2:xor_gate" },
+		"title": { "translate": "advancements.rs_ctr2.logic2" },
+		"description": { "translate": "advancements.rs_ctr2.logic2.desc" },
+		"frame": "task",
+		"show_toast": true,
+		"announce_to_chat": true,
+		"hidden": false
+	},
+	"criteria": {
+		"has_xor": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:xor_gate" }
+			]}
+		},
+		"res_xor": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:xor" }
+		},
+		"has_mux": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:data_mux" }
+			]}
+		},
+		"res_mux": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:mux" }
+		},
+		"has_latch": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:sr_latch" }
+			]}
+		},
+		"res_latch": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:sr_latch" }
+		}
+	},
+	"requirements": [
+		["has_xor", "res_xor"],
+		["has_mux", "res_mux"],
+		["has_latch", "res_latch"]
+	]
+}

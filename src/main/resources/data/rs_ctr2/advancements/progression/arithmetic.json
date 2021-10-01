@@ -1,57 +1,49 @@
 {
-	"parent": "rs_ctr2:progression/logic",
+	"parent": "rs_ctr2:progression/bitlogic",
 	"display": {
-		"icon": { "item": "rs_ctr2:division_gate" },
+		"icon": { "item": "rs_ctr2:sum_gate" },
 		"title": { "translate": "advancements.rs_ctr2.arithmetic" },
 		"description": { "translate": "advancements.rs_ctr2.arithmetic.desc" },
-		"frame": "goal",
+		"frame": "task",
 		"show_toast": true,
 		"announce_to_chat": true,
 		"hidden": false
 	},
 	"criteria": {
-		"neg": {
+		"has_neg": {
 			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{ "item": "rs_ctr2:neg_gate" }
-				]
-			}
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:neg_gate" }
+			]}
 		},
-		"add": {
-			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{ "item": "rs_ctr2:sum_gate" }
-				]
-			}
+		"res_neg": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:neg" }
 		},
-		"shift": {
+		"has_inc": {
 			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{ "item": "rs_ctr2:bit_shift" }
-				]
-			}
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:bit_shift" }
+			]}
 		},
-		"mul": {
-			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{ "item": "rs_ctr2:product_gate" }
-				]
-			}
+		"res_inc": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:inc" }
 		},
-		"div": {
+		"has_add": {
 			"trigger": "minecraft:inventory_changed",
-			"conditions": {
-				"items": [
-					{ "item": "rs_ctr2:division_gate" }
-				]
-			}
+			"conditions": { "items": [
+				{ "item": "rs_ctr2:sum_gate" }
+			]}
+		},
+		"res_add": {
+			"trigger": "rs_ctr2:circuit_test",
+			"conditions": { "test": "rs_ctr2:add_sub" }
 		}
 	},
-	"rewards": {
-		"experience": 50
-	}
+	"requirements": [
+		["has_neg", "res_neg"],
+		["has_inc", "res_inc"],
+		["has_add", "res_add"]
+	]
 }

@@ -1,6 +1,9 @@
 {
 	"parent": "minecraft:recipes/root",
-	"rewards": { "recipes": [ "rs_ctr2:bit_shift" ]},
+	"rewards": {
+		"recipes": [ "rs_ctr2:bit_shift" ],
+		"experience": 75
+	},
 	"criteria": { "test": {
 		"trigger": "rs_ctr2:circuit_test",
 		"conditions": { "test": "rs_ctr2:bit_shift" }

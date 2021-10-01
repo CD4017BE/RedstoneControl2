@@ -8,7 +8,7 @@
 	],
 	"key": {
 		"-": { "item": "rs_ctr2:power_cable" },
-		"C": { "item": "rs_ctr2:comparator" },
+		"C": { "tag": "rs_ctr2:comparator" },
 		"I": { "item": "minecraft:iron_bars" }
 	},
 	"result": {

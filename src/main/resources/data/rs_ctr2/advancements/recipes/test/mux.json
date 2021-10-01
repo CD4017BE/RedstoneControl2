@@ -1,6 +1,9 @@
 {
 	"parent": "minecraft:recipes/root",
-	"rewards": { "recipes": [ "rs_ctr2:data_mux" ]},
+	"rewards": {
+		"recipes": [ "rs_ctr2:data_mux" ],
+		"experience": 50
+	},
 	"criteria": { "test": {
 		"trigger": "rs_ctr2:circuit_test",
 		"conditions": { "test": "rs_ctr2:mux" }

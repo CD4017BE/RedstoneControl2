@@ -8,7 +8,7 @@
 	"key": {
 		"-": { "item": "rs_ctr2:fluid_cable" },
 		"|": { "item": "rs_ctr2:data_cable" },
-		"C": { "item": "rs_ctr2:comparator" },
+		"C": { "tag": "rs_ctr2:comparator" },
 		"T": { "item": "minecraft:iron_trapdoor" }
 	},
 	"result": {

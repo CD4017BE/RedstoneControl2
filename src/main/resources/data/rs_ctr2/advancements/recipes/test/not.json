@@ -1,6 +1,9 @@
 {
 	"parent": "minecraft:recipes/root",
-	"rewards": { "recipes": [ "rs_ctr2:not_gate" ]},
+	"rewards": {
+		"recipes": [ "rs_ctr2:not_gate" ],
+		"experience": 20
+	},
 	"criteria": { "test": {
 		"trigger": "rs_ctr2:circuit_test",
 		"conditions": { "test": "rs_ctr2:not" }

@@ -1,6 +1,9 @@
 {
 	"parent": "minecraft:recipes/root",
-	"rewards": { "recipes": [ "rs_ctr2:bcd_converter" ]},
+	"rewards": {
+		"recipes": [ "rs_ctr2:bcd_converter" ],
+		"experience": 100
+	},
 	"criteria": { "test": {
 		"trigger": "rs_ctr2:circuit_test",
 		"conditions": { "test": "rs_ctr2:bcd" }

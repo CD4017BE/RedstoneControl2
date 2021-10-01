@@ -1,9 +1,11 @@
 {
 	"parent": "minecraft:recipes/root",
-	"rewards": { "recipes": [
-		"rs_ctr2:neg_gate",
-		"rs_ctr2:neg_gate1"
-	]},
+	"rewards": {
+		"recipes": [
+			"rs_ctr2:neg_gate",
+			"rs_ctr2:neg_gate1"
+		], "experience": 50
+	},
 	"criteria": { "test": {
 		"trigger": "rs_ctr2:circuit_test",
 		"conditions": { "test": "rs_ctr2:neg" }
