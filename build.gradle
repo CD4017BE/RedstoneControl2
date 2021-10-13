@@ -62,6 +62,10 @@ minecraft {
 			// Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
 			property 'forge.logging.console.level', 'debug'
 
+			// Mixin fix for Patchouli
+			property 'mixin.env.remapRefMap', 'true'
+			property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
 			mods {
 				rs_ctr {
 					source sourceSets.main
@@ -132,6 +136,7 @@ repositories {
 		name = "ModMaven"
 		url = "https://modmaven.k-4u.nl"
 	}
+	maven { url 'https://maven.blamejared.com' }
 	maven {
 		// CD4017BE_lib releases
 		name = "GitHub"
@@ -153,6 +158,9 @@ dependencies {
 	compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
 	// at runtime, use the full JEI jar
 	runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+	// Patchouli
+	compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
+	runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 	// CD4017BE_lib: using deobf version here because source code attachment isn't working with fg.deobf()
 	implementation "com.cd4017be.lib:cd4017be_lib:${mc_version}-${lib_version}:deobf"
 }

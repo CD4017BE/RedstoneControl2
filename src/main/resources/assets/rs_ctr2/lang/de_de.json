@@ -93,6 +93,8 @@
   "advancements.rs_ctr2.frames.desc": "Die Blockzugriffsteuerung lässt sich einfacher ansteuern, ist dafür aber teurer.",
   "advancements.rs_ctr2.sensors": "Block-Sensoren",
   "advancements.rs_ctr2.sensors.desc": "Blockfestigkeitssensor und Wachstumssensor sind nützlich für alle möglichen automatischen Farmen.",
+  "item.rs_ctr2.manual": "RS Control Handbuch",
+  "item.rs_ctr2.manual.info": "",
   "block.rs_ctr2.block_breaker": "gesteuerter Blockförderer",
   "item.rs_ctr2.item_cable": "Itemleitung",
   "item.rs_ctr2.fluid_cable": "Flüssigkeitsleitung",

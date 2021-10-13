@@ -27,7 +27,8 @@
 		"use_redstone",
 		"has_cable"
 	]],
-	"rewards": { "recipes": [
-		"cd4017be_lib:assembler"
-	]}
+	"rewards": {
+		"recipes": [ "cd4017be_lib:assembler", "rs_ctr2:manual" ],
+		"loot": [ "rs_ctr2:give_manual" ]
+	}
 }
