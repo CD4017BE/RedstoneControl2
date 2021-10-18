@@ -1,6 +1,11 @@
 Planned:
 - Control Panel: slider, analog gauge
 - 4 -> 1 Multiplexer: Item, Fluid, Block Interaction
+- TODO: categories & entries with "flag": "testing_mode"
+
+v1.0.9:
+- add patchouli based in-game manual
+- add book entries: Port Connections, Placement Tips, External I/O, Circuit debugging
 
 v1.0.8:
 - add more advancements & fix broken ones

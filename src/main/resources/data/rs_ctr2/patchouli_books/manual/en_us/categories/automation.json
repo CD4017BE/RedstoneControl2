@@ -1,0 +1,7 @@
+{
+	"name": "Automation",
+	"sortnum": 2,
+	"flag": "testing_mode",
+	"description": "",
+	"icon": "rs_ctr2:item_mover"
+}
