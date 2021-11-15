@@ -2,6 +2,6 @@
 	"name": "Theoretical concepts",
 	"sortnum": 1,
 	"flag": "testing_mode",
-	"description": "",
+	"description": "This category is meant to teach some essential concepts of digital electronics in case you're not already familiar with them.",
 	"icon": "minecraft:book"
 }

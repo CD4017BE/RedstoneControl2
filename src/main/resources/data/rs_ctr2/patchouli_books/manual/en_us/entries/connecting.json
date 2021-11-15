@@ -14,7 +14,8 @@
 			"text": "The most straightforward way of connecting ports is to place the components so that their faces are touching. The ports have to be of the same type and opposite direction.\\pIf direct connection is not feasible, they can be connected by routing a \\iCable\\d between the two ports instead. There are matching cable types for each port except for the \\D\"Special\"\\d type, which can only be connected directly."
 		}, {
 			"type": "patchouli:text",
-			"text": "Cables can only form paths with exactly two endpoints, meaning they can not branch. So if you want to connect a single data output with multiple data inputs or make a single slave port accessible to multiple masters, you need \\iSplitters\\d to do so.\\pJust like cables, there exists a splitter for every port type (again except \"Special\")."
+			"anchor": "cable",
+			"text": "Cables can only form paths with exactly two endpoints, meaning they can not branch. So if you want to connect a single data output with multiple data inputs or make a single slave port accessible to multiple masters, you need \\iSplitters\\d to do so.\\pJust like cables, there exists a splitter for every port type (again except \"Special\").\\pNote: Splitters can be chained only a \\c$(t:See their 'stats' tool-tip)limited number of times$(/t)\\d before they stop transmitting!"
 		}, {
 			"type": "patchouli:spotlight",
 			"item": "rs_ctr2:not_gate",
@@ -24,7 +25,8 @@
 			"type": "patchouli:relations",
 			"entries": [
 				"rs_ctr2:placement",
-				"rs_ctr2:io"
+				"rs_ctr2:io",
+				"rs_ctr2:signals"
 			],
 			"text": ""
 		}
