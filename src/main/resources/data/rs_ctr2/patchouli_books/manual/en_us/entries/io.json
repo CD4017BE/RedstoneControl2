@@ -21,7 +21,7 @@
 			"b.item": "rs_ctr2:analog_in",
 			"c.item": "rs_ctr2:comp_in",
 			"_.title": "Analog Signal I/O",
-			"_.text": "The \\iAnalog reader\\d and \\iAnalog emitter\\d convert the signal strength of a Redstone signal into a numeric data signal and back. And the \\iComparator reader\\d behaves like a normal Minecraft Comparator feeding into an Analog reader.\\pNote: Don't mix analog and logic signals unless you $(l:bitwise)know what you're doing$(/l)!"
+			"_.text": "The \\iAnalog reader\\d and \\iAnalog emitter\\d convert the signal strength of a Redstone signal into a numeric data signal and back. And the \\iComparator reader\\d is a normal Minecraft Comparator + Analog reader compacted into one part.\\pNote: Don't mix analog and logic signals unless you $(l:bitwise)know what you're doing$(/l)!"
 		}, {
 			"type": "rs_ctr2:spotlight2",
 			"a.item": "rs_ctr2:growth_sensor",

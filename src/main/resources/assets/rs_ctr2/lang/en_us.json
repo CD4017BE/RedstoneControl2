@@ -388,5 +388,10 @@
   "gui.rs_ctr2.bit_shuffle": "Bit Transform",
   "gui.rs_ctr2.and_mask": "AND-mask",
   "gui.rs_ctr2.xor_mask": "XOR-mask",
-  "gui.rs_ctr2.shift": "bit rotation"
+  "gui.rs_ctr2.shift": "bit rotation",
+  "item.rs_ctr2.fluid_splitter.ext": "Can be chained up to %sd deep.",
+  "item.rs_ctr2.splitter.ext": "Can be chained up to %sd deep.",
+  "item.rs_ctr2.item_splitter.ext": "Can be chained up to %sd deep.",
+  "item.rs_ctr2.block_splitter.ext": "Can be chained up to %sd deep.",
+  "item.rs_ctr2.power_splitter.ext": "Can be chained up to %sd deep."
 }
