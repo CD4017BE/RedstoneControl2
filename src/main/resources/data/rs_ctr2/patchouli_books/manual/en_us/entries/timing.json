@@ -1,0 +1,20 @@
+{
+ "name": "Timing",
+ "icon": "rs_ctr2:delay",
+ "category": "rs_ctr2:basics",
+ "pages": [
+  {
+   "type": "patchouli:text",
+   "text": "Just like Redstone Torches and Repeaters have propagation delays, most components have a signal latency of one tick (twice as fast as normal Redstone). This means that output values of an operation will be based on the input values from the previous tick. In item tool-tips this is indicated by a [t+1] on outputs or a [t-1] on inputs."
+  }, {
+   "type": "patchouli:text",
+   "text": "There are some single input operators that have a zero tick latency, meaning their outputs react instantly to changed inputs. These operators also count towards the \\c$(t:see stats tool-tip on Splitter item)Splitter chain limit$(/t)\\d, so you may need to manually insert \\iDalay Lines\\d to propagate the sigal further in long chains of zero tick operators."
+  }, {
+   "type": "patchouli:text",
+   "text": "On a few parts you may also encounter [t+1/2], which means the event happens between two circuit ticks. Regular world events like Block/Entity updates all happen between t and t+1/2."
+  }, {
+   "type": "patchouli:text",
+   "text": "Sometimes it's necessary to adjust the delay of signals to make them arrive simultaneously (or in a certain sequence) at a device. This can be achieved by inserting Delay Lines, which just repeat a signal with one tick delay." 
+  }
+ ]
+}
