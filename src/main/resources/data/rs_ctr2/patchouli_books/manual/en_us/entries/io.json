@@ -29,6 +29,7 @@
 			"_.title": "Block Sensors",
 			"_.text": "These measure different properties of blocks and return them as numeric value. Unlike the Redstone readers they don't update continuously and instead need clock pulses to refresh their readings.\\p\\/Can operate with with \\oRemote Block Interaction\\d."
 		}, {
+			"anchor": "resource",
 			"type": "rs_ctr2:spotlight4",
 			"a.item": "rs_ctr2:power_io",
 			"b.item": "rs_ctr2:fluid_io",

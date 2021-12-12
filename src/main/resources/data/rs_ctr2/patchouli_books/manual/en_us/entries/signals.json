@@ -18,6 +18,7 @@
 			"text": "In some cases, for example as result of a comparison, signals are supposed to represent pure boolean states (either true or false). Pure booleans have either all bit channels set to 1 (true) or all bits set to 0 (false).\\nThis convention has the convenient property that any bitwise logic operation on only pure booleans will also result in a pure boolean.\\pThe \\iOR-Buffer Gate\\d converts to pure boolean by OR-ing all bit channels together."
 		}, {
 			"type": "patchouli:text",
+			"anchor": "clock",
 			"title": "Clock signals",
 			"text": "Many devices use clock signals to trigger actions. The convention used throughout the mod is that: a trigger happens every time any bit in the signal changes from 0 to 1 and there is at most one trigger per tick even if multiple bits change.\\pIt's easiest to work with pure boolean clock signals, but they can trigger at most once every two ticks."
 		}, {
