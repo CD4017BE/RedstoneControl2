@@ -229,7 +229,7 @@ IUnnamedContainerProvider, IProbeInfo {
 		player.level = world;
 		player.moveTo(
 			vec.x, vec.y - player.getEyeHeight(), vec.z,
-			(aim & 3) * 90, (((aim >> 2) + 1 & 3) - 1) * -90
+			(aim + 2 & 3) * 90, (((aim >> 2) + 1 & 3) - 1) * -90
 		);
 		player.xRotO = player.xRot;
 		player.yHeadRotO = player.yHeadRot =
