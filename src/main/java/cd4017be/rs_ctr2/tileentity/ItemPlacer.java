@@ -4,6 +4,7 @@ import static cd4017be.lib.network.Sync.GUI;
 import static cd4017be.lib.network.Sync.SAVE;
 import static cd4017be.lib.part.OrientedPart.port;
 import static cd4017be.lib.tick.GateUpdater.GATE_UPDATER;
+import static cd4017be.lib.util.Orientation.*;
 import static cd4017be.math.Linalg.*;
 import static cd4017be.math.Orient.orient;
 import static cd4017be.rs_ctr2.Main.SERVER_CFG;
@@ -60,6 +61,12 @@ IUnnamedContainerProvider, IProbeInfo {
 
 	private static final int R_SUCCESS = 0, R_UNLOADED = 1,
 	R_UNBREAKABLE = 2, R_INV_FULL = 4, R_NO_ENERGY = 8;
+	private static final Orientation[] AIM_ORIENTS = {
+		S12, W12, N12, E12,
+		UN , UE , US , UW ,
+		N6 , E6 , S6 , W6 ,
+		DS , DW , DN , DE ,
+	};
 	private static final CompoundNBT DEFAULT_DATA = new CompoundNBT();
 	static {
 		DEFAULT_DATA.putString("name", "FakePlayer");
@@ -209,7 +216,9 @@ IUnnamedContainerProvider, IProbeInfo {
 			(aim >> 20 & 15) * .0625F - .46875F,
 			air ? 0 : -2
 		};
-		o = o.apply(Orientation.byIndex(aim = aim >> 8 & 15));
+		aim >>= 8;
+		aim = aim & 12 | aim + (o.ordinal() >> 2) & 3;
+		o = AIM_ORIENTS[aim];
 		dadd(3, orient(o.o, p), .5F);
 		Vector3d vec = new Vector3d(
 			(double)p[0] + pos.getX(),
@@ -228,7 +237,7 @@ IUnnamedContainerProvider, IProbeInfo {
 		player.yRotO = player.yRot;
 		//ray trace
 		if (air) return null;
-		p = orient(o.o, vec(0, 0, -3.5F));
+		p = orient(o.o, vec(0, 0, 2.5F));
 		Vector3d dir = vec.add(p[0], p[1], p[2]);
 		BlockState state = world.getBlockState(pos);
 		BlockRayTraceResult res = state.getShape(world, pos).clip(vec, dir, pos);

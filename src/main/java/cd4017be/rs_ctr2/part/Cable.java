@@ -65,7 +65,7 @@ public class Cable extends GridPart implements IWire {
 	}
 
 	public void merge(GridPart other) {
-		if (!(other instanceof Cable)) return;
+		if (!(other instanceof Cable && (bounds & other.bounds) == 0)) return;
 		short[] tp = this.ports, op = other.ports;
 		if      (tp[0] == op[1]) tp[0] = op[0];
 		else if (tp[1] == op[0]) tp[1] = op[1];
