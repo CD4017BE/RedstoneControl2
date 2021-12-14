@@ -31,6 +31,6 @@ description="Adds compact circuitry in the form of microblock logic gates and va
 [[dependencies.rs_ctr2]]
     modId="cd4017be_lib"
     mandatory=true
-    versionRange="[7.1.1,)"
+    versionRange="[7.2.0,7.3.0)"
     ordering="NONE"
     side="BOTH"

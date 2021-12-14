@@ -185,7 +185,7 @@ public class SignalProbeRenderer extends ItemStackTileEntityRenderer {
 		mat.scale(scale, scale, scale);
 		mat.translate((x0+x1) * -.125, (y0+y1) * -.125, (z0+z1) * -.125);
 		part.fillModel(model.clear(), part.getLayer() >= 0 ? part.bounds : 0L);
-		model.render(rtb.getBuffer(RenderType.solid()), mat.last(), light, overlay);
+		model.render(rtb, mat.last(), light, overlay);
 		return part.asItemStack();
 	}
 
