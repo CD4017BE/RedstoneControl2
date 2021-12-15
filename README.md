@@ -10,6 +10,8 @@ To not put unnecessary burden on your CPU, the microblocks are hosted by non-tic
 ## Server/Client Installation
 Simply put the downloaded `.jar` files of the mod and the required verison of CD4017BE_lib in your `mods` folder. Requires Forge Modloader to be installed in your Minecraft instance.
 
+Also highly recommended to install the mod [Patchouli](https://minecraft.curseforge.com/projects/patchouli) which is required to access the **Redstone Control Manual** in-game.
+
 Latest development downloads can be found in [packages](https://github.com/CD4017BE/RedstoneControl2/packages/914303).
 Stable, more thoroughly tested downloads available on [Curse Forge](https://www.curseforge.com/minecraft/mc-mods/redstone-control-2).
 

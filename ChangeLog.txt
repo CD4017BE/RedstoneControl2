@@ -3,9 +3,12 @@ Planned:
 - 4 -> 1 Multiplexer: Item, Fluid, Block Interaction
 - TODO: categories & entries with "flag": "testing_mode"
 
-v1.0.9:
-- add patchouli based in-game manual
-- add book entries: Port Connections, Placement Tips, External I/O, Circuit debugging
+v1.1.0:
+- add patchouli based in-game manual for #4
+- add book entries: Port Connections, Placement Tips, External I/O, Circuit debugging, Signals, Energy, Item & Fluid transport
+- fix Item User placing with wrong player orientation
+- fix #9 missing particle texture warnings
+- using CD4017BE_lib-7.2 which adds support for transparent Block Bits like glass and leaves.
 
 v1.0.8:
 - add more advancements & fix broken ones

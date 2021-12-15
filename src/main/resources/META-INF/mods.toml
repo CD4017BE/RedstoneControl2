@@ -34,3 +34,9 @@ description="Adds compact circuitry in the form of microblock logic gates and va
     versionRange="[7.2.0,7.3.0)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.rs_ctr2]]
+    modId="patchouli"
+    mandatory=false
+    versionRange="[1.16-53,)"
+    ordering="NONE"
+    side="BOTH"
