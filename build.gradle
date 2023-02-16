@@ -4,7 +4,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+		classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
 	}
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -137,15 +137,7 @@ repositories {
 		url = "https://modmaven.k-4u.nl"
 	}
 	maven { url 'https://maven.blamejared.com' }
-	maven {
-		// CD4017BE_lib releases
-		name = "GitHub"
-		url = "https://maven.pkg.github.com/cd4017be/cd4017be_lib"
-		credentials {
-			username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-			password = project.findProperty("gpr.key") ?: System.getenv("PASSWORD")
-		}
-	}
+
 }
 
 dependencies {
@@ -162,7 +154,8 @@ dependencies {
 	compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
 	runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
 	// CD4017BE_lib: using deobf version here because source code attachment isn't working with fg.deobf()
-	implementation "com.cd4017be.lib:cd4017be_lib:${mc_version}-${lib_version}:deobf"
+	//implementation fg.deobf(files("./libs/*"))
+	implementation fileTree(dir: 'libs', include: '*.jar')
 }
 
 task deobfJar(type: Jar) {
